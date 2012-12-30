@@ -19,8 +19,6 @@ Game World
 Audio
 -----
 
-* fix clipping when sound + speech play at the same time
-    * http://www.html5rocks.com/en/tutorials/webaudio/games/#toc-clip-prevent
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly

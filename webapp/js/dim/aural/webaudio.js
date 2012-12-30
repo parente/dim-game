@@ -2,6 +2,7 @@ define(function() {
     var exports = {},
         soundProtocol = 'sound://',
         context,
+        compressor,
         buffers,
         ext;
 
@@ -64,6 +65,10 @@ define(function() {
             throw new Error('webkitAudioContext not supported');
         }
 
+        // build a dynamic compressor
+        compressor = context.createDynamicsCompressor();
+        compressor.connect(context.destination);
+
         // start with new buffers
         buffers = {};
 
@@ -77,11 +82,12 @@ define(function() {
             throw new Error('no known audio format supported');
         }
 
-        // TODO: need to do this on an event for iOS to bless audio
-        var audioSource = context.createBufferSource();
-        audioSource.connect(context.destination);
-        audioSource.noteOn(0);
-        audioSource.disconnect(0);
+        // TODO: need to do something like this on an event for iOS to bless audio
+        //      disabled after addition of compressor until I can retest what's needed
+        // var audioSource = context.createBufferSource();
+        // audioSource.connect(context.destination);
+        // audioSource.noteOn(0);
+        // audioSource.disconnect(0);
 
         // load all audio and notify ready
         return $.when(world).then(load_audio);
@@ -117,16 +123,16 @@ define(function() {
         }
         audioSource.buffer = buffer;
         // if we want to adjust gain, build a gain node and connect
-        // source -> gain -> output
+        // source -> gain -> compressor
         if(props.gain) {
             gainNode = context.createGainNode();
             gainNode.gain.value = props.gain;
             audioSource.connect(gainNode);
-            gainNode.connect(context.destination);
+            gainNode.connect(compressor);
             def.gainNode = gainNode;
         } else {
-            // otherwise connect source -> output
-            audioSource.connect(context.destination);
+            // otherwise connect source -> compressor
+            audioSource.connect(compressor);
         }
         def.audioSource = audioSource;
         // start the audio playing
