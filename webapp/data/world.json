@@ -3092,8 +3092,7 @@
             {
                 "action": "move.player", 
                 "args": [
-                    "scene.upperHallway", 
-                    false
+                    "scene.upperHallway"
                 ]
             }
         ], 

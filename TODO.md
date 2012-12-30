@@ -13,7 +13,6 @@ Game World
     * implement timer controller with dpad support
 * final shot controller (gasolineToEleanor2)
 * maze controller (passCardToMazeDoor)
-* move.player action with optional scene change report
 * set eleanor4 desc and location upon trapped hallway door key to door
 
 Audio

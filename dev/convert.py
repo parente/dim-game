@@ -344,7 +344,7 @@ use_events = {
             },
             {
                 'action': 'move.player',
-                'args': ['scene.upperHallway', False]
+                'args': ['scene.upperHallway']
             }
         ],
         'visual': {

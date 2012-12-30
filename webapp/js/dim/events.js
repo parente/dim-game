@@ -135,6 +135,15 @@ define([
     };
 
     /**
+     * args[0] property name of a scene in the indices
+     */
+    actions.move_player = function(event, args) {
+        console.log('  events.actions.move.player', event, args);
+        indices.player.scene = args[0];
+        // TODO: option to trigger move report?
+    };
+
+    /**
      * args[0] topic name
      * args[1..N] topic values
      */
