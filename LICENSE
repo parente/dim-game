@@ -1,0 +1,65 @@
+Original Game
+=============
+
+Copyright (c) 2005 Eden Kung, Matt Clark
+
+Web Reboot
+==========
+
+Copyright (c) 2012, 2013 Peter Parente
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of
+this software and associated documentation files (the "Software"), to deal in
+the Software without restriction, including without limitation the rights to
+use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies
+of the Software, and to permit persons to whom the Software is furnished to do
+so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+Audio
+=====
+
+Not Just Sky by BlindLoki
+http://www.newgrounds.com/audio/listen/316485
+http://creativecommons.org/licenses/by-nc-sa/3.0/
+
+Note: I don't know if Eden and Matt found music1 and music2 or created them from scratch. If they're yours, please contact me for attribution.
+
+Components
+==========
+
+All MIT / BSD licensed or dual licensed.
+
+modernizr.js (2.6.1)
+https://github.com/Modernizr/Modernizr/tree/v2.6.1
+
+require.js (2.0.6)
+https://github.com/jrburke/requirejs/tree/2.0.6
+
+text.js
+https://github.com/requirejs/text
+
+jquery.js (1.8.2)
+https://github.com/jquery/jquery/tree/1.8.2
+
+jquery.doubletap.js
+https://github.com/technoweenie/jquery.doubletap
+
+jquery.getobject.js
+https://github.com/cowboy/jquery-getobject
+
+mustache.js (0.7.0)
+https://github.com/janl/mustache.js/tree/0.7.0
+
+HTML5 Boilerplate (4.0.0)
+https://github.com/h5bp/html5-boilerplate/tree/v4.0.0

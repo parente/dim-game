@@ -1,0 +1,3160 @@
+[
+    {
+        "items": [], 
+        "type": "player", 
+        "id": "player", 
+        "scene": "boot"
+    }, 
+    {
+        "items": [], 
+        "controller": "dim/controllers/meta/boot", 
+        "adjoins": [], 
+        "visual": {
+            "name": "Descent Into Madness"
+        }, 
+        "aural": {
+            "name": "sound://speech/descentIntoMadness"
+        }, 
+        "type": "scene", 
+        "id": "boot"
+    }, 
+    {
+        "controller": "dim/controllers/explore/explore", 
+        "scene": "operatingRoom", 
+        "channels": {
+            "backdrop": {
+                "swapstop": true, 
+                "crossfade": true, 
+                "gain": 0.25, 
+                "loop": true
+            }
+        }, 
+        "visual": {
+            "backdrop": "image://backdrop/title.jpg"
+        }, 
+        "aural": {
+            "backdrop": "sound://music/music2"
+        }, 
+        "type": "default", 
+        "id": "default"
+    }, 
+    {
+        "prompt": {
+            "aural": {
+                "backdrop": "sound://music/music1", 
+                "narration": [
+                    "sound://speech/menu"
+                ]
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "boot", 
+        "options": [
+            {
+                "visual": {
+                    "name": "Load Game"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/loadGame"
+                }, 
+                "id": "load"
+            }, 
+            {
+                "visual": {
+                    "name": "New Game"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/newGame"
+                }, 
+                "id": "new"
+            }
+        ]
+    }, 
+    {
+        "prompt": {
+            "visual": {
+                "description": "Select a save slot to load."
+            }, 
+            "aural": {
+                "narration": [
+                    "sound://speech/selectLoad"
+                ]
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "load"
+    }, 
+    {
+        "prompt": {
+            "visual": {
+                "description": "Save your game"
+            }, 
+            "aural": {
+                "narration": "sound://speech/saveSlot"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "save", 
+        "success": {
+            "visual": {
+                "description": "Your game was successfully saved."
+            }, 
+            "aural": {
+                "narration": "sound://speech/saveSuccessful"
+            }
+        }
+    }, 
+    {
+        "type": "ctrl", 
+        "id": "slots", 
+        "options": [
+            {
+                "visual": {
+                    "name": "Slot 1"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/slot1"
+                }, 
+                "id": "slot1"
+            }, 
+            {
+                "visual": {
+                    "name": "Slot 2"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/slot2"
+                }, 
+                "id": "slot2"
+            }, 
+            {
+                "visual": {
+                    "name": "Slot 3"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/slot3"
+                }, 
+                "id": "slot3"
+            }, 
+            {
+                "visual": {
+                    "name": "Slot 4"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/slot4"
+                }, 
+                "id": "slot4"
+            }, 
+            {
+                "visual": {
+                    "name": "Slot 5"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/slot5"
+                }, 
+                "id": "slot5"
+            }
+        ]
+    }, 
+    {
+        "visual": {
+            "title": "Game Over"
+        }, 
+        "aural": {
+            "narration": "sound://speech/gameOver"
+        }, 
+        "type": "ctrl", 
+        "id": "lose"
+    }, 
+    {
+        "options": [
+            {
+                "visual": {
+                    "name": "Do"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoC", 
+                    "narration": "sound://speech/pianoChooseC"
+                }, 
+                "id": "c"
+            }, 
+            {
+                "visual": {
+                    "name": "Re"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoD", 
+                    "narration": "sound://speech/pianoChooseD"
+                }, 
+                "id": "d"
+            }, 
+            {
+                "visual": {
+                    "name": "Mi"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoE", 
+                    "narration": "sound://speech/pianoChooseE"
+                }, 
+                "id": "e"
+            }, 
+            {
+                "visual": {
+                    "name": "Fa"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoF", 
+                    "narration": "sound://speech/pianoChooseF"
+                }, 
+                "id": "f"
+            }, 
+            {
+                "visual": {
+                    "name": "So"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoG", 
+                    "narration": "sound://speech/pianoChooseG"
+                }, 
+                "id": "g"
+            }, 
+            {
+                "visual": {
+                    "name": "La"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoA", 
+                    "narration": "sound://speech/pianoChooseA"
+                }, 
+                "id": "a"
+            }, 
+            {
+                "visual": {
+                    "name": "Ti"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/pianoB", 
+                    "narration": "sound://speech/pianoChooseB"
+                }, 
+                "id": "b"
+            }
+        ], 
+        "correct": [
+            "c", 
+            "e", 
+            "g"
+        ], 
+        "prompts": [
+            {
+                "visual": {
+                    "description": "Press a key."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/pianoPressKey1"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Press a second key."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/pianoPressKey2"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Press a third key."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/pianoPressKey3"
+                }
+            }
+        ], 
+        "maxAttempts": 3, 
+        "canAbort": true, 
+        "type": "ctrl", 
+        "id": "piano"
+    }, 
+    {
+        "on": [
+            "solve", 
+            "piano"
+        ], 
+        "visual": {
+            "description": "You hear a loud rumble from the hallway that sounds like a wall moving."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/chime", 
+                "sound://speech/pianoSolve"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.basementHallway.adjoins", 
+                    "elevator"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "item.piano.properties", 
+                    "useable"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "fail", 
+            "piano"
+        ], 
+        "visual": {
+            "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer", 
+                "sound://speech/pianoFail"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "retry", 
+            "piano"
+        ], 
+        "visual": {
+            "description": "Try again."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer", 
+                "sound://speech/tryAgain"
+            ]
+        }
+    }, 
+    {
+        "correct": [
+            "2", 
+            "1", 
+            "6"
+        ], 
+        "id": "safe", 
+        "prompts": [
+            {
+                "visual": {
+                    "description": "Choose a number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose1"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Choose a second number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose2"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Choose a third number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose3"
+                }
+            }
+        ], 
+        "maxAttempts": 1, 
+        "type": "ctrl", 
+        "options": [
+            {
+                "visual": {
+                    "name": "1"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/1"
+                }, 
+                "id": "1"
+            }, 
+            {
+                "visual": {
+                    "name": "2"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/2"
+                }, 
+                "id": "2"
+            }, 
+            {
+                "visual": {
+                    "name": "3"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/3"
+                }, 
+                "id": "3"
+            }, 
+            {
+                "visual": {
+                    "name": "4"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/4"
+                }, 
+                "id": "4"
+            }, 
+            {
+                "visual": {
+                    "name": "5"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/5"
+                }, 
+                "id": "5"
+            }, 
+            {
+                "visual": {
+                    "name": "6"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/6"
+                }, 
+                "id": "6"
+            }, 
+            {
+                "visual": {
+                    "name": "7"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/7"
+                }, 
+                "id": "7"
+            }, 
+            {
+                "visual": {
+                    "name": "8"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/8"
+                }, 
+                "id": "8"
+            }, 
+            {
+                "visual": {
+                    "name": "9"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/9"
+                }, 
+                "id": "9"
+            }, 
+            {
+                "visual": {
+                    "name": "0"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/0"
+                }, 
+                "id": "0"
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "solve", 
+            "safe"
+        ], 
+        "visual": {
+            "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or should I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You WILL be me test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\""
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/chime", 
+                "sound://speech/safeOpen1", 
+                "sound://sound/phoneRing", 
+                "sound://speech/safeOpen2", 
+                "sound://speech/safeOpen3"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.study.items", 
+                    "safeRecording"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.study.items", 
+                    "cellKey"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.study.items", 
+                    "passCard"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "item.safe.properties", 
+                    "useable"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "fail", 
+            "safe"
+        ], 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer"
+            ]
+        }, 
+        "type": "event"
+    }, 
+    {
+        "correct": [
+            "9", 
+            "3", 
+            "1"
+        ], 
+        "id": "computer", 
+        "prompts": [
+            {
+                "visual": {
+                    "description": "Choose a number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose1"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Choose a second number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose2"
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Choose a third number."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/safeChoose3"
+                }
+            }
+        ], 
+        "maxAttempts": 1, 
+        "type": "ctrl", 
+        "options": [
+            {
+                "visual": {
+                    "name": "1"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/1"
+                }, 
+                "id": "1"
+            }, 
+            {
+                "visual": {
+                    "name": "2"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/2"
+                }, 
+                "id": "2"
+            }, 
+            {
+                "visual": {
+                    "name": "3"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/3"
+                }, 
+                "id": "3"
+            }, 
+            {
+                "visual": {
+                    "name": "4"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/4"
+                }, 
+                "id": "4"
+            }, 
+            {
+                "visual": {
+                    "name": "5"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/5"
+                }, 
+                "id": "5"
+            }, 
+            {
+                "visual": {
+                    "name": "6"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/6"
+                }, 
+                "id": "6"
+            }, 
+            {
+                "visual": {
+                    "name": "7"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/7"
+                }, 
+                "id": "7"
+            }, 
+            {
+                "visual": {
+                    "name": "8"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/8"
+                }, 
+                "id": "8"
+            }, 
+            {
+                "visual": {
+                    "name": "9"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/9"
+                }, 
+                "id": "9"
+            }, 
+            {
+                "visual": {
+                    "name": "0"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/0"
+                }, 
+                "id": "0"
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "solve", 
+            "computer"
+        ], 
+        "visual": {
+            "description": "\"Passcode accepted. Elevator activated.\""
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/chime", 
+                "sound://speech/computerAccept"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.basementHallway.adjoins", 
+                    "lab"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.study.adjoins", 
+                    "elevator"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.basementHallway.items", 
+                    "labDoor"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "fail", 
+            "computer"
+        ], 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer"
+            ]
+        }, 
+        "type": "event"
+    }, 
+    {
+        "options": [
+            {
+                "visual": {
+                    "name": "Left button"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/leftButton"
+                }, 
+                "id": "left"
+            }, 
+            {
+                "visual": {
+                    "name": "Right button"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/rightButton"
+                }, 
+                "id": "right"
+            }
+        ], 
+        "correct": [
+            "left", 
+            "right", 
+            "left", 
+            "left"
+        ], 
+        "prompts": [
+            {
+                "visual": {
+                    "description": "There are two speakers in front of you: one on the left and one on the right. Below each speaker is a button. When you insert the passkey, sounds start playing from the speakers."
+                }, 
+                "aural": {
+                    "narration": [
+                        "sound://speech/passCardToSittingRoomDoor1", 
+                        "sound://sound/pianoC", 
+                        "sound://sound/pianoF", 
+                        "sound://sound/pianoC", 
+                        "sound://sound/pianoC", 
+                        "sound://speech/passCardToSittingRoomDoor2"
+                    ]
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Press a button."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/passCardToSittingRoomDoor2"
+                }
+            }
+        ], 
+        "maxAttempts": 1, 
+        "canAbort": true, 
+        "type": "ctrl", 
+        "id": "sittingRoomDoorLock"
+    }, 
+    {
+        "on": [
+            "solve", 
+            "sittingRoomDoorLock"
+        ], 
+        "visual": {
+            "description": "The door slides open. You can now move into the dark room ahead."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/chime", 
+                "sound://speech/passCardToSittingRoomDoor4"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.sittingRoom.adjoins", 
+                    "eleanorsRoom"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.sittingRoom.items", 
+                    "sittingRoomDoor"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "fail", 
+            "sittingRoomDoorLock"
+        ], 
+        "visual": {
+            "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer", 
+                "sound://speech/passCardToSittingRoomDoor3"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "prompt": {
+            "aural": {
+                "narration": "sound://speech/menu"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "explore", 
+        "options": [
+            {
+                "visual": {
+                    "name": "Examine"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/examine"
+                }, 
+                "id": "dim/controllers/explore/examine"
+            }, 
+            {
+                "visual": {
+                    "name": "Move"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/move"
+                }, 
+                "id": "dim/controllers/explore/move"
+            }, 
+            {
+                "visual": {
+                    "name": "Use"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/useItem"
+                }, 
+                "id": "dim/controllers/explore/use"
+            }, 
+            {
+                "visual": {
+                    "name": "Take"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/takeItem"
+                }, 
+                "id": "dim/controllers/explore/take"
+            }
+        ]
+    }, 
+    {
+        "prompt": {
+            "visual": {
+                "description": "What would you like to examine?"
+            }, 
+            "aural": {
+                "narration": "sound://speech/whatToExamine"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "examine", 
+        "impossible": {
+            "visual": {
+                "description": "There's nothing here."
+            }, 
+            "aural": {
+                "narration": "sound://speech/nothingHere"
+            }
+        }
+    }, 
+    {
+        "prompt": {
+            "visual": {
+                "description": "Where do you want to move?"
+            }, 
+            "aural": {
+                "narration": "sound://speech/whereToMove"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "move", 
+        "impossible": {
+            "visual": {
+                "description": "You can't move anywhere."
+            }, 
+            "aural": {
+                "narration": "sound://speech/cantMoveAnywhere"
+            }
+        }
+    }, 
+    {
+        "prompt": {
+            "visual": {
+                "description": "What item will you take?"
+            }, 
+            "aural": {
+                "narration": "sound://speech/whatToTake"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "take", 
+        "impossible": {
+            "visual": {
+                "description": "You can't take anything here."
+            }, 
+            "aural": {
+                "narration": "sound://speech/cantTakeAnything"
+            }
+        }
+    }, 
+    {
+        "nothingUseable": {
+            "visual": {
+                "description": "You have nothing to use."
+            }, 
+            "aural": {
+                "narration": "sound://speech/nothingToUse"
+            }
+        }, 
+        "prompt": {
+            "visual": {
+                "description": "What item will you use?"
+            }, 
+            "aural": {
+                "narration": "sound://speech/whatItemWillYouUse"
+            }
+        }, 
+        "noInteraction": {
+            "visual": {
+                "description": "Nothing happened."
+            }, 
+            "aural": {
+                "narration": "sound://speech/nothingHappened"
+            }
+        }, 
+        "noAction": {
+            "visual": {
+                "description": "Nothing happened."
+            }, 
+            "aural": {
+                "narration": "sound://speech/nothingHappened"
+            }
+        }, 
+        "promptInteract": {
+            "visual": {
+                "description": "Use this on what?"
+            }, 
+            "aural": {
+                "narration": "sound://speech/useThisOnWhat"
+            }
+        }, 
+        "type": "ctrl", 
+        "id": "use"
+    }, 
+    {
+        "on": [
+            "examine", 
+            "*"
+        ], 
+        "visual": {
+            "description": "{{args.1.visual.description}}"
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": "{{{args.1.aural.description}}}"
+        }
+    }, 
+    {
+        "on": [
+            "move", 
+            "*"
+        ], 
+        "visual": {
+            "description": "{{args.1.visual.description}}", 
+            "backdrop": "{{args.1.visual.backdrop}}", 
+            "title": "{{args.1.visual.name}}"
+        }, 
+        "type": "event", 
+        "aural": {
+            "backdrop": "{{{args.1.aural.backdrop}}}", 
+            "narration": [
+                "{{{args.1.aural.name}}}", 
+                "{{{args.1.aural.description}}}"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "player.scene", 
+                    "{{args.1.id}}"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "take", 
+            "*"
+        ], 
+        "visual": {
+            "description": "You have taken the {{args.1.visual.name}}."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://speech/youHaveTakenThe", 
+                "{{{args.1.aural.name}}}"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "move.item", 
+                "args": [
+                    "{{args.1.type}}.{{args.1.id}}", 
+                    "player"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "take", 
+            "scalpel"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "item.scalpel.properties", 
+                    "useable"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "item.operatingTable.properties", 
+                    "useable"
+                ]
+            }
+        ]
+    }, 
+    {
+        "priority": -1, 
+        "on": [
+            "move", 
+            "operatingRoom"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "scene.operatingRoom.visual.description", 
+                    "You are in an operating room. There's a large operating table with several surgical utensils nearby."
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "scene.operatingRoom.aural.description", 
+                    "sound://speech/operatingRoomDesc"
+                ]
+            }
+        ]
+    }, 
+    {
+        "items": [
+            "operatingTable", 
+            "scalpel"
+        ], 
+        "adjoins": [], 
+        "visual": {
+            "name": "Operating Room", 
+            "description": "You awaken with a jolt. The last thing you remember was walking home after work. You thought you heard footsteps behind you. Before you could turn around, something hit you on the head. Hard.\n\nAs you try to get up, you realize that you can't move. You're strapped on an operating table.\n\nWhat's going on?"
+        }, 
+        "aural": {
+            "name": "sound://speech/operatingRoom", 
+            "description": "sound://speech/intro"
+        }, 
+        "type": "scene", 
+        "id": "operatingRoom"
+    }, 
+    {
+        "items": [
+            "freezerBodies", 
+            "operatingRoomKey"
+        ], 
+        "adjoins": [
+            "operatingRoom"
+        ], 
+        "visual": {
+            "name": "Freezer", 
+            "description": "You're in a large walk-in freezer. It's cold enough to see your breath. Body bags line the walls and objects are strewn across the floor."
+        }, 
+        "aural": {
+            "name": "sound://speech/freezer", 
+            "description": "sound://speech/freezerDesc"
+        }, 
+        "type": "scene", 
+        "id": "freezer"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "labDoor"
+        ], 
+        "adjoins": [
+            "operatingRoom", 
+            "pianoRoom"
+        ], 
+        "visual": {
+            "name": "Basement Hallway", 
+            "description": "You're in a long narrow hallway. It almost feels like the walls are about to close in."
+        }, 
+        "aural": {
+            "name": "sound://speech/basementHallway", 
+            "description": "sound://speech/basementHallwayDesc"
+        }, 
+        "type": "scene", 
+        "id": "basementHallway"
+    }, 
+    {
+        "items": [
+            "painting", 
+            "piano"
+        ], 
+        "adjoins": [
+            "basementHallway"
+        ], 
+        "visual": {
+            "name": "Piano Room", 
+            "description": "You're in what appears to be a sitting room. There's a piano in the corner and several paintings on the wall."
+        }, 
+        "aural": {
+            "name": "sound://speech/pianoRoom", 
+            "description": "sound://speech/pianoRoomDesc"
+        }, 
+        "type": "scene", 
+        "id": "pianoRoom"
+    }, 
+    {
+        "items": [], 
+        "adjoins": [
+            "basementHallway", 
+            "study"
+        ], 
+        "visual": {
+            "name": "Elevator", 
+            "description": "A small cramped elevator only has two buttons."
+        }, 
+        "aural": {
+            "name": "sound://speech/elevator", 
+            "description": "sound://speech/elevatorDesc"
+        }, 
+        "type": "scene", 
+        "id": "elevator"
+    }, 
+    {
+        "items": [
+            "deskKey", 
+            "studyRecording", 
+            "computer", 
+            "phone", 
+            "safe"
+        ], 
+        "adjoins": [
+            "upperHallway"
+        ], 
+        "visual": {
+            "name": "Study", 
+            "description": "You're in a study room. The desk is cluttered with a computer and other objects. There's a safe on the floor."
+        }, 
+        "aural": {
+            "name": "sound://speech/study", 
+            "description": "sound://speech/studyDesc"
+        }, 
+        "type": "scene", 
+        "id": "study"
+    }, 
+    {
+        "items": [
+            "upperHallwayDoor", 
+            "journal"
+        ], 
+        "adjoins": [
+            "study", 
+            "bedroom", 
+            "closet"
+        ], 
+        "visual": {
+            "name": "Upper Hallway", 
+            "description": "You are in the upper hallway. Several rooms are connected."
+        }, 
+        "aural": {
+            "name": "sound://speech/upperHallway", 
+            "description": "sound://speech/upperHallwayDesc"
+        }, 
+        "type": "scene", 
+        "id": "upperHallway"
+    }, 
+    {
+        "items": [
+            "desk", 
+            "bed"
+        ], 
+        "adjoins": [
+            "upperHallway", 
+            "bathroom"
+        ], 
+        "visual": {
+            "name": "Bedroom", 
+            "description": "You're in a sparse bedroom. There's a bed and a desk and that's about it."
+        }, 
+        "aural": {
+            "name": "sound://speech/bedroom", 
+            "description": "sound://speech/bedroomDesc"
+        }, 
+        "type": "scene", 
+        "id": "bedroom"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "mirror", 
+            "bathtub", 
+            "shelf"
+        ], 
+        "adjoins": [
+            "bedroom"
+        ], 
+        "visual": {
+            "name": "Bathroom", 
+            "description": "You're in a cramped bathroom. Bloodstains can be seen on the porcelain."
+        }, 
+        "aural": {
+            "name": "sound://speech/bathroom", 
+            "description": "sound://speech/bathroomDesc"
+        }, 
+        "type": "scene", 
+        "id": "bathroom"
+    }, 
+    {
+        "items": [
+            "broom", 
+            "hammer"
+        ], 
+        "adjoins": [
+            "upperHallway"
+        ], 
+        "visual": {
+            "name": "Closet", 
+            "description": "You're in a dark, musty closet."
+        }, 
+        "aural": {
+            "name": "sound://speech/closet", 
+            "description": "sound://speech/closetDesc"
+        }, 
+        "type": "scene", 
+        "id": "closet"
+    }, 
+    {
+        "items": [
+            "bathroomHallwayDoor"
+        ], 
+        "adjoins": [
+            "bathroom"
+        ], 
+        "visual": {
+            "name": "Bathroom Hallway", 
+            "description": "You're in a narrow hallway. You see a door at the end."
+        }, 
+        "aural": {
+            "name": "sound://speech/bathroomHallway", 
+            "description": "sound://speech/bathroomHallwayDesc"
+        }, 
+        "type": "scene", 
+        "id": "bathroomHallway"
+    }, 
+    {
+        "items": [], 
+        "adjoins": [
+            "upperHallway", 
+            "westHallway", 
+            "lobby"
+        ], 
+        "visual": {
+            "name": "Balcony", 
+            "description": "You're on a balcony overlooking the main lobby."
+        }, 
+        "aural": {
+            "name": "sound://speech/balcony", 
+            "description": "sound://speech/balconyDesc"
+        }, 
+        "type": "scene", 
+        "id": "balcony"
+    }, 
+    {
+        "items": [
+            "journal"
+        ], 
+        "adjoins": [
+            "balcony", 
+            "masterBedroom", 
+            "library"
+        ], 
+        "visual": {
+            "name": "West Hallway", 
+            "description": "You're in the west hallyway. The walls are scratched and the room smells of blood."
+        }, 
+        "aural": {
+            "name": "sound://speech/westHallway", 
+            "description": "sound://speech/westHallwayDesc"
+        }, 
+        "type": "scene", 
+        "id": "westHallway"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "mainEntrance", 
+            "trappedHallwayDoor"
+        ], 
+        "adjoins": [
+            "balcony", 
+            "kitchen"
+        ], 
+        "visual": {
+            "name": "Lobby", 
+            "description": "It appears to be the main lobby. Rooms are found on the east and west, stairs lead up to the balcony, and double doors lead outside."
+        }, 
+        "aural": {
+            "name": "sound://speech/lobby", 
+            "description": "sound://speech/lobbyDesc"
+        }, 
+        "type": "scene", 
+        "id": "lobby"
+    }, 
+    {
+        "items": [
+            "notebook", 
+            "masterBedroomDeskKey", 
+            "libraryRecording"
+        ], 
+        "adjoins": [
+            "westHallway"
+        ], 
+        "visual": {
+            "name": "Library", 
+            "description": "You're in a library. Bookcases line the walls, and there's a table with assorted clutter on it."
+        }, 
+        "aural": {
+            "name": "sound://speech/library", 
+            "description": "sound://speech/libraryDesc"
+        }, 
+        "type": "scene", 
+        "id": "library"
+    }, 
+    {
+        "items": [
+            "masterBedroomDesk", 
+            "masterBedroomBed"
+        ], 
+        "adjoins": [
+            "westHallway", 
+            "masterBathroom"
+        ], 
+        "visual": {
+            "name": "Master Bedroom", 
+            "description": "The master bedroom seems nicely adorned, except the bed which has dark red stains on it."
+        }, 
+        "aural": {
+            "name": "sound://speech/masterBedroom", 
+            "description": "sound://speech/masterBedroomDesc"
+        }, 
+        "type": "scene", 
+        "id": "masterBedroom"
+    }, 
+    {
+        "items": [
+            "masterBathroomMirror", 
+            "masterBathroomStarHole"
+        ], 
+        "adjoins": [
+            "masterBedroom"
+        ], 
+        "visual": {
+            "name": "Master Bathroom", 
+            "description": "The master bathroom is rather spacious. There's a mirror and a star shaped hole on one of the walls."
+        }, 
+        "aural": {
+            "name": "sound://speech/masterBathroom", 
+            "description": "sound://speech/masterBathroomDesc"
+        }, 
+        "type": "scene", 
+        "id": "masterBathroom"
+    }, 
+    {
+        "items": [], 
+        "adjoins": [
+            "masterBathroom", 
+            "sittingRoom", 
+            "basement"
+        ], 
+        "visual": {
+            "name": "Master Elevator", 
+            "description": null
+        }, 
+        "aural": {
+            "name": "sound://speech/masterElevator", 
+            "description": "sound://speech/masterElevatorDesc"
+        }, 
+        "type": "scene", 
+        "id": "masterElevator"
+    }, 
+    {
+        "items": [
+            "eleanor"
+        ], 
+        "adjoins": [
+            "sittingRoom"
+        ], 
+        "visual": {
+            "name": "Eleanors Room", 
+            "description": "You're in a room that almost looks like a jail cell. There's a woman tied to one of the chairs."
+        }, 
+        "aural": {
+            "name": "sound://speech/eleanorsRoom", 
+            "description": "sound://speech/eleanorsRoomDesc"
+        }, 
+        "type": "scene", 
+        "id": "eleanorsRoom"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "sittingRoomDoor"
+        ], 
+        "adjoins": [
+            "masterElevator"
+        ], 
+        "visual": {
+            "name": "Sitting Room", 
+            "description": "It's a sitting room. The chairs are knocked over showing signs of a struggle. The door leading to the next room has a heavy lock on it."
+        }, 
+        "aural": {
+            "name": "sound://speech/sittingRoom", 
+            "description": "sound://speech/sittingRoomDesc"
+        }, 
+        "type": "scene", 
+        "id": "sittingRoom"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "mazeDoor"
+        ], 
+        "adjoins": [
+            "masterElevator"
+        ], 
+        "visual": {
+            "name": "Basement", 
+            "description": "You're in the basement. The smell from the elevator is now even stronger."
+        }, 
+        "aural": {
+            "name": "sound://speech/basement", 
+            "description": "sound://speech/basementDesc"
+        }, 
+        "type": "scene", 
+        "id": "basement"
+    }, 
+    {
+        "items": [
+            "knife", 
+            "garageDoor"
+        ], 
+        "adjoins": [
+            "lobby"
+        ], 
+        "visual": {
+            "name": "Kitchen", 
+            "description": "A strong smell in the kitchen seems to be coming from the trash can. Bones lie around it but you don't want to know where they're from."
+        }, 
+        "aural": {
+            "name": "sound://speech/kitchen", 
+            "description": "sound://speech/kitchenDesc"
+        }, 
+        "type": "scene", 
+        "id": "kitchen"
+    }, 
+    {
+        "items": [], 
+        "adjoins": [
+            "basementHallway"
+        ], 
+        "visual": {
+            "name": "Lab", 
+            "description": "It's a lab with chemicals and scientific instruments, many which are crushed on the floor."
+        }, 
+        "aural": {
+            "name": "sound://speech/lab", 
+            "description": "sound://speech/labDesc"
+        }, 
+        "type": "scene", 
+        "id": "lab"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "gasoline", 
+            "trappedHallwayDoorKey"
+        ], 
+        "adjoins": [
+            "kitchen"
+        ], 
+        "visual": {
+            "name": "Garage", 
+            "description": "It looks like a normal garage, but there are no cars to be found."
+        }, 
+        "aural": {
+            "name": "sound://speech/garage", 
+            "description": "sound://speech/garageDesc"
+        }, 
+        "type": "scene", 
+        "id": "garage"
+    }, 
+    {
+        "items": [], 
+        "adjoins": [
+            "lobby", 
+            "outside"
+        ], 
+        "visual": {
+            "name": "Trapped Hallway", 
+            "description": null
+        }, 
+        "aural": {
+            "name": "sound://speech/trappedHallway", 
+            "description": "sound://speech/trappedHallwayDesc"
+        }, 
+        "type": "scene", 
+        "id": "trappedHallway"
+    }, 
+    {
+        "items": [
+            "journal", 
+            "barnDoor"
+        ], 
+        "adjoins": [
+            "trappedHallway"
+        ], 
+        "visual": {
+            "name": "Outside", 
+            "description": "You've finally gotten out of the mansion. You can see a barn up the road."
+        }, 
+        "aural": {
+            "name": "sound://speech/outside", 
+            "description": "sound://speech/outsideDesc"
+        }, 
+        "type": "scene", 
+        "id": "outside"
+    }, 
+    {
+        "items": [
+            "barnSwitch"
+        ], 
+        "adjoins": [
+            "outside", 
+            "barnLoft"
+        ], 
+        "visual": {
+            "name": "Barn", 
+            "description": "You're in the barn. There are cages everywhere, many which contain grotesque looking things. There's a switch on the wall and stairs leading up to the loft."
+        }, 
+        "aural": {
+            "name": "sound://speech/barn", 
+            "description": "sound://speech/barnDesc"
+        }, 
+        "type": "scene", 
+        "id": "barn"
+    }, 
+    {
+        "items": [
+            "eleanor2"
+        ], 
+        "adjoins": [
+            "barn"
+        ], 
+        "visual": {
+            "name": "Barn Loft", 
+            "description": "You're in the barn loft. You see Eleanor tied to a chair."
+        }, 
+        "aural": {
+            "name": "sound://speech/barnLoft", 
+            "description": "sound://speech/barnLoftDesc"
+        }, 
+        "type": "scene", 
+        "id": "barnLoft"
+    }, 
+    {
+        "visual": {
+            "name": "Journal", 
+            "description": "It's a journal. To save your game, use it."
+        }, 
+        "aural": {
+            "name": "sound://speech/journal", 
+            "description": "sound://speech/journalDesc"
+        }, 
+        "type": "item", 
+        "id": "journal", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Operating Table", 
+            "description": "It's a large operating table. Straps are tied tightly around your torso."
+        }, 
+        "aural": {
+            "name": "sound://speech/operatingTable", 
+            "description": "sound://speech/operatingTableDesc"
+        }, 
+        "type": "item", 
+        "id": "operatingTable", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Scalpel", 
+            "description": "It's a scalpel, perfect for cutting through things."
+        }, 
+        "aural": {
+            "name": "sound://speech/scalpel", 
+            "description": "sound://speech/scalpelDesc"
+        }, 
+        "type": "item", 
+        "id": "scalpel", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Operating Room Recording", 
+            "description": "October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.\n\nI have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\n\nI will return in due time to check on my patient."
+        }, 
+        "aural": {
+            "name": "sound://speech/recording", 
+            "description": "sound://speech/operatingRoomRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "operatingRoomRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Operating Room Door", 
+            "description": "The door is locked."
+        }, 
+        "aural": {
+            "name": "sound://speech/operatingRoomDoor", 
+            "description": "sound://speech/operatingRoomDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "operatingRoomDoor", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Operating Room Key", 
+            "description": "It's a key to unlock the operating room."
+        }, 
+        "aural": {
+            "name": "sound://speech/operatingRoomKey", 
+            "description": "sound://speech/operatingRoomKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "operatingRoomKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Freezer Bodies", 
+            "description": "Open body bags are stacked against the far wall. You notice that some of them have organs missing."
+        }, 
+        "aural": {
+            "name": "sound://speech/freezerBodies", 
+            "description": "sound://speech/freezerBodiesDesc"
+        }, 
+        "type": "item", 
+        "id": "freezerBodies", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Piano", 
+            "description": "It's an old piano. Only seven of the keys seem to work."
+        }, 
+        "aural": {
+            "name": "sound://speech/piano", 
+            "description": "sound://speech/pianoDesc"
+        }, 
+        "type": "item", 
+        "id": "piano", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Painting", 
+            "description": "It's a suspicious looking painting. Maybe you can move it with your arms."
+        }, 
+        "aural": {
+            "name": "sound://speech/painting", 
+            "description": "sound://speech/paintingDesc"
+        }, 
+        "type": "item", 
+        "id": "painting", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Desk Key", 
+            "description": "It's a small key. Wonder what it unlocks?"
+        }, 
+        "aural": {
+            "name": "sound://speech/deskKey", 
+            "description": "sound://speech/deskKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "deskKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Study Recording", 
+            "description": "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter like a fish. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject."
+        }, 
+        "aural": {
+            "name": "sound://speech/recording", 
+            "description": "sound://speech/studyRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "studyRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Computer", 
+            "description": "It's a computer. Maybe you should try using it."
+        }, 
+        "aural": {
+            "name": "sound://speech/computer", 
+            "description": "sound://speech/computerDesc"
+        }, 
+        "type": "item", 
+        "id": "computer", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Phone", 
+            "description": "You try to pick up the phone to call 911, but there's no dialtone."
+        }, 
+        "aural": {
+            "name": "sound://speech/phone", 
+            "description": "sound://speech/phoneDesc"
+        }, 
+        "type": "item", 
+        "id": "phone", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Safe", 
+            "description": "It's a sturdy looking safe. Maybe you should try the combination."
+        }, 
+        "aural": {
+            "name": "sound://speech/safe", 
+            "description": "sound://speech/safeDesc"
+        }, 
+        "type": "item", 
+        "id": "safe", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Desk", 
+            "description": "It's a wooden desk. You try to open the drawer but it's locked."
+        }, 
+        "aural": {
+            "name": "sound://speech/desk", 
+            "description": "sound://speech/deskDesc"
+        }, 
+        "type": "item", 
+        "id": "desk", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Bedroom Recording", 
+            "description": "April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes.\n\nMy serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them."
+        }, 
+        "aural": {
+            "name": "sound://speech/recording", 
+            "description": "sound://speech/bedroomRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "bedroomRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Bed", 
+            "description": "It's a comfortable looking bed, but you have no time to rest now."
+        }, 
+        "aural": {
+            "name": "sound://speech/bed", 
+            "description": "sound://speech/bedDesc"
+        }, 
+        "type": "item", 
+        "id": "bed", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Mirror", 
+            "description": "There's something suspicious about this mirror. You feel a draft when you step close to it."
+        }, 
+        "aural": {
+            "name": "sound://speech/mirror", 
+            "description": "sound://speech/mirrorDesc"
+        }, 
+        "type": "item", 
+        "id": "mirror", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Bathtub", 
+            "description": "It's just a regular bathtub. But wait. There's a star shaped hole above it, but you can't reach it on your own."
+        }, 
+        "aural": {
+            "name": "sound://speech/bathtub", 
+            "description": "sound://speech/bathtubDesc"
+        }, 
+        "type": "item", 
+        "id": "bathtub", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Shelf", 
+            "description": "There seems to be a large, sturdy box above the shelf. Too bad you can't reach it on your own."
+        }, 
+        "aural": {
+            "name": "sound://speech/shelf", 
+            "description": "sound://speech/shelfDesc"
+        }, 
+        "type": "item", 
+        "id": "shelf", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Box", 
+            "description": "It's a tall, sturdy box."
+        }, 
+        "aural": {
+            "name": "sound://speech/box", 
+            "description": "sound://speech/boxDesc"
+        }, 
+        "type": "item", 
+        "id": "box", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Broom", 
+            "description": "It's a broom with a long handle."
+        }, 
+        "aural": {
+            "name": "sound://speech/broom", 
+            "description": "sound://speech/broomDesc"
+        }, 
+        "type": "item", 
+        "id": "broom", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Hammer", 
+            "description": "It's a sturdy hammer, perfect for hitting things."
+        }, 
+        "aural": {
+            "name": "sound://speech/hammer", 
+            "description": "sound://speech/hammerDesc"
+        }, 
+        "type": "item", 
+        "id": "hammer", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Star", 
+            "description": "It's a star shaped gem."
+        }, 
+        "aural": {
+            "name": "sound://speech/star", 
+            "description": "sound://speech/starDesc"
+        }, 
+        "type": "item", 
+        "id": "star", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Star Hole", 
+            "description": "It's a hole in the shape of a star."
+        }, 
+        "aural": {
+            "name": "sound://speech/starHole", 
+            "description": "sound://speech/starHoleDesc"
+        }, 
+        "type": "item", 
+        "id": "starHole", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Bathroom Hallway Door", 
+            "description": "There's a small window on the door. You peer through and see a person on the other side."
+        }, 
+        "aural": {
+            "name": "sound://speech/bathroomHallwayDoor", 
+            "description": "sound://speech/bathroomHallwayDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "bathroomHallwayDoor", 
+        "properties": [
+            "useable", 
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Safe Recording", 
+            "description": "June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!\n\nJune 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first.\n\nJuly 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way.\n"
+        }, 
+        "aural": {
+            "name": "sound://speech/safeRecording", 
+            "description": "sound://speech/safeRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "safeRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Cell Key", 
+            "description": "It's a key marked \"cell.\""
+        }, 
+        "aural": {
+            "name": "sound://speech/cellKey", 
+            "description": "sound://speech/cellKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "cellKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Pass Card", 
+            "description": "It's a card you can use to open locked doors."
+        }, 
+        "aural": {
+            "name": "sound://speech/passCard", 
+            "description": "sound://speech/passCardDesc"
+        }, 
+        "type": "item", 
+        "id": "passCard", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Upper Hallway Door", 
+            "description": "It's a locked door. But there's no keyhole."
+        }, 
+        "aural": {
+            "name": "sound://speech/upperHallwayDoor", 
+            "description": "sound://speech/upperHallwayDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "upperHallwayDoor", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Notebook", 
+            "description": "Written in the notebook are the numbers 9-3-1. You wonder what they could mean."
+        }, 
+        "aural": {
+            "name": "sound://speech/notebook", 
+            "description": "sound://speech/notebookDesc"
+        }, 
+        "type": "item", 
+        "id": "notebook", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Main Entrance", 
+            "description": "A pair of double doors leads outside. There's a card reader next to the door."
+        }, 
+        "aural": {
+            "name": "sound://speech/mainEntrance", 
+            "description": "sound://speech/mainEntranceDesc"
+        }, 
+        "type": "item", 
+        "id": "mainEntrance", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Master Bedroom Desk Key", 
+            "description": "It's a key marked \"desk.\""
+        }, 
+        "aural": {
+            "name": "sound://speech/masterBedroomDeskKey", 
+            "description": "sound://speech/masterBedroomDeskKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBedroomDeskKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Master Bedroom Bed", 
+            "description": "There are stains on the bed that look like dried blood."
+        }, 
+        "aural": {
+            "name": "sound://speech/bed", 
+            "description": "sound://speech/masterBedroomBedDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBedroomBed", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Master Bedroom Desk", 
+            "description": "The desk is locked."
+        }, 
+        "aural": {
+            "name": "sound://speech/desk", 
+            "description": "sound://speech/masterBedroomDeskDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBedroomDesk", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Library Recording", 
+            "description": "August 19th, 2:30 PM. I'm getting so close I can feel it. Serum #10 succeeded in reversing the effects of the disease, but it also caused mutations which are ... undesirable. I need to isolate the cause of these abnormalities.\n\nHold on a little longer Eleanor. I'm going to save you!"
+        }, 
+        "aural": {
+            "name": "sound://speech/recording", 
+            "description": "sound://speech/libraryRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "libraryRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Master Bedroom Recording", 
+            "description": null
+        }, 
+        "aural": {
+            "name": "sound://speech/recording", 
+            "description": "sound://speech/masterBedroomRecordingDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBedroomRecording", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Master Bathroom Star Hole", 
+            "description": "It's a hole in the shape of a star."
+        }, 
+        "aural": {
+            "name": "sound://speech/starHole", 
+            "description": "sound://speech/starHoleDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBathroomStarHole", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Master Bathroom Mirror", 
+            "description": "There's something suspicious about this mirror. You feel a draft when you step close to it."
+        }, 
+        "aural": {
+            "name": "sound://speech/mirror", 
+            "description": "sound://speech/mirrorDesc"
+        }, 
+        "type": "item", 
+        "id": "masterBathroomMirror", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Knife", 
+            "description": "It's a sharp knife."
+        }, 
+        "aural": {
+            "name": "sound://speech/knife", 
+            "description": "sound://speech/knifeDesc"
+        }, 
+        "type": "item", 
+        "id": "knife", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Trapped Hallway Door Key", 
+            "description": "It's a key marked \"hallway.\""
+        }, 
+        "aural": {
+            "name": "sound://speech/trappedHallwayDoorKey", 
+            "description": "sound://speech/trappedHallwayDoorKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "trappedHallwayDoorKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Sitting Room Door", 
+            "description": "The door is locked, but there's a card reader next to it."
+        }, 
+        "aural": {
+            "name": "sound://speech/sittingRoomDoor", 
+            "description": "sound://speech/sittingRoomDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "sittingRoomDoor", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Eleanor", 
+            "description": "\"Who are you? Speak! Who are you? Did Johan send you?\"\n\n\"The doctor of the house, my husband, Johan. Did he send you?\"\n\n\"No? Then you must be one of the ... subjects. How did you get free?\"\n\n\"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?\"\n\n\"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.\n\nI was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.\n\nBut enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you have to cut me loose. Do you have a knife with you?\""
+        }, 
+        "aural": {
+            "name": "sound://speech/eleanor", 
+            "description": "sound://speech/eleanorDesc"
+        }, 
+        "type": "item", 
+        "id": "eleanor", 
+        "properties": [
+            "useable", 
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Gun", 
+            "description": "It's a pistol."
+        }, 
+        "aural": {
+            "name": "sound://speech/gun", 
+            "description": "sound://speech/gunDesc"
+        }, 
+        "type": "item", 
+        "id": "gun", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Lab Door", 
+            "description": "The door is locked, but there's no keyhole, or even a knob."
+        }, 
+        "aural": {
+            "name": "sound://speech/labDoor", 
+            "description": "sound://speech/labDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "labDoor", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Ingredients", 
+            "description": "It's the chemicals you need."
+        }, 
+        "aural": {
+            "name": "sound://speech/ingredients", 
+            "description": "sound://speech/ingredientsDesc"
+        }, 
+        "type": "item", 
+        "id": "ingredients", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Maze Door", 
+            "description": "The door has a large sign that says \"STAY OUT\". There's a card reader next to it."
+        }, 
+        "aural": {
+            "name": "sound://speech/mazeDoor", 
+            "description": "sound://speech/mazeDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "mazeDoor", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Garage Door", 
+            "description": "The door is locked."
+        }, 
+        "aural": {
+            "name": "sound://speech/garageDoor", 
+            "description": "sound://speech/garageDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "garageDoor", 
+        "properties": [
+            "useable", 
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Garage Key", 
+            "description": "It's a key marked \"garage.\""
+        }, 
+        "aural": {
+            "name": "sound://speech/garageKey", 
+            "description": "sound://speech/garageKeyDesc"
+        }, 
+        "type": "item", 
+        "id": "garageKey", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Gasoline", 
+            "description": "It's a tank of gasoline."
+        }, 
+        "aural": {
+            "name": "sound://speech/gasoline", 
+            "description": "sound://speech/gasolineDesc"
+        }, 
+        "type": "item", 
+        "id": "gasoline", 
+        "properties": [
+            "takeable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Trapped Hallway Door", 
+            "description": "It's a locked door leading to the downstairs hallway."
+        }, 
+        "aural": {
+            "name": "sound://speech/trappedHallwayDoor", 
+            "description": "sound://speech/trappedHallwayDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "trappedHallwayDoor", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Barn Door", 
+            "description": "The large barn door is locked, but there's a card reader next to it."
+        }, 
+        "aural": {
+            "name": "sound://speech/barnDoor", 
+            "description": "sound://speech/barnDoorDesc"
+        }, 
+        "type": "item", 
+        "id": "barnDoor", 
+        "properties": []
+    }, 
+    {
+        "visual": {
+            "name": "Barn Switch", 
+            "description": "It's a switch that you can pull."
+        }, 
+        "aural": {
+            "name": "sound://speech/barnSwitch", 
+            "description": "sound://speech/barnSwitchDesc"
+        }, 
+        "type": "item", 
+        "id": "barnSwitch", 
+        "properties": [
+            "useable"
+        ]
+    }, 
+    {
+        "visual": {
+            "name": "Eleanor2", 
+            "description": null
+        }, 
+        "aural": {
+            "name": "sound://speech/eleanor", 
+            "description": "sound://speech/eleanorDesc4"
+        }, 
+        "type": "item", 
+        "id": "eleanor2", 
+        "properties": [
+            "useable", 
+            "useable"
+        ]
+    }, 
+    {
+        "comment": "masterBedroomDeskKeyToMasterBedroomDesk", 
+        "on": [
+            "use", 
+            "masterBedroomDeskKey", 
+            "masterBedroomDesk"
+        ], 
+        "visual": {
+            "description": "You open the desk and find another key, and a recording."
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.masterBedroom.items", 
+                    "masterBedroomDesk"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.masterBedroom.items", 
+                    "masterBedroomRecording"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "masterBedroomDeskKey"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/masterBedroomDeskKeyToMasterBedroomDesk"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "starToStarHole", 
+        "on": [
+            "use", 
+            "star", 
+            "starHole"
+        ], 
+        "visual": {
+            "description": "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway."
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.bathroom.adjoins", 
+                    "bathroomHallway"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/starToStarHole"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "starToMasterBathroomStarHole", 
+        "on": [
+            "use", 
+            "star", 
+            "masterBathroomStarHole"
+        ], 
+        "visual": {
+            "description": "The mirror moves, revealing an elevator."
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.masterBathroom.items", 
+                    "masterBathroomStarHole"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.masterBathroom.items", 
+                    "masterBathroomMirror"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.masterBathroom.adjoins", 
+                    "masterElevator"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/starToMasterBathroomStarHole"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "operatingRoomKeyToOperatingRoomDoor", 
+        "on": [
+            "use", 
+            "operatingRoomKey", 
+            "operatingRoomDoor"
+        ], 
+        "visual": {
+            "description": "You unlock the door. You can now move to the hallway."
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "operatingRoomKey"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.operatingRoom.items", 
+                    "operatingRoomDoor"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.operatingRoom.adjoins", 
+                    "basementHallway"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/unlockOperatingRoom"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "deskKeyToDesk", 
+        "on": [
+            "use", 
+            "deskKey", 
+            "desk"
+        ], 
+        "visual": {
+            "description": "The desk opens, revealing a recording."
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.bedroom.items", 
+                    "bedroomRecording"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.bedroom.items", 
+                    "star"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "deskKey"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/deskKeyToDesk"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "broomToShelf", 
+        "on": [
+            "use", 
+            "broom", 
+            "shelf"
+        ], 
+        "visual": {
+            "description": "You knock the box on the floor."
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.bathroom.items", 
+                    "box"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/broomToShelf"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "ingredientsToEleanor", 
+        "on": [
+            "use", 
+            "ingredients", 
+            "eleanor"
+        ], 
+        "visual": {
+            "description": "\"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again.\"\n\n\"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!\"\n\n\"And the ones in the basement are just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it.\"\n\n\"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!\""
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "player.items", 
+                    "garageKey"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "ingredients"
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "items.eleanor.visual.description", 
+                    "\"I'm not finished with your antidote yet. There should be a key in the garage that opens a door in the lobby. Use that to get out and I'll come find you.\""
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "items.eleanor.aural.description", 
+                    "sound://speech/eleanorDesc3"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": [
+                "sound://speech/ingredientsToEleanor", 
+                "sound://speech/ingredientsToEleanor2"
+            ]
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "gasolineToEleanor2", 
+        "on": [
+            "use", 
+            "gasoline", 
+            "eleanor2"
+        ], 
+        "type": "event"
+    }, 
+    {
+        "comment": "passCardToMainEntrance", 
+        "on": [
+            "use", 
+            "passCard", 
+            "mainEntrance"
+        ], 
+        "visual": {
+            "description": "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty."
+        }, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/lose"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/passCardToMainEntrance"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "passCardToSittingRoomDoor", 
+        "on": [
+            "use", 
+            "passCard", 
+            "sittingRoomDoor"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/memoryPattern", 
+                    "sittingRoomDoorLock"
+                ]
+            }
+        ]
+    }, 
+    {
+        "comment": "passCardToMazeDoor], [\"barnDoor\", passCardToBarnDoor", 
+        "on": [
+            "use", 
+            "passCard", 
+            "mazeDoor"
+        ], 
+        "type": "event"
+    }, 
+    {
+        "comment": "gunToGarageDoor", 
+        "on": [
+            "use", 
+            "gun", 
+            "garageDoor"
+        ], 
+        "visual": {
+            "description": "You shoot the lock on the door and it shatters. You can now move to the garage."
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "garageKey"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.kitchen", 
+                    "garageDoor"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.kitchen.adjoins", 
+                    "garage"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/gunToGarageDoor"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "save", 
+        "on": [
+            "use", 
+            "journal"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/save"
+                ]
+            }
+        ]
+    }, 
+    {
+        "comment": "playerToPainting", 
+        "on": [
+            "use", 
+            "painting"
+        ], 
+        "visual": {
+            "description": "You move the painting and a tune plays.\n\nDo-Mi-So"
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://speech/movePainting", 
+                "sound://sound/pianoC", 
+                "sound://sound/pianoE", 
+                "sound://sound/pianoG"
+            ]
+        }
+    }, 
+    {
+        "comment": "playerToPiano", 
+        "on": [
+            "use", 
+            "piano"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/memoryPattern", 
+                    "piano"
+                ]
+            }
+        ]
+    }, 
+    {
+        "comment": "playerToBox", 
+        "on": [
+            "use", 
+            "box"
+        ], 
+        "visual": {
+            "description": "You move the box to the bathtub. You can now reach the star shaped hole."
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.bathroom.items", 
+                    "box"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.bathroom.items", 
+                    "starHole"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/playerToBox"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "playerToBathroomHallwayDoor", 
+        "on": [
+            "use", 
+            "bathroomHallwayDoor"
+        ], 
+        "visual": {
+            "description": "You knock on the hallway door. The person inside jumps in surprise.\n\n\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, say three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\""
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": "sound://speech/friend010_cell"
+        }
+    }, 
+    {
+        "comment": "playerToComputer", 
+        "on": [
+            "use", 
+            "computer"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/memoryPattern", 
+                    "computer"
+                ]
+            }
+        ]
+    }, 
+    {
+        "comment": "playerToSafe", 
+        "on": [
+            "use", 
+            "safe"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/memoryPattern", 
+                    "safe"
+                ]
+            }
+        ]
+    }, 
+    {
+        "comment": "playerToBarnSwitch", 
+        "on": [
+            "use", 
+            "barnSwitch"
+        ], 
+        "visual": {
+            "description": "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": "sound://speech/playerToBarnSwitch"
+        }
+    }, 
+    {
+        "comment": "knifeToEleanor", 
+        "on": [
+            "use", 
+            "knife", 
+            "eleanor"
+        ], 
+        "visual": {
+            "description": "\"Thank you. Now I can't be seen by Johan, so I must go straight to the lab. You need to pick up the chemical ingredients for the antidote. Unforunately, they're located in the basement somewhere. You should be safe from Johan's mutations because the cages are electronically locked. But just to be safe, take this gun.\""
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.eleanorsRoom.items", 
+                    "eleanor"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.eleanorsRoom.items", 
+                    "gun"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.lab.items", 
+                    "eleanor"
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "items.eleanor.visual.description", 
+                    "\"Oh thank god you made it! Did you get the ingredients I need?\""
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "items.eleanor.aural.description", 
+                    "sound://speech/eleanorDesc2"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/knifeToEleanor"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "knifeToEleanor2", 
+        "on": [
+            "use", 
+            "knife", 
+            "eleanor2"
+        ], 
+        "visual": {
+            "description": "\"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?\""
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://speech/knifeToEleanor2", 
+                "sound://speech/eleanor050_barn"
+            ]
+        }
+    }, 
+    {
+        "comment": "trappedHallwayDoorKeyToTrappedHallwayDoor", 
+        "on": [
+            "use", 
+            "trappedHallwayDoorKey", 
+            "trappedHallwayDoor"
+        ], 
+        "type": "event"
+    }, 
+    {
+        "comment": "hammerToMirror", 
+        "on": [
+            "use", 
+            "hammer", 
+            "mirror"
+        ], 
+        "visual": {
+            "description": "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hear you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ..."
+        }, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/lose"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/hammerToMirror"
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "hammerToUpperHallwayDoor", 
+        "on": [
+            "use", 
+            "hammer", 
+            "upperHallwayDoor"
+        ], 
+        "visual": {
+            "description": "You hit the door hard and it opens. You can now move to the balcony.\n\n\"Alright, let's get out of here!\"\n\n\"What? You have to find some serum?\"\n\n\"Oh, ok then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck.\""
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.upperHallway.items", 
+                    "upperHallwayDoor"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.upperHallway.adjoins", 
+                    "balcony"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "hammer"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": [
+                "sound://speech/hammerToUpperHallwayDoor", 
+                "sound://speech/hammerToUpperHallwayDoor2"
+            ]
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "garageKeyToGarageDoor", 
+        "on": [
+            "use", 
+            "garageKey", 
+            "garageDoor"
+        ], 
+        "visual": {
+            "description": "You try using the key on the door, but the lock seems rusted shut. Maybe you can just shoot the lock out."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": "sound://speech/garageKeyToGarageDoor"
+        }
+    }, 
+    {
+        "comment": "cellKeyToBathroomHallwayDoor", 
+        "on": [
+            "use", 
+            "cellKey", 
+            "bathroomHallwayDoor"
+        ], 
+        "visual": {
+            "description": "You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.\n\n\"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?\""
+        }, 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.bathroomHallway.items", 
+                    "bathroomHallwayDoor"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "cellKey"
+                ]
+            }, 
+            {
+                "action": "move.player", 
+                "args": [
+                    "scene.upperHallway", 
+                    false
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": [
+                "sound://speech/cellKeyToBathroomHallwayDoor", 
+                "sound://speech/cellKeyToBathroomHallwayDoor2"
+            ]
+        }, 
+        "type": "event"
+    }, 
+    {
+        "comment": "scalpelToOperatingTable", 
+        "on": [
+            "use", 
+            "scalpel", 
+            "operatingTable"
+        ], 
+        "visual": {
+            "description": "You cut the straps on the operating table. You are now free."
+        }, 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.operatingRoom.items", 
+                    "operatingRoomRecording"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.operatingRoom.items", 
+                    "operatingRoomDoor"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.operatingRoom.adjoins", 
+                    "freezer"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "scalpel"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.operatingRoom.items", 
+                    "operatingTable"
+                ]
+            }
+        ], 
+        "aural": {
+            "narration": "sound://speech/cutStraps"
+        }, 
+        "type": "event"
+    }
+]
