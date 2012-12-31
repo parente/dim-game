@@ -91,6 +91,92 @@ NETWORK:
 *
 </pre>
 
+Global Pump Redesign
+====================
+
+pump.js subscribes to all report and object selection events.
+
+1. If the pump receives an event containing object information, it maps that information into
+a report using the property to report map.
+2. If the event was directly triggered by user input, the pump aborts any pending report and
+flushes the queue.
+3. The pump queues the event.
+4. If there is a pending report, the pump does nothing.
+5. If there is no pending report, the pump immediately fetches the next event from the FIFO queue.
+    a. The pump sends the event to the aural and visual views.
+    b. The views immediately return deferreds.
+    c. The pump listens for resolution of or error on all deferreds.
+    d. When the views resolve all deferreds associated with an event, the pump processes the next
+    item in the queue.
+
+Report
+------
+
+Defined as the API.
+
+title -> visual top area
+description -> visual main area
+backdrop -> visual background
+narration -> aural primary channel
+sound -> aural secondary channel
+ambience -> aural looping channel
+
+Property to Report
+------------------
+
+Done via default.propertyReport.
+
+visual.name -> mapped to visual top area or menu bar label depending on type (title)
+visual.description -> mapped to visual main area (description)
+visual.backdrop -> mapped to visual background (backdrop)
+aural.name -> mapped to primary channel (narration)
+aural.description -> mapped to aural primary channel (narration)
+aural.sound -> mapped to aural secondary channel (sound)
+aural.backdrop -> mapped to aural looping channel (ambience)
+
+Topics
+------
+
+controller.request(id)
+    Sent by anything at any time to request the activation of a controller
+    Received by main.js to activate the controller
+
+controller.complete(ctrl)
+    Sent by the active controller when it wants to relinquish control over user input
+    Received by main.js to cleanup the controller and activate the next one
+
+input.left(input, event)
+input.right(input, event)
+input.up(input, event)
+input.down(input, event)
+input.tap(input, event)
+    Sent by input.js on a keyboard or hand gesture
+    Received by a controller to process the input
+
+world.report(world, report)
+    Sent by events.js on a world event report
+    Received by pump.js to queue a report
+
+controller.report(ctrl, report)
+    Sent by a controller
+    Received by pump.js to queue a report
+
+controller.select(ctrl)
+    Sent by a controller when a user selects an object but does not activate it
+    Received by pump.js to map the object properties to a report and to queue it
+
+controller.activate(ctrl)
+    Sent by a controller when a user activates an object
+    Received by pump.js to map the object properties to a report and to queue it
+
+controller.prompt(ctrl)
+    Sent by a controller to prompt the user to take action
+    Received by pump.js to queue the prompt report
+
+controller.flush(ctrl)
+    Sent by a controller to notify all views to flush tracked state
+    Received by ??? to clear rendered state
+
 Reverse Engineering
 ===================
 

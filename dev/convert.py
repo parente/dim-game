@@ -152,12 +152,12 @@ use_events = {
                 "args": ["scene.operatingRoom.items", "operatingTable"],
             }
         ],
-        "visual": {
-            "description": "You cut the straps on the operating table. You are now free."
-        },
-        "aural": {
-            "narration": "sound://speech/cutStraps"
-        }
+        "report": [
+            {
+                "description": "You cut the straps on the operating table. You are now free.",
+                "narration": "sound://speech/cutStraps"
+            }
+        ]
     },
 
     'operatingRoomKeyToOperatingRoomDoor': {
@@ -175,26 +175,30 @@ use_events = {
                 "args": ["scene.operatingRoom.adjoins", "basementHallway"]
             }
         ],
-        "visual": {
-            "description": "You unlock the door. You can now move to the hallway."
-        },
-        "aural": {
-            "narration": "sound://speech/unlockOperatingRoom"
-        }
+        "report": [
+            {
+                "description": "You unlock the door. You can now move to the hallway.",
+                "narration": "sound://speech/unlockOperatingRoom"
+            }
+        ]
     },
 
     'playerToPainting': {
-        "visual": {
-            "description": "You move the painting and a tune plays.\n\nDo-Mi-So"
-        },
-        "aural": {
-            "narration": [
-                "sound://speech/movePainting",
-                "sound://sound/pianoC",
-                "sound://sound/pianoE",
-                "sound://sound/pianoG"
-            ]
-        }
+        "report": [
+            {
+                "description": "You move the painting and a tune plays.\n\nDo-Mi-So",
+                "narration": "sound://speech/movePainting"
+            },
+            {
+                "narration": "sound://sound/pianoC"
+            },
+            {
+                "narration": "sound://sound/pianoE"
+            },
+            {
+                "narration": "sound://sound/pianoG"
+            }
+        ]
     },
 
     'playerToPiano': {
@@ -213,12 +217,12 @@ use_events = {
                 'args': ['scene.bathroom.items', 'box']
             }
         ],
-        'visual': {
-            'description': "You knock the box on the floor."
-        },
-        'aural': {
-            'narration': 'sound://speech/broomToShelf'
-        }
+        'report': [
+            {
+                'description': "You knock the box on the floor.",
+                'narration': 'sound://speech/broomToShelf'
+            }
+        ]
     },
 
     'playerToComputer': {
@@ -241,12 +245,12 @@ use_events = {
                 'args': ['scene.bathroom.items', 'starHole']
             }
         ],
-        'visual': {
-            'description': "You move the box to the bathtub. You can now reach the star shaped hole."
-        },
-        'aural': {
-            'narration': 'sound://speech/playerToBox'
-        }
+        'report': [
+            {
+                'description': "You move the box to the bathtub. You can now reach the star shaped hole.",
+                'narration': 'sound://speech/playerToBox'
+            }
+        ]
     },
 
     'starToStarHole': {
@@ -256,12 +260,12 @@ use_events = {
                 'args': ['scene.bathroom.adjoins', 'bathroomHallway']
             }
         ],
-        'visual': {
-            'description': "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway."
-        },
-        'aural': {
-            'narration': 'sound://speech/starToStarHole'
-        }
+        'report': [
+            {
+                    'description': "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway.",
+                    'narration': 'sound://speech/starToStarHole'
+            }
+        ]
     },
 
     'deskKeyToDesk': {
@@ -279,12 +283,12 @@ use_events = {
                 'args': ['player.items', 'deskKey']
             }
         ],
-        'visual': {
-            'description': "The desk opens, revealing a recording."
-        },
-        'aural': {
-            'narration': 'sound://speech/deskKeyToDesk'
-        }
+        'report': [
+            {
+                'description': "The desk opens, revealing a recording.",
+                'narration': 'sound://speech/deskKeyToDesk'
+            }
+        ]
     },
 
     'hammerToMirror': {
@@ -294,17 +298,18 @@ use_events = {
                 'args': ['controller.request', 'dim/controllers/meta/lose']
             }
         ],
-        'visual': {
-            'description': "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hear you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ..."
-        },
-        'aural': {
-            'narration': 'sound://speech/hammerToMirror'
-        }
+        'report': [
+            {
+                'description': "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hear you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...",
+                'narration': 'sound://speech/hammerToMirror'
+            }
+        ]
     },
 
     'playerToBathroomHallwayDoor': {
-        'visual': {
-            'description': '''You knock on the hallway door. The person inside jumps in surprise.
+        'report': [
+            {
+                'description': '''You knock on the hallway door. The person inside jumps in surprise.
 
 "Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble."
 
@@ -316,11 +321,10 @@ use_events = {
 
 "You have to help me. Find the key. Please!"
 
-"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, say three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."'''
-        },
-        'aural': {
-            'narration': 'sound://speech/friend010_cell'
-        }
+"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, say three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
+                'narration': 'sound://speech/friend010_cell'
+            }
+        ]
     },
 
     'playerToSafe': {
@@ -347,17 +351,17 @@ use_events = {
                 'args': ['scene.upperHallway']
             }
         ],
-        'visual': {
-            'description': '''You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.
+        'report': [
+            {
+                'description': '''You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.
 
-"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?"'''
-        },
-        'aural': {
-            'narration': [
-                'sound://speech/cellKeyToBathroomHallwayDoor',
-                'sound://speech/cellKeyToBathroomHallwayDoor2',
-            ]
-        }
+"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?"''',
+                'narration': 'sound://speech/cellKeyToBathroomHallwayDoor'
+            },
+            {
+                'narration': 'sound://speech/cellKeyToBathroomHallwayDoor2'
+            }
+        ]
     },
 
     'hammerToUpperHallwayDoor': {
@@ -375,21 +379,21 @@ use_events = {
                 'args': ['player.items', 'hammer']
             }
         ],
-        'visual': {
-            'description': '''You hit the door hard and it opens. You can now move to the balcony.
+        'report': [
+            {
+                'description': '''You hit the door hard and it opens. You can now move to the balcony.
 
 "Alright, let's get out of here!"
 
 "What? You have to find some serum?"
 
-"Oh, ok then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck."'''
-        },
-        'aural': {
-            'narration': [
-                'sound://speech/hammerToUpperHallwayDoor',
-                'sound://speech/hammerToUpperHallwayDoor2',
-            ]
-        }
+"Oh, ok then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck."''',
+                'narration': 'sound://speech/hammerToUpperHallwayDoor'
+            },
+            {
+                'narration': 'sound://speech/hammerToUpperHallwayDoor2'
+            }
+        ]
     },
 
     'masterBedroomDeskKeyToMasterBedroomDesk': {
@@ -407,12 +411,12 @@ use_events = {
                 'args': ['player.items', 'masterBedroomDeskKey']
             }
         ],
-        'visual': {
-            'description': "You open the desk and find another key, and a recording."
-        },
-        'aural': {
-            'narration': 'sound://speech/masterBedroomDeskKeyToMasterBedroomDesk'
-        }
+        'report': [
+            {
+                'description': "You open the desk and find another key, and a recording.",
+                'narration': 'sound://speech/masterBedroomDeskKeyToMasterBedroomDesk'
+            }
+        ]
     },
 
     'starToMasterBathroomStarHole': {
@@ -430,12 +434,12 @@ use_events = {
                 'args': ['scene.masterBathroom.adjoins', 'masterElevator']
             }
         ],
-        'visual': {
-            'description': "The mirror moves, revealing an elevator."
-        },
-        'aural': {
-            'narration': 'sound://speech/starToMasterBathroomStarHole'
-        }
+        'report': [
+            {
+                'description': "The mirror moves, revealing an elevator.",
+                'narration': 'sound://speech/starToMasterBathroomStarHole'
+            }
+        ]
     },
 
     'passCardToMainEntrance': {
@@ -445,12 +449,12 @@ use_events = {
                 'args': ['controller.request', 'dim/controllers/meta/lose']
             }
         ],
-        'visual': {
-            'description': "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty."
-        },
-        'aural': {
-            'narration': 'sound://speech/passCardToMainEntrance'
-        }
+        'report': [
+            {
+                'description': "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty.",
+                'narration': 'sound://speech/passCardToMainEntrance'
+            }
+        ]
     },
 
     'passCardToSittingRoomDoor': {
@@ -485,12 +489,12 @@ use_events = {
                 'args': ['items.eleanor.aural.description', 'sound://speech/eleanorDesc2']
             }
         ],
-        'visual': {
-            'description': '''"Thank you. Now I can't be seen by Johan, so I must go straight to the lab. You need to pick up the chemical ingredients for the antidote. Unforunately, they're located in the basement somewhere. You should be safe from Johan's mutations because the cages are electronically locked. But just to be safe, take this gun."'''
-        },
-        'aural': {
-            'narration': 'sound://speech/knifeToEleanor'
-        }
+        "report": [
+            {
+                'description': '''"Thank you. Now I can't be seen by Johan, so I must go straight to the lab. You need to pick up the chemical ingredients for the antidote. Unforunately, they're located in the basement somewhere. You should be safe from Johan's mutations because the cages are electronically locked. But just to be safe, take this gun."''',
+                'narration': 'sound://speech/knifeToEleanor'
+            }
+        ]
     },
 
     'ingredientsToEleanor': {
@@ -512,29 +516,29 @@ use_events = {
                 'args': ['items.eleanor.aural.description', 'sound://speech/eleanorDesc3']
             }
         ],
-        'visual': {
-            'description': '''"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again."
+        'report': [
+            {
+                'description': '''"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again."
 
 "While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!"
 
 "And the ones in the basement are just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it."
 
-"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!"'''
-        },
-        'aural': {
-            'narration': [
-                'sound://speech/ingredientsToEleanor',
-                'sound://speech/ingredientsToEleanor2'
-            ]
-        }
+"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!"''',
+                'narration': 'sound://speech/ingredientsToEleanor'
+            },
+            {
+                'narration': 'sound://speech/ingredientsToEleanor2'
+            }
+        ]
     },
     'garageKeyToGarageDoor': {
-        'visual': {
-            'description': "You try using the key on the door, but the lock seems rusted shut. Maybe you can just shoot the lock out."
-        },
-        'aural': {
-            'narration': 'sound://speech/garageKeyToGarageDoor'
-        }
+        'report': [
+            {
+                'description': "You try using the key on the door, but the lock seems rusted shut. Maybe you can just shoot the lock out.",
+                'narration': 'sound://speech/garageKeyToGarageDoor'
+            }
+        ]
     },
 
     'gunToGarageDoor': {
@@ -552,12 +556,12 @@ use_events = {
                 'args': ['scene.kitchen.adjoins', 'garage']
             }
         ],
-        'visual': {
-            'description': "You shoot the lock on the door and it shatters. You can now move to the garage."
-        },
-        'aural': {
-            'narration': 'sound://speech/gunToGarageDoor'
-        }
+        'report': [
+            {
+                'description': "You shoot the lock on the door and it shatters. You can now move to the garage.",
+                'narration': 'sound://speech/gunToGarageDoor'
+            }
+        ]
     },
 
     'passCardToBarnDoor': {
@@ -567,33 +571,33 @@ use_events = {
                 'args': ['scene.outside.adjoins', 'barn']
             }
         ],
-        'visual': {
-            'description': "You have unlocked the barn door. You can now move into the barn."
-        },
-        'aural': {
-            'narration': 'sound://speech/passCardToBarnDoor'
-        }
+        'report': [
+            {
+                'description': "You have unlocked the barn door. You can now move into the barn.",
+                'narration': 'sound://speech/passCardToBarnDoor'
+            }
+        ]
     },
 
     'playerToBarnSwitch': {
-        'visual': {
-            'description': "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive."
-        },
-        'aural': {
-            'narration': 'sound://speech/playerToBarnSwitch'
-        }
+        'report': [
+            {
+                'description': "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive.",
+                'narration': 'sound://speech/playerToBarnSwitch'
+            }
+        ]
     },
 
     'knifeToEleanor2': {
-        'visual': {
-            'description': '''"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?"'''
-        },
-        'aural': {
-            'narration': [
-                'sound://speech/knifeToEleanor2',
-                'sound://speech/eleanor050_barn'
-            ]
-        }
+        'report': [
+            {
+                'description': '''"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?"''',
+                'narration': 'sound://speech/knifeToEleanor2'
+            },
+            {
+                'narration': 'sound://speech/eleanor050_barn'
+            }
+        ]
     }
 }
 
@@ -636,7 +640,7 @@ world = [
         "controller": "dim/controllers/explore/explore",
         "scene": "operatingRoom",
         "channels": {
-            "backdrop": {
+            "ambience": {
                 # loop a sound forever
                 "loop": True,
                 # stop() does nothing, but any new queued sound immediately swaps
@@ -647,22 +651,38 @@ world = [
                 "gain": 0.15,
                 # cross fade when swapstopping
                 "crossfade": True
+            },
+            "sound": {
+                # make sound slightly quieter than speech
+                "gain": 0.8
             }
-        }
+            # TODO: other aural and visual report channel props go here
+        },
+        # maps object properties to report channels and chunks
+        "propertyReport": [
+            {
+                "visual.name": "title",
+                "visual.description": "description",
+                "visual.backdrop": "backdrop",
+                "aural.name": "narration",
+                "aural.sound": "sound",
+                "aural.backdrop": "ambience"
+            },
+            {
+                "aural.description": "narration"
+            }
+        ]
     },
     # controller assets for load / new game
     {
-
         "type": "ctrl",
         "id": "boot",
-        "prompt": {
-            "aural": {
-                "narration": [
-                    "sound://speech/menu"
-                ],
-                "backdrop": "sound://music/music1"
+        "prompt": [
+            {
+                "narration": "sound://speech/menu",
+                "ambience": "sound://music/music1"
             }
-        },
+        ],
         "options": [
             {
                 "id": "load",
@@ -670,7 +690,7 @@ world = [
                     "name": "Load Game"
                 },
                 "aural": {
-                    "narration": "sound://speech/loadGame"
+                    "name": "sound://speech/loadGame"
                 }
             },
             {
@@ -679,7 +699,7 @@ world = [
                     "name": "New Game"
                 },
                 "aural": {
-                    "narration": "sound://speech/newGame"
+                    "name": "sound://speech/newGame"
                 },
             }
         ]
@@ -689,37 +709,29 @@ world = [
 
         "type": "ctrl",
         "id": "load",
-        "prompt": {
-            "visual": {
-                "description": "Select a save slot to load."
-            },
-            "aural": {
-                "narration": [
-                    "sound://speech/selectLoad"
-                ]
+        "prompt": [
+            {
+                "description": "Select a save slot to load.",
+                "narration":  "sound://speech/selectLoad"
             }
-        }
+        ]
     },
     # save game assets
     {
         "type": "ctrl",
         "id": "save",
-        "prompt": {
-            "visual": {
-                "description": "Save your game"
-            },
-            "aural": {
+        "prompt": [
+            {
+                "description": "Save your game",
                 "narration": "sound://speech/saveSlot"
             }
-        },
-        "success": {
-            "visual": {
-                "description": "Your game was successfully saved."
-            },
-            "aural": {
+        ],
+        "success": [
+            {
+                "description": "Your game was successfully saved.",
                 "narration": "sound://speech/saveSuccessful"
             }
-        }
+        ]
     },
     # slots shared between load and save game
     {
@@ -732,7 +744,7 @@ world = [
                     "name": "Slot 1"
                 },
                 "aural": {
-                    "narration": "sound://speech/slot1"
+                    "name": "sound://speech/slot1"
                 }
             },
             {
@@ -741,7 +753,7 @@ world = [
                     "name": "Slot 2"
                 },
                 "aural": {
-                    "narration": "sound://speech/slot2"
+                    "name": "sound://speech/slot2"
                 }
             },
             {
@@ -750,7 +762,7 @@ world = [
                     "name": "Slot 3"
                 },
                 "aural": {
-                    "narration": "sound://speech/slot3"
+                    "name": "sound://speech/slot3"
                 }
             },
             {
@@ -759,7 +771,7 @@ world = [
                     "name": "Slot 4"
                 },
                 "aural": {
-                    "narration": "sound://speech/slot4"
+                    "name": "sound://speech/slot4"
                 }
             },
             {
@@ -768,7 +780,7 @@ world = [
                     "name": "Slot 5"
                 },
                 "aural": {
-                    "narration": "sound://speech/slot5"
+                    "name": "sound://speech/slot5"
                 }
             }
         ]
@@ -778,12 +790,12 @@ world = [
     {
         "type": "ctrl",
         "id": "lose",
-        "visual": {
-            "title": "Game Over"
-        },
-        "aural": {
-            "narration": "sound://speech/gameOver"
-        }
+        "prompt": [
+            {
+                "title": "Game Over",
+                "narration": "sound://speech/gameOver"
+            }
+        ]
     },
 
     # playerToPiano
@@ -793,30 +805,18 @@ world = [
         "correct": ['c', 'e', 'g'],
         "maxAttempts": 3,
         "canAbort": True,
-        "prompts": [
+        "prompt": [
             {
-                "visual": {
-                    "description": "Press a key."
-                },
-                "aural": {
-                    "narration": "sound://speech/pianoPressKey1"
-                }
+                "description": "Press a key.",
+                "narration": "sound://speech/pianoPressKey1"
             },
             {
-                "visual": {
-                    "description": "Press a second key."
-                },
-                "aural": {
-                    "narration": "sound://speech/pianoPressKey2"
-                }
+                "description": "Press a second key.",
+                "narration": "sound://speech/pianoPressKey2"
             },
             {
-                "visual": {
-                    "description": "Press a third key."
-                },
-                "aural": {
-                    "narration": "sound://speech/pianoPressKey3"
-                }
+                "description": "Press a third key.",
+                "narration": "sound://speech/pianoPressKey3"
             }
         ],
         "options": [
@@ -826,7 +826,7 @@ world = [
                     "name": "Do"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseC",
+                    "name": "sound://speech/pianoChooseC",
                     "sound": "sound://sound/pianoC"
                 }
             },
@@ -836,7 +836,7 @@ world = [
                     "name": "Re"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseD",
+                    "name": "sound://speech/pianoChooseD",
                     "sound": "sound://sound/pianoD"
                 }
             },
@@ -846,7 +846,7 @@ world = [
                     "name": "Mi"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseE",
+                    "name": "sound://speech/pianoChooseE",
                     "sound": "sound://sound/pianoE"
                 }
             },
@@ -856,7 +856,7 @@ world = [
                     "name": "Fa"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseF",
+                    "name": "sound://speech/pianoChooseF",
                     "sound": "sound://sound/pianoF"
                 }
             },
@@ -866,7 +866,7 @@ world = [
                     "name": "So"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseG",
+                    "name": "sound://speech/pianoChooseG",
                     "sound": "sound://sound/pianoG"
                 }
             },
@@ -876,7 +876,7 @@ world = [
                     "name": "La"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseA",
+                    "name": "sound://speech/pianoChooseA",
                     "sound": "sound://sound/pianoA"
                 }
             },
@@ -886,7 +886,7 @@ world = [
                     "name": "Ti"
                 },
                 "aural": {
-                    "narration": "sound://speech/pianoChooseB",
+                    "name": "sound://speech/pianoChooseB",
                     "sound": "sound://sound/pianoB"
                 }
             }
@@ -905,15 +905,15 @@ world = [
                 'args': ['item.piano.properties', 'useable']
             }
         ],
-        "visual": {
-            "description": "You hear a loud rumble from the hallway that sounds like a wall moving."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/chime",
-                "sound://speech/pianoSolve"
-            ]
-        }
+        "report": [
+            {
+                "description": "You hear a loud rumble from the hallway that sounds like a wall moving.",
+                "narration": "sound://sound/chime"
+            },
+            {
+                "narration": "sound://speech/pianoSolve"
+            }
+        ]
     },
     {
         "type": "event",
@@ -924,60 +924,48 @@ world = [
                 "args": ["controller.request", "dim/controllers/meta/lose"]
             }
         ],
-        "visual": {
-            "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-                "sound://speech/pianoFail"
-            ]
-        }
+        "report": [
+            {
+                "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death.",
+                "narration": "sound://sound/buzzer"
+            },
+            {
+                "narration": "sound://speech/pianoFail"
+            }
+        ]
     },
     {
         "type": "event",
         "on": ["retry", "piano"],
-        "visual": {
-            "description": "Try again."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-                "sound://speech/tryAgain"
-            ]
-        }
+        "report": [
+            {
+                "description": "Try again.",
+                "narration": "sound://sound/buzzer"
+            },
+            {
+                "narration": "sound://speech/tryAgain"
+            }
+        ]
     },
 
-    # playerToSafe
+    # playerToSafe data used by memoryPattern controller
     {
         "type": "ctrl",
         "id": 'safe',
         "correct": ['2', '1', '6'],
         "maxAttempts": 1,
-        "prompts": [
+        "prompt": [
             {
-                "visual": {
-                    "description": "Choose a number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose1"
-                }
+                "description": "Choose a number.",
+                "narration": "sound://speech/safeChoose1"
             },
             {
-                "visual": {
-                    "description": "Choose a second number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose2"
-                }
+                "description": "Choose a second number.",
+                "narration": "sound://speech/safeChoose2"
             },
             {
-                "visual": {
-                    "description": "Choose a third number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose3"
-                }
+                "description": "Choose a third number.",
+                "narration": "sound://speech/safeChoose3"
             }
         ],
         "options": [
@@ -987,7 +975,7 @@ world = [
                     "name": "1"
                 },
                 "aural": {
-                    "narration": "sound://speech/1"
+                    "name": "sound://speech/1"
                 }
             },
             {
@@ -996,7 +984,7 @@ world = [
                     "name": "2"
                 },
                 "aural": {
-                    "narration": "sound://speech/2"
+                    "name": "sound://speech/2"
                 }
             },
             {
@@ -1005,7 +993,7 @@ world = [
                     "name": "3"
                 },
                 "aural": {
-                    "narration": "sound://speech/3"
+                    "name": "sound://speech/3"
                 }
             },
             {
@@ -1014,7 +1002,7 @@ world = [
                     "name": "4"
                 },
                 "aural": {
-                    "narration": "sound://speech/4"
+                    "name": "sound://speech/4"
                 }
             },
             {
@@ -1023,7 +1011,7 @@ world = [
                     "name": "5"
                 },
                 "aural": {
-                    "narration": "sound://speech/5"
+                    "name": "sound://speech/5"
                 }
             },
             {
@@ -1032,7 +1020,7 @@ world = [
                     "name": "6"
                 },
                 "aural": {
-                    "narration": "sound://speech/6"
+                    "name": "sound://speech/6"
                 }
             },
             {
@@ -1041,7 +1029,7 @@ world = [
                     "name": "7"
                 },
                 "aural": {
-                    "narration": "sound://speech/7"
+                    "name": "sound://speech/7"
                 }
             },
             {
@@ -1050,7 +1038,7 @@ world = [
                     "name": "8"
                 },
                 "aural": {
-                    "narration": "sound://speech/8"
+                    "name": "sound://speech/8"
                 }
             },
             {
@@ -1059,7 +1047,7 @@ world = [
                     "name": "9"
                 },
                 "aural": {
-                    "narration": "sound://speech/9"
+                    "name": "sound://speech/9"
                 }
             },
             {
@@ -1068,7 +1056,7 @@ world = [
                     "name": "0"
                 },
                 "aural": {
-                    "narration": "sound://speech/0"
+                    "name": "sound://speech/0"
                 }
             }
         ]
@@ -1094,8 +1082,9 @@ world = [
                 'args': ['item.safe.properties', 'useable']
             }
         ],
-        "visual": {
-            "description": '''The safe opens. Inside you find a recording, a key, and a passcard.
+        "report": [
+            {
+                "description": '''The safe opens. Inside you find a recording, a key, and a passcard.
 
 Strange. The phone suddenly rings. You pick it up.
 
@@ -1105,58 +1094,41 @@ Strange. The phone suddenly rings. You pick it up.
 
 "I have developed a final serum. You WILL be me test subject or you will die. It's that simple."
 
-"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!""'''
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/chime",
-                "sound://speech/safeOpen1",
-                "sound://sound/phoneRing",
-                "sound://speech/safeOpen2",
-                "sound://speech/safeOpen3"
-            ]
-        }
+"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!""''',
+                "narration": "sound://sound/chime"
+            },
+            {"narration": "sound://speech/safeOpen1"},
+            {"narration": "sound://speech/phoneRing"},
+            {"narration": "sound://speech/safeOpen2"},
+            {"narration": "sound://speech/safeOpen3"}
+        ]
     },
     {
         "type": "event",
         "on": ["fail", "safe"],
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-            ]
-        }
+        "report": [
+            {"narration": "sound://sound/buzzer"}
+        ]
     },
 
-    # playerToComputer
+    # playerToComputer data used by memoryPattern controller
     {
         "type": "ctrl",
         "id": 'computer',
         "correct": ['9', '3', '1'],
         "maxAttempts": 1,
-        "prompts": [
+        "prompt": [
             {
-                "visual": {
-                    "description": "Choose a number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose1"
-                }
+                "description": "Choose a number.",
+                "narration": "sound://speech/safeChoose1"
             },
             {
-                "visual": {
-                    "description": "Choose a second number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose2"
-                }
+                "description": "Choose a second number.",
+                "narration": "sound://speech/safeChoose2"
             },
             {
-                "visual": {
-                    "description": "Choose a third number."
-                },
-                "aural": {
-                    "narration": "sound://speech/safeChoose3"
-                }
+                "description": "Choose a third number.",
+                "narration": "sound://speech/safeChoose3"
             }
         ],
         "options": [
@@ -1166,7 +1138,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "1"
                 },
                 "aural": {
-                    "narration": "sound://speech/1"
+                    "name": "sound://speech/1"
                 }
             },
             {
@@ -1175,7 +1147,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "2"
                 },
                 "aural": {
-                    "narration": "sound://speech/2"
+                    "name": "sound://speech/2"
                 }
             },
             {
@@ -1184,7 +1156,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "3"
                 },
                 "aural": {
-                    "narration": "sound://speech/3"
+                    "name": "sound://speech/3"
                 }
             },
             {
@@ -1193,7 +1165,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "4"
                 },
                 "aural": {
-                    "narration": "sound://speech/4"
+                    "name": "sound://speech/4"
                 }
             },
             {
@@ -1202,7 +1174,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "5"
                 },
                 "aural": {
-                    "narration": "sound://speech/5"
+                    "name": "sound://speech/5"
                 }
             },
             {
@@ -1211,7 +1183,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "6"
                 },
                 "aural": {
-                    "narration": "sound://speech/6"
+                    "name": "sound://speech/6"
                 }
             },
             {
@@ -1220,7 +1192,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "7"
                 },
                 "aural": {
-                    "narration": "sound://speech/7"
+                    "name": "sound://speech/7"
                 }
             },
             {
@@ -1229,7 +1201,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "8"
                 },
                 "aural": {
-                    "narration": "sound://speech/8"
+                    "name": "sound://speech/8"
                 }
             },
             {
@@ -1238,7 +1210,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "9"
                 },
                 "aural": {
-                    "narration": "sound://speech/9"
+                    "name": "sound://speech/9"
                 }
             },
             {
@@ -1247,7 +1219,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "0"
                 },
                 "aural": {
-                    "narration": "sound://speech/0"
+                    "name": "sound://speech/0"
                 }
             }
         ]
@@ -1269,56 +1241,44 @@ Strange. The phone suddenly rings. You pick it up.
                 'args': ['scene.basementHallway.items', 'labDoor']
             }
         ],
-        "visual": {
-            "description": '"Passcode accepted. Elevator activated."'
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/chime",
-                "sound://speech/computerAccept"
-            ]
-        }
+        "report": [
+            {
+                "description": '"Passcode accepted. Elevator activated."',
+                "sound": "sound://sound/chime",
+                "narration": "sound://speech/computerAccept"
+            }
+        ]
     },
     {
         "type": "event",
         "on": ["fail", "computer"],
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-            ]
-        }
+        "report": [
+            {"narration": "sound://sound/buzzer"}
+        ]
     },
 
-    # passCardToSittingRoomDoor
+    # passCardToSittingRoomDoor data used by memoryPattern controller
     {
         "type": "ctrl",
         "id": 'sittingRoomDoorLock1',
         "correct": ['left', 'right', 'left', 'left'],
         "canAbort": True,
         "maxAttempts": 1,
-        "prompts": [
-            {
-                "visual": {
-                    "description": "There are two speakers in front of you: one on the left and one on the right. Below each speaker is a button. When you insert the passkey, sounds start playing from the speakers."
+        "prompt": [
+            [
+                {
+                    "description": "There are two speakers in front of you: one on the left and one on the right. Below each speaker is a button. When you insert the passkey, sounds start playing from the speakers.",
+                    "narration": "sound://speech/passCardToSittingRoomDoor1"
                 },
-                "aural": {
-                    "narration": [
-                        "sound://speech/passCardToSittingRoomDoor1",
-                        "sound://sound/toneLeft",
-                        "sound://sound/toneRight",
-                        "sound://sound/toneLeft",
-                        "sound://sound/toneLeft",
-                        "sound://speech/passCardToSittingRoomDoor2"
-                    ]
-                }
-            },
+                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://sound/toneRight"},
+                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://speech/passCardToSittingRoomDoor2"}
+            ],
             {
-                "visual": {
-                    "description": "Press a button."
-                },
-                "aural": {
-                    "narration": "sound://speech/passCardToSittingRoomDoor2"
-                }
+                "description": "Press a button.",
+                "narration": "sound://speech/passCardToSittingRoomDoor2"
             }
         ],
         "options": [
@@ -1328,7 +1288,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Left button"
                 },
                 "aural": {
-                    "narration": "sound://speech/leftButton"
+                    "name": "sound://speech/leftButton"
                 }
             },
             {
@@ -1337,7 +1297,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Right button"
                 },
                 "aural": {
-                    "narration": "sound://speech/rightButton"
+                    "name": "sound://speech/rightButton"
                 }
             }
         ]
@@ -1361,15 +1321,15 @@ Strange. The phone suddenly rings. You pick it up.
                 "args": ["controller.request", "dim/controllers/meta/lose"]
             }
         ],
-        "visual": {
-            "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-                "sound://speech/passCardToSittingRoomDoor3"
-            ]
-        }
+        "report": [
+            {
+                "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.",
+                "narration": "sound://sound/buzzer"
+            },
+            {
+                "narration": "sound://speech/passCardToSittingRoomDoor3"
+            }
+        ]
     },
     {
         "type": "ctrl",
@@ -1377,30 +1337,23 @@ Strange. The phone suddenly rings. You pick it up.
         "correct": ['right', 'right', 'right', 'left', 'right', 'left'],
         "canAbort": True,
         "maxAttempts": 1,
-        "prompts": [
-            {
-                "visual": {
-                    "description": "The sounds continue."
+        "prompt": [
+            [
+                {
+                    "description": "The sounds continue.",
+                    "narration": "sound://sound/toneRight"
                 },
-                "aural": {
-                    "narration": [
-                        "sound://sound/toneRight",
-                        "sound://sound/toneRight",
-                        "sound://sound/toneRight",
-                        "sound://sound/toneLeft",
-                        "sound://sound/toneRight",
-                        "sound://sound/toneLeft",
-                        "sound://speech/passCardToSittingRoomDoor2"
-                    ]
-                }
-            },
+                {"narration": "sound://sound/toneRight"},
+                {"narration": "sound://sound/toneRight"},
+                {"narration": "sound://sound/toneRight"},
+                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://sound/toneRight"},
+                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://speech/passCardToSittingRoomDoor2"}
+            ],
             {
-                "visual": {
-                    "description": "Press a button."
-                },
-                "aural": {
-                    "narration": "sound://speech/passCardToSittingRoomDoor2"
-                }
+                "description": "Press a button.",
+                "narration": "sound://speech/passCardToSittingRoomDoor2"
             }
         ],
         "options": [
@@ -1410,7 +1363,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Left button"
                 },
                 "aural": {
-                    "narration": "sound://speech/leftButton"
+                    "name": "sound://speech/leftButton"
                 }
             },
             {
@@ -1419,7 +1372,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Right button"
                 },
                 "aural": {
-                    "narration": "sound://speech/rightButton"
+                    "name": "sound://speech/rightButton"
                 }
             }
         ]
@@ -1437,15 +1390,15 @@ Strange. The phone suddenly rings. You pick it up.
                 'args': ['scene.sittingRoom.items', 'sittingRoomDoor']
             }
         ],
-        "visual": {
-            "description": "The door slides open. You can now move into the dark room ahead."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/chime",
-                "sound://speech/passCardToSittingRoomDoor4"
-            ]
-        }
+        "report": [
+            {
+                "description": "The door slides open. You can now move into the dark room ahead.",
+                "narration": "sound://sound/chime"
+            },
+            {
+                "narration": "sound://speech/passCardToSittingRoomDoor4"
+            }
+        ]
     },
     # TODO: would be nice not to have to repeat this
     {
@@ -1457,26 +1410,26 @@ Strange. The phone suddenly rings. You pick it up.
                 "args": ["controller.request", "dim/controllers/meta/lose"]
             }
         ],
-        "visual": {
-            "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
-        },
-        "aural": {
-            "narration": [
-                "sound://sound/buzzer",
-                "sound://speech/passCardToSittingRoomDoor3"
-            ]
-        }
+        "report": [
+            {
+                "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.",
+                "narration": "sound://sound/buzzer"
+            },
+            {
+                "narration": "sound://speech/passCardToSittingRoomDoor3"
+            }
+        ]
     },
 
     # exploration controller
     {
         "type": "ctrl",
         "id": "explore",
-        "prompt": {
-            "aural": {
+        "prompt": [
+            {
                 "narration": "sound://speech/menu"
             }
-        },
+        ],
         "options": [
             {
                 "id": "dim/controllers/explore/examine",
@@ -1484,7 +1437,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Examine"
                 },
                 "aural": {
-                    "narration": "sound://speech/examine"
+                    "name": "sound://speech/examine"
                 }
             },
             {
@@ -1493,7 +1446,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Move"
                 },
                 "aural": {
-                    "narration": "sound://speech/move"
+                    "name": "sound://speech/move"
                 }
             },
             {
@@ -1502,7 +1455,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Use"
                 },
                 "aural": {
-                    "narration": "sound://speech/useItem"
+                    "name": "sound://speech/useItem"
                 }
             },
             {
@@ -1511,7 +1464,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Take"
                 },
                 "aural": {
-                    "narration": "sound://speech/takeItem"
+                    "name": "sound://speech/takeItem"
                 }
             }
         ],
@@ -1521,124 +1474,102 @@ Strange. The phone suddenly rings. You pick it up.
     {
         "type": "ctrl",
         "id": "examine",
-        "prompt": {
-            "visual": {
-                "description": "What would you like to examine?"
-            },
-            "aural": {
+        "prompt": [
+            {
+                "description": "What would you like to examine?",
                 "narration": "sound://speech/whatToExamine"
             }
-        },
-        "impossible": {
-            "visual": {
-                "description": "There's nothing here."
-            },
-            "aural": {
+        ],
+        "impossible": [
+            {
+                "description": "There's nothing here.",
                 "narration": "sound://speech/nothingHere"
             }
-        }
+        ]
     },
 
     # player movement controller
     {
         "type": "ctrl",
         "id": "move",
-        "prompt": {
-            "visual": {
-                "description": "Where do you want to move?"
-            },
-            "aural": {
+        "prompt": [
+            {
+                "description": "Where do you want to move?",
                 "narration": "sound://speech/whereToMove"
             }
-        },
-        "impossible": {
-            "visual": {
-                "description": "You can't move anywhere."
-            },
-            "aural": {
+        ],
+        "impossible": [
+            {
+                "description": "You can't move anywhere.",
                 "narration": "sound://speech/cantMoveAnywhere"
             }
-        }
+        ]
     },
 
     # take controller
     {
         "type": "ctrl",
         "id": "take",
-        "prompt": {
-            "visual": {
-                "description": "What item will you take?"
-            },
-            "aural": {
+        "prompt": [
+            {
+                "description": "What item will you take?",
                 "narration": "sound://speech/whatToTake"
             }
-        },
-        "impossible": {
-            "visual": {
-                "description": "You can't take anything here."
-            },
-            "aural": {
+        ],
+        "impossible": [
+            {
+                "description": "You can't take anything here.",
                 "narration": "sound://speech/cantTakeAnything"
             }
-        }
+        ]
     },
 
     # item use controller
     {
         "type": "ctrl",
         "id": "use",
-        "prompt": {
-            "visual": {
-                "description": "What item will you use?"
-            },
-            "aural": {
+        "prompt": [
+            {
+                "description": "What item will you use?",
                 "narration": "sound://speech/whatItemWillYouUse"
             }
-        },
-        "promptInteract": {
-            "visual": {
-                "description": "Use this on what?"
-            },
-            "aural": {
+        ],
+        "promptInteract": [
+            {
+                "description": "Use this on what?",
                 "narration": "sound://speech/useThisOnWhat"
             }
-        },
-        "nothingUseable": {
-            "visual": {
-                "description": "You have nothing to use."
-            },
-            "aural": {
+        ],
+        "nothingUseable": [
+            {
+                "description": "You have nothing to use.",
                 "narration": "sound://speech/nothingToUse"
             }
-        },
-        "noInteraction": {
-            "visual": {
-                "description": "Nothing happened."
-            },
-            "aural": {
+        ],
+        "noInteraction": [
+            {
+                "description": "Nothing happened.",
                 "narration": "sound://speech/nothingHappened"
             }
-        },
-        "noAction": {
-            "visual": {
-                "description": "Nothing happened."
-            },
-            "aural": {
+        ],
+        "noAction": [
+            {
+                "description": "Nothing happened.",
                 "narration": "sound://speech/nothingHappened"
             }
-        }
+        ]
     },
 
     # reaction to examine event
     {
         "type": "event",
         "on": ["examine", "*"],
-        "visual": {
-            "description": "{{args.1.visual.description}}"
-        },
-        "aural": {
-            "narration": "{{{args.1.aural.description}}}"
-        }
+        "report": [
+            {
+                "description": "{{args.1.visual.description}}",
+                "narration": "{{{args.1.aural.description}}}"
+            }
+        ]
     },
 
     # reaction to player move event
@@ -1651,15 +1582,18 @@ Strange. The phone suddenly rings. You pick it up.
                 "args": ["player.scene", "{{args.1.id}}"]
             }
         ],
-        "visual": {
-            "title": "{{args.1.visual.name}}",
-            "description": "{{args.1.visual.description}}",
-            "backdrop": "{{args.1.visual.backdrop}}"
-        },
-        "aural": {
-            "narration": ["{{{args.1.aural.name}}}", "{{{args.1.aural.description}}}"],
-            "backdrop": "{{{args.1.aural.backdrop}}}"
-        }
+        "report": [
+            {
+                "title": "{{args.1.visual.name}}",
+                "description": "{{args.1.visual.description}}",
+                "backdrop": "{{args.1.visual.backdrop}}",
+                "narration": "{{{args.1.aural.name}}}",
+                "backdrop": "{{{args.1.aural.backdrop}}}"
+            },
+            {
+                "narration": "{{{args.1.aural.description}}}"
+            }
+        ]
     },
 
     # reaction to take event
@@ -1672,12 +1606,13 @@ Strange. The phone suddenly rings. You pick it up.
                 "args": ["{{args.1.type}}.{{args.1.id}}", "player"]
             }
         ],
-        "visual": {
-            "description": "You have taken the {{args.1.visual.name}}."
-        },
-        "aural": {
-            "narration": ["sound://speech/youHaveTakenThe", "{{{args.1.aural.name}}}"]
-        }
+        "report": [
+            {
+                "description": "You have taken the {{args.1.visual.name}}.",
+                "narration": "sound://speech/youHaveTakenThe",
+            },
+            {"narration": "{{{args.1.aural.name}}}"}
+        ]
     },
 
     # reaction to taking the scalpel

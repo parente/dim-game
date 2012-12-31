@@ -17,12 +17,12 @@ define([
     };
 
     var evalTemplates = function(templates, args) {
+        console.log('  events.evalTemplates', templates, args);
         var out = {};
         $.each(templates, function(key, value) {
             var t = $.type(value),
                 res;
             if(t === 'array') {
-                // TODO: make empty arrays undefined for easier mixin
                 res = evalArrTemplates(value, args);
                 for(var i=0, l=res.length; i<l; i++) {
                     if(res[i] !== undefined) break;
@@ -40,6 +40,8 @@ define([
                 } else {
                     out[key] = res;
                 }
+            } else if(t === 'object') {
+                out[key] = evalTemplates(value, args);
             } else {
                 out[key] = value;
             }
@@ -78,7 +80,6 @@ define([
                 hasNotice = true;
             }
             if(event.aural) {
-                console.log('***', event.aural, args);
                 notice.aural = evalTemplates(event.aural, args);
                 hasNotice = true;
             }

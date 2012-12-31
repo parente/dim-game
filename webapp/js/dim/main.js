@@ -20,10 +20,7 @@ define([
             // decouple
             setTimeout(function() {
                 controller = factory.create(world, args);
-                if(controller) {
-                    // notify about new controller
-                    topic('controller.activate').publish(controller);
-                } else {
+                if(!controller) {
                     // go back to default
                     topic('controller.request').publish();
                 }
