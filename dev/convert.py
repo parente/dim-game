@@ -457,7 +457,7 @@ use_events = {
         'exec': [
             {
                 'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock']
+                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock1']
             }
         ]
     },
@@ -644,7 +644,7 @@ world = [
                 # one in which case it coalsces and the current one continues
                 "swapstop": True,
                 # gain of the output
-                "gain": 0.25,
+                "gain": 0.15,
                 # cross fade when swapstopping
                 "crossfade": True
             }
@@ -1292,7 +1292,7 @@ Strange. The phone suddenly rings. You pick it up.
     # passCardToSittingRoomDoor
     {
         "type": "ctrl",
-        "id": 'sittingRoomDoorLock',
+        "id": 'sittingRoomDoorLock1',
         "correct": ['left', 'right', 'left', 'left'],
         "canAbort": True,
         "maxAttempts": 1,
@@ -1304,10 +1304,10 @@ Strange. The phone suddenly rings. You pick it up.
                 "aural": {
                     "narration": [
                         "sound://speech/passCardToSittingRoomDoor1",
-                        "sound://sound/pianoC",
-                        "sound://sound/pianoF",
-                        "sound://sound/pianoC",
-                        "sound://sound/pianoC",
+                        "sound://sound/toneLeft",
+                        "sound://sound/toneRight",
+                        "sound://sound/toneLeft",
+                        "sound://sound/toneLeft",
                         "sound://speech/passCardToSittingRoomDoor2"
                     ]
                 }
@@ -1344,7 +1344,89 @@ Strange. The phone suddenly rings. You pick it up.
     },
     {
         "type": "event",
-        "on": ["solve", "sittingRoomDoorLock"],
+        "on": ["solve", "sittingRoomDoorLock1"],
+        "exec": [
+            {
+                'action': 'publish',
+                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock2']
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "on": ["fail", "sittingRoomDoorLock1"],
+        "exec": [
+            {
+                "action": "publish",
+                "args": ["controller.request", "dim/controllers/meta/lose"]
+            }
+        ],
+        "visual": {
+            "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
+        },
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer",
+                "sound://speech/passCardToSittingRoomDoor3"
+            ]
+        }
+    },
+    {
+        "type": "ctrl",
+        "id": 'sittingRoomDoorLock2',
+        "correct": ['right', 'right', 'right', 'left', 'right', 'left'],
+        "canAbort": True,
+        "maxAttempts": 1,
+        "prompts": [
+            {
+                "visual": {
+                    "description": "The sounds continue."
+                },
+                "aural": {
+                    "narration": [
+                        "sound://sound/toneRight",
+                        "sound://sound/toneRight",
+                        "sound://sound/toneRight",
+                        "sound://sound/toneLeft",
+                        "sound://sound/toneRight",
+                        "sound://sound/toneLeft",
+                        "sound://speech/passCardToSittingRoomDoor2"
+                    ]
+                }
+            },
+            {
+                "visual": {
+                    "description": "Press a button."
+                },
+                "aural": {
+                    "narration": "sound://speech/passCardToSittingRoomDoor2"
+                }
+            }
+        ],
+        "options": [
+            {
+                "id": "left",
+                "visual": {
+                    "name": "Left button"
+                },
+                "aural": {
+                    "narration": "sound://speech/leftButton"
+                }
+            },
+            {
+                "id": "right",
+                "visual": {
+                    "name": "Right button"
+                },
+                "aural": {
+                    "narration": "sound://speech/rightButton"
+                }
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "on": ["solve", "sittingRoomDoorLock2"],
         "exec": [
             {
                 "action": "append",
@@ -1365,9 +1447,10 @@ Strange. The phone suddenly rings. You pick it up.
             ]
         }
     },
+    # TODO: would be nice not to have to repeat this
     {
         "type": "event",
-        "on": ["fail", "sittingRoomDoorLock"],
+        "on": ["fail", "sittingRoomDoorLock2"],
         "exec": [
             {
                 "action": "publish",
@@ -1384,7 +1467,6 @@ Strange. The phone suddenly rings. You pick it up.
             ]
         }
     },
-
 
     # exploration controller
     {

@@ -25,7 +25,7 @@
             "backdrop": {
                 "swapstop": true, 
                 "crossfade": true, 
-                "gain": 0.25, 
+                "gain": 0.15, 
                 "loop": true
             }
         }, 
@@ -750,10 +750,10 @@
                 "aural": {
                     "narration": [
                         "sound://speech/passCardToSittingRoomDoor1", 
-                        "sound://sound/pianoC", 
-                        "sound://sound/pianoF", 
-                        "sound://sound/pianoC", 
-                        "sound://sound/pianoC", 
+                        "sound://sound/toneLeft", 
+                        "sound://sound/toneRight", 
+                        "sound://sound/toneLeft", 
+                        "sound://sound/toneLeft", 
                         "sound://speech/passCardToSittingRoomDoor2"
                     ]
                 }
@@ -770,12 +770,114 @@
         "maxAttempts": 1, 
         "canAbort": true, 
         "type": "ctrl", 
-        "id": "sittingRoomDoorLock"
+        "id": "sittingRoomDoorLock1"
     }, 
     {
         "on": [
             "solve", 
-            "sittingRoomDoorLock"
+            "sittingRoomDoorLock1"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/memoryPattern", 
+                    "sittingRoomDoorLock2"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "fail", 
+            "sittingRoomDoorLock1"
+        ], 
+        "visual": {
+            "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
+        }, 
+        "type": "event", 
+        "aural": {
+            "narration": [
+                "sound://sound/buzzer", 
+                "sound://speech/passCardToSittingRoomDoor3"
+            ]
+        }, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "options": [
+            {
+                "visual": {
+                    "name": "Left button"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/leftButton"
+                }, 
+                "id": "left"
+            }, 
+            {
+                "visual": {
+                    "name": "Right button"
+                }, 
+                "aural": {
+                    "narration": "sound://speech/rightButton"
+                }, 
+                "id": "right"
+            }
+        ], 
+        "correct": [
+            "right", 
+            "right", 
+            "right", 
+            "left", 
+            "right", 
+            "left"
+        ], 
+        "prompts": [
+            {
+                "visual": {
+                    "description": "The sounds continue."
+                }, 
+                "aural": {
+                    "narration": [
+                        "sound://sound/toneRight", 
+                        "sound://sound/toneRight", 
+                        "sound://sound/toneRight", 
+                        "sound://sound/toneLeft", 
+                        "sound://sound/toneRight", 
+                        "sound://sound/toneLeft", 
+                        "sound://speech/passCardToSittingRoomDoor2"
+                    ]
+                }
+            }, 
+            {
+                "visual": {
+                    "description": "Press a button."
+                }, 
+                "aural": {
+                    "narration": "sound://speech/passCardToSittingRoomDoor2"
+                }
+            }
+        ], 
+        "maxAttempts": 1, 
+        "canAbort": true, 
+        "type": "ctrl", 
+        "id": "sittingRoomDoorLock2"
+    }, 
+    {
+        "on": [
+            "solve", 
+            "sittingRoomDoorLock2"
         ], 
         "visual": {
             "description": "The door slides open. You can now move into the dark room ahead."
@@ -807,7 +909,7 @@
     {
         "on": [
             "fail", 
-            "sittingRoomDoorLock"
+            "sittingRoomDoorLock2"
         ], 
         "visual": {
             "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
@@ -2705,7 +2807,7 @@
                 "args": [
                     "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
-                    "sittingRoomDoorLock"
+                    "sittingRoomDoorLock1"
                 ]
             }
         ]

@@ -6,12 +6,9 @@ Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* eleanor door puzzle controller (passCardToSittingRoomDoor)
-    * spatialize audio or use panned sounds
-    * second puzzle set after first
+* final shot controller (gasolineToEleanor2)
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
     * implement timer controller with dpad support
-* final shot controller (gasolineToEleanor2)
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
 
@@ -47,6 +44,7 @@ vXXX - iOS Support
 vXXX - Gameplay Improvements
 ============================
 
+* simul sounds + speech, sync channels on event bundles
 * clean up "use": single vs interactive, ordered "scalpel" on "table" not
 * confirm save slot overwrite
 * make adjoining rooms examinable
