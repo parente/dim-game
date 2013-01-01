@@ -4,8 +4,8 @@ define([
     var exports = {};
 
     exports.create = function(world) {
-        topic('menu.clear').publish();
-        topic('world.event').publish(world, world.get_ctrl('lose'));
+        var ctrl = world.get_ctrl('lose');
+        topic('controller.report').publish(world, ctrl.report);
         return this;
     };
 

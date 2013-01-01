@@ -94,14 +94,6 @@ define([
     exports.initialize = function(world) {
         var def = $.Deferred();
 
-        // subscribe to topics
-        topic('world.event').subscribe(on_world_event);
-        topic('menu.prompt').subscribe(on_menu_prompt);
-        topic('menu.select').subscribe(on_menu_select);
-        topic('menu.activate').subscribe(on_menu_activate);
-        topic('menu.clear').subscribe(on_menu_clear);
-        topic('menu.abort').subscribe(on_menu_abort);
-
         // TODO: initialize other audio subsystems
         var wad = webaudio.initialize(world),
         // TODO: placeholder for proper TTS system init
@@ -119,6 +111,10 @@ define([
         });
 
         return def;
+    };
+
+    exports.render = function(topic, report) {
+        // return $.Deferred();
     };
 
     return exports;

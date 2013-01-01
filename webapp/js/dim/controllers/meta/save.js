@@ -22,7 +22,7 @@ define([
             // stuff the data into local storage
             localStorage[slot.id] = worldJson;
             // public success notification
-            topic('world.event').publish(world, saveMenu.success);
+            topic('controller.report').publish(world, saveMenu.success);
             // switch to default controller for the new scene
             topic('controller.complete').publish(menu);
         };

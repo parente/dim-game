@@ -17,50 +17,46 @@ define([
         });
     };
 
-    var on_world_event = function(world, event) {
-        console.log('visual.on_world_event', world, event);
-        if($.exists('visual.title', event)) {
-            fade_replace($title, event.visual.title, 500);
+    var on_report = function(report, pending) {
+        console.log('visual.on_report', report);
+        // collect deferreds from all actions
+        var defs = [];
+        if(report.title) {
+            defs.push(fade_replace($title, report.title, 250));
         }
-        if($.exists('visual.description', event)) {
-            fade_replace($description, event.visual.description, 500);
+        if(report.description) {
+            defs.push(fade_replace($description, report.description, 250));
         }
         // TODO: backdrop
+
+        // notify pending resolved when complete
+        $.when.apply($, defs).then(function() {
+            pending.resolve();
+        });
     };
 
-    var on_menu_prompt = function(menu) {
-        var prompt = menu.get_prompt();
-        if($.exists('visual.description', prompt)) {
-            fade_replace($description, prompt.visual.description, 500);
-        }
-    };
-
-    var on_menu_select = function(menu) {
-        var obj = menu.get_selected();
-        console.log('visual.on_menu_select', obj);
-        if(obj.visual && obj.visual.name) {
+    var on_select = function(report, pending) {
+        console.log('visual.on_select', report);
+        var def;
+        if(report.title) {
             var states = $('.state', $node).length;
-            fade_replace($message, ((states) ? '&#x21dd;' : '') + obj.visual.name);
-        } else {
-            fade_replace($message, '');
+            def = fade_replace($message, ((states) ? '&#x21dd;' : '') + report.title);
         }
+        $.when(def).then(function() {
+            pending.resolve();
+        });
     };
 
-    var on_menu_activate = function(menu) {
-        var obj = menu.get_selected();
-        console.log('visual.on_menu_activate', obj);
-        if(obj.visual && obj.visual.name) {
+    var on_activate = function(report, pending) {
+        console.log('visual.on_menu_activate', report);
+        if(report.title) {
             var n = $message.clone()
                 .insertBefore($message)
                 .attr('class', 'state');
         }
         $message.text('');
-    };
-
-    var on_menu_clear = function(ctrl) {
-        console.log('visual.on_menu_clear', ctrl);
-        // clear out message bar state
-        $('.state', $node).remove();
+        // nothing pending, resolve immediately
+        pending.resolve();
     };
 
     exports.initialize = function() {
@@ -69,14 +65,27 @@ define([
         $message = $('.message .active', $node);
         $title = $('.title', $node);
         $description = $('.description', $node);
-
-        // subscribe to topics
-        topic('world.event').subscribe(on_world_event);
-        topic('menu.prompt').subscribe(on_menu_prompt);
-        topic('menu.select').subscribe(on_menu_select);
-        topic('menu.activate').subscribe(on_menu_activate);
-        topic('menu.clear').subscribe(on_menu_clear);
     };
+
+    exports.render = function(topic, report) {
+        var pending = $.Deferred();
+        switch(topic) {
+            case 'controller.report':
+            case 'world.report':
+                on_report(report, pending);
+                break;
+            case 'user.select':
+                on_select(report, pending);
+                break;
+            case 'user.activate':
+                on_activate(report, pending);
+                break;
+        }
+        return pending;
+    };
+
+    // no-op, let the latest visual action finish
+    exports.abort = function() {};
 
     return exports;
 });

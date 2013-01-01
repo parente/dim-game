@@ -21,13 +21,12 @@ define([
 
     cls.prototype.next = function() {
         this.current = 0;
-        if(this.args.prompt || this.args.prompts) {
-            // notify of menu prompt
-            topic('menu.prompt').publish(this);
+        if(this.args.prompt) {
+            // prompt user to take action
+            topic('controller.report').publish(this, this.get_prompt());
         }
-
-        // notify of first selection
-        topic('menu.select').publish(this);
+        // respond to first selection
+        topic('user.select').publish(this, this.get_selected());
     };
 
     cls.prototype.reset = function(args) {
@@ -67,16 +66,13 @@ define([
 
     cls.prototype.get_prompt = function() {
         if(this.args.prompt) {
-            return this.args.prompt;
-        } else if(this.args.prompts) {
-            var i = (this.seq.length >= this.args.prompts.length) ? this.args.prompts.length-1 : this.seq.length;
-            return this.args.prompts[i];
+            var i = (this.seq.length >= this.args.prompt.length) ? this.args.prompt.length-1 : this.seq.length;
+            return this.args.prompt[i];
         }
     };
 
     cls.prototype.on_up = function(input, event) {
         console.log('  menu.on_up', this);
-        topic('menu.abort').publish(this, event);
         this.on_abort();
     };
 
@@ -86,7 +82,7 @@ define([
         if(this.current < 0) {
             this.current = this.options.length - 1;
         }
-        topic('menu.select').publish(this, event);
+        topic('user.select').publish(this, this.options[this.current]);
         this.on_select();
     };
 
@@ -96,14 +92,14 @@ define([
         if(this.current > this.options.length - 1 ){
             this.current = 0;
         }
-        topic('menu.select').publish(this, event);
+        topic('user.select').publish(this, this.options[this.current]);
         this.on_select();
     };
 
     cls.prototype.on_tap = function(input, event) {
         console.log('  menu.on_tap', this);
         this.seq.push(this.current);
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, this.options[this.current]);
         this.on_activate();
     };
 

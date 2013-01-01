@@ -10,44 +10,68 @@ define([
         indices,
         events;
 
-    var evalArrTemplates = function(templates, args) {
-        return $.map(templates, function(tmpl, index) {
-            return mustache.render(tmpl, {args : args});
-        });
+    var evalTemplate = function(template, args) {
+        var type = $.type(template);
+        if(type === 'array') {
+            var arr = $.map(template, function(value) {
+                return evalTemplate(value, args);
+            });
+            return (arr.length) ? arr : undefined;
+        } else if(type === 'object') {
+            var out = {}, size = 0;
+            $.each(template, function(key, value) {
+                var s = evalTemplate(value, args);
+                if(s !== undefined) {
+                    out[key] = s;
+                    size++;
+                }
+            });
+            return (size) ? out : undefined;
+        } else if(type === 'string') {
+            var s = mustache.render(template, {args : args});
+            return (s.length) ? s : undefined;
+        } else {
+            return template;
+        }
     };
 
-    var evalTemplates = function(templates, args) {
-        console.log('  events.evalTemplates', templates, args);
-        var out = {};
-        $.each(templates, function(key, value) {
-            var t = $.type(value),
-                res;
-            if(t === 'array') {
-                res = evalArrTemplates(value, args);
-                for(var i=0, l=res.length; i<l; i++) {
-                    if(res[i] !== undefined) break;
-                }
-                if(i < l) {
-                    out[key] = res;
-                } else {
-                    delete out[key];
-                }
-            } else if(t === 'string') {
-                res = mustache.render(value, {args : args});
-                if(res.length === 0) {
-                    // make empty strings undefined for easier mixin
-                    delete out[key];
-                } else {
-                    out[key] = res;
-                }
-            } else if(t === 'object') {
-                out[key] = evalTemplates(value, args);
-            } else {
-                out[key] = value;
-            }
-        });
-        return out;
-    };
+    // var evalTemplates = function(templates, args) {
+    //     console.log('  events.evalTemplates', templates, args);
+    //     var out = {};
+    //     $.each(templates, function(key, value) {
+    //         var t = $.type(value),
+    //             res;
+    //         console.log('    key=', key, 'value=', value);
+    //         if(t === 'array') {
+    //             console.log('array');
+    //             res = evalArrTemplates(value, args);
+    //             for(var i=0, l=res.length; i<l; i++) {
+    //                 if(res[i] !== undefined) break;
+    //             }
+    //             if(i < l) {
+    //                 out[key] = res;
+    //             } else {
+    //                 delete out[key];
+    //             }
+    //         } else if(t === 'string') {
+    //             console.log('string')
+    //             res = mustache.render(value, {args : args});
+    //             if(res.length === 0) {
+    //                 // make empty strings undefined for easier mixin
+    //                 delete out[key];
+    //             } else {
+    //                 out[key] = res;
+    //             }
+    //         } else if(t === 'object') {
+    //             console.log('object');
+    //             out[key] = evalTemplates(value, args);
+    //         } else {
+    //             console.log('other');
+    //             out[key] = value;
+    //         }
+    //     });
+    //     return out;
+    // };
 
     var EventCollection = function() {};
     EventCollection.prototype = [];
@@ -67,24 +91,14 @@ define([
             if(event.exec) {
                 event.exec.forEach(function(exec) {
                     var func = actions[exec.action.replace('.', '_')];
-                    func(event, evalArrTemplates(exec.args, args));
+                    func(event, evalTemplate(exec.args, args));
                 });
             }
 
-            // fire world.event notification
-            // TODO: nice if these were loopable in a subobject
-            var notice = {};
-            var hasNotice = false;
-            if(event.visual) {
-                notice.visual = evalTemplates(event.visual, args);
-                hasNotice = true;
-            }
-            if(event.aural) {
-                notice.aural = evalTemplates(event.aural, args);
-                hasNotice = true;
-            }
-            if(hasNotice) {
-                topic('world.event').publish(world, notice);
+            // fire world.report notification
+            if(event.report) {
+                var report = evalTemplate(event.report, args);
+                topic('world.report').publish(world, report);
             }
         });
     };

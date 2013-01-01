@@ -162,7 +162,7 @@
         ]
     }, 
     {
-        "prompt": [
+        "report": [
             {
                 "narration": "sound://speech/gameOver", 
                 "title": "Game Over"
@@ -467,7 +467,7 @@
                 "narration": "sound://speech/safeOpen1"
             }, 
             {
-                "narration": "sound://speech/phoneRing"
+                "narration": "sound://sound/phoneRing"
             }, 
             {
                 "narration": "sound://speech/safeOpen2"

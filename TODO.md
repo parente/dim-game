@@ -153,29 +153,21 @@ input.tap(input, event)
     Sent by input.js on a keyboard or hand gesture
     Received by a controller to process the input
 
-world.report(world, report)
-    Sent by events.js on a world event report
-    Received by pump.js to queue a report
-
 controller.report(ctrl, report)
-    Sent by a controller
+    Sent by a controller to respond to a user action
     Received by pump.js to queue a report
 
-controller.select(ctrl)
+world.report(world, report)
+    Sent by the world to report on a world event
+    Received by pump.js to queue a report
+
+user.select(ctrl, obj)
     Sent by a controller when a user selects an object but does not activate it
     Received by pump.js to map the object properties to a report and to queue it
 
-controller.activate(ctrl)
+user.activate(ctrl, obj)
     Sent by a controller when a user activates an object
     Received by pump.js to map the object properties to a report and to queue it
-
-controller.prompt(ctrl)
-    Sent by a controller to prompt the user to take action
-    Received by pump.js to queue the prompt report
-
-controller.flush(ctrl)
-    Sent by a controller to notify all views to flush tracked state
-    Received by ??? to clear rendered state
 
 Reverse Engineering
 ===================

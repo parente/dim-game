@@ -5,9 +5,6 @@ define([
     var exports = {};
 
     exports.create = function(world) {
-        // reset all menu state
-        topic('menu.clear').publish(this);
-
         var obj = world.get_ctrl('explore');
         var menu = new Menu(obj);
         menu.on_activate = function on_activate() {

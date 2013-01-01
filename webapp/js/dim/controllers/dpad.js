@@ -27,7 +27,7 @@ define([
 
         if(args.prompt) {
             // notify of prompt
-            topic('menu.prompt').publish(this);
+            topic('controller.prompt').publish(this);
         }
     };
 
@@ -61,35 +61,35 @@ define([
     cls.prototype.on_left = function(input, event) {
         console.log('  dpad.on_left', this);
         this.seq.push('left');
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, event);
         this.on_activate();
     };
 
     cls.prototype.on_right = function(input, event) {
         console.log('  dpad.on_right', this);
         this.seq.push('right');
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, event);
         this.on_activate();
     };
 
     cls.prototype.on_up = function(input, event) {
         console.log('  dpad.on_up', this);
         this.seq.push('up');
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, event);
         this.on_activate();
     };
 
     cls.prototype.on_down = function(input, event) {
         console.log('  dpad.on_down', this);
         this.seq.push('down');
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, event);
         this.on_activate();
     };
 
     cls.prototype.on_tap = function(input, event) {
         console.log('  dpad.on_tap', this);
         this.seq.push('tap');
-        topic('menu.activate').publish(this, event);
+        topic('user.activate').publish(this, event);
         this.on_activate();
     };
 

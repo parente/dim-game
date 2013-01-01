@@ -631,12 +631,6 @@ world = [
     {
         "type": "default",
         "id": "default",
-        "visual": {
-            "backdrop": "image://backdrop/title.jpg"
-        },
-        "aural": {
-            "backdrop": "sound://music/music2"
-        },
         "controller": "dim/controllers/explore/explore",
         "scene": "operatingRoom",
         "channels": {
@@ -790,7 +784,7 @@ world = [
     {
         "type": "ctrl",
         "id": "lose",
-        "prompt": [
+        "report": [
             {
                 "title": "Game Over",
                 "narration": "sound://speech/gameOver"
@@ -1098,7 +1092,7 @@ Strange. The phone suddenly rings. You pick it up.
                 "narration": "sound://sound/chime"
             },
             {"narration": "sound://speech/safeOpen1"},
-            {"narration": "sound://speech/phoneRing"},
+            {"narration": "sound://sound/phoneRing"},
             {"narration": "sound://speech/safeOpen2"},
             {"narration": "sound://speech/safeOpen3"}
         ]

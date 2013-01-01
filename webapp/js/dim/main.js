@@ -5,8 +5,9 @@ define([
     'dim/visual',
     'dim/aural',
     'dim/topic',
+    'dim/pump',
     'dim/devel'
-], function($, world, input, visual, aural, topic) {
+], function($, world, input, visual, aural, topic, pump) {
     var controller;
 
     var activate_controller = function(fn, args) {
@@ -43,23 +44,23 @@ define([
     };
 
     var start = function() {
-        // subscribe to scene changes
-        // topic('world.event').subscribe(on_world_event);
         topic('controller.request').subscribe(on_controller_request);
         topic('controller.complete').subscribe(on_controller_complete);
 
         console.log('main.initializing');
-        // initialize all objects
+        // initialize all components
         var wd = world.initialize(),
             id = input.initialize(wd),
             vd = visual.initialize(wd),
             ad = aural.initialize(wd);
 
         console.log('main.pending_initialized');
-        // when all controllers ready, start by moving the player
-        // into the initial scene
+        // when all controllers ready
         $.when(wd, id, vd, ad).then(function() {
             console.log('main.initialized');
+            // prime the game pump
+            pump.initialize(world, [aural, visual]);
+            // move the player to the initial scene
             var scene = world.get_player_scene();
             var events = world.evaluate('move', scene);
             events.fire();

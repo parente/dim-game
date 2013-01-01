@@ -12,7 +12,6 @@ define([
             correct = true;
 
         // build a menu with an initial prompt
-        topic('menu.clear').publish(menu);
         var menu = new Menu(ctrl);
         menu.on_activate = function() {
             var key = menu.get_selected(),
@@ -34,7 +33,6 @@ define([
                     attempt++;
                     choice = 0;
                     correct = true;
-                    topic('menu.clear').publish(menu);
                     events = world.evaluate('retry', ctrlId);
                     events.fire();
                     menu.reset();

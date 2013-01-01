@@ -23,7 +23,7 @@ define([
 
         if(obj.options.length === 0) {
             // notify nothing to use and return to main controller
-            topic('world.event').publish(world, obj.nothingUseable);
+            topic('controller.report').publish(world, obj.nothingUseable);
             return null;
         }
 
@@ -45,11 +45,11 @@ define([
                     menu.reset(obj);
                 } else if(args.length >= 3) {
                     // no matches and two items selected, note no interaction
-                    topic('world.event').publish(world, obj.noInteraction);
+                    topic('controller.report').publish(world, obj.noInteraction);
                     topic('controller.complete').publish(menu);
                 } else {
                     // no matches and only 1 item available, note no action
-                    topic('world.event').publish(world, obj.noAction);
+                    topic('controller.report').publish(world, obj.noAction);
                     topic('controller.complete').publish(menu);
                 }
             } else {

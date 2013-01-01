@@ -14,7 +14,7 @@ define([
 
         if(obj.options.length === 0) {
             // notify can't move and return to main controller
-            topic('world.event').publish(world, obj.impossible);
+            topic('controller.report').publish(world, obj.impossible);
             return null;
         }
 
