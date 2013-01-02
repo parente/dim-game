@@ -6,11 +6,15 @@ Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
 Game World
 ----------
 
+* update containership when "append" applied to suffix item in event exec
+** alternatively use move.item
+** test with take('deskKey'); move('bedroom')
 * final shot controller (gasolineToEleanor2)
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
     * implement timer controller with dpad support
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
+* review audio names and fix visual names to match
 
 Audio
 -----
@@ -27,8 +31,7 @@ Visual
 ------
 
 * support backdrops
-* support defaults
-* handle menu text overflow
+* breadcrumb design for menu
 * progress bar during initialization at load time
 * favicon
 
@@ -40,11 +43,13 @@ vXXX - iOS Support
 * make doubletap work with gestures without zooming
 * resolution work (retina vs not, phone, mini, pad)
 * home screen icon, splash images
+* decode speed?
 
 vXXX - Gameplay Improvements
 ============================
 
-* simul sounds + speech, sync channels on event bundles
+* replace "choose a menu option" speech with a simple sound indicating explore menu active
+* rumble sound for piano puzzle solve
 * clean up "use": single vs interactive, ordered "scalpel" on "table" not
 * confirm save slot overwrite
 * make adjoining rooms examinable
@@ -54,18 +59,16 @@ vXXX - Gameplay Improvements
 * how to play menu option? or prompt on idle? (changes based on platform)
 * audio control options (e.g., volume)
 
-vXXX - DIM Engine Separation
+vXXX - DIM Boilerplate
 ============================
 
-* clean up attributes used for name, description, narration, sound
-** think about event system for this too so we can map name/description to narration as appropriate to the controller?
-** what about audio channel defaults? in world.json?
-** maybe a "view" map from scene properties to visual fields / aural channels?
 * upgrade path for saved games
 ** related solve precache media after load (json may contain different uris)
-* implement tts for chrome app engine
-* implement tts for voiceover live region
 * implement tts using emscripten espeak
+** maybe this fork? https://github.com/osi/speak.js/
+* implement tts for voiceover live region
+** impl WAI-ARIA idea from dev example
+* implement tts for chrome app engine
 
 vXXX - Engine One-Day-Maybe
 ===========================
@@ -124,7 +127,7 @@ ambience -> aural looping channel
 Property to Report
 ------------------
 
-Done via default.propertyReport.
+Done via default.objectReport.
 
 visual.name -> mapped to visual top area or menu bar label depending on type (title)
 visual.description -> mapped to visual main area (description)
