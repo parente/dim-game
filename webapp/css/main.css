@@ -123,17 +123,20 @@ html, body {
 
     position: fixed;
     z-index: 2;
-    left: 0;
+    left: 25px;
     bottom: 0;
-    right: 0;
+    right: 25px;
     height: 48pt;
-    padding-left: 25px;
-    padding-right: 25px;
     line-height: 48pt;
 }
 
 .dim .visual .state {
     color: #777;
+    white-space: nowrap
+}
+
+.dim .visual .active {
+    white-space: nowrap
 }
 
 .dim .aural {

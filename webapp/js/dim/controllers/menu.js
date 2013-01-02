@@ -20,6 +20,7 @@ define([
     };
 
     cls.prototype.next = function() {
+        this.event = null;
         this.current = 0;
         if(this.args.prompt) {
             // prompt user to take action
@@ -43,6 +44,10 @@ define([
         $.each(this.subs, function(key, value) {
             topic(key).unsubscribe(value);
         });
+    };
+
+    cls.prototype.get_event = function() {
+        return this.event;
     };
 
     cls.prototype.get_options = function() {
@@ -78,6 +83,7 @@ define([
 
     cls.prototype.on_left = function(input, event) {
         console.log('  menu.on_left', this);
+        this.event = event;
         this.current = this.current-1;
         if(this.current < 0) {
             this.current = this.options.length - 1;
@@ -88,6 +94,7 @@ define([
 
     cls.prototype.on_right = function(input, event) {
         console.log('  menu.on_right', this);
+        this.event = event;
         this.current = this.current+1;
         if(this.current > this.options.length - 1 ){
             this.current = 0;
@@ -98,6 +105,7 @@ define([
 
     cls.prototype.on_tap = function(input, event) {
         console.log('  menu.on_tap', this);
+        this.event = event;
         this.seq.push(this.current);
         topic('user.activate').publish(this, this.options[this.current]);
         this.on_activate();

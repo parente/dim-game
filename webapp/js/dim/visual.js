@@ -13,19 +13,21 @@ define([
             return node.fadeOut(rate || 100);
         }).pipe(function() {
             html = html.replace(/\n/g, '<br />');
-            return node.html(html).fadeIn(rate || 100);
+            node.html(html);
+            node.fadeIn(rate || 100);
         });
     };
 
-    var on_report = function(report, pending) {
-        console.log('visual.on_report', report);
+    var on_report = function(report) {
+        console.log('  visual.on_report', report);
         // collect deferreds from all actions
-        var defs = [];
+        var defs = [],
+            pending = $.Deferred();
         if(report.title) {
-            defs.push(fade_replace($title, report.title, 250));
+            defs.push(fade_replace($title, report.title, 100));
         }
         if(report.description) {
-            defs.push(fade_replace($description, report.description, 250));
+            defs.push(fade_replace($description, report.description, 100));
         }
         // TODO: backdrop
 
@@ -33,11 +35,13 @@ define([
         $.when.apply($, defs).then(function() {
             pending.resolve();
         });
+        return pending;
     };
 
-    var on_select = function(report, pending) {
-        console.log('visual.on_select', report);
-        var def;
+    var on_select = function(report) {
+        console.log('  visual.on_select', report);
+        var pending = $.Deferred(),
+            def;
         if(report.title) {
             var states = $('.state', $node).length;
             def = fade_replace($message, ((states) ? '&#x21dd;' : '') + report.title);
@@ -45,18 +49,21 @@ define([
         $.when(def).then(function() {
             pending.resolve();
         });
+        return pending;
     };
 
-    var on_activate = function(report, pending) {
-        console.log('visual.on_menu_activate', report);
-        if(report.title) {
-            var n = $message.clone()
-                .insertBefore($message)
-                .attr('class', 'state');
-        }
+    var on_activate = function(report) {
+        console.log('  visual.on_menu_activate', report);
+        // TODO: maintain breadcrumb history
+        //      * left align active causes history to jitter as length of word changes
+        //      * repeated right scroll active works but is awkward
+        // if(report.title) {
+        //     var n = $message.clone()
+        //         .insertBefore($message)
+        //         .attr('class', 'state');
+        // }
         $message.text('');
-        // nothing pending, resolve immediately
-        pending.resolve();
+        // nothing pending
     };
 
     exports.initialize = function() {
@@ -68,20 +75,15 @@ define([
     };
 
     exports.render = function(topic, report) {
-        var pending = $.Deferred();
         switch(topic) {
             case 'controller.report':
             case 'world.report':
-                on_report(report, pending);
-                break;
+                return on_report(report);
             case 'user.select':
-                on_select(report, pending);
-                break;
+                return on_select(report);
             case 'user.activate':
-                on_activate(report, pending);
-                break;
+                return on_activate(report);
         }
-        return pending;
     };
 
     // no-op, let the latest visual action finish

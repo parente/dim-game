@@ -13,46 +13,57 @@
             "name": "Descent Into Madness"
         }, 
         "aural": {
-            "name": "sound://speech/descentIntoMadness"
+            "name": "sound://speech/descentIntoMadness", 
+            "backdrop": "sound://music/music1"
         }, 
         "type": "scene", 
         "id": "boot"
     }, 
     {
+        "scene": "operatingRoom", 
         "channels": {
+            "sound": {
+                "type": "aural", 
+                "gain": 0.7
+            }, 
+            "description": {
+                "type": "visual"
+            }, 
+            "title": {
+                "type": "visual"
+            }, 
+            "narration": {
+                "type": "aural", 
+                "gain": 0.9
+            }, 
             "ambience": {
                 "swapstop": true, 
                 "crossfade": true, 
+                "type": "aural", 
                 "gain": 0.15, 
                 "loop": true
             }, 
-            "sound": {
-                "gain": 0.8
+            "backdrop": {
+                "type": "visual"
             }
-        }, 
-        "visual": {
-            "backdrop": "image://backdrop/title.jpg"
-        }, 
-        "propertyReport": [
-            {
-                "visual.name": "title", 
-                "visual.description": "description", 
-                "visual.backdrop": "backdrop", 
-                "aural.name": "narration", 
-                "aural.backdrop": "ambience", 
-                "aural.sound": "sound"
-            }, 
-            {
-                "aural.description": "narration"
-            }
-        ], 
-        "aural": {
-            "backdrop": "sound://music/music2"
         }, 
         "controller": "dim/controllers/explore/explore", 
         "type": "default", 
         "id": "default", 
-        "scene": "operatingRoom"
+        "objectReport": {
+            "user.activate": [
+                {
+                    "visual.name": "title"
+                }
+            ], 
+            "user.select": [
+                {
+                    "aural.name": "narration", 
+                    "aural.sound": "sound", 
+                    "visual.name": "title"
+                }
+            ]
+        }
     }, 
     {
         "prompt": [
@@ -97,7 +108,7 @@
     {
         "prompt": [
             {
-                "description": "Save your game", 
+                "description": "Choose a slot to save your game.", 
                 "narration": "sound://speech/saveSlot"
             }
         ], 
@@ -1059,9 +1070,10 @@
     {
         "report": [
             {
+                "ambience": "{{{args.1.aural.backdrop}}}", 
                 "narration": "{{{args.1.aural.name}}}", 
                 "description": "{{args.1.visual.description}}", 
-                "backdrop": "{{{args.1.aural.backdrop}}}", 
+                "backdrop": "{{args.1.visual.backdrop}}", 
                 "title": "{{args.1.visual.name}}"
             }, 
             {
@@ -1167,6 +1179,7 @@
         }, 
         "aural": {
             "name": "sound://speech/operatingRoom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/intro"
         }, 
         "type": "scene", 
@@ -1186,6 +1199,7 @@
         }, 
         "aural": {
             "name": "sound://speech/freezer", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/freezerDesc"
         }, 
         "type": "scene", 
@@ -1206,6 +1220,7 @@
         }, 
         "aural": {
             "name": "sound://speech/basementHallway", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/basementHallwayDesc"
         }, 
         "type": "scene", 
@@ -1225,6 +1240,7 @@
         }, 
         "aural": {
             "name": "sound://speech/pianoRoom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/pianoRoomDesc"
         }, 
         "type": "scene", 
@@ -1242,6 +1258,7 @@
         }, 
         "aural": {
             "name": "sound://speech/elevator", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/elevatorDesc"
         }, 
         "type": "scene", 
@@ -1264,6 +1281,7 @@
         }, 
         "aural": {
             "name": "sound://speech/study", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/studyDesc"
         }, 
         "type": "scene", 
@@ -1285,6 +1303,7 @@
         }, 
         "aural": {
             "name": "sound://speech/upperHallway", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/upperHallwayDesc"
         }, 
         "type": "scene", 
@@ -1305,6 +1324,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bedroom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/bedroomDesc"
         }, 
         "type": "scene", 
@@ -1326,6 +1346,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bathroom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/bathroomDesc"
         }, 
         "type": "scene", 
@@ -1345,6 +1366,7 @@
         }, 
         "aural": {
             "name": "sound://speech/closet", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/closetDesc"
         }, 
         "type": "scene", 
@@ -1363,6 +1385,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bathroomHallway", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/bathroomHallwayDesc"
         }, 
         "type": "scene", 
@@ -1381,6 +1404,7 @@
         }, 
         "aural": {
             "name": "sound://speech/balcony", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/balconyDesc"
         }, 
         "type": "scene", 
@@ -1401,6 +1425,7 @@
         }, 
         "aural": {
             "name": "sound://speech/westHallway", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/westHallwayDesc"
         }, 
         "type": "scene", 
@@ -1422,6 +1447,7 @@
         }, 
         "aural": {
             "name": "sound://speech/lobby", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/lobbyDesc"
         }, 
         "type": "scene", 
@@ -1442,6 +1468,7 @@
         }, 
         "aural": {
             "name": "sound://speech/library", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/libraryDesc"
         }, 
         "type": "scene", 
@@ -1462,6 +1489,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterBedroom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/masterBedroomDesc"
         }, 
         "type": "scene", 
@@ -1481,6 +1509,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterBathroom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/masterBathroomDesc"
         }, 
         "type": "scene", 
@@ -1499,6 +1528,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterElevator", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/masterElevatorDesc"
         }, 
         "type": "scene", 
@@ -1517,6 +1547,7 @@
         }, 
         "aural": {
             "name": "sound://speech/eleanorsRoom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/eleanorsRoomDesc"
         }, 
         "type": "scene", 
@@ -1536,6 +1567,7 @@
         }, 
         "aural": {
             "name": "sound://speech/sittingRoom", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/sittingRoomDesc"
         }, 
         "type": "scene", 
@@ -1555,6 +1587,7 @@
         }, 
         "aural": {
             "name": "sound://speech/basement", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/basementDesc"
         }, 
         "type": "scene", 
@@ -1574,6 +1607,7 @@
         }, 
         "aural": {
             "name": "sound://speech/kitchen", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/kitchenDesc"
         }, 
         "type": "scene", 
@@ -1590,6 +1624,7 @@
         }, 
         "aural": {
             "name": "sound://speech/lab", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/labDesc"
         }, 
         "type": "scene", 
@@ -1610,6 +1645,7 @@
         }, 
         "aural": {
             "name": "sound://speech/garage", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/garageDesc"
         }, 
         "type": "scene", 
@@ -1627,6 +1663,7 @@
         }, 
         "aural": {
             "name": "sound://speech/trappedHallway", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/trappedHallwayDesc"
         }, 
         "type": "scene", 
@@ -1646,6 +1683,7 @@
         }, 
         "aural": {
             "name": "sound://speech/outside", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/outsideDesc"
         }, 
         "type": "scene", 
@@ -1665,6 +1703,7 @@
         }, 
         "aural": {
             "name": "sound://speech/barn", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/barnDesc"
         }, 
         "type": "scene", 
@@ -1683,6 +1722,7 @@
         }, 
         "aural": {
             "name": "sound://speech/barnLoft", 
+            "backdrop": "sound://music/music2", 
             "description": "sound://speech/barnLoftDesc"
         }, 
         "type": "scene", 

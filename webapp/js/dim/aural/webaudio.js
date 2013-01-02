@@ -42,6 +42,7 @@ define(function() {
                     // fail outright on error
                     loaded.reject();
                 };
+                // TODO: maybe do this closer to time of use if this is a bottleneck?
                 // try to decode what we've loaded
                 context.decodeAudioData(request.response, on_decode, on_error);
             };
@@ -94,7 +95,7 @@ define(function() {
     };
 
     exports.stop = function(def) {
-        // if no deferred, we'ere not playing
+        // if no deferred, we're not playing
         if(!def) return;
         // stop any timeout
         clearTimeout(def.timer);
@@ -106,8 +107,8 @@ define(function() {
             // and the optional gain node
             def.gainNode.disconnect();
         }
-        // indicate the audio was stopped by rejecting the deferred
-        def.reject();
+        // resolve the deferred
+        def.resolve();
     };
 
     exports.play = function(uri, props) {
@@ -148,6 +149,9 @@ define(function() {
                 def.resolve(this);
             }, buffer.duration * 1000);
             def.timer = timer;
+        } else {
+            // resolve immediately for looping sounds
+            def.resolve();
         }
         return def;
     };

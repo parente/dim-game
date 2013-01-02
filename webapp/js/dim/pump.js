@@ -5,19 +5,21 @@ define([
 ], function($, topic) {
     var exports = {},
         views,
-        propertyReport,
+        objectReport,
         queue = [],
         pending = null;
 
-    var obj_to_reports = function(obj) {
-        var reports = [];
-        for(var i=0,l=propertyReport.length; i<l; i++) {
-            var report = property_to_channel(propertyReport[i], obj);
-            if(report) {
-                reports.push(report);
+    var obj_to_reports = function(topic, obj) {
+        var reports = [],
+            map = objectReport[topic];
+        if(map) {
+            for(var i=0,l=map.length; i<l; i++) {
+                var report = property_to_channel(map[i], obj);
+                if(report) {
+                    reports.push(report);
+                }
             }
         }
-        console.log('REPORTS', reports);
         return reports;
     };
 
@@ -26,7 +28,6 @@ define([
             size = 0;
         $.each(map, function(property, channel) {
             var value = $.getObject(property, obj);
-            // console.log('property', property, 'channel', channel, 'value', value);
             if(value) {
                 report[channel] = value;
                 size++;
@@ -52,7 +53,7 @@ define([
         // flush the queue
         queue = [];
         // tell all views to abort
-        $.each(views, function(view) {
+        $.each(views, function(i, view) {
             view.abort();
         });
     };
@@ -86,18 +87,23 @@ define([
 
     var on_user_select = function(ctrl, obj) {
         console.log('pump.on_user_select', ctrl, obj);
-        var report = obj_to_reports(obj);
+        if(ctrl.get_event()) {
+            // clear all pending output if a user event initiated the select
+            clear_pending();
+        }
+        var report = obj_to_reports('user.select', obj);
         queue_report('user.select', report);
     };
 
     var on_user_activate = function(ctrl, obj) {
         console.log('pump.on_user_activate', ctrl, obj);
-        var report = obj_to_reports(obj);
+        clear_pending();
+        var report = obj_to_reports('user.activate', obj);
         queue_report('user.activate', report);
     };
 
     exports.initialize = function(world, v) {
-        propertyReport = world.get_default('propertyReport');
+        objectReport = world.get_default('objectReport');
         views = v;
 
         // subscribe to topics

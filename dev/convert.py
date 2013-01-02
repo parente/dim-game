@@ -624,7 +624,8 @@ world = [
             "name": "Descent Into Madness"
         },
         "aural": {
-            "name": "sound://speech/descentIntoMadness"
+            "name": "sound://speech/descentIntoMadness",
+            "backdrop": "sound://music/music1"
         }
     },
     # defaults
@@ -635,6 +636,7 @@ world = [
         "scene": "operatingRoom",
         "channels": {
             "ambience": {
+                "type": "aural",
                 # loop a sound forever
                 "loop": True,
                 # stop() does nothing, but any new queued sound immediately swaps
@@ -647,25 +649,40 @@ world = [
                 "crossfade": True
             },
             "sound": {
+                "type": "aural",
                 # make sound slightly quieter than speech
-                "gain": 0.8
+                "gain": 0.7
+            },
+            "narration": {
+                "type": "aural",
+                # leave some room to turn it up
+                "gain": 0.9
+            },
+            "backdrop": {
+                "type": "visual"
+            },
+            "description": {
+                "type": "visual"
+            },
+            "title": {
+                "type": "visual"
             }
-            # TODO: other aural and visual report channel props go here
         },
         # maps object properties to report channels and chunks
-        "propertyReport": [
-            {
-                "visual.name": "title",
-                "visual.description": "description",
-                "visual.backdrop": "backdrop",
-                "aural.name": "narration",
-                "aural.sound": "sound",
-                "aural.backdrop": "ambience"
-            },
-            {
-                "aural.description": "narration"
-            }
-        ]
+        "objectReport": {
+            "user.select": [
+                {
+                    "visual.name": "title",
+                    "aural.name": "narration",
+                    "aural.sound": "sound"
+                }
+            ],
+            "user.activate": [
+                {
+                    "visual.name": "title"
+                }
+            ]
+        }
     },
     # controller assets for load / new game
     {
@@ -716,7 +733,7 @@ world = [
         "id": "save",
         "prompt": [
             {
-                "description": "Save your game",
+                "description": "Choose a slot to save your game.",
                 "narration": "sound://speech/saveSlot"
             }
         ],
@@ -1582,7 +1599,7 @@ Strange. The phone suddenly rings. You pick it up.
                 "description": "{{args.1.visual.description}}",
                 "backdrop": "{{args.1.visual.backdrop}}",
                 "narration": "{{{args.1.aural.name}}}",
-                "backdrop": "{{{args.1.aural.backdrop}}}"
+                "ambience": "{{{args.1.aural.backdrop}}}"
             },
             {
                 "narration": "{{{args.1.aural.description}}}"
@@ -1673,7 +1690,8 @@ class Room:
             },
             'aural': {
                 'name': 'sound://speech/%s' % (name.split('.')[0]),
-                'description': 'sound://speech/%s' % (description.split('.')[0])
+                'description': 'sound://speech/%s' % (description.split('.')[0]),
+                "backdrop": "sound://music/music2"
             }
         }
         self.__dict__.update(d)
