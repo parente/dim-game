@@ -1112,10 +1112,10 @@
         "type": "event", 
         "exec": [
             {
-                "action": "move.item", 
+                "action": "append", 
                 "args": [
-                    "{{args.1.type}}.{{args.1.id}}", 
-                    "player"
+                    "player.items", 
+                    "{{args.1.id}}"
                 ]
             }
         ]
@@ -3203,9 +3203,10 @@
                 ]
             }, 
             {
-                "action": "move.player", 
+                "action": "set", 
                 "args": [
-                    "scene.upperHallway"
+                    "player.scene", 
+                    "upperHallway"
                 ]
             }
         ]

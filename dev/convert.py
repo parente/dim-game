@@ -347,8 +347,8 @@ use_events = {
                 'args': ['player.items', 'cellKey']
             },
             {
-                'action': 'move.player',
-                'args': ['scene.upperHallway']
+                'action': 'set',
+                'args': ['player.scene', 'upperHallway']
             }
         ],
         'report': [
@@ -1613,8 +1613,8 @@ Strange. The phone suddenly rings. You pick it up.
         "on": ["take", "*"],
         "exec": [
             {
-                "action": "move.item",
-                "args": ["{{args.1.type}}.{{args.1.id}}", "player"]
+                "action": "append",
+                "args": ["player.items", "{{args.1.id}}"]
             }
         ],
         "report": [

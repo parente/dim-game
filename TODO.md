@@ -6,9 +6,6 @@ Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* update containership when "append" applied to suffix item in event exec
-** alternatively use move.item
-** test with take('deskKey'); move('bedroom')
 * final shot controller (gasolineToEleanor2)
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
     * implement timer controller with dpad support
@@ -22,6 +19,7 @@ Audio
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
+* low pass filter sound files to remove recording whine
 * new background music tracks
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037

@@ -35,44 +35,6 @@ define([
         }
     };
 
-    // var evalTemplates = function(templates, args) {
-    //     console.log('  events.evalTemplates', templates, args);
-    //     var out = {};
-    //     $.each(templates, function(key, value) {
-    //         var t = $.type(value),
-    //             res;
-    //         console.log('    key=', key, 'value=', value);
-    //         if(t === 'array') {
-    //             console.log('array');
-    //             res = evalArrTemplates(value, args);
-    //             for(var i=0, l=res.length; i<l; i++) {
-    //                 if(res[i] !== undefined) break;
-    //             }
-    //             if(i < l) {
-    //                 out[key] = res;
-    //             } else {
-    //                 delete out[key];
-    //             }
-    //         } else if(t === 'string') {
-    //             console.log('string')
-    //             res = mustache.render(value, {args : args});
-    //             if(res.length === 0) {
-    //                 // make empty strings undefined for easier mixin
-    //                 delete out[key];
-    //             } else {
-    //                 out[key] = res;
-    //             }
-    //         } else if(t === 'object') {
-    //             console.log('object');
-    //             out[key] = evalTemplates(value, args);
-    //         } else {
-    //             console.log('other');
-    //             out[key] = value;
-    //         }
-    //     });
-    //     return out;
-    // };
-
     var EventCollection = function() {};
     EventCollection.prototype = [];
     EventCollection.prototype.fire = function() {
@@ -132,33 +94,6 @@ define([
     };
 
     /**
-     * args[0] property name of an item in the indices
-     * args[1] property name of the destination container in the indices
-     */
-    actions.move_item = function(event, args) {
-        console.log('  events.actions.move.item', event, args);
-        var item = $.getObject(args[0], indices);
-        var src = item.container;
-        var dest = $.getObject(args[1], indices);
-
-        // remove from src items
-        var i = src.items.indexOf(item.id);
-        src.items.splice(i, 1);
-        // add to dest items
-        dest.items.push(item.id);
-        item.container = dest;
-    };
-
-    /**
-     * args[0] property name of a scene in the indices
-     */
-    actions.move_player = function(event, args) {
-        console.log('  events.actions.move.player', event, args);
-        indices.player.scene = args[0];
-        // TODO: option to trigger move report?
-    };
-
-    /**
      * args[0] topic name
      * args[1..N] topic values
      */
@@ -174,6 +109,29 @@ define([
      */
     actions.append = function(event, args) {
         console.log('  events.actions.append', event, args);
+        // check if we're moving an item to update container info
+        var suffix = '.items';
+        var item = $.getObject('item.'+args[1], indices);
+        var pos = args[0].indexOf(suffix, args[0].length - suffix.length);
+        if(item && pos !== -1) {
+            // get the old container
+            var oldContainer = item.container;
+            // get the new container
+            var newContainer = $.getObject(args[0].substr(0, pos), indices);
+            // remove from existing container
+            if(oldContainer) {
+                var i = oldContainer.items.indexOf(item.id);
+                if(i >= 0) {
+                    oldContainer.items.splice(i, 1);
+                } else {
+                    console.warn('container out of sync for item:', item);
+                }
+            }
+            // assign new container
+            item.container = newContainer;
+        }
+
+        // append the string
         var arr = $.getObject(args[0], indices);
         arr.push(args[1]);
     };

@@ -18,6 +18,8 @@ define([
         console.log(world.get_player());
     };
 
+    window.world = world;
+
     // Avoid `console` errors in browsers that lack a console.
     // PJP: moved from h5bp plugins.js
     if (!(window.console && console.log)) {
