@@ -183,6 +183,15 @@
         "id": "lose"
     }, 
     {
+        "report": [
+            {
+                "title": "You Win"
+            }
+        ], 
+        "type": "ctrl", 
+        "id": "win"
+    }, 
+    {
         "options": [
             {
                 "visual": {
@@ -331,7 +340,8 @@
                 "action": "publish", 
                 "args": [
                     "controller.request", 
-                    "dim/controllers/meta/lose"
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]
@@ -471,7 +481,7 @@
     {
         "report": [
             {
-                "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or should I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You WILL be me test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\"", 
+                "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\"", 
                 "narration": "sound://sound/chime"
             }, 
             {
@@ -796,7 +806,8 @@
                 "action": "publish", 
                 "args": [
                     "controller.request", 
-                    "dim/controllers/meta/lose"
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]
@@ -920,7 +931,78 @@
                 "action": "publish", 
                 "args": [
                     "controller.request", 
-                    "dim/controllers/meta/lose"
+                    "dim/controllers/meta/done", 
+                    "lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "correct": [
+            "tap"
+        ], 
+        "actionTimeout": 2.0, 
+        "failOnMismatch": false, 
+        "id": "finalShot", 
+        "type": "ctrl", 
+        "options": [
+            {
+                "visual": {
+                    "name": "Fire"
+                }, 
+                "aural": {
+                    "name": "sound://speech/doc150_barn_hit"
+                }, 
+                "id": "tap"
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.", 
+                "narration": "sound://speech/narrator_before_final_scene"
+            }, 
+            {
+                "description": "\"Minions! Listen to me! Get them!\"\n\nBut the monsters, drawn to the blood, move towards the doctor.\n\n\"What?! No! Not me! Get them! Get them! No! No! Ahh! Ahh!\"\n\n\"Come on! Now's our chance!\"\n\nThe three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.\n\n\"OK! Now, run!\"\n\nAs the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.\n\n\"We did it! We did it! Let's go before this whole place goes up.\"\n\nYou run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.\n\n\"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote.\"\n\nAs you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.\n\nThe rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.\n\nDoctor Johan fittingly met his death at the hands, and teeth, of his minions. As for his monstrous creations, they all died in the fire.\n\nOr did they?\n", 
+                "narration": "sound://speech/final_scene"
+            }
+        ], 
+        "on": [
+            "solve", 
+            "finalShot"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/done", 
+                    "win"
+                ]
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.", 
+                "narration": "sound://speech/dieInBarn"
+            }
+        ], 
+        "on": [
+            "fail", 
+            "finalShot"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]
@@ -1117,6 +1199,13 @@
                     "player.items", 
                     "{{args.1.id}}"
                 ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "item.{{args.1.id}}.properties", 
+                    "useable"
+                ]
             }
         ]
     }, 
@@ -1127,13 +1216,6 @@
         ], 
         "type": "event", 
         "exec": [
-            {
-                "action": "append", 
-                "args": [
-                    "item.scalpel.properties", 
-                    "useable"
-                ]
-            }, 
             {
                 "action": "append", 
                 "args": [
@@ -1442,7 +1524,7 @@
             "kitchen"
         ], 
         "visual": {
-            "name": "Lobby", 
+            "name": "Main Lobby", 
             "description": "It appears to be the main lobby. Rooms are found on the east and west, stairs lead up to the balcony, and double doors lead outside."
         }, 
         "aural": {
@@ -1524,7 +1606,7 @@
         ], 
         "visual": {
             "name": "Master Elevator", 
-            "description": null
+            "description": "The elevator has three possible stops."
         }, 
         "aural": {
             "name": "sound://speech/masterElevator", 
@@ -1861,7 +1943,7 @@
     }, 
     {
         "visual": {
-            "name": "Desk Key", 
+            "name": "Small Key", 
             "description": "It's a small key. Wonder what it unlocks?"
         }, 
         "aural": {
@@ -2076,7 +2158,7 @@
     }, 
     {
         "visual": {
-            "name": "Star Hole", 
+            "name": "Star Shaped Hole", 
             "description": "It's a hole in the shape of a star."
         }, 
         "aural": {
@@ -2193,7 +2275,7 @@
     }, 
     {
         "visual": {
-            "name": "Master Bedroom Desk Key", 
+            "name": "Desk Key", 
             "description": "It's a key marked \"desk.\""
         }, 
         "aural": {
@@ -2208,7 +2290,7 @@
     }, 
     {
         "visual": {
-            "name": "Master Bedroom Bed", 
+            "name": "Bed", 
             "description": "There are stains on the bed that look like dried blood."
         }, 
         "aural": {
@@ -2221,7 +2303,7 @@
     }, 
     {
         "visual": {
-            "name": "Master Bedroom Desk", 
+            "name": "Desk", 
             "description": "The desk is locked."
         }, 
         "aural": {
@@ -2250,7 +2332,7 @@
     {
         "visual": {
             "name": "Master Bedroom Recording", 
-            "description": null
+            "description": "September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.\nI still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.\n\nEleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good."
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2262,7 +2344,7 @@
     }, 
     {
         "visual": {
-            "name": "Master Bathroom Star Hole", 
+            "name": "Star Shaped Hole", 
             "description": "It's a hole in the shape of a star."
         }, 
         "aural": {
@@ -2498,7 +2580,7 @@
     }, 
     {
         "visual": {
-            "name": "Eleanor2", 
+            "name": "Eleanor", 
             "description": null
         }, 
         "aural": {
@@ -2521,7 +2603,7 @@
         ], 
         "report": [
             {
-                "description": "You open the desk and find another key, and a recording.", 
+                "description": "You open the desk and find another recording.", 
                 "narration": "sound://speech/masterBedroomDeskKeyToMasterBedroomDesk"
             }
         ], 
@@ -2709,6 +2791,13 @@
                     "scene.bathroom.items", 
                     "box"
                 ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "broom"
+                ]
             }
         ]
     }, 
@@ -2767,7 +2856,27 @@
             "gasoline", 
             "eleanor2"
         ], 
-        "type": "event"
+        "report": [
+            {
+                "description": "\"Great! OK, let's ...\"\n\n\"Ahhhh! You again? This time, you're dead!\"\n", 
+                "narration": "sound://speech/doc140_barn"
+            }, 
+            {
+                "description": "\"Quick! Shoot the doctor!\"", 
+                "narration": "sound://speech/friend080_shoot_the_doctor"
+            }
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/timedReact", 
+                    "finalShot"
+                ]
+            }
+        ]
     }, 
     {
         "comment": "passCardToMainEntrance", 
@@ -2788,7 +2897,8 @@
                 "action": "publish", 
                 "args": [
                     "controller.request", 
-                    "dim/controllers/meta/lose"
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]
@@ -2955,7 +3065,10 @@
         ], 
         "report": [
             {
-                "description": "You knock on the hallway door. The person inside jumps in surprise.\n\n\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, say three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
+                "description": "You knock on the hallway door. The person inside jumps in surprise.\n\n\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
+                "narration": "sound://speech/playerToBathroomHallwayDoor"
+            }, 
+            {
                 "narration": "sound://speech/friend010_cell"
             }
         ], 
@@ -3072,14 +3185,23 @@
         ], 
         "report": [
             {
-                "description": "\"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?\"", 
+                "description": "You cut the bindings on Eleanor's chair and set her free.\n\n\"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?\"", 
                 "narration": "sound://speech/knifeToEleanor2"
             }, 
             {
                 "narration": "sound://speech/eleanor050_barn"
             }
         ], 
-        "type": "event"
+        "type": "event", 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "item.gasoline.properties", 
+                    "useable"
+                ]
+            }
+        ]
     }, 
     {
         "comment": "trappedHallwayDoorKeyToTrappedHallwayDoor", 
@@ -3099,7 +3221,7 @@
         ], 
         "report": [
             {
-                "description": "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hear you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...", 
+                "description": "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hears you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...", 
                 "narration": "sound://speech/hammerToMirror"
             }
         ], 
@@ -3109,7 +3231,8 @@
                 "action": "publish", 
                 "args": [
                     "controller.request", 
-                    "dim/controllers/meta/lose"
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]

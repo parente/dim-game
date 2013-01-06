@@ -57,21 +57,6 @@ define(['jquery'], function($) {
         }
     };
 
-    // cls.prototype.queue = function(msgs) {
-    //     if(this.props.swapstop) {
-    //         this.replace(msgs);
-    //     } else {
-    //         if($.isArray(msgs)) {
-    //             this.q = this.q.concat(msgs);
-    //         } else {
-    //             this.q.push(msgs);
-    //         }
-    //         if(!this.pending) {
-    //             this.on_pump();
-    //         }
-    //     }
-    // };
-
     cls.prototype.set_properties = function(props) {
         $.extend(this.props, props);
     };
@@ -79,36 +64,6 @@ define(['jquery'], function($) {
     cls.prototype.get_property = function(name) {
         return this.props[name];
     };
-
-    // cls.prototype.on_pump = function() {
-    //     var msg = this.q.shift();
-    //     console.log('  channel.on_pump', msg);
-    //     // check if the sound system can play it as a waveform first
-    //     if(this.sound.can_play(msg)) {
-    //         this.pending = this.sound.play(msg, this.props);
-    //     } else if(this.speech.can_say(msg)) {
-    //         // check if we have text-to-speech to speak the message
-    //         this.pending = this.speech.say(msg, this.props);
-    //     } else {
-    //         // if we can't handle either, continue pumping
-    //         if(this.q.length) {
-    //             this.on_pump();
-    //         }
-    //         return;
-    //     }
-    //     // listen for resolution or rejection of the deferred result
-    //     var cb = $.proxy(this.on_complete, this);
-    //     this.pending.then(cb, cb);
-    // };
-
-    // cls.prototype.on_complete = function() {
-    //     // continue pumping the queue or just return if nothing to pump
-    //     if(this.q.length) {
-    //         this.on_pump();
-    //     } else {
-    //         this.pending = null;
-    //     }
-    // };
 
     return cls;
 });

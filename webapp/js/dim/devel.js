@@ -12,6 +12,8 @@ define([
     take = function(id) {
         var player = world.get_player();
         player.items.push(id);
+        var item = world.get_item(id);
+        item.properties.push('useable');
     };
 
     me = function() {

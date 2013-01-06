@@ -68,14 +68,14 @@ visual_descriptions = {
 Hold on a little longer Eleanor. I'm going to save you!''',
     'masterBathroom': "The master bathroom is rather spacious. There's a mirror and a star shaped hole on one of the walls.",
     'masterBedroomDesk': "The desk is locked.",
-    'masterBedroomRecordingDesc': '''September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.
+    'masterBedroomRecording': '''September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.
 I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.
 
 Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good.''',
     'masterBedroomBed': "There are stains on the bed that look like dried blood.",
     'masterBathroomMirror': "There's something suspicious about this mirror. You feel a draft when you step close to it.",
     'masterBathroomStarHole': "It's a hole in the shape of a star.",
-    'masterElevatorDesc': "The elevator has three possible stops.",
+    'masterElevator': "The elevator has three possible stops.",
     'sittingRoom': "It's a sitting room. The chairs are knocked over showing signs of a struggle. The door leading to the next room has a heavy lock on it.",
     'basement': "You're in the basement. The smell from the elevator is now even stronger.",
     'sittingRoomDoor': "The door is locked, but there's a card reader next to it.",
@@ -215,6 +215,10 @@ use_events = {
             {
                 'action': 'append',
                 'args': ['scene.bathroom.items', 'box']
+            },
+            {
+                'action': 'remove',
+                'args': ['player.items', 'broom']
             }
         ],
         'report': [
@@ -295,12 +299,12 @@ use_events = {
         'exec': [
             {
                 'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/meta/lose']
+                'args': ['controller.request', 'dim/controllers/meta/done', 'lose']
             }
         ],
         'report': [
             {
-                'description': "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hear you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...",
+                'description': "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hears you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...",
                 'narration': 'sound://speech/hammerToMirror'
             }
         ]
@@ -321,7 +325,10 @@ use_events = {
 
 "You have to help me. Find the key. Please!"
 
-"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, say three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
+"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
+                'narration': 'sound://speech/playerToBathroomHallwayDoor'
+            },
+            {
                 'narration': 'sound://speech/friend010_cell'
             }
         ]
@@ -413,7 +420,7 @@ use_events = {
         ],
         'report': [
             {
-                'description': "You open the desk and find another key, and a recording.",
+                'description': "You open the desk and find another recording.",
                 'narration': 'sound://speech/masterBedroomDeskKeyToMasterBedroomDesk'
             }
         ]
@@ -446,7 +453,7 @@ use_events = {
         'exec': [
             {
                 'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/meta/lose']
+                'args': ['controller.request', 'dim/controllers/meta/done', 'lose']
             }
         ],
         'report': [
@@ -589,13 +596,43 @@ use_events = {
     },
 
     'knifeToEleanor2': {
+        'exec': [
+            {
+                'action': 'append',
+                'args': ['item.gasoline.properties', 'useable']
+            }
+        ],
         'report': [
             {
-                'description': '''"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?"''',
+                'description': '''You cut the bindings on Eleanor's chair and set her free.
+
+"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?"''',
                 'narration': 'sound://speech/knifeToEleanor2'
             },
             {
                 'narration': 'sound://speech/eleanor050_barn'
+            }
+        ]
+    },
+
+    'gasolineToEleanor2': {
+        'report' : [
+            {
+                'description': '''"Great! OK, let's ..."
+
+"Ahhhh! You again? This time, you're dead!"
+''',
+                'narration': 'sound://speech/doc140_barn'
+            },
+            {
+                'description': '"Quick! Shoot the doctor!"',
+                'narration': 'sound://speech/friend080_shoot_the_doctor'
+            }
+        ],
+        'exec': [
+            {
+                'action': 'publish',
+                'args': ['controller.request', 'dim/controllers/puzzles/timedReact', 'finalShot']
             }
         ]
     }
@@ -809,6 +846,17 @@ world = [
         ]
     },
 
+    # dead end controller for winning a game
+    {
+        "type": "ctrl",
+        "id": "win",
+        "report": [
+            {
+                "title": "You Win"
+            }
+        ]
+    },
+
     # playerToPiano
     {
         "type": "ctrl",
@@ -932,7 +980,7 @@ world = [
         "exec": [
             {
                 "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/lose"]
+                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1099,11 +1147,11 @@ world = [
 
 Strange. The phone suddenly rings. You pick it up.
 
-"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or should I say, unfortunate."
+"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."
 
 "You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours."
 
-"I have developed a final serum. You WILL be me test subject or you will die. It's that simple."
+"I have developed a final serum. You will be my test subject or you will die. It's that simple."
 
 "I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!""''',
                 "narration": "sound://sound/chime"
@@ -1329,7 +1377,7 @@ Strange. The phone suddenly rings. You pick it up.
         "exec": [
             {
                 "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/lose"]
+                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1418,7 +1466,7 @@ Strange. The phone suddenly rings. You pick it up.
         "exec": [
             {
                 "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/lose"]
+                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1428,6 +1476,89 @@ Strange. The phone suddenly rings. You pick it up.
             },
             {
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
+            }
+        ]
+    },
+
+    # finalShot data used by timedReact controller
+    {
+        "type": "ctrl",
+        "id": "finalShot",
+        "correct": ['tap'],
+        "failOnMismatch": False,
+        "actionTimeout": 2.0,
+        "options": [
+            {
+                "id": "tap",
+                "visual": {
+                    "name": "Fire"
+                },
+                "aural": {
+                    "name": "sound://speech/doc150_barn_hit"
+                }
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "on": ["solve", "finalShot"],
+        "exec": [
+            {
+                "action": "publish",
+                "args": ["controller.request", "dim/controllers/meta/done", "win"]
+            }
+        ],
+        "report": [
+            {
+                "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.",
+                "narration": "sound://speech/narrator_before_final_scene"
+            },
+            {
+                "description": '''"Minions! Listen to me! Get them!"
+
+But the monsters, drawn to the blood, move towards the doctor.
+
+"What?! No! Not me! Get them! Get them! No! No! Ahh! Ahh!"
+
+"Come on! Now's our chance!"
+
+The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.
+
+"OK! Now, run!"
+
+As the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.
+
+"We did it! We did it! Let's go before this whole place goes up."
+
+You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.
+
+"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote."
+
+As you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.
+
+The rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.
+
+Doctor Johan fittingly met his death at the hands, and teeth, of his minions. As for his monstrous creations, they all died in the fire.
+
+Or did they?
+''',
+                "narration": "sound://speech/final_scene"
+            }
+        ]
+    },
+    {
+        "type": "event",
+        "on": ["fail", "finalShot"],
+        "exec": [
+            {
+                "action": "publish",
+                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
+            }
+        ],
+        "report": [
+            {
+                "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.",
+                "narration": "sound://speech/dieInBarn"
             }
         ]
     },
@@ -1615,6 +1746,10 @@ Strange. The phone suddenly rings. You pick it up.
             {
                 "action": "append",
                 "args": ["player.items", "{{args.1.id}}"]
+            },
+            {
+                "action": "append",
+                "args": ["item.{{args.1.id}}.properties", "useable"]
             }
         ],
         "report": [
@@ -1631,10 +1766,6 @@ Strange. The phone suddenly rings. You pick it up.
         "type": "event",
         "on": ["take", "scalpel"],
         "exec": [
-            {
-                "action": "append",
-                "args": ["item.scalpel.properties", "useable"]
-            },
             {
                 "action": "append",
                 "args": ["item.operatingTable.properties", "useable"]
@@ -1662,9 +1793,21 @@ Strange. The phone suddenly rings. You pick it up.
     }
 ]
 
+specific_names = {
+    'deskKey': 'Small Key',
+    'starHole': 'Star Shaped Hole',
+    'eleanor2': 'Eleanor',
+    'lobby': 'Main Lobby',
+    'masterBedroomDeskKey': 'Desk Key',
+    'masterBedroomDesk': 'Desk',
+    'masterBedroomBed': 'Bed',
+    'masterBathroomStarHole': 'Star Shaped Hole'
+}
 
 def id_to_name(text):
     arr = []
+    if text in specific_names:
+        return specific_names[text]
     for i, c in enumerate(text):
         if i == 0:
             arr.append(c.upper())

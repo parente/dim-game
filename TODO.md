@@ -7,15 +7,29 @@ Game World
 ----------
 
 * final shot controller (gasolineToEleanor2)
+** start timer on audio start, not while queued
+** test take('knife'); take('gasoline'); move('barnLoft')
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
-    * implement timer controller with dpad support
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
 * review audio names and fix visual names to match
+* use of bathroom hallway door missing initial speech
+* report scene change when player moves from bathroom hallway to upper hallway
+** title is still showing bathroom
+* masterBathroomKey does not exist, remove it from the master bedroom desk open audio
+* cleanup use and when objects become useable
+** single vs interactive
+** ordered "scalpel"
+** separate useable from targets?
+** don't allow gasoline to eleanor until after knife to eleanor
 
 Audio
 -----
 
+* fix clunk at beginning of balcony speech
+* enable notification of report start/finish outside of views
+** required to start input timers
+** ID based? deferred? how to return a value to track in pub/sub setup?
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
@@ -48,7 +62,6 @@ vXXX - Gameplay Improvements
 
 * replace "choose a menu option" speech with a simple sound indicating explore menu active
 * rumble sound for piano puzzle solve
-* clean up "use": single vs interactive, ordered "scalpel" on "table" not
 * confirm save slot overwrite
 * make adjoining rooms examinable
 * randomize puzzles
@@ -60,6 +73,7 @@ vXXX - Gameplay Improvements
 vXXX - DIM Boilerplate
 ============================
 
+* simple commands in console for walkthrough testing
 * upgrade path for saved games
 ** related solve precache media after load (json may contain different uris)
 * implement tts using emscripten espeak
@@ -71,7 +85,6 @@ vXXX - DIM Boilerplate
 vXXX - Engine One-Day-Maybe
 ===========================
 
-* enable synchronization between visual and sound events (see Spaceship! use of deferreds)
 * spatial positioning support for audio
 
 Maybe?

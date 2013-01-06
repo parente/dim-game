@@ -107,10 +107,15 @@ define([
         return events.evaluate(args);
     };
 
-    exports.get_player_items = function() {
-        return indices.player.items.map(function(id) {
-            return indices.item[id];
+    exports.get_player_items = function(predicate) {
+        var items = [];
+        indices.player.items.forEach(function(id) {
+            var item = indices.item[id];
+            if(!$.isFunction(predicate) || predicate(item)) {
+                items.push(item);
+            }
         });
+        return items;
     };
 
     exports.get_player_scene = function() {
