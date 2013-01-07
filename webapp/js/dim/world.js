@@ -6,9 +6,11 @@ define([
     'text!../../data/world.json'
 ], function($, require, events, topic, worldJson) {
     var exports = {},
+        uid = 0,
         world,
         indices,
         uris;
+
 
     exports.initialize = function(stateJson) {
         var json;
@@ -27,15 +29,13 @@ define([
             'player': null,
             'ctrl': {},
             'scene': {},
-            'item': {}
+            'item': {},
+            'event': {}
         };
-
-        // provide the events with a private interface
-        // to the world indices
-        events.initialize(this, indices);
 
         // pull out items by types
         $.each(world, function(i, obj) {
+            var id;
             switch(obj.type) {
                 case 'default':
                     indices['default'] = obj;
@@ -53,10 +53,18 @@ define([
                     indices.item[obj.id] = obj;
                     break;
                 case 'event':
-                    events.push(obj);
+                    if(obj.id === undefined) {
+                        id = uid++;
+                    } else {
+                        id = obj.id;
+                    }
+                    indices.event[id] = obj;
                     break;
             }
         });
+
+        // provide the events with a private interface to the world indices
+        events.initialize(this, indices);
 
         // yank all media uris for later use
         // TODO if we re-init, we have a problem with anything that has read these
@@ -156,6 +164,10 @@ define([
 
     exports.get_item = function(id) {
         return indices.item[id];
+    };
+
+    exports.get_event = function(id) {
+        return indices.event[id];
     };
 
     exports.get_player = function() {

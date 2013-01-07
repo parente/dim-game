@@ -481,7 +481,7 @@
     {
         "report": [
             {
-                "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\"", 
+                "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\"", 
                 "narration": "sound://sound/chime"
             }, 
             {
@@ -2856,6 +2856,17 @@
             "gasoline", 
             "eleanor2"
         ], 
+        "disabled": true, 
+        "exec": [
+            {
+                "action": "publish", 
+                "args": [
+                    "controller.request", 
+                    "dim/controllers/puzzles/timedReact", 
+                    "finalShot"
+                ]
+            }
+        ], 
         "report": [
             {
                 "description": "\"Great! OK, let's ...\"\n\n\"Ahhhh! You again? This time, you're dead!\"\n", 
@@ -2867,16 +2878,7 @@
             }
         ], 
         "type": "event", 
-        "exec": [
-            {
-                "action": "publish", 
-                "args": [
-                    "controller.request", 
-                    "dim/controllers/puzzles/timedReact", 
-                    "finalShot"
-                ]
-            }
-        ]
+        "id": "gasolineToEleanor2"
     }, 
     {
         "comment": "passCardToMainEntrance", 
@@ -3195,10 +3197,10 @@
         "type": "event", 
         "exec": [
             {
-                "action": "append", 
+                "action": "set", 
                 "args": [
-                    "item.gasoline.properties", 
-                    "useable"
+                    "event.gasolineToEleanor2.disabled", 
+                    false
                 ]
             }
         ]
@@ -3244,16 +3246,7 @@
             "hammer", 
             "upperHallwayDoor"
         ], 
-        "report": [
-            {
-                "description": "You hit the door hard and it opens. You can now move to the balcony.\n\n\"Alright, let's get out of here!\"\n\n\"What? You have to find some serum?\"\n\n\"Oh, ok then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck.\"", 
-                "narration": "sound://speech/hammerToUpperHallwayDoor"
-            }, 
-            {
-                "narration": "sound://speech/hammerToUpperHallwayDoor2"
-            }
-        ], 
-        "type": "event", 
+        "disabled": true, 
         "exec": [
             {
                 "action": "remove", 
@@ -3276,7 +3269,18 @@
                     "hammer"
                 ]
             }
-        ]
+        ], 
+        "report": [
+            {
+                "description": "You hit the door hard and it opens. You can now move to the balcony.\n\n\"Alright, let's get out of here!\"\n\n\"What? You have to find some serum?\"\n\n\"Oh, OK then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck.\"", 
+                "narration": "sound://speech/hammerToUpperHallwayDoor"
+            }, 
+            {
+                "narration": "sound://speech/hammerToUpperHallwayDoor2"
+            }
+        ], 
+        "type": "event", 
+        "id": "hammerToUpperHallwayDoor"
     }, 
     {
         "comment": "garageKeyToGarageDoor", 
@@ -3311,6 +3315,13 @@
         ], 
         "type": "event", 
         "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "event.hammerToUpperHallwayDoor.disabled", 
+                    false
+                ]
+            }, 
             {
                 "action": "remove", 
                 "args": [

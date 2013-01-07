@@ -21,7 +21,6 @@ Game World
 ** single vs interactive
 ** ordered "scalpel"
 ** separate useable from targets?
-** don't allow gasoline to eleanor until after knife to eleanor
 
 Audio
 -----

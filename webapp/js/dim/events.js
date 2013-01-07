@@ -7,8 +7,7 @@ define([
     var exports = {},
         actions = {},
         world,
-        indices,
-        events;
+        indices;
 
     var evalTemplate = function(template, args) {
         var type = $.type(template);
@@ -139,10 +138,9 @@ define([
     exports.evaluate = function(args) {
         var matches = new EventCollection();
         // TODO: expensive, optimize using tree lookup
-        for(var i=0,l=events.length; i<l; i++) {
-            var event = events[i],
-                on = event.on;
-            var match = true;
+        $.each(indices.event, function(i, event) {
+            var on = event.on,
+                match = true;
             for(var j=0,m=on.length; j<m; j++) {
                 // console.log(event, args[j]);
                 if(!args[j]) {
@@ -163,27 +161,32 @@ define([
                     break;
                 }
             }
-            if(match) {
+            if(match && !event.disabled) {
                 // found the event to eval
                 matches.push({event : event, args : args});
             }
-        }
+        });
         return matches;
     };
 
     exports.push = function(event) {
-        events.push(event);
+        var id;
+        if(event.id === undefined) {
+            id = uid++;
+        } else {
+            id = event.id;
+        }
+        events[id] = event;
     };
 
     exports.initialize = function(l_world, l_indices) {
         world = l_world;
         indices = l_indices;
-        events = [];
 
         // TODO: check all event expressions
-        events.forEach(function(event) {
+        $.each(indices.event, function(i, event) {
             if(event.exec) {
-                event.exec.forEach(function(exec) {
+                $.each(event.exec, function(i, exec) {
                     if(!actions[exec.action.replace('.', '_')]) {
                         throw new Error('unknown action ' + exec.action);
                     }

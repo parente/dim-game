@@ -346,6 +346,10 @@ use_events = {
     'cellKeyToBathroomHallwayDoor': {
         'exec': [
             {
+                'action': 'set',
+                'args': ['event.hammerToUpperHallwayDoor.disabled', False]
+            },
+            {
                 'action': 'remove',
                 'args': ['scene.bathroomHallway.items', 'bathroomHallwayDoor']
             },
@@ -372,6 +376,8 @@ use_events = {
     },
 
     'hammerToUpperHallwayDoor': {
+        'id': 'hammerToUpperHallwayDoor',
+        'disabled': True,
         'exec': [
             {
                 'action': 'remove',
@@ -394,7 +400,7 @@ use_events = {
 
 "What? You have to find some serum?"
 
-"Oh, ok then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck."''',
+"Oh, OK then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck."''',
                 'narration': 'sound://speech/hammerToUpperHallwayDoor'
             },
             {
@@ -598,8 +604,8 @@ use_events = {
     'knifeToEleanor2': {
         'exec': [
             {
-                'action': 'append',
-                'args': ['item.gasoline.properties', 'useable']
+                'action': 'set',
+                'args': ['event.gasolineToEleanor2.disabled', False]
             }
         ],
         'report': [
@@ -616,7 +622,9 @@ use_events = {
     },
 
     'gasolineToEleanor2': {
-        'report' : [
+        'id': 'gasolineToEleanor2',
+        'disabled': True,
+        'report': [
             {
                 'description': '''"Great! OK, let's ..."
 
@@ -1149,7 +1157,7 @@ Strange. The phone suddenly rings. You pick it up.
 
 "Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."
 
-"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You my friend will begin showing symptoms in, oh, about twelve hours."
+"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours."
 
 "I have developed a final serum. You will be my test subject or you will die. It's that simple."
 
