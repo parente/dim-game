@@ -364,6 +364,7 @@ use_events = {
         ],
         'report': [
             {
+                'title': 'Upper Hallway',
                 'description': '''You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.
 
 "Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?"''',
