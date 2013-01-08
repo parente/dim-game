@@ -13,10 +13,8 @@ Game World
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
 * review audio names and fix visual names to match
-* use of bathroom hallway door missing initial speech
 * report scene change when player moves from bathroom hallway to upper hallway
 ** title is still showing bathroom
-* masterBathroomKey does not exist, remove it from the master bedroom desk open audio
 * cleanup use and when objects become useable
 ** single vs interactive
 ** ordered "scalpel"
