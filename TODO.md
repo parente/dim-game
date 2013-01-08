@@ -23,7 +23,6 @@ Game World
 Audio
 -----
 
-* fix clunk at beginning of balcony speech
 * enable notification of report start/finish outside of views
 ** required to start input timers
 ** ID based? deferred? how to return a value to track in pub/sub setup?
