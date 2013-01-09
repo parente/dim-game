@@ -3202,6 +3202,13 @@
                     "event.gasolineToEleanor2.disabled", 
                     false
                 ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "knife"
+                ]
             }
         ]
     }, 

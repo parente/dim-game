@@ -607,6 +607,10 @@ use_events = {
             {
                 'action': 'set',
                 'args': ['event.gasolineToEleanor2.disabled', False]
+            },
+            {
+                'action': 'remove',
+                'args': ['player.items', 'knife']
             }
         ],
         'report': [
