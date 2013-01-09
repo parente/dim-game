@@ -1,7 +1,8 @@
 define([
+    'jquery',
     'dim/topic',
     'dim/controllers/dpad'
-], function(topic, DPad) {
+], function($, topic, DPad) {
     var exports = {};
 
     var compare = function(seq, correct) {
@@ -14,12 +15,32 @@ define([
         return true;
     };
 
+    var fail = function(ctrlId, menu) {
+        var events = world.evaluate('fail', ctrlId);
+        events.fire();
+        topic('controller.complete').publish(menu);
+    };
+
     exports.create = function(world, ctrlId) {
         // get pattern artifacts
-        var ctrl = world.get_ctrl(ctrlId);
+        var ctrl = world.get_ctrl(ctrlId),
+            timer;
+
+        // queue a sentinel to receive notification of when to start the timer
+        // do it after each prompt so we're not timing the user until he/she has
+        // heard the instructions
+        var startTimer = function(ctrl, menu) {
+            topic('controller.sentinel').expect().then(function() {
+                timer = setTimeout(function() {
+                    fail(ctrl.id, menu);
+                }, ctrl.actionTimeout * 1000);
+            });
+        };
 
         // build a dpad with an initial prompt
         var menu = new DPad(ctrl);
+        // queue a deferred immediately to start the timer after the first prompt plays
+        startTimer(ctrl, menu);
         menu.on_select = function() {
             var seq = menu.get_sequence(),
                 complete = (seq.length === ctrl.correct.length),
@@ -29,23 +50,29 @@ define([
             if(!match) {
                 if(ctrl.failOnMismatch) {
                     // mismatch, failed
-                    events = world.evaluate('fail', ctrlId);
-                    events.fire();
-                    topic('controller.complete').publish(menu);
+                    clearTimeout(timer);
+                    fail(ctrlId, menu);
                 } else {
                     // mismatch, retry and reset
+                    clearTimeout(timer);
                     events = world.evaluate('retry', ctrlId);
                     events.fire();
                     menu.reset();
+                    // start a new timer after the prompt
+                    startTimer(ctrl, menu);
                 }
             } else if(complete) {
                 // match, solved
+                clearTimeout(timer);
                 events = world.evaluate('solve', ctrlId);
                 events.fire();
                 topic('controller.complete').publish(menu);
             } else {
                 // match so far, continue with next prompt
+                clearTimeout(timer);
                 menu.next();
+                // start a new timer after the prompt
+                startTimer(ctrl, menu);
             }
         };
 

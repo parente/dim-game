@@ -11,6 +11,11 @@ define([
         if(!topic) {
             callbacks = $.Callbacks();
             topic = {
+                expect: function() {
+                    var d = new $.Deferred();
+                    callbacks.fire(d);
+                    return d;
+                },
                 publish : callbacks.fire,
                 subscribe : callbacks.add,
                 unsubscribe : callbacks.remove

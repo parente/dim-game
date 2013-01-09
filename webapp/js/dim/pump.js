@@ -50,21 +50,36 @@ define([
     };
 
     var clear_pending = function() {
-        // flush the queue
+        // flush the queue but the args
+        var old = queue;
         queue = [];
         // tell all views to abort
         $.each(views, function(i, view) {
             view.abort();
+        });
+        // resolve any deferred sentinels; do this after aborting
+        // to try to get notifications in order if possible
+        $.each(old, function(i, args) {
+            if(args.length === 1) {
+                args[0].resolve();
+            }
         });
     };
 
     var on_pump = function() {
         var args = queue.shift();
         console.log('pump.on_pump', args);
-        pending = $.map(views, function(view) {
-            return view.render.apply(view, args);
-        });
-        $.when.apply($, pending).then(on_complete);
+        if(args.length > 1) {
+            // (topic, report), send to views
+            pending = $.map(views, function(view) {
+                return view.render.apply(view, args);
+            });
+            $.when.apply($, pending).then(on_complete);
+        } else {
+            // deferred sentinel, resolve and continue
+            args[0].resolve();
+            on_complete();
+        }
     };
 
     var on_complete = function() {
@@ -78,6 +93,14 @@ define([
     var on_world_report = function(world, report) {
         console.log('pump.on_world_report', world, report);
         queue_report('world.report', report);
+    };
+
+    var on_controller_sentinel = function(def) {
+        console.log('pump.on_controller_sentinel', def);
+        queue.push([def]);
+        if(!pending) {
+            on_pump();
+        }
     };
 
     var on_controller_report = function(ctrl, report) {
@@ -107,6 +130,7 @@ define([
         views = v;
 
         // subscribe to topics
+        topic('controller.sentinel').subscribe(on_controller_sentinel);
         topic('controller.report').subscribe(on_controller_report);
         topic('world.report').subscribe(on_world_report);
         topic('user.select').subscribe(on_user_select);

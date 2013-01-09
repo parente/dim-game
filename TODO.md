@@ -6,9 +6,6 @@ Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* final shot controller (gasolineToEleanor2)
-** start timer on audio start, not while queued
-** test take('knife'); take('gasoline'); move('barnLoft')
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
@@ -21,9 +18,6 @@ Game World
 Audio
 -----
 
-* enable notification of report start/finish outside of views
-** required to start input timers
-** ID based? deferred? how to return a value to track in pub/sub setup?
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
