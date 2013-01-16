@@ -93,6 +93,16 @@ define([
     };
 
     /**
+     * args[0] controller module path
+     * args[1..N] controller values
+     */
+    actions.activate = function(event, args) {
+        console.log('  events.actions.activate', event, args);
+        var t = topic('controller.request');
+        t.publish.apply(t, args);
+    };
+
+    /**
      * args[0] topic name
      * args[1..N] topic values
      */

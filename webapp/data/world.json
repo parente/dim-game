@@ -337,9 +337,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]
@@ -777,9 +776,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
                     "sittingRoomDoorLock2"
                 ]
@@ -803,9 +801,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]
@@ -928,9 +925,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]
@@ -975,9 +971,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "win"
                 ]
@@ -998,9 +993,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]
@@ -2859,9 +2853,8 @@
         "disabled": true, 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/timedReact", 
                     "finalShot"
                 ]
@@ -2896,9 +2889,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]
@@ -2915,9 +2907,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
                     "sittingRoomDoorLock1"
                 ]
@@ -2980,9 +2971,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/save"
                 ]
             }
@@ -3020,9 +3010,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
                     "piano"
                 ]
@@ -3085,9 +3074,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
                     "computer"
                 ]
@@ -3103,9 +3091,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/puzzles/memoryPattern", 
                     "safe"
                 ]
@@ -3237,9 +3224,8 @@
         "type": "event", 
         "exec": [
             {
-                "action": "publish", 
+                "action": "activate", 
                 "args": [
-                    "controller.request", 
                     "dim/controllers/meta/done", 
                     "lose"
                 ]

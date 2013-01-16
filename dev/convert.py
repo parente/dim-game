@@ -124,8 +124,8 @@ use_events = {
     'save': {
         'exec': [
             {
-                'action': "publish",
-                'args': ['controller.request', 'dim/controllers/meta/save']
+                'action': "activate",
+                'args': ['dim/controllers/meta/save']
             }
         ]
     },
@@ -204,8 +204,8 @@ use_events = {
     'playerToPiano': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'piano']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/memoryPattern', 'piano']
             }
         ]
     },
@@ -232,8 +232,8 @@ use_events = {
     'playerToComputer': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'computer']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/memoryPattern', 'computer']
             }
         ]
     },
@@ -298,8 +298,8 @@ use_events = {
     'hammerToMirror': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/meta/done', 'lose']
+                'action': 'activate',
+                'args': ['dim/controllers/meta/done', 'lose']
             }
         ],
         'report': [
@@ -337,8 +337,8 @@ use_events = {
     'playerToSafe': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'safe']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/memoryPattern', 'safe']
             }
         ]
     },
@@ -459,8 +459,8 @@ use_events = {
     'passCardToMainEntrance': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/meta/done', 'lose']
+                'action': 'activate',
+                'args': ['dim/controllers/meta/done', 'lose']
             }
         ],
         'report': [
@@ -474,8 +474,8 @@ use_events = {
     'passCardToSittingRoomDoor': {
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock1']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock1']
             }
         ]
     },
@@ -644,8 +644,8 @@ use_events = {
         ],
         'exec': [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/timedReact', 'finalShot']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/timedReact', 'finalShot']
             }
         ]
     }
@@ -992,8 +992,8 @@ world = [
         "on": ["fail", "piano"],
         "exec": [
             {
-                "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1379,8 +1379,8 @@ Strange. The phone suddenly rings. You pick it up.
         "on": ["solve", "sittingRoomDoorLock1"],
         "exec": [
             {
-                'action': 'publish',
-                'args': ['controller.request', 'dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock2']
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/memoryPattern', 'sittingRoomDoorLock2']
             }
         ]
     },
@@ -1389,8 +1389,8 @@ Strange. The phone suddenly rings. You pick it up.
         "on": ["fail", "sittingRoomDoorLock1"],
         "exec": [
             {
-                "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1478,8 +1478,8 @@ Strange. The phone suddenly rings. You pick it up.
         "on": ["fail", "sittingRoomDoorLock2"],
         "exec": [
             {
-                "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
@@ -1517,8 +1517,8 @@ Strange. The phone suddenly rings. You pick it up.
         "on": ["solve", "finalShot"],
         "exec": [
             {
-                "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/done", "win"]
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "win"]
             }
         ],
         "report": [
@@ -1564,8 +1564,8 @@ Or did they?
         "on": ["fail", "finalShot"],
         "exec": [
             {
-                "action": "publish",
-                "args": ["controller.request", "dim/controllers/meta/done", "lose"]
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
             }
         ],
         "report": [
