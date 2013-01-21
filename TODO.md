@@ -9,7 +9,6 @@ Game World
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
 * maze controller (passCardToMazeDoor)
 * set eleanor4 desc and location upon trapped hallway door key to door
-* review audio names and fix visual names to match
 * cleanup use and when objects become useable
 ** single vs interactive
 ** ordered "scalpel"

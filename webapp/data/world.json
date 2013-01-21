@@ -1352,7 +1352,7 @@
             "upperHallway"
         ], 
         "visual": {
-            "name": "Study", 
+            "name": "Study Room", 
             "description": "You're in a study room. The desk is cluttered with a computer and other objects. There's a safe on the floor."
         }, 
         "aural": {
@@ -1618,7 +1618,7 @@
             "sittingRoom"
         ], 
         "visual": {
-            "name": "Eleanors Room", 
+            "name": "Holding Room", 
             "description": "You're in a room that almost looks like a jail cell. There's a woman tied to one of the chairs."
         }, 
         "aural": {
@@ -1734,7 +1734,7 @@
             "outside"
         ], 
         "visual": {
-            "name": "Trapped Hallway", 
+            "name": "Downstairs Hallway", 
             "description": null
         }, 
         "aural": {
@@ -2381,7 +2381,7 @@
     }, 
     {
         "visual": {
-            "name": "Trapped Hallway Door Key", 
+            "name": "Downstairs Hallway Key", 
             "description": "It's a key marked \"hallway.\""
         }, 
         "aural": {
@@ -2470,7 +2470,7 @@
     }, 
     {
         "visual": {
-            "name": "Maze Door", 
+            "name": "Basement Door", 
             "description": "The door has a large sign that says \"STAY OUT\". There's a card reader next to it."
         }, 
         "aural": {
@@ -2485,7 +2485,7 @@
     }, 
     {
         "visual": {
-            "name": "Garage Door", 
+            "name": "Kitchen Door", 
             "description": "The door is locked."
         }, 
         "aural": {
@@ -2531,7 +2531,7 @@
     }, 
     {
         "visual": {
-            "name": "Trapped Hallway Door", 
+            "name": "Downstairs Hallway Door", 
             "description": "It's a locked door leading to the downstairs hallway."
         }, 
         "aural": {
@@ -2559,7 +2559,7 @@
     }, 
     {
         "visual": {
-            "name": "Barn Switch", 
+            "name": "Switch", 
             "description": "It's a switch that you can pull."
         }, 
         "aural": {

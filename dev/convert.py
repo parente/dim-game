@@ -5,6 +5,28 @@ A starting point.
 import json
 
 '''
+Visual names that don't match IDs.
+'''
+visual_names = {
+    'deskKey': 'Small Key',
+    'starHole': 'Star Shaped Hole',
+    'eleanor2': 'Eleanor',
+    'lobby': 'Main Lobby',
+    'masterBedroomDeskKey': 'Desk Key',
+    'masterBedroomDesk': 'Desk',
+    'masterBedroomBed': 'Bed',
+    'masterBathroomStarHole': 'Star Shaped Hole',
+    'barnSwitch': 'Switch',
+    'eleanorsRoom': 'Holding Room',
+    'garageDoor': 'Kitchen Door',
+    'mazeDoor': 'Basement Door',
+    'study': 'Study Room',
+    'trappedHallway': 'Downstairs Hallway',
+    'trappedHallwayDoor': 'Downstairs Hallway Door',
+    'trappedHallwayDoorKey': 'Downstairs Hallway Key'
+}
+
+'''
 Transcriptions of the speech audio files.
 '''
 visual_descriptions = {
@@ -1806,21 +1828,10 @@ Or did they?
     }
 ]
 
-specific_names = {
-    'deskKey': 'Small Key',
-    'starHole': 'Star Shaped Hole',
-    'eleanor2': 'Eleanor',
-    'lobby': 'Main Lobby',
-    'masterBedroomDeskKey': 'Desk Key',
-    'masterBedroomDesk': 'Desk',
-    'masterBedroomBed': 'Bed',
-    'masterBathroomStarHole': 'Star Shaped Hole'
-}
-
 def id_to_name(text):
     arr = []
-    if text in specific_names:
-        return specific_names[text]
+    if text in visual_names:
+        return visual_names[text]
     for i, c in enumerate(text):
         if i == 0:
             arr.append(c.upper())
