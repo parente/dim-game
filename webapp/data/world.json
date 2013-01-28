@@ -934,6 +934,161 @@
         ]
     }, 
     {
+        "actionTimeout": 2.0, 
+        "prompt": [
+            {
+                "description": "Jump!", 
+                "narration": "sound://speech/jump"
+            }, 
+            {
+                "description": "Duck!", 
+                "narration": "sound://speech/duck"
+            }, 
+            {
+                "description": "Left!", 
+                "narration": "sound://speech/left"
+            }, 
+            {
+                "description": "Right!", 
+                "narration": "sound://speech/right"
+            }, 
+            {
+                "description": "Jump!", 
+                "narration": "sound://speech/jump"
+            }, 
+            {
+                "description": "Jump!", 
+                "narration": "sound://speech/jump"
+            }, 
+            {
+                "description": "Duck!", 
+                "narration": "sound://speech/duck"
+            }, 
+            {
+                "description": "Duck!", 
+                "narration": "sound://speech/duck"
+            }, 
+            {
+                "description": "Right!", 
+                "narration": "sound://speech/right"
+            }, 
+            {
+                "description": "Duck!", 
+                "narration": "sound://speech/duck"
+            }
+        ], 
+        "failOnMismatch": true, 
+        "correct": [
+            "up", 
+            "down", 
+            "left", 
+            "right", 
+            "up", 
+            "up", 
+            "down", 
+            "down", 
+            "right", 
+            "down"
+        ], 
+        "options": [
+            {
+                "visual": {
+                    "name": "Jump"
+                }, 
+                "id": "up"
+            }, 
+            {
+                "visual": {
+                    "name": "Duck"
+                }, 
+                "id": "down"
+            }, 
+            {
+                "visual": {
+                    "name": "Left"
+                }, 
+                "id": "left"
+            }, 
+            {
+                "visual": {
+                    "name": "Right"
+                }, 
+                "id": "right"
+            }
+        ], 
+        "type": "ctrl", 
+        "id": "trappedHallwayReact"
+    }, 
+    {
+        "report": [
+            {
+                "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.", 
+                "narration": "sound://speech/dieInTrappedHallway2"
+            }
+        ], 
+        "on": [
+            "fail", 
+            "trappedHallwayReact", 
+            "mismatch"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/meta/done", 
+                    "lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "You failed to act fast enough, and a large blade cuts you in half.", 
+                "narration": "sound://speech/dieInTrappedHallway"
+            }
+        ], 
+        "on": [
+            "fail", 
+            "trappedHallwayReact", 
+            "timeout"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/meta/done", 
+                    "lose"
+                ]
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "narration": "sound://speech/friend070_road", 
+                "description": "\"We made it. Now what did that lady mean by, 'You know where to find me'?\"", 
+                "title": "Outside"
+            }
+        ], 
+        "on": [
+            "solve", 
+            "trappedHallwayReact"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "player.scene", 
+                    "outside"
+                ]
+            }
+        ]
+    }, 
+    {
         "correct": [
             "tap"
         ], 
@@ -988,7 +1143,8 @@
         ], 
         "on": [
             "fail", 
-            "finalShot"
+            "finalShot", 
+            "*"
         ], 
         "type": "event", 
         "exec": [
@@ -3206,7 +3362,37 @@
             "trappedHallwayDoorKey", 
             "trappedHallwayDoor"
         ], 
-        "type": "event"
+        "report": [
+            {
+                "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Ha ha ha ha ha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"\n\nYou notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"\n\n\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"\n\n\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0"
+            }, 
+            {
+                "description": "\"He he he ha. Eleanor, my dear, what are you doing out of your room?\"\n\n\"Johan, I need to get you to the hospital.\"\n\n\"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?\"\n\n\"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!\"\n\n\"Mooooaannnnnahahaha ahh.\"\n\nA huge, deformed monster appears at the top of the stairs.\n\n\"He ha ha ha ha ha. Ah yes, my pets, right on time.\"\n\nThe Doctor grabs Eleanor and throws her over his shoulder.\n\n\"Ahhh! Put me down!\"\n\n\"I now bid you two, goodday. Have fun with, Igor. Ha ha ha ha ha ha ha ha!\"\n\nThe Doctor and Eleanor dash out the side door.\n\n\"Help me! I have your antidote. You know where to find me.\"\n\n\"Roar!\"\n\nThe monster blocks the path that the Doctor took.\n\n\"Come on, let's get out of here. Hurry, I know the way out.\"\n\nYou follow your new friend as he runs to the other side door, the monster following closely behind.\n", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor1"
+            }, 
+            {
+                "description": "\"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, press the left or right arrows. We have to go fast. That monster will be here any second.\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor2"
+            }
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "trappedHallwayDoorKey"
+                ]
+            }, 
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/puzzles/timedReact", 
+                    "trappedHallwayReact"
+                ]
+            }
+        ]
     }, 
     {
         "comment": "hammerToMirror", 

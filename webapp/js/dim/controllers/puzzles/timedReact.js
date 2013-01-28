@@ -15,8 +15,8 @@ define([
         return true;
     };
 
-    var fail = function(ctrlId, menu) {
-        var events = world.evaluate('fail', ctrlId);
+    var fail = function(ctrlId, reason, menu) {
+        var events = world.evaluate('fail', ctrlId, reason);
         events.fire();
         topic('controller.complete').publish(menu);
     };
@@ -32,7 +32,7 @@ define([
         var startTimer = function(ctrl, menu) {
             topic('controller.sentinel').expect().then(function() {
                 timer = setTimeout(function() {
-                    fail(ctrl.id, menu);
+                    fail(ctrl.id, 'timeout', menu);
                 }, ctrl.actionTimeout * 1000);
             });
         };
@@ -51,7 +51,7 @@ define([
                 if(ctrl.failOnMismatch) {
                     // mismatch, failed
                     clearTimeout(timer);
-                    fail(ctrlId, menu);
+                    fail(ctrlId, 'mismatch', menu);
                 } else {
                     // mismatch, retry and reset
                     clearTimeout(timer);

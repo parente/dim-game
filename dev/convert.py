@@ -670,6 +670,89 @@ use_events = {
                 'args': ['dim/controllers/puzzles/timedReact', 'finalShot']
             }
         ]
+    },
+
+
+    'trappedHallwayDoorKeyToTrappedHallwayDoor': {
+        'exec': [
+            {
+                'action': 'remove',
+                'args': ['player.items', 'trappedHallwayDoorKey']
+            },
+            {
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/timedReact', 'trappedHallwayReact']
+            }
+        ],
+        'report': [
+            {
+                'description': '''"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Ha ha ha ha ha!"
+
+"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it."
+
+You notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.
+
+"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B."
+
+"Ah! What the -"
+
+"Stay right where you are, Doctor."
+
+Your friend has returned! He walks into the lobby holding another gun.
+
+"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done."
+
+"Don't shoot!"
+
+Your friend spins around as Eleanor appears at the top of the stairs.
+
+"Who are you?"
+
+"I am his wife. Don't shoot. He's crazy but I think I can cure him."
+''',
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0'
+            },
+
+            {
+                'description': '''"He he he ha. Eleanor, my dear, what are you doing out of your room?"
+
+"Johan, I need to get you to the hospital."
+
+"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?"
+
+"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!"
+
+"Mooooaannnnnahahaha ahh."
+
+A huge, deformed monster appears at the top of the stairs.
+
+"He ha ha ha ha ha. Ah yes, my pets, right on time."
+
+The Doctor grabs Eleanor and throws her over his shoulder.
+
+"Ahhh! Put me down!"
+
+"I now bid you two, goodday. Have fun with, Igor. Ha ha ha ha ha ha ha ha!"
+
+The Doctor and Eleanor dash out the side door.
+
+"Help me! I have your antidote. You know where to find me."
+
+"Roar!"
+
+The monster blocks the path that the Doctor took.
+
+"Come on, let's get out of here. Hurry, I know the way out."
+
+You follow your new friend as he runs to the other side door, the monster following closely behind.
+''',
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1'
+            },
+            {
+                'description': '''"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, press the left or right arrows. We have to go fast. That monster will be here any second."''',
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor2'
+            }
+        ]
     }
 }
 
@@ -1515,6 +1598,135 @@ Strange. The phone suddenly rings. You pick it up.
         ]
     },
 
+    # trappedHallwayReact data used by timedReact controller
+    {
+        "type": "ctrl",
+        "id": "trappedHallwayReact",
+        "correct": ['up', 'down', 'left', 'right', 'up', 'up', 'down', 'down', 'right', 'down'],
+        "failOnMismatch": True,
+        "actionTimeout": 2.0,
+        "prompt": [
+            {
+                'description': 'Jump!',
+                'narration': 'sound://speech/jump'
+            },
+            {
+                'description': 'Duck!',
+                'narration': 'sound://speech/duck'
+            },
+            {
+                'description': 'Left!',
+                'narration': 'sound://speech/left'
+            },
+            {
+                'description': 'Right!',
+                'narration': 'sound://speech/right'
+            },
+            {
+                'description': 'Jump!',
+                'narration': 'sound://speech/jump'
+            },
+            {
+                'description': 'Jump!',
+                'narration': 'sound://speech/jump'
+            },
+            {
+                'description': 'Duck!',
+                'narration': 'sound://speech/duck'
+            },
+            {
+                'description': 'Duck!',
+                'narration': 'sound://speech/duck'
+            },
+            {
+                'description': 'Right!',
+                'narration': 'sound://speech/right'
+            },
+            {
+                'description': 'Duck!',
+                'narration': 'sound://speech/duck'
+            }
+        ],
+        "options": [
+            {
+                "id": "up",
+                "visual": {
+                    "name": "Jump"
+                }
+            },
+            {
+                "id": "down",
+                "visual": {
+                    "name": "Duck"
+                }
+            },
+            {
+                "id": "left",
+                "visual": {
+                    "name": "Left"
+                }
+            },
+            {
+                "id": "right",
+                "visual": {
+                    "name": "Right"
+                }
+            }
+        ]
+    },
+
+    {
+        "type": "event",
+        "on": ["fail", "trappedHallwayReact", "mismatch"],
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
+            }
+        ],
+        "report": [
+            {
+                "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.",
+                "narration": "sound://speech/dieInTrappedHallway2"
+            }
+        ]
+    },
+
+    {
+        "type": "event",
+        "on": ["fail", "trappedHallwayReact", "timeout"],
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
+            }
+        ],
+        "report": [
+            {
+                "description": "You failed to act fast enough, and a large blade cuts you in half.",
+                "narration": "sound://speech/dieInTrappedHallway"
+            }
+        ]
+    },
+
+    {
+        "type": "event",
+        "on": ["solve", "trappedHallwayReact"],
+        "exec": [
+            {
+                'action': 'set',
+                'args': ['player.scene', 'outside']
+            }
+        ],
+        "report": [
+            {
+                'title': 'Outside',
+                'description': '''"We made it. Now what did that lady mean by, 'You know where to find me'?"''',
+                'narration': 'sound://speech/friend070_road'
+            }
+        ]
+    },
+
     # finalShot data used by timedReact controller
     {
         "type": "ctrl",
@@ -1583,7 +1795,7 @@ Or did they?
     },
     {
         "type": "event",
-        "on": ["fail", "finalShot"],
+        "on": ["fail", "finalShot", "*"],
         "exec": [
             {
                 "action": "activate",
