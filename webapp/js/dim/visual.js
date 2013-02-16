@@ -66,12 +66,23 @@ define([
         // nothing pending
     };
 
+    var on_update_progressbar = function(p) {
+        $('.progressbar div').width(p*100 + '%');
+    };
+
+    var on_hide_progressbar = function() {
+        $('.progressbar').fadeOut();
+    };
+
     exports.initialize = function() {
         // find nodes of interest
         $node = $('#visual');
         $message = $('.message .active', $node);
         $title = $('.title', $node);
         $description = $('.description', $node);
+
+        topic('controller.initializing').subscribe(on_update_progressbar);
+        topic('controller.initialized').subscribe(on_hide_progressbar);
     };
 
     exports.render = function(topic, report) {

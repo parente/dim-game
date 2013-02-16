@@ -114,7 +114,7 @@ html, body {
 
 .dim .visual .message {
     text-shadow: 1px 1px 5px #a00;
-    background: rgba(25,10,10,0.9);
+    background: rgba(0,0,0,0.8);
     color: #fee;
 
     font-size: 32pt;
@@ -150,6 +150,21 @@ html, body {
     top: 0;
     right: 0;
     font-size: 0; /* set large to debug dpad */
+}
+
+.dim .progressbar {
+  background-color: rgba(55,10,10,0.9);
+  width: 300px;
+  margin: auto;
+  border-radius: 13px;
+  padding: 3px;
+}
+
+.dim .progressbar div {
+   background-color: #a00;
+   width: 0%;
+   height: 10px;
+   border-radius: 7px;
 }
 
 /* ==========================================================================

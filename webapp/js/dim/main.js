@@ -58,6 +58,7 @@ define([
         // when all controllers ready
         $.when(wd, id, vd, ad).then(function() {
             console.log('main.initialized');
+            topic('controller.initialized').publish();
             // prime the game pump
             pump.initialize(world, [aural, visual]);
             // move the player to the initial scene

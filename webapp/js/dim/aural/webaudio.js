@@ -1,4 +1,4 @@
-define(function() {
+define(['dim/topic'], function(topic) {
     var exports = {},
         soundProtocol = 'sound://',
         context,
@@ -37,6 +37,8 @@ define(function() {
                     if(++decoded == uris.length) {
                         loaded.resolve();
                     }
+                    // note load progress
+                    topic('controller.initializing').publish(decoded / uris.length);
                 };
                 var on_error = function() {
                     // fail outright on error

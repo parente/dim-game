@@ -7,8 +7,9 @@ Game World
 ----------
 
 * trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
-* maze controller (passCardToMazeDoor)
+** test with move('lobby'), take('trappedHallwayDoorKey'), use key on door
 * set eleanor4 desc and location upon trapped hallway door key to door
+* maze controller (passCardToMazeDoor)
 * cleanup use and when objects become useable
 ** single vs interactive
 ** ordered "scalpel"
@@ -17,6 +18,7 @@ Game World
 Audio
 -----
 
+* skip one report at a time when interrupting, not all?
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
@@ -31,7 +33,6 @@ Visual
 
 * support backdrops
 * breadcrumb design for menu
-* progress bar during initialization at load time
 * favicon
 
 vXXX - iOS Support
