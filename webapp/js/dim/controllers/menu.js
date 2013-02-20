@@ -78,6 +78,7 @@ define([
 
     cls.prototype.on_up = function(input, event) {
         console.log('  menu.on_up', this);
+        topic('user.activate').publish(this, null);
         this.on_abort();
     };
 

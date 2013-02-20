@@ -80,6 +80,7 @@ define([
 
     cls.prototype.on_left = function(input, event) {
         console.log('  dpad.on_left', this);
+        this.event = event;
         var d = this.options['left'];
         if(d) {
             this.seq.push('left');
@@ -90,6 +91,7 @@ define([
 
     cls.prototype.on_right = function(input, event) {
         console.log('  dpad.on_right', this);
+        this.event = event;
         var d = this.options['right'];
         if(d) {
             this.seq.push('right');
@@ -100,6 +102,7 @@ define([
 
     cls.prototype.on_up = function(input, event) {
         console.log('  dpad.on_up', this);
+        this.event = event;
         var d = this.options['up'];
         if(d) {
             this.seq.push('up');
@@ -110,6 +113,7 @@ define([
 
     cls.prototype.on_down = function(input, event) {
         console.log('  dpad.on_down', this);
+        this.event = event;
         var d = this.options['down'];
         if(d) {
             this.seq.push('down');

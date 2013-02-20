@@ -121,8 +121,10 @@ define([
     var on_user_activate = function(ctrl, obj) {
         console.log('pump.on_user_activate', ctrl, obj);
         clear_pending();
-        var report = obj_to_reports('user.activate', obj);
-        queue_report('user.activate', report);
+        if(obj) {
+            var report = obj_to_reports('user.activate', obj);
+            queue_report('user.activate', report);
+        }
     };
 
     exports.initialize = function(world, v) {

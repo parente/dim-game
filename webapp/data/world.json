@@ -2711,7 +2711,9 @@
         }, 
         "type": "item", 
         "id": "barnDoor", 
-        "properties": []
+        "properties": [
+            "useable"
+        ]
     }, 
     {
         "visual": {
@@ -3072,13 +3074,37 @@
         ]
     }, 
     {
-        "comment": "passCardToMazeDoor], [\"barnDoor\", passCardToBarnDoor", 
+        "comment": "passCardToMazeDoor", 
         "on": [
             "use", 
             "passCard", 
             "mazeDoor"
         ], 
         "type": "event"
+    }, 
+    {
+        "comment": "passCardToBarnDoor", 
+        "on": [
+            "use", 
+            "passCard", 
+            "barnDoor"
+        ], 
+        "report": [
+            {
+                "description": "You have unlocked the barn door. You can now move into the barn.", 
+                "narration": "sound://speech/passCardToBarnDoor"
+            }
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "scene.outside.adjoins", 
+                    "barn"
+                ]
+            }
+        ]
     }, 
     {
         "comment": "gunToGarageDoor", 

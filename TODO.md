@@ -6,10 +6,8 @@ Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* trapped hallway controller (trappedHallwayDoorKeyToTrappedHallwayDoor)
-** test with move('lobby'), take('trappedHallwayDoorKey'), use key on door
-* set eleanor4 desc and location upon trapped hallway door key to door
 * maze controller (passCardToMazeDoor)
+* set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
 ** single vs interactive
 ** ordered "scalpel"
@@ -18,7 +16,8 @@ Game World
 Audio
 -----
 
-* skip one report at a time when interrupting, not all?
+* skip one report at a time when interrupting, not all
+** MUST HAVE: if not, too easy to "lose" in puzzle when trying to skip voice
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly

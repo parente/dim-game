@@ -2310,7 +2310,7 @@ def main():
                     "deskKey":[["desk", 'deskKeyToDesk']],
                     "hammer":[["mirror", 'hammerToMirror'], ["upperHallwayDoor", 'hammerToUpperHallwayDoor']],
                     "cellKey":[["bathroomHallwayDoor", 'cellKeyToBathroomHallwayDoor']],
-                    "passCard":[["mainEntrance", 'passCardToMainEntrance'], ["sittingRoomDoor", 'passCardToSittingRoomDoor'], ["mazeDoor", 'passCardToMazeDoor], ["barnDoor", passCardToBarnDoor']],
+                    "passCard":[["mainEntrance", 'passCardToMainEntrance'], ["sittingRoomDoor", 'passCardToSittingRoomDoor'], ["mazeDoor", 'passCardToMazeDoor'], ["barnDoor", 'passCardToBarnDoor']],
                     "masterBedroomDeskKey":[["masterBedroomDesk", 'masterBedroomDeskKeyToMasterBedroomDesk']],
                     "knife":[["eleanor", 'knifeToEleanor'], ["eleanor2", 'knifeToEleanor2']],
                     "ingredients":[["eleanor", 'ingredientsToEleanor']],
