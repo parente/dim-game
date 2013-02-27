@@ -48,19 +48,21 @@ define([
         topic('controller.complete').subscribe(on_controller_complete);
 
         console.log('main.initializing');
-        // initialize all components
-        var wd = world.initialize(),
+        // initialize all components, pump first so it has the ability to block
+        // events from reaching other components
+        var pd = pump.initialize(),
+            wd = world.initialize(),
             id = input.initialize(wd),
             vd = visual.initialize(wd),
             ad = aural.initialize(wd);
 
         console.log('main.pending_initialized');
         // when all controllers ready
-        $.when(wd, id, vd, ad).then(function() {
+        $.when(pd, wd, id, vd, ad).then(function() {
             console.log('main.initialized');
             topic('controller.initialized').publish();
             // prime the game pump
-            pump.initialize(world, [aural, visual]);
+            pump.start(world, [aural, visual]);
             // move the player to the initial scene
             var scene = world.get_player_scene();
             var events = world.evaluate('move', scene);

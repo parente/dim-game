@@ -49,23 +49,6 @@ define([
         }
     };
 
-    var clear_pending = function() {
-        // flush the queue but the args
-        var old = queue;
-        queue = [];
-        // tell all views to abort
-        $.each(views, function(i, view) {
-            view.abort();
-        });
-        // resolve any deferred sentinels; do this after aborting
-        // to try to get notifications in order if possible
-        $.each(old, function(i, args) {
-            if(args.length === 1) {
-                args[0].resolve();
-            }
-        });
-    };
-
     var on_pump = function() {
         var args = queue.shift();
         console.log('pump.on_pump', args);
@@ -110,33 +93,50 @@ define([
 
     var on_user_select = function(ctrl, obj) {
         console.log('pump.on_user_select', ctrl, obj);
-        if(ctrl.get_event()) {
-            // clear all pending output if a user event initiated the select
-            clear_pending();
-        }
         var report = obj_to_reports('user.select', obj);
         queue_report('user.select', report);
     };
 
     var on_user_activate = function(ctrl, obj) {
         console.log('pump.on_user_activate', ctrl, obj);
-        clear_pending();
         if(obj) {
             var report = obj_to_reports('user.activate', obj);
             queue_report('user.activate', report);
         }
     };
 
-    exports.initialize = function(world, v) {
-        objectReport = world.get_default('objectReport');
-        views = v;
+    var on_input = function(input, event) {
+        if(pending) {
+            var size = queue.length;
+            // tell all views to abort
+            $.each(views, function(i, view) {
+                view.abort();
+            });
+            if(size > 0) {
+                console.log('pump.on_input, skip');
+                return false;
+            }
+        }
+    };
 
+    exports.initialize = function(world, v) {
         // subscribe to topics
         topic('controller.sentinel').subscribe(on_controller_sentinel);
         topic('controller.report').subscribe(on_controller_report);
         topic('world.report').subscribe(on_world_report);
         topic('user.select').subscribe(on_user_select);
         topic('user.activate').subscribe(on_user_activate);
+
+        topic('input.up').subscribe(on_input);
+        topic('input.down').subscribe(on_input);
+        topic('input.left').subscribe(on_input);
+        topic('input.right').subscribe(on_input);
+        topic('input.tap').subscribe(on_input);
+    };
+
+    exports.start = function(world, v) {
+        objectReport = world.get_default('objectReport');
+        views = v;
     };
 
     return exports;

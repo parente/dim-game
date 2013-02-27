@@ -17,8 +17,10 @@ define(['jquery'], function($) {
                 return;
             }
             // stop before starting new message
-            this.sound.stop(this.pending);
-            this.speech.stop(this.pending);
+            var def = this.pending;
+            this.pending = null;
+            this.sound.stop(def);
+            this.speech.stop(def);
         }
 
         // check if the sound system can play it as a waveform first
@@ -38,9 +40,10 @@ define(['jquery'], function($) {
             return;
         }
         // stop all output
-        this.sound.stop(this.pending);
-        this.speech.stop(this.pending);
+        var def = this.pending;
         this.pending = null;
+        this.sound.stop(def);
+        this.speech.stop(def);
     };
 
     cls.prototype.replace = function(msgs) {

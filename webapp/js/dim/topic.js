@@ -9,7 +9,7 @@ define([
             method,
             topic = id && topics[id];
         if(!topic) {
-            callbacks = $.Callbacks();
+            callbacks = $.Callbacks('stopOnFalse');
             topic = {
                 expect: function() {
                     var d = new $.Deferred();
