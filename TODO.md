@@ -7,6 +7,9 @@ Game World
 ----------
 
 * maze controller (passCardToMazeDoor)
+** directionality of sound
+** controller impl
+** monster pattern impl (binary)
 * set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
 ** single vs interactive
@@ -16,8 +19,6 @@ Game World
 Audio
 -----
 
-* skip one report at a time when interrupting, not all
-** MUST HAVE: if not, too easy to "lose" in puzzle when trying to skip voice
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly

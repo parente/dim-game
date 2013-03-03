@@ -1810,6 +1810,125 @@ Or did they?
         ]
     },
 
+    # basementMaze data used by beaconMaze controller
+    {
+        "type": "ctrl",
+        "id": "basementBeaconMaze",
+        "location": [0, 3],
+        "beacon": "sound://sound/pianoC",
+        "prompt": [
+            {
+                "title": "Basement Maze",
+                "description": 'Choose a direction to move.',
+                "narration": 'sound://speech/passCardToMazeDoor3'
+            }
+        ],
+        "options": [
+            {
+                "id": "up",
+                "visual": {
+                    "name": "North"
+                },
+                "aural": {
+                    "name": "sound://speech/north"
+                }
+            },
+            {
+                "id": "right",
+                "visual": {
+                    "name": "East"
+                },
+                "aural": {
+                    "name": "sound://speech/east"
+                }
+            },
+            {
+                "id": "down",
+                "visual": {
+                    "name": "South"
+                },
+                "aural": {
+                    "name": "sound://speech/south"
+                }
+            },
+            {
+                "id": "left",
+                "visual": {
+                    "name": "West"
+                },
+                "aural": {
+                    "name": "sound://speech/west"
+                }
+            },
+        ],
+        "layout": [[2, 0, 2, 0, 3],
+                   [1, 0, 1, 1, 1],
+                   [1, 0, 1, 0, 0],
+                   [1, 1, 1, 2, 0],
+                   [0, 0, 2, 0, 0]],
+        "cells": [
+            {
+                'id': 0,
+                'passable': False
+            },
+            {
+                'id': 2,
+                'fire': ['encounter', 'maze', 'monster']
+            },
+            {
+                'id': 3,
+                'fire': ['solve', 'basementBeaconMaze']
+            }
+        ]
+    },
+
+    # move near a monster in basementMaze
+    {
+        "type": "event",
+        "on": ["encounter", "maze", "monster"],
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/puzzles/memoryPattern", "mazeMonster"]
+            }
+        ],
+        "report": [
+            {
+                "description": "It's a monster!",
+                "narration": "sound://speech/passCardToMazeDoor4"
+            }
+        ]
+    },
+
+    # move to the basementMaze exit
+    {
+        "type": "event",
+        "on": ["solve", "basementBeaconMaze"],
+        "exec": [
+            {
+                'action': 'append',
+                'args': ['player.items', 'ingredients']
+            },
+            {
+                'action': 'remove',
+                'args': ['scene.basement.items', 'mazeDoor']
+            },
+            {
+                'action': 'set',
+                "args": ["player.scene", "basement"]
+            }
+        ],
+        "report": [
+            {
+                "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.",
+                "narration": "sound://speech/passCardToMazeDoor7"
+            },
+            {
+                "title": "Basement"
+            }
+        ]
+    },
+
     # exploration controller
     {
         "type": "ctrl",
