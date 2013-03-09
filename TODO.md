@@ -1,14 +1,14 @@
 v1 - Just Make it Work
 ======================
 
-Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
+Support Web Audio API enabled browsers on the desktop (Safari, Chrome).
 
 Game World
 ----------
 
 * maze controller (passCardToMazeDoor)
-** directionality of sound
 ** monster pattern impl (binary)
+** spatial beacon sound or pre-panned?
 ** test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
@@ -19,10 +19,10 @@ Game World
 Audio
 -----
 
+* low pass filter sound files to remove recording whine
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
-* low pass filter sound files to remove recording whine
 * new background music tracks
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037
