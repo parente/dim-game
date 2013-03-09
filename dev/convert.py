@@ -533,6 +533,36 @@ use_events = {
         ]
     },
 
+    'passCardToMazeDoor': {
+        'exec': [
+            {
+                'action': 'activate',
+                'args': ['dim/controllers/puzzles/beaconMaze', 'basementBeaconMaze']
+            }
+        ],
+        'report': [
+            {
+                'description': '''"Well, well, well, 52B. You are proving to be a menace. Where do you think you're going?"
+
+"I saw on the cameras that you have visited my dear wife. Well, what do you think? Sad, isn't it? I am doing this for her ..."
+
+"You will be my test subject! Actually, come to think of it, I can always get more subjects. Heheheheha."
+
+"Yes, 52B, I warned you not the enter the basement. I think the power is about to go off. Hahahahaha!"''',
+                'narration': 'sound://speech/passCardToMazeDoor0'
+            },
+            {
+                'title': 'Basement Maze',
+                'description': '''The door opens and you step inside. Once you're in the door closes behind you and you can't open it again. You now seem to be in a maze. You can navigate by going north, west, south, or east.
+
+You hear a sound in the distance. Maybe you should follow that?
+
+Note that you're always facing north.''',
+                'narration': 'sound://speech/passCardToMazeDoor1'
+            }
+        ]
+    },
+
     'ingredientsToEleanor': {
         'exec': [
             {
@@ -1814,13 +1844,11 @@ Or did they?
     {
         "type": "ctrl",
         "id": "basementBeaconMaze",
-        "location": [0, 3],
-        "beacon": "sound://sound/pianoC",
+        "persistLocation": True,
         "prompt": [
             {
-                "title": "Basement Maze",
-                "description": 'Choose a direction to move.',
-                "narration": 'sound://speech/passCardToMazeDoor3'
+                'description': 'The following paths are open:',
+                'narration': 'sound://speech/passCardToMazeDoor2'
             }
         ],
         "options": [
@@ -1859,8 +1887,10 @@ Or did they?
                 "aural": {
                     "name": "sound://speech/west"
                 }
-            },
+            }
         ],
+        # starting location
+        "location": [3, 0],
         "layout": [[2, 0, 2, 0, 3],
                    [1, 0, 1, 1, 1],
                    [1, 0, 1, 0, 0],
@@ -1869,7 +1899,7 @@ Or did they?
         "cells": [
             {
                 'id': 0,
-                'passable': False
+                'impassable': True
             },
             {
                 'id': 2,
@@ -1877,6 +1907,7 @@ Or did they?
             },
             {
                 'id': 3,
+                'beacon': 'sound://sound/pianoC',
                 'fire': ['solve', 'basementBeaconMaze']
             }
         ]
@@ -1889,7 +1920,7 @@ Or did they?
         "exec": [
             {
                 "action": "activate",
-                "args": ["dim/controllers/puzzles/memoryPattern", "mazeMonster"]
+                "args": ["dim/controllers/puzzles/timedReact", "mazeMonster"]
             }
         ],
         "report": [

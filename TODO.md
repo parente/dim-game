@@ -8,8 +8,8 @@ Game World
 
 * maze controller (passCardToMazeDoor)
 ** directionality of sound
-** controller impl
 ** monster pattern impl (binary)
+** test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
 ** single vs interactive
@@ -61,6 +61,7 @@ vXXX - Gameplay Improvements
 vXXX - DIM Boilerplate
 ============================
 
+* refactor use.js controller to take advantage of rolling prompt
 * simple commands in console for walkthrough testing
 * upgrade path for saved games
 ** related solve precache media after load (json may contain different uris)

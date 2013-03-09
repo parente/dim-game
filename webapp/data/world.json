@@ -1158,6 +1158,180 @@
         ]
     }, 
     {
+        "persistLocation": true, 
+        "prompt": [
+            {
+                "description": "The following paths are open:", 
+                "narration": "sound://speech/passCardToMazeDoor2"
+            }
+        ], 
+        "location": [
+            3, 
+            0
+        ], 
+        "layout": [
+            [
+                2, 
+                0, 
+                2, 
+                0, 
+                3
+            ], 
+            [
+                1, 
+                0, 
+                1, 
+                1, 
+                1
+            ], 
+            [
+                1, 
+                0, 
+                1, 
+                0, 
+                0
+            ], 
+            [
+                1, 
+                1, 
+                1, 
+                2, 
+                0
+            ], 
+            [
+                0, 
+                0, 
+                2, 
+                0, 
+                0
+            ]
+        ], 
+        "cells": [
+            {
+                "id": 0, 
+                "impassable": true
+            }, 
+            {
+                "fire": [
+                    "encounter", 
+                    "maze", 
+                    "monster"
+                ], 
+                "id": 2
+            }, 
+            {
+                "fire": [
+                    "solve", 
+                    "basementBeaconMaze"
+                ], 
+                "beacon": "sound://sound/pianoC", 
+                "id": 3
+            }
+        ], 
+        "type": "ctrl", 
+        "id": "basementBeaconMaze", 
+        "options": [
+            {
+                "visual": {
+                    "name": "North"
+                }, 
+                "aural": {
+                    "name": "sound://speech/north"
+                }, 
+                "id": "up"
+            }, 
+            {
+                "visual": {
+                    "name": "East"
+                }, 
+                "aural": {
+                    "name": "sound://speech/east"
+                }, 
+                "id": "right"
+            }, 
+            {
+                "visual": {
+                    "name": "South"
+                }, 
+                "aural": {
+                    "name": "sound://speech/south"
+                }, 
+                "id": "down"
+            }, 
+            {
+                "visual": {
+                    "name": "West"
+                }, 
+                "aural": {
+                    "name": "sound://speech/west"
+                }, 
+                "id": "left"
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "It's a monster!", 
+                "narration": "sound://speech/passCardToMazeDoor4"
+            }
+        ], 
+        "on": [
+            "encounter", 
+            "maze", 
+            "monster"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/puzzles/timedReact", 
+                    "mazeMonster"
+                ]
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.", 
+                "narration": "sound://speech/passCardToMazeDoor7"
+            }, 
+            {
+                "title": "Basement"
+            }
+        ], 
+        "on": [
+            "solve", 
+            "basementBeaconMaze"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "append", 
+                "args": [
+                    "player.items", 
+                    "ingredients"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "scene.basement.items", 
+                    "mazeDoor"
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "player.scene", 
+                    "basement"
+                ]
+            }
+        ]
+    }, 
+    {
         "prompt": [
             {
                 "narration": "sound://speech/menu"
@@ -3080,7 +3254,27 @@
             "passCard", 
             "mazeDoor"
         ], 
-        "type": "event"
+        "report": [
+            {
+                "description": "\"Well, well, well, 52B. You are proving to be a menace. Where do you think you're going?\"\n\n\"I saw on the cameras that you have visited my dear wife. Well, what do you think? Sad, isn't it? I am doing this for her ...\"\n\n\"You will be my test subject! Actually, come to think of it, I can always get more subjects. Heheheheha.\"\n\n\"Yes, 52B, I warned you not the enter the basement. I think the power is about to go off. Hahahahaha!\"", 
+                "narration": "sound://speech/passCardToMazeDoor0"
+            }, 
+            {
+                "narration": "sound://speech/passCardToMazeDoor1", 
+                "description": "The door opens and you step inside. Once you're in the door closes behind you and you can't open it again. You now seem to be in a maze. You can navigate by going north, west, south, or east.\n\nYou hear a sound in the distance. Maybe you should follow that?\n\nNote that you're always facing north.", 
+                "title": "Basement Maze"
+            }
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/puzzles/beaconMaze", 
+                    "basementBeaconMaze"
+                ]
+            }
+        ]
     }, 
     {
         "comment": "passCardToBarnDoor", 

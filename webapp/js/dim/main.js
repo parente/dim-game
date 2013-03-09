@@ -37,7 +37,7 @@ define([
     var on_controller_complete = function(inst) {
         console.log('main.on_controller_complete', inst === controller);
         if(controller == inst) {
-            // switch to the default controller if no other ocntroller was
+            // switch to the default controller if no other controller was
             // activated in the meantime
             on_controller_request();
         }

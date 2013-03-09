@@ -44,6 +44,7 @@ define([
         $.each(this.subs, function(key, value) {
             topic(key).unsubscribe(value);
         });
+        this.on_destroy();
     };
 
     cls.prototype.get_event = function() {
@@ -116,6 +117,7 @@ define([
     cls.prototype.on_select = function() {};
     cls.prototype.on_activate = function() {};
     cls.prototype.on_abort = function() {};
+    cls.prototype.on_destroy = function() {};
 
     return cls;
 });
