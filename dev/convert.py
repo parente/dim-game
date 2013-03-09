@@ -1635,6 +1635,9 @@ Strange. The phone suddenly rings. You pick it up.
         "id": "trappedHallwayReact",
         "correct": ['up', 'down', 'left', 'right', 'up', 'up', 'down', 'down', 'right', 'down'],
         "failOnMismatch": True,
+        # 2 seconds per action, not entire sequence
+        "restartTimerOnMatch": True,
+        "restartTimerOnMismatch": False,
         "actionTimeout": 2.0,
         "prompt": [
             {
@@ -1764,6 +1767,9 @@ Strange. The phone suddenly rings. You pick it up.
         "id": "finalShot",
         "correct": ['tap'],
         "failOnMismatch": False,
+        # 2 seconds to shoot
+        "restartTimerOnMatch": False,
+        "restartTimerOnMismatch": False,
         "actionTimeout": 2.0,
         "options": [
             {
@@ -1931,6 +1937,103 @@ Or did they?
             }
         ]
     },
+
+    # mazeMonster data used by timedReact controller
+    {
+        "type": "ctrl",
+        "id": "mazeMonster",
+        "correct": ['left', 'tap'],
+        "failOnMismatch": False,
+        # 4 seconds total to get the sequence
+        "restartTimerOnMismatch": False,
+        "restartTimerOnMatch": False,
+        "actionTimeout": 4.0,
+        "options": [
+            {
+                "id": "tap",
+                "visual": {
+                    "name": "Fire"
+                },
+                "aural": {
+                    "sound": "sound://sound/gunShot"
+                }
+            },
+            {
+                "id": "up",
+                "visual": {
+                    "name": "Jump"
+                },
+                "aural": {
+                    "sound": "sound://sound/jump"
+                }
+            },
+            {
+                "id": "down",
+                "visual": {
+                    "name": "Duck"
+                },
+                "aural": {
+                    "sound": "sound://sound/duck"
+                }
+            },
+            {
+                "id": "left",
+                "visual": {
+                    "name": "Dodge left"
+                },
+                "aural": {
+                    "sound": "sound://sound/left"
+                }
+            },
+            {
+                "id": "right",
+                "visual": {
+                    "name": "Dodge right"
+                },
+                "aural": {
+                    "sound": "sound://sound/right"
+                }
+            }
+        ]
+    },
+
+    # solve mazeMonster
+    {
+        "type": "event",
+        "on": ["solve", "mazeMonster"],
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/puzzles/beaconMaze", "basementBeaconMaze"]
+            }
+        ],
+        "report": [
+            {
+                "description": "The monster lunges at you, but you side step and fire your gun, and he falls dead.",
+                "narration": "sound://speech/passCardToMazeDoor5"
+            }
+        ]
+    },
+
+    # fail mazeMonster
+    {
+        "type": "event",
+        "on": ["fail", "mazeMonster", "*"],
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
+            }
+        ],
+        "report": [
+            {
+                "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.",
+                "narration": "sound://speech/passCardToMazeDoor6"
+            }
+        ]
+    },
+
+
 
     # move to the basementMaze exit
     {

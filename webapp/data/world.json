@@ -935,6 +935,32 @@
     }, 
     {
         "actionTimeout": 2.0, 
+        "options": [
+            {
+                "visual": {
+                    "name": "Jump"
+                }, 
+                "id": "up"
+            }, 
+            {
+                "visual": {
+                    "name": "Duck"
+                }, 
+                "id": "down"
+            }, 
+            {
+                "visual": {
+                    "name": "Left"
+                }, 
+                "id": "left"
+            }, 
+            {
+                "visual": {
+                    "name": "Right"
+                }, 
+                "id": "right"
+            }
+        ], 
         "prompt": [
             {
                 "description": "Jump!", 
@@ -977,7 +1003,11 @@
                 "narration": "sound://speech/duck"
             }
         ], 
+        "restartTimerOnMatch": true, 
         "failOnMismatch": true, 
+        "restartTimerOnMismatch": false, 
+        "type": "ctrl", 
+        "id": "trappedHallwayReact", 
         "correct": [
             "up", 
             "down", 
@@ -989,35 +1019,7 @@
             "down", 
             "right", 
             "down"
-        ], 
-        "options": [
-            {
-                "visual": {
-                    "name": "Jump"
-                }, 
-                "id": "up"
-            }, 
-            {
-                "visual": {
-                    "name": "Duck"
-                }, 
-                "id": "down"
-            }, 
-            {
-                "visual": {
-                    "name": "Left"
-                }, 
-                "id": "left"
-            }, 
-            {
-                "visual": {
-                    "name": "Right"
-                }, 
-                "id": "right"
-            }
-        ], 
-        "type": "ctrl", 
-        "id": "trappedHallwayReact"
+        ]
     }, 
     {
         "report": [
@@ -1089,13 +1091,7 @@
         ]
     }, 
     {
-        "correct": [
-            "tap"
-        ], 
         "actionTimeout": 2.0, 
-        "failOnMismatch": false, 
-        "id": "finalShot", 
-        "type": "ctrl", 
         "options": [
             {
                 "visual": {
@@ -1106,6 +1102,14 @@
                 }, 
                 "id": "tap"
             }
+        ], 
+        "restartTimerOnMatch": false, 
+        "failOnMismatch": false, 
+        "restartTimerOnMismatch": false, 
+        "type": "ctrl", 
+        "id": "finalShot", 
+        "correct": [
+            "tap"
         ]
     }, 
     {
@@ -1288,6 +1292,110 @@
                 "args": [
                     "dim/controllers/puzzles/timedReact", 
                     "mazeMonster"
+                ]
+            }
+        ]
+    }, 
+    {
+        "actionTimeout": 4.0, 
+        "options": [
+            {
+                "visual": {
+                    "name": "Fire"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/gunShot"
+                }, 
+                "id": "tap"
+            }, 
+            {
+                "visual": {
+                    "name": "Jump"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/jump"
+                }, 
+                "id": "up"
+            }, 
+            {
+                "visual": {
+                    "name": "Duck"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/duck"
+                }, 
+                "id": "down"
+            }, 
+            {
+                "visual": {
+                    "name": "Dodge left"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/left"
+                }, 
+                "id": "left"
+            }, 
+            {
+                "visual": {
+                    "name": "Dodge right"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/right"
+                }, 
+                "id": "right"
+            }
+        ], 
+        "restartTimerOnMatch": false, 
+        "failOnMismatch": false, 
+        "restartTimerOnMismatch": false, 
+        "type": "ctrl", 
+        "id": "mazeMonster", 
+        "correct": [
+            "left", 
+            "tap"
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "The monster lunges at you, but you side step and fire your gun, and he falls dead.", 
+                "narration": "sound://speech/passCardToMazeDoor5"
+            }
+        ], 
+        "on": [
+            "solve", 
+            "mazeMonster"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/puzzles/beaconMaze", 
+                    "basementBeaconMaze"
+                ]
+            }
+        ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.", 
+                "narration": "sound://speech/passCardToMazeDoor6"
+            }
+        ], 
+        "on": [
+            "fail", 
+            "mazeMonster", 
+            "*"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/meta/done", 
+                    "lose"
                 ]
             }
         ]

@@ -54,12 +54,14 @@ define([
                     fail(ctrlId, 'mismatch', menu);
                 } else {
                     // mismatch, retry and reset
-                    clearTimeout(timer);
                     events = world.evaluate('retry', ctrlId);
                     events.fire();
                     menu.reset();
                     // start a new timer after the prompt
-                    startTimer(ctrl, menu);
+                    if(ctrl.restartTimerOnMismatch) {
+                        clearTimeout(timer);
+                        startTimer(ctrl, menu);
+                    }
                 }
             } else if(complete) {
                 // match, solved
@@ -69,10 +71,11 @@ define([
                 topic('controller.complete').publish(menu);
             } else {
                 // match so far, continue with next prompt
-                clearTimeout(timer);
                 menu.next();
-                // start a new timer after the prompt
-                startTimer(ctrl, menu);
+                if(ctrl.restartTimerOnMatch) {
+                    clearTimeout(timer);
+                    startTimer(ctrl, menu);
+                }
             }
         };
 

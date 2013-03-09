@@ -7,14 +7,16 @@ Game World
 ----------
 
 * maze controller (passCardToMazeDoor)
-** monster pattern impl (binary)
-** spatial beacon sound or pre-panned?
-** test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
+    * monster pattern impl (binary)
+        * does timed react need option NOT to reset timer on mismatch?
+        * do we want controller to override pump ability to eat keys?
+    * spatial beacon sound or pre-panned?
+    * test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
-** single vs interactive
-** ordered "scalpel"
-** separate useable from targets?
+    * single vs interactive
+    * ordered "scalpel"
+    * separate useable from targets?
 
 Audio
 -----
