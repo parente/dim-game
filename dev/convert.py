@@ -136,7 +136,8 @@ But enough talk. We have to get you the antidote! Don't worry, I know what I'm d
 June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first.
 
 July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way.
-'''
+''',
+    'eleanor2': "You see Eleanor tied to a chair with tape over her mouth so she can't speak."
 }
 
 '''

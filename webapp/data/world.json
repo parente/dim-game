@@ -2733,7 +2733,7 @@
     {
         "visual": {
             "name": "Eleanor", 
-            "description": null
+            "description": "You see Eleanor tied to a chair with tape over her mouth so she can't speak."
         }, 
         "aural": {
             "name": "sound://speech/eleanor", 

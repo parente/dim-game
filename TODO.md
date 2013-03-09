@@ -1,7 +1,7 @@
 v1 - Just Make it Work
 ======================
 
-Support Web Audio API enabled browswers on the desktop (Safari, Chrome).
+Support Web Audio API enabled browsers on the desktop (Safari, Chrome).
 
 Game World
 ----------
@@ -16,12 +16,10 @@ Game World
 Audio
 -----
 
-* skip one report at a time when interrupting, not all
-** MUST HAVE: if not, too easy to "lose" in puzzle when trying to skip voice
+* low pass filter sound files to remove recording whine
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
-* low pass filter sound files to remove recording whine
 * new background music tracks
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037
