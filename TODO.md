@@ -18,23 +18,16 @@ Game World
     * ordered "scalpel"
     * separate useable from targets?
 * walkthrough testing
-    * desk open only says recording appears, not star
-    * background music still too loud at climax
-    * not clear what changed after rumble from piano puzzle
-    * upper hallway speech has pause at start
-    * downstairs hallway door "use this on what?" confusing, fix use
-    * change sitting room door to dpad control scheme
+    * not clear what changed after rumble from piano puzzle (make adjoining rooms examinable)
     * stop or switch music on game over
-    * gun to garage door crashes
-    * quotes on all recording speeches
-    * add quotes to paragraphs in eleanor's first speech
+    * gun to garage door crashes?
+
     * don't make disabled events part of use options available
+    * change sitting room door to dpad control scheme
 
 Audio
 -----
 
-* low pass filter sound files to remove recording whine
-    * what would you like to examine?
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
@@ -70,7 +63,6 @@ vXXX - Gameplay Improvements
 * replace "choose a menu option" speech with a simple sound indicating explore menu active
 * rumble sound for piano puzzle solve
 * confirm save slot overwrite
-* make adjoining rooms examinable
 * randomize puzzles
 * contract out artwork creation
 * move input bindings to world.json

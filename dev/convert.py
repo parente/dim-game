@@ -33,7 +33,11 @@ visual_names = {
 Transcriptions of the speech audio files.
 '''
 visual_descriptions = {
-    'operatingRoom': "You awaken with a jolt. The last thing you remember was walking home after work. You thought you heard footsteps behind you. Before you could turn around, something hit you on the head. Hard.\n\nAs you try to get up, you realize that you can't move. You're strapped on an operating table.\n\nWhat's going on?",
+    'operatingRoom': '''You awaken with a jolt. The last thing you remember was walking home after work. You thought you heard footsteps behind you. Before you could turn around, something hit you on the head. Hard.
+
+As you try to get up, you realize that you can't move. You're strapped on an operating table.
+
+What's going on?''',
     'scalpel': "It's a scalpel, perfect for cutting through things.",
     'operatingRoomAfter': "You are in an operating room. There's a large operating table with several surgical utensils nearby.",
     'operatingTable': "It's a large operating table. Straps are tied tightly around your torso.",
@@ -44,7 +48,11 @@ visual_descriptions = {
     'freezerBodies': "Open body bags are stacked against the far wall. You notice that some of them have organs missing.",
     'operatingRoomDoor': "The door is locked.",
     'operatingRoomKey': "It's a key to unlock the operating room.",
-    'operatingRoomRecording': "October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.\n\nI have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\n\nI will return in due time to check on my patient.",
+    'operatingRoomRecording': '''"October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.
+
+I have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\
+
+I will return in due time to check on my patient."''',
     'basementHallway': "You're in a long narrow hallway. It almost feels like the walls are about to close in.",
     'pianoRoom': "You're in what appears to be a sitting room. There's a piano in the corner and several paintings on the wall.",
     'journal': "It's a journal. To save your game, use it.",
@@ -54,7 +62,19 @@ visual_descriptions = {
     'elevator': "A small cramped elevator only has two buttons.",
     'study': "You're in a study room. The desk is cluttered with a computer and other objects. There's a safe on the floor.",
     'deskKey': "It's a small key. Wonder what it unlocks?",
-    'studyRecording': "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject.",
+    'studyRecording': '''"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent."
+
+"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner."
+
+"I have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake."
+
+"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject."
+
+"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results."
+
+"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.""
+
+"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject."''',
     'computer': "It's a computer. Maybe you should try using it.",
     'phone': "You try to pick up the phone to call 911, but there's no dialtone.",
     'safe': "It's a sturdy looking safe. Maybe you should try the combination.",
@@ -73,7 +93,9 @@ visual_descriptions = {
     'starHole': "It's a hole in the shape of a star.",
     'star': "It's a star shaped gem.",
     'hammer': "It's a sturdy hammer, perfect for hitting things.",
-    'bedroomRecording': "April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes.\n\nMy serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them.",
+    'bedroomRecording': '''"April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes."
+
+"My serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them."''',
     'bathroomHallway': "You're in a narrow hallway. You see a door at the end.",
     'bathroomHallwayDoor': "There's a small window on the door. You peer through and see a person on the other side.",
     'cellKey': "It's a key marked \"cell.\"",
@@ -88,16 +110,16 @@ visual_descriptions = {
     'trappedHallwayDoor': "It's a locked door leading to the downstairs hallway.",
     'notebook': "Written in the notebook are the numbers 9-3-1. You wonder what they could mean.",
     'masterBedroomDeskKey': "It's a key marked \"desk.\"",
-    'libraryRecording': '''August 19th, 2:30 PM. I'm getting so close I can feel it. Serum #10 succeeded in reversing the effects of the disease, but it also caused mutations which are ... undesirable. I need to isolate the cause of these abnormalities.
+    'libraryRecording': '''"August 19th, 2:30 PM. I'm getting so close I can feel it. Serum #10 succeeded in reversing the effects of the disease, but it also caused mutations which are ... undesirable. I need to isolate the cause of these abnormalities."
 
-Hold on a little longer Eleanor. I'm going to save you!''',
+"Hold on a little longer Eleanor. I'm going to save you!"''',
     'masterBathroom': "The master bathroom is rather spacious. There's a mirror and a star shaped hole on one of the walls.",
     'masterBedroomDesk': "The desk is locked.",
-    'masterBedroomRecording': '''September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.
+    'masterBedroomRecording': '''"September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Hahahaha ... ah."
 
-I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.
+"I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there."
 
-Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good.''',
+"Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good."''',
     'masterBedroomBed': "There are stains on the bed that look like dried blood.",
     'masterBathroomMirror': "There's something suspicious about this mirror. You feel a draft when you step close to it.",
     'masterBathroomStarHole': "It's a hole in the shape of a star.",
@@ -114,11 +136,11 @@ Eleanor is getting violent now. Not only does she not recognize me, she tried to
 
 "Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?"
 
-"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.
+"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him."
 
-I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.
+"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding."
 
-But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you have to cut me loose. Do you have a knife with you?"''',
+"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you have to cut me loose. Do you have a knife with you?"''',
 
     'mazeDoor': "The door has a large sign that says \"STAY OUT\". There's a card reader next to it.",
     'knife': "It's a sharp knife.",
@@ -135,12 +157,11 @@ But enough talk. We have to get you the antidote! Don't worry, I know what I'm d
     'barn': "You're in the barn. There are cages everywhere, many which contain grotesque looking things. There's a switch on the wall and stairs leading up to the loft.",
     'barnSwitch': "It's a switch that you can pull.",
     'barnLoft': "You're in the barn loft. You see Eleanor tied to a chair.",
-    'safeRecording': '''June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!
+    'safeRecording': '''"June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!"
 
-June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first.
+"June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first."
 
-July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way.
-''',
+"July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way."''',
     'eleanor2': "You see Eleanor tied to a chair with tape over her mouth so she can't speak."
 }
 
@@ -320,7 +341,7 @@ use_events = {
         ],
         'report': [
             {
-                'description': "The desk opens, revealing a recording.",
+                'description': "The desk opens, revealing a recording and a star shaped gem.",
                 'narration': 'sound://speech/deskKeyToDesk'
             }
         ]
@@ -843,7 +864,7 @@ world = [
                 # one in which case it coalsces and the current one continues
                 "swapstop": True,
                 # gain of the output
-                "gain": 0.15,
+                "gain": 0.10,
                 # cross fade when swapstopping
                 "crossfade": True
             },
