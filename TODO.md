@@ -9,16 +9,14 @@ Game World
 * maze controller (passCardToMazeDoor)
     * spatial beacon sound or pre-panned?
     * test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
-* cleanup use and when objects become useable
-    * single vs interactive
-    * ordered "scalpel"
-    * separate useable from targets?
-    * don't make disabled events part of use options available
-* walkthrough testing
-    * not clear what changed after rumble from piano puzzle (make adjoining rooms examinable)
-    * gun to garage door crashes?
-    * do we want controller to override pump ability to eat keys?
-* set eleanor4 desc and location upon trapped hallway door key to door?
+* make adjoining rooms examinable
+* do we want controller to override pump ability to eat keys?
+    * better for skipping snippets that are confusing otherwise
+* prevent reuse of bathroom hallway door after first time?
+    * description makes no sense when using again
+    * but no other way to recover the safe password if forgotten
+* make grunts more gender neutral
+    * rest of the game is careful about player assumptions
 
 Audio
 -----
@@ -26,6 +24,7 @@ Audio
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
+* game winning music
 * new background music tracks
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037
@@ -36,6 +35,7 @@ Visual
 
 * support backdrops
 * breadcrumb design for menu
+    * or worst case clear out the menu text after a while
 * favicon
 
 vXXX - iOS Support
@@ -51,6 +51,7 @@ vXXX - iOS Support
 vXXX - Gameplay Improvements
 ============================
 
+* move eleanor's first description to event and split
 * press any key to go to main menu after game over
 * game over sound
 * audio icon for number of things that appear in room after event (desk, safe)
@@ -68,7 +69,6 @@ vXXX - Gameplay Improvements
 vXXX - DIM Boilerplate
 ============================
 
-* refactor use.js controller to take advantage of rolling prompt
 * simple commands in console for walkthrough testing
 * upgrade path for saved games
     * related solve precache media after load (json may contain different uris)

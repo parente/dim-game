@@ -1,13 +1,15 @@
 define([
     'dim/topic',
+    'dim/util',
     'dim/controllers/menu'
-], function(topic, Menu) {
+], function(topic, util, Menu) {
     var exports = {};
 
     exports.create = function(world) {
         // get menu defaults
-        var obj = world.get_ctrl('move');
-        var scene = world.get_player_scene();
+        var obj = world.get_ctrl('move'),
+            scene = world.get_player_scene(),
+            compareNames = util.comparator('visual.name');
 
         // add adjoining scenes as movement options
         obj.options = world.get_scene_adjoins(scene);
@@ -17,6 +19,9 @@ define([
             topic('controller.report').publish(world, obj.impossible);
             return null;
         }
+
+        // sort in reasonable order
+        obj.options.sort(compareNames);
 
         // build menu of adjoining scenes
         var menu = new Menu(obj);

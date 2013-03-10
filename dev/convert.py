@@ -11,9 +11,11 @@ visual_names = {
     'masterBathroomMirror': 'Mirror',
     'deskKey': 'Small Key',
     'bedroomRecording': 'Recording',
+    'studyRecording': 'Recording',
     'starHole': 'Star Shaped Hole',
     'eleanor2': 'Eleanor',
     'lobby': 'Main Lobby',
+    'operatingRoomRecording': 'Recording',
     'masterBedroomRecording': 'Recording',
     'masterBedroomDeskKey': 'Desk Key',
     'masterBedroomDesk': 'Desk',
@@ -48,11 +50,11 @@ What's going on?''',
     'freezerBodies': "Open body bags are stacked against the far wall. You notice that some of them have organs missing.",
     'operatingRoomDoor': "The door is locked.",
     'operatingRoomKey': "It's a key to unlock the operating room.",
-    'operatingRoomRecording': '''"October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.
+    'operatingRoomRecording': '''"October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21."
 
-I have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\
+"I have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then."
 
-I will return in due time to check on my patient."''',
+"I will return in due time to check on my patient."''',
     'basementHallway': "You're in a long narrow hallway. It almost feels like the walls are about to close in.",
     'pianoRoom': "You're in what appears to be a sitting room. There's a piano in the corner and several paintings on the wall.",
     'journal': "It's a journal. To save your game, use it.",
@@ -108,6 +110,7 @@ I will return in due time to check on my patient."''',
     'kitchen': "A strong smell in the kitchen seems to be coming from the trash can. Bones lie around it but you don't want to know where they're from.",
     'mainEntrance': "A pair of double doors leads outside. There's a card reader next to the door.",
     'trappedHallwayDoor': "It's a locked door leading to the downstairs hallway.",
+    'trappedHallway': "It's the hallway with the traps. They seem to have been disabled.",
     'notebook': "Written in the notebook are the numbers 9-3-1. You wonder what they could mean.",
     'masterBedroomDeskKey': "It's a key marked \"desk.\"",
     'libraryRecording': '''"August 19th, 2:30 PM. I'm getting so close I can feel it. Serum #10 succeeded in reversing the effects of the disease, but it also caused mutations which are ... undesirable. I need to isolate the cause of these abnormalities."
@@ -365,9 +368,11 @@ use_events = {
     'playerToBathroomHallwayDoor': {
         'report': [
             {
-                'description': '''You knock on the hallway door. The person inside jumps in surprise.
-
-"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble."
+                'description': '''You knock on the hallway door. The person inside jumps in surprise.''',
+                'narration': 'sound://speech/playerToBathroomHallwayDoor'
+            },
+            {
+                'description': '''"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble."
 
 "Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!"
 
@@ -378,9 +383,6 @@ use_events = {
 "You have to help me. Find the key. Please!"
 
 "Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
-                'narration': 'sound://speech/playerToBathroomHallwayDoor'
-            },
-            {
                 'narration': 'sound://speech/friend010_cell'
             }
         ]
@@ -417,12 +419,11 @@ use_events = {
         'report': [
             {
                 'title': 'Upper Hallway',
-                'description': '''You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.
-
-"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?"''',
+                'description': 'You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.',
                 'narration': 'sound://speech/cellKeyToBathroomHallwayDoor'
             },
             {
+                'description': '''"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?"''',
                 'narration': 'sound://speech/cellKeyToBathroomHallwayDoor2'
             }
         ]
@@ -447,16 +448,15 @@ use_events = {
         ],
         'report': [
             {
-                'description': '''You hit the door hard and it opens. You can now move to the balcony.
-
-"Alright, let's get out of here!"
+                'description': '''You hit the door hard and it opens. You can now move to the balcony.''',
+                'narration': 'sound://speech/hammerToUpperHallwayDoor'
+            },
+            {
+                'description': '''"Alright, let's get out of here!"
 
 "What? You have to find some serum?"
 
 "Oh, OK then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck."''',
-                'narration': 'sound://speech/hammerToUpperHallwayDoor'
-            },
-            {
                 'narration': 'sound://speech/hammerToUpperHallwayDoor2'
             }
         ]
@@ -610,25 +610,24 @@ Note that you're always facing north.''',
             },
             {
                 'action': 'set',
-                'args': ['items.eleanor.visual.description', '''"I'm not finished with your antidote yet. There should be a key in the garage that opens a door in the lobby. Use that to get out and I'll come find you."''']
+                'args': ['item.eleanor.visual.description', '''"I'm not finished with your antidote yet. There should be a key in the garage that opens a door in the lobby. Use that to get out and I'll come find you."''']
             },
             {
                 'action': 'set',
-                'args': ['items.eleanor.aural.description', 'sound://speech/eleanorDesc3']
+                'args': ['item.eleanor.aural.description', 'sound://speech/eleanorDesc3']
             }
         ],
         'report': [
             {
                 'description': '''"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again."
 
-"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!"
-
-"And the ones in the basement are just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it."
-
-"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!"''',
+"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!"''',
                 'narration': 'sound://speech/ingredientsToEleanor'
             },
             {
+                'description': '''"And the ones in the basement were just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it."
+
+"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is in the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!"''',
                 'narration': 'sound://speech/ingredientsToEleanor2'
             }
         ]
@@ -659,6 +658,7 @@ Note that you're always facing north.''',
         ],
         'report': [
             {
+                'sound': 'sound://sound/gunShot',
                 'description': "You shoot the lock on the door and it shatters. You can now move to the garage.",
                 'narration': 'sound://speech/gunToGarageDoor'
             }
@@ -681,6 +681,12 @@ Note that you're always facing north.''',
     },
 
     'playerToBarnSwitch': {
+        "exec": [
+            {
+                "action": "activate",
+                "args": ["dim/controllers/meta/done", "lose"]
+            }
+        ],
         'report': [
             {
                 'description': "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive.",
@@ -751,7 +757,7 @@ Note that you're always facing north.''',
         ],
         'report': [
             {
-                'description': '''"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Ha ha ha ha ha!"
+                'description': '''"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Hahahahaha!"
 
 "Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it."
 
@@ -779,7 +785,7 @@ Your friend spins around as Eleanor appears at the top of the stairs.
             },
 
             {
-                'description': '''"He he he ha. Eleanor, my dear, what are you doing out of your room?"
+                'description': '''"Heheheha. Eleanor, my dear, what are you doing out of your room?"
 
 "Johan, I need to get you to the hospital."
 
@@ -791,13 +797,13 @@ Your friend spins around as Eleanor appears at the top of the stairs.
 
 A huge, deformed monster appears at the top of the stairs.
 
-"He ha ha ha ha ha. Ah yes, my pets, right on time."
+"Hehahahahaha. Ah yes, my pets, right on time."
 
 The Doctor grabs Eleanor and throws her over his shoulder.
 
 "Ahhh! Put me down!"
 
-"I now bid you two, goodday. Have fun with, Igor. Ha ha ha ha ha ha ha ha!"
+"I now bid you two, goodday. Have fun with, Igor. Hahahahahahahaha!"
 
 The Doctor and Eleanor dash out the side door.
 
@@ -814,7 +820,7 @@ You follow your new friend as he runs to the other side door, the monster follow
                 'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1'
             },
             {
-                'description': '''"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, press the left or right arrows. We have to go fast. That monster will be here any second."''',
+                'description': '''"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second."''',
                 'narration': 'sound://speech/trappedHallwayDoorKeyToDoor2'
             }
         ]
@@ -1037,7 +1043,9 @@ world = [
         "id": "win",
         "report": [
             {
-                "title": "You Win"
+                "title": "Game Over",
+                "narration": "sound://speech/gameOver",
+                "ambience": "null"
             }
         ]
     },
@@ -1328,23 +1336,25 @@ world = [
         ],
         "report": [
             {
-                "description": '''The safe opens. Inside you find a recording, a key, and a pass card.
-
-Strange. The phone suddenly rings. You pick it up.
-
-"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."
+                "description": '''The safe opens. Inside you find a recording, a key, and a pass card.''',
+                "narration": "sound://sound/chime"
+            },
+            {"narration": "sound://speech/safeOpen1"},
+            {"narration": "sound://sound/phoneRing"},
+            {
+                'description': '''Strange. The phone suddenly rings. You pick it up.''',
+                "narration": "sound://speech/safeOpen2"
+            },
+            {
+                'description': '''"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."
 
 "You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours."
 
 "I have developed a final serum. You will be my test subject or you will die. It's that simple."
 
 "I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!"''',
-                "narration": "sound://sound/chime"
-            },
-            {"narration": "sound://speech/safeOpen1"},
-            {"narration": "sound://sound/phoneRing"},
-            {"narration": "sound://speech/safeOpen2"},
-            {"narration": "sound://speech/safeOpen3"}
+                "narration": "sound://speech/safeOpen3"
+            }
         ]
     },
     {
@@ -1682,19 +1692,22 @@ Strange. The phone suddenly rings. You pick it up.
         "prompt": [
             {
                 'description': 'Jump!',
-                'narration': 'sound://speech/jump'
+                'narration': 'sound://speech/jump',
+                'audio': 'sound://sound/jump'
             },
             {
                 'description': 'Duck!',
-                'narration': 'sound://speech/duck'
+                'narration': 'sound://speech/duck',
+                'audio': 'sound://sound/duck'
             },
             {
                 'description': 'Left!',
-                'narration': 'sound://speech/left'
+                'narration': 'sound://speech/left',
+                'audio': 'sound://sound/left'
             },
             {
                 'description': 'Right!',
-                'narration': 'sound://speech/right'
+                'narration': 'sound://speech/right',
             },
             {
                 'description': 'Jump!',
@@ -1725,25 +1738,37 @@ Strange. The phone suddenly rings. You pick it up.
             {
                 "id": "up",
                 "visual": {
-                    "name": "Jump"
+                    "name": "Jump",
+                },
+                "aural": {
+                    "sound": "sound://sound/jump",
                 }
             },
             {
                 "id": "down",
                 "visual": {
                     "name": "Duck"
+                },
+                "aural": {
+                    "sound": "sound://sound/duck",
                 }
             },
             {
                 "id": "left",
                 "visual": {
                     "name": "Left"
+                },
+                "aural": {
+                    "sound": "sound://sound/left",
                 }
             },
             {
                 "id": "right",
                 "visual": {
                     "name": "Right"
+                },
+                "aural": {
+                    "sound": "sound://sound/right",
                 }
             }
         ]
@@ -1790,6 +1815,10 @@ Strange. The phone suddenly rings. You pick it up.
             {
                 'action': 'set',
                 'args': ['player.scene', 'outside']
+            },
+            {
+                'action': 'append',
+                'args': ['scene.lobby.adjoins', 'trappedHallway']
             }
         ],
         "report": [
@@ -1818,6 +1847,7 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Fire"
                 },
                 "aural": {
+                    "sound": "sound://sound/gunShot",
                     "name": "sound://speech/doc150_barn_hit"
                 }
             }
@@ -2219,9 +2249,7 @@ Or did they?
             {
                 "description": "What item will you use?",
                 "narration": "sound://speech/whatItemWillYouUse"
-            }
-        ],
-        "promptInteract": [
+            },
             {
                 "description": "Use this on what?",
                 "narration": "sound://speech/useThisOnWhat"
@@ -2303,18 +2331,6 @@ Or did they?
                 "narration": "sound://speech/youHaveTakenThe",
             },
             {"narration": "{{{args.1.aural.name}}}"}
-        ]
-    },
-
-    # reaction to taking the scalpel
-    {
-        "type": "event",
-        "on": ["take", "scalpel"],
-        "exec": [
-            {
-                "action": "append",
-                "args": ["item.operatingTable.properties", "useable"]
-            }
         ]
     },
 
@@ -2428,9 +2444,9 @@ def interactions(triggers, vars):
             }
             if(item == 'player'):
                 d['on'] = ['use', target]
+                vars[target].properties.append('useable')
             else:
                 d['on'] = ['use', item, target]
-            vars[target].properties.append('useable')
             d.update(use_events.get(method, {}))
             world.append(d)
 

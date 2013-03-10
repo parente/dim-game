@@ -1,9 +1,11 @@
 define([
     'jquery',
     'dim/topic',
+    'dim/util',
     'dim/controllers//menu'
-], function($, topic, Menu) {
-    var exports = {};
+], function($, topic, util, Menu) {
+    var exports = {},
+        compareNames = util.comparator('visual.name');
 
     exports.create = function(world) {
         // deep copy examine controller options
@@ -13,6 +15,8 @@ define([
         obj.options = world.get_scene_items(scene);
         // add scene as an examine option too
         obj.options.push(scene);
+        // sort by name
+        obj.options.sort(compareNames);
 
         var menu = new Menu(obj);
         menu.on_activate = function() {

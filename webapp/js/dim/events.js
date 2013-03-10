@@ -81,7 +81,9 @@ define([
         console.log('  events.actions.remove', event, args);
         var arr = $.getObject(args[0], indices);
         var i = arr.indexOf(args[1]);
-        var x = arr.splice(i, 1);
+        if(i != -1) {
+            arr.splice(i, 1);
+        }
     };
 
     /**

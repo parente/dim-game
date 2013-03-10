@@ -19,7 +19,11 @@ define([
         this.reset(args);
     };
 
-    cls.prototype.next = function() {
+    cls.prototype.next = function(args) {
+        if(args) {
+            this.args = args;
+            this.options = args.options;
+        }
         this.event = null;
         this.current = 0;
         if(this.args.prompt) {
@@ -31,12 +35,8 @@ define([
     };
 
     cls.prototype.reset = function(args) {
-        if(args) {
-            this.args = args;
-            this.options = args.options;
-        }
         this.seq = [];
-        this.next();
+        this.next(args);
     };
 
     cls.prototype.destroy = function() {

@@ -20,6 +20,21 @@ define([
         console.log(world.get_player());
     };
 
+    // skip to upper hallway after freeing friend
+    skipToFriend = function() {
+        take('hammer');
+        take('star');
+        take('passCard');
+        move('upperHallway');
+        world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
+        me();
+    };
+
+    skipToLobbyConfrontation = function() {
+        take('trappedHallwayDoorKey');
+        move('lobby');
+    };
+
     window.world = world;
 
     // Avoid `console` errors in browsers that lack a console.

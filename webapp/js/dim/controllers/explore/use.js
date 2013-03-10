@@ -1,25 +1,26 @@
 define([
     'jquery',
     'dim/topic',
+    'dim/util',
     'dim/controllers/menu'
-], function($, topic, Menu) {
+], function($, topic, util, Menu) {
     var exports = {};
 
     exports.create = function(world) {
         // deep copy controller values because we're going to modify
-        var obj = $.extend(true, {}, world.get_ctrl('use'));
-        var scene = world.get_player_scene();
-        var args = ['use'];
+        var obj = $.extend(true, {}, world.get_ctrl('use')),
+            scene = world.get_player_scene();
+            args = ['use'],
+            compareNames = util.comparator('visual.name');
 
-        // add useable items in the inventory as options
-        var inScene = world.get_player_items(function(item) {
+        // include useable items in the player's inventory and scene in the first menu
+        var inventory = world.get_player_items(function(item) {
             return ($.inArray('useable', item.properties) > -1);
         });
-
-        // add useable items in the scene as options
-        obj.options = inScene.concat(world.get_scene_items(scene, function(item) {
+        obj.options = inventory.concat(world.get_scene_items(scene, function(item) {
             return ($.inArray('useable', item.properties) > -1);
         }));
+        obj.options.sort(compareNames);
 
         if(obj.options.length === 0) {
             // notify nothing to use and return to main controller
@@ -34,15 +35,19 @@ define([
             // get any events associated with use action and items selected
             var events = world.evaluate.apply(world, args);
             if(!events.length) {
+                // now include inventory and ALL items in the scene, not just the usable ones
+                // compute this up front so we can decide if the player has anything left to
+                // choose
+                obj.options = inventory.concat(world.get_scene_items(scene));
+                obj.options.sort(compareNames);
+
                 if(args.length < 3 && obj.options.length > 1) {
                     // no matches, allow select of a second item
                     // don't include the selected item as an option
                     var i = obj.options.indexOf(item);
                     obj.options.splice(i, 1);
-                    // switch to interaction prompt
-                    obj.prompt = obj.promptInteract;
-                    // switch menus without disturbing controller state
-                    menu.reset(obj);
+                    // switch prompts and options
+                    menu.next(obj);
                 } else if(args.length >= 3) {
                     // no matches and two items selected, note no interaction
                     topic('controller.report').publish(world, obj.noInteraction);

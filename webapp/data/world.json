@@ -186,7 +186,9 @@
     {
         "report": [
             {
-                "title": "You Win"
+                "ambience": "null", 
+                "narration": "sound://speech/gameOver", 
+                "title": "Game Over"
             }
         ], 
         "type": "ctrl", 
@@ -481,7 +483,7 @@
     {
         "report": [
             {
-                "description": "The safe opens. Inside you find a recording, a key, and a pass card.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"", 
+                "description": "The safe opens. Inside you find a recording, a key, and a pass card.", 
                 "narration": "sound://sound/chime"
             }, 
             {
@@ -491,9 +493,11 @@
                 "narration": "sound://sound/phoneRing"
             }, 
             {
+                "description": "Strange. The phone suddenly rings. You pick it up.", 
                 "narration": "sound://speech/safeOpen2"
             }, 
             {
+                "description": "\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"", 
                 "narration": "sound://speech/safeOpen3"
             }
         ], 
@@ -946,11 +950,17 @@
                 "visual": {
                     "name": "Jump"
                 }, 
+                "aural": {
+                    "sound": "sound://sound/jump"
+                }, 
                 "id": "up"
             }, 
             {
                 "visual": {
                     "name": "Duck"
+                }, 
+                "aural": {
+                    "sound": "sound://sound/duck"
                 }, 
                 "id": "down"
             }, 
@@ -958,25 +968,34 @@
                 "visual": {
                     "name": "Left"
                 }, 
+                "aural": {
+                    "sound": "sound://sound/left"
+                }, 
                 "id": "left"
             }, 
             {
                 "visual": {
                     "name": "Right"
                 }, 
+                "aural": {
+                    "sound": "sound://sound/right"
+                }, 
                 "id": "right"
             }
         ], 
         "prompt": [
             {
+                "audio": "sound://sound/jump", 
                 "description": "Jump!", 
                 "narration": "sound://speech/jump"
             }, 
             {
+                "audio": "sound://sound/duck", 
                 "description": "Duck!", 
                 "narration": "sound://speech/duck"
             }, 
             {
+                "audio": "sound://sound/left", 
                 "description": "Left!", 
                 "narration": "sound://speech/left"
             }, 
@@ -1093,6 +1112,13 @@
                     "player.scene", 
                     "outside"
                 ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "scene.lobby.adjoins", 
+                    "trappedHallway"
+                ]
             }
         ]
     }, 
@@ -1104,6 +1130,7 @@
                     "name": "Fire"
                 }, 
                 "aural": {
+                    "sound": "sound://sound/gunShot", 
                     "name": "sound://speech/doc150_barn_hit"
                 }, 
                 "id": "tap"
@@ -1558,6 +1585,10 @@
             {
                 "description": "What item will you use?", 
                 "narration": "sound://speech/whatItemWillYouUse"
+            }, 
+            {
+                "description": "Use this on what?", 
+                "narration": "sound://speech/useThisOnWhat"
             }
         ], 
         "noInteraction": [
@@ -1570,12 +1601,6 @@
             {
                 "description": "Nothing happened.", 
                 "narration": "sound://speech/nothingHappened"
-            }
-        ], 
-        "promptInteract": [
-            {
-                "description": "Use this on what?", 
-                "narration": "sound://speech/useThisOnWhat"
             }
         ], 
         "type": "ctrl", 
@@ -1649,22 +1674,6 @@
                 "action": "append", 
                 "args": [
                     "item.{{args.1.id}}.properties", 
-                    "useable"
-                ]
-            }
-        ]
-    }, 
-    {
-        "on": [
-            "take", 
-            "scalpel"
-        ], 
-        "type": "event", 
-        "exec": [
-            {
-                "action": "append", 
-                "args": [
-                    "item.operatingTable.properties", 
                     "useable"
                 ]
             }
@@ -2202,7 +2211,7 @@
         ], 
         "visual": {
             "name": "Downstairs Hallway", 
-            "description": null
+            "description": "It's the hallway with the traps. They seem to have been disabled."
         }, 
         "aural": {
             "name": "sound://speech/trappedHallway", 
@@ -2297,9 +2306,7 @@
         }, 
         "type": "item", 
         "id": "operatingTable", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2318,8 +2325,8 @@
     }, 
     {
         "visual": {
-            "name": "Operating Room Recording", 
-            "description": "\"October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.\n\nI have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\nI will return in due time to check on my patient.\""
+            "name": "Recording", 
+            "description": "\"October 15th, 7 PM. Trial: 52B. Subject: healthy adult male. Age: 21.\"\n\n\"I have injected 52B with the disease. I will administer serum #12 in two days. Hopefully, the mutations present in serum 11 will not be present in this, my newest formula. I will not be certain until two days from now. 52B should remain unconscious until then.\"\n\n\"I will return in due time to check on my patient.\""
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2340,9 +2347,7 @@
         }, 
         "type": "item", 
         "id": "operatingRoomDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2419,7 +2424,7 @@
     }, 
     {
         "visual": {
-            "name": "Study Recording", 
+            "name": "Recording", 
             "description": "\"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\"\n\n\"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner.\"\n\n\"I have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\"\n\n\"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\"\n\n\"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\"\n\n\"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\"\"\n\n\"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject.\""
         }, 
         "aural": {
@@ -2484,9 +2489,7 @@
         }, 
         "type": "item", 
         "id": "desk", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2525,9 +2528,7 @@
         }, 
         "type": "item", 
         "id": "mirror", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2553,9 +2554,7 @@
         }, 
         "type": "item", 
         "id": "shelf", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2628,9 +2627,7 @@
         }, 
         "type": "item", 
         "id": "starHole", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2644,7 +2641,6 @@
         "type": "item", 
         "id": "bathroomHallwayDoor", 
         "properties": [
-            "useable", 
             "useable"
         ]
     }, 
@@ -2702,9 +2698,7 @@
         }, 
         "type": "item", 
         "id": "upperHallwayDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2730,9 +2724,7 @@
         }, 
         "type": "item", 
         "id": "mainEntrance", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2773,9 +2765,7 @@
         }, 
         "type": "item", 
         "id": "masterBedroomDesk", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2814,9 +2804,7 @@
         }, 
         "type": "item", 
         "id": "masterBathroomStarHole", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2872,9 +2860,7 @@
         }, 
         "type": "item", 
         "id": "sittingRoomDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2887,10 +2873,7 @@
         }, 
         "type": "item", 
         "id": "eleanor", 
-        "properties": [
-            "useable", 
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2946,9 +2929,7 @@
         }, 
         "type": "item", 
         "id": "mazeDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -2961,10 +2942,7 @@
         }, 
         "type": "item", 
         "id": "garageDoor", 
-        "properties": [
-            "useable", 
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -3007,9 +2985,7 @@
         }, 
         "type": "item", 
         "id": "trappedHallwayDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -3022,9 +2998,7 @@
         }, 
         "type": "item", 
         "id": "barnDoor", 
-        "properties": [
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "visual": {
@@ -3052,10 +3026,7 @@
         }, 
         "type": "item", 
         "id": "eleanor2", 
-        "properties": [
-            "useable", 
-            "useable"
-        ]
+        "properties": []
     }, 
     {
         "report": [
@@ -3274,10 +3245,11 @@
     {
         "report": [
             {
-                "description": "\"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again.\"\n\n\"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!\"\n\n\"And the ones in the basement are just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it.\"\n\n\"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!\"", 
+                "description": "\"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again.\"\n\n\"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!\"", 
                 "narration": "sound://speech/ingredientsToEleanor"
             }, 
             {
+                "description": "\"And the ones in the basement were just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it.\"\n\n\"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is in the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!\"", 
                 "narration": "sound://speech/ingredientsToEleanor2"
             }
         ], 
@@ -3313,14 +3285,14 @@
             {
                 "action": "set", 
                 "args": [
-                    "items.eleanor.visual.description", 
+                    "item.eleanor.visual.description", 
                     "\"I'm not finished with your antidote yet. There should be a key in the garage that opens a door in the lobby. Use that to get out and I'll come find you.\""
                 ]
             }, 
             {
                 "action": "set", 
                 "args": [
-                    "items.eleanor.aural.description", 
+                    "item.eleanor.aural.description", 
                     "sound://speech/eleanorDesc3"
                 ]
             }
@@ -3453,6 +3425,7 @@
     {
         "report": [
             {
+                "sound": "sound://sound/gunShot", 
                 "description": "You shoot the lock on the door and it shatters. You can now move to the garage.", 
                 "narration": "sound://speech/gunToGarageDoor"
             }
@@ -3577,10 +3550,11 @@
     {
         "report": [
             {
-                "description": "You knock on the hallway door. The person inside jumps in surprise.\n\n\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
+                "description": "You knock on the hallway door. The person inside jumps in surprise.", 
                 "narration": "sound://speech/playerToBathroomHallwayDoor"
             }, 
             {
+                "description": "\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
                 "narration": "sound://speech/friend010_cell"
             }
         ], 
@@ -3637,7 +3611,16 @@
             "barnSwitch"
         ], 
         "type": "event", 
-        "id": "playerToBarnSwitch"
+        "id": "playerToBarnSwitch", 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/meta/done", 
+                    "lose"
+                ]
+            }
+        ]
     }, 
     {
         "disabled": true, 
@@ -3729,15 +3712,15 @@
     {
         "report": [
             {
-                "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Ha ha ha ha ha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"\n\nYou notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"\n\n\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"\n\n\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
+                "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Hahahahaha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"\n\nYou notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"\n\n\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"\n\n\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
                 "narration": "sound://speech/trappedHallwayDoorKeyToDoor0"
             }, 
             {
-                "description": "\"He he he ha. Eleanor, my dear, what are you doing out of your room?\"\n\n\"Johan, I need to get you to the hospital.\"\n\n\"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?\"\n\n\"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!\"\n\n\"Mooooaannnnnahahaha ahh.\"\n\nA huge, deformed monster appears at the top of the stairs.\n\n\"He ha ha ha ha ha. Ah yes, my pets, right on time.\"\n\nThe Doctor grabs Eleanor and throws her over his shoulder.\n\n\"Ahhh! Put me down!\"\n\n\"I now bid you two, goodday. Have fun with, Igor. Ha ha ha ha ha ha ha ha!\"\n\nThe Doctor and Eleanor dash out the side door.\n\n\"Help me! I have your antidote. You know where to find me.\"\n\n\"Roar!\"\n\nThe monster blocks the path that the Doctor took.\n\n\"Come on, let's get out of here. Hurry, I know the way out.\"\n\nYou follow your new friend as he runs to the other side door, the monster following closely behind.\n", 
+                "description": "\"Heheheha. Eleanor, my dear, what are you doing out of your room?\"\n\n\"Johan, I need to get you to the hospital.\"\n\n\"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?\"\n\n\"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!\"\n\n\"Mooooaannnnnahahaha ahh.\"\n\nA huge, deformed monster appears at the top of the stairs.\n\n\"Hehahahahaha. Ah yes, my pets, right on time.\"\n\nThe Doctor grabs Eleanor and throws her over his shoulder.\n\n\"Ahhh! Put me down!\"\n\n\"I now bid you two, goodday. Have fun with, Igor. Hahahahahahahaha!\"\n\nThe Doctor and Eleanor dash out the side door.\n\n\"Help me! I have your antidote. You know where to find me.\"\n\n\"Roar!\"\n\nThe monster blocks the path that the Doctor took.\n\n\"Come on, let's get out of here. Hurry, I know the way out.\"\n\nYou follow your new friend as he runs to the other side door, the monster following closely behind.\n", 
                 "narration": "sound://speech/trappedHallwayDoorKeyToDoor1"
             }, 
             {
-                "description": "\"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, press the left or right arrows. We have to go fast. That monster will be here any second.\"", 
+                "description": "\"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second.\"", 
                 "narration": "sound://speech/trappedHallwayDoorKeyToDoor2"
             }
         ], 
@@ -3821,10 +3804,11 @@
         ], 
         "report": [
             {
-                "description": "You hit the door hard and it opens. You can now move to the balcony.\n\n\"Alright, let's get out of here!\"\n\n\"What? You have to find some serum?\"\n\n\"Oh, OK then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck.\"", 
+                "description": "You hit the door hard and it opens. You can now move to the balcony.", 
                 "narration": "sound://speech/hammerToUpperHallwayDoor"
             }, 
             {
+                "description": "\"Alright, let's get out of here!\"\n\n\"What? You have to find some serum?\"\n\n\"Oh, OK then. Let's split up. I'll go search for a way out of here and you go find your serum. I'll meet you back here on this balcony as soon as I find something. Good luck.\"", 
                 "narration": "sound://speech/hammerToUpperHallwayDoor2"
             }
         ], 
@@ -3850,10 +3834,11 @@
         "report": [
             {
                 "narration": "sound://speech/cellKeyToBathroomHallwayDoor", 
-                "description": "You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.\n\n\"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?\"", 
+                "description": "You ask the stranger about the locked hallway door. The two of you move to the hallway and he inspects it.", 
                 "title": "Upper Hallway"
             }, 
             {
+                "description": "\"Hey! I've seen a door like this before. You need a special key. But there's a place on the door that if you hit it with something hard it will open. Do you have a hammer or something?\"", 
                 "narration": "sound://speech/cellKeyToBathroomHallwayDoor2"
             }
         ], 
