@@ -9,19 +9,16 @@ Game World
 * maze controller (passCardToMazeDoor)
     * spatial beacon sound or pre-panned?
     * test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
-* set eleanor4 desc and location upon trapped hallway door key to door?
 * cleanup use and when objects become useable
     * single vs interactive
     * ordered "scalpel"
     * separate useable from targets?
+    * don't make disabled events part of use options available
 * walkthrough testing
     * not clear what changed after rumble from piano puzzle (make adjoining rooms examinable)
-    * stop or switch music on game over
     * gun to garage door crashes?
-
-    * don't make disabled events part of use options available
-    * change sitting room door to dpad control scheme
     * do we want controller to override pump ability to eat keys?
+* set eleanor4 desc and location upon trapped hallway door key to door?
 
 Audio
 -----
@@ -54,6 +51,7 @@ vXXX - iOS Support
 vXXX - Gameplay Improvements
 ============================
 
+* press any key to go to main menu after game over
 * game over sound
 * audio icon for number of things that appear in room after event (desk, safe)
 * sound on mirror moving

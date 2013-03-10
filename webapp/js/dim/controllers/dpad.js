@@ -60,7 +60,7 @@ define([
         return this.options;
     };
 
-    cls.prototype.get_current = function() {
+    cls.prototype.get_selected = function() {
         var d = this.seq[this.seq.length - 1];
         return this.options[d];
     };

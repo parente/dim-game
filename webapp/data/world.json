@@ -175,6 +175,7 @@
     {
         "report": [
             {
+                "ambience": "null", 
                 "narration": "sound://speech/gameOver", 
                 "title": "Game Over"
             }
@@ -766,7 +767,7 @@
             "left"
         ], 
         "maxAttempts": 1, 
-        "canAbort": true, 
+        "inputScheme": "dpad", 
         "type": "ctrl", 
         "id": "sittingRoomDoorLock1"
     }, 
@@ -877,7 +878,7 @@
             "left"
         ], 
         "maxAttempts": 1, 
-        "canAbort": true, 
+        "inputScheme": "dpad", 
         "type": "ctrl", 
         "id": "sittingRoomDoorLock2"
     }, 

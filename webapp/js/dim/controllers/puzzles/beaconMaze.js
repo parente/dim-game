@@ -56,7 +56,7 @@ define([
     };
 
     cls.prototype.on_select = function() {
-        var opt = this.menu.get_current(),
+        var opt = this.menu.get_selected(),
             row = this.ctrl.location[0],
             col = this.ctrl.location[1];
 

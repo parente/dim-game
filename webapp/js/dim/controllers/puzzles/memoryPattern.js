@@ -1,7 +1,8 @@
 define([
     'dim/topic',
-    'dim/controllers/menu'
-], function(topic, Menu) {
+    'dim/controllers/menu',
+    'dim/controllers/dpad'
+], function(topic, Menu, DPad) {
     var exports = {};
 
     exports.create = function(world, ctrlId) {
@@ -9,11 +10,10 @@ define([
         var ctrl = world.get_ctrl(ctrlId),
             choice = 0,
             attempt = 0,
-            correct = true;
+            correct = true,
+            menu;
 
-        // build a menu with an initial prompt
-        var menu = new Menu(ctrl);
-        menu.on_activate = function() {
+        var on_activate = function() {
             var key = menu.get_selected(),
                 events;
             // check if next input matches matter or not
@@ -47,6 +47,15 @@ define([
                 menu.next();
             }
         };
+
+        // allow use of the dpad or menu input scheme
+        if(ctrl.inputScheme && ctrl.inputScheme.toLowerCase() === 'dpad') {
+            menu = new DPad(ctrl);
+            menu.on_select = on_activate;
+        } else {
+            menu = new Menu(ctrl);
+            menu.on_activate = on_activate;
+        }
 
         if(ctrl.canAbort) {
             menu.on_abort = function() {

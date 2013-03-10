@@ -1024,7 +1024,9 @@ world = [
         "report": [
             {
                 "title": "Game Over",
-                "narration": "sound://speech/gameOver"
+                "narration": "sound://speech/gameOver",
+                # make the loop stop with a unknown sound
+                "ambience": "null"
             }
         ]
     },
@@ -1504,7 +1506,7 @@ Strange. The phone suddenly rings. You pick it up.
         "type": "ctrl",
         "id": 'sittingRoomDoorLock1',
         "correct": ['left', 'right', 'left', 'left'],
-        "canAbort": True,
+        "inputScheme": "dpad",
         "maxAttempts": 1,
         "prompt": [
             [
@@ -1578,8 +1580,8 @@ Strange. The phone suddenly rings. You pick it up.
     {
         "type": "ctrl",
         "id": 'sittingRoomDoorLock2',
+        "inputScheme": "dpad",
         "correct": ['right', 'right', 'right', 'right', 'left', 'right', 'left'],
-        "canAbort": True,
         "maxAttempts": 1,
         "prompt": [
             [
