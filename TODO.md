@@ -17,11 +17,24 @@ Game World
     * single vs interactive
     * ordered "scalpel"
     * separate useable from targets?
+* walkthrough testing
+    * desk open only says recording appears, not star
+    * background music still too loud at climax
+    * not clear what changed after rumble from piano puzzle
+    * upper hallway speech has pause at start
+    * downstairs hallway door "use this on what?" confusing, fix use
+    * change sitting room door to dpad control scheme
+    * stop or switch music on game over
+    * gun to garage door crashes
+    * quotes on all recording speeches
+    * add quotes to paragraphs in eleanor's first speech
+    * don't make disabled events part of use options available
 
 Audio
 -----
 
 * low pass filter sound files to remove recording whine
+    * what would you like to examine?
 * delay between sounds on channel option
 * cross fade on channel, enable for music on scene change
 * make music loop seamlessly
@@ -50,6 +63,10 @@ vXXX - iOS Support
 vXXX - Gameplay Improvements
 ============================
 
+* game over sound
+* audio icon for number of things that appear in room after event (desk, safe)
+* sound on mirror moving
+* sound on unlocking operating room door
 * replace "choose a menu option" speech with a simple sound indicating explore menu active
 * rumble sound for piano puzzle solve
 * confirm save slot overwrite
@@ -66,11 +83,11 @@ vXXX - DIM Boilerplate
 * refactor use.js controller to take advantage of rolling prompt
 * simple commands in console for walkthrough testing
 * upgrade path for saved games
-** related solve precache media after load (json may contain different uris)
+    * related solve precache media after load (json may contain different uris)
 * implement tts using emscripten espeak
-** maybe this fork? https://github.com/osi/speak.js/
+    * maybe this fork? https://github.com/osi/speak.js/
 * implement tts for voiceover live region
-** impl WAI-ARIA idea from dev example
+    * impl WAI-ARIA idea from dev example
 * implement tts for chrome app engine
 
 vXXX - Engine One-Day-Maybe

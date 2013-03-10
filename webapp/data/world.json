@@ -480,7 +480,7 @@
     {
         "report": [
             {
-                "description": "The safe opens. Inside you find a recording, a key, and a passcard.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"\"", 
+                "description": "The safe opens. Inside you find a recording, a key, and a pass card.\n\nStrange. The phone suddenly rings. You pick it up.\n\n\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"", 
                 "narration": "sound://sound/chime"
             }, 
             {
@@ -716,6 +716,7 @@
                     "name": "Left button"
                 }, 
                 "aural": {
+                    "sound": "sound://sound/toneLeft", 
                     "name": "sound://speech/leftButton"
                 }, 
                 "id": "left"
@@ -725,6 +726,7 @@
                     "name": "Right button"
                 }, 
                 "aural": {
+                    "sound": "sound://sound/toneRight", 
                     "name": "sound://speech/rightButton"
                 }, 
                 "id": "right"
@@ -816,6 +818,7 @@
                     "name": "Left button"
                 }, 
                 "aural": {
+                    "sound": "sound://sound/toneLeft", 
                     "name": "sound://speech/leftButton"
                 }, 
                 "id": "left"
@@ -825,6 +828,7 @@
                     "name": "Right button"
                 }, 
                 "aural": {
+                    "sound": "sound://sound/toneRight", 
                     "name": "sound://speech/rightButton"
                 }, 
                 "id": "right"
@@ -864,6 +868,7 @@
             }
         ], 
         "correct": [
+            "right", 
             "right", 
             "right", 
             "right", 
@@ -1424,6 +1429,13 @@
                 ]
             }, 
             {
+                "action": "append", 
+                "args": [
+                    "item.ingredients.properties", 
+                    "useable"
+                ]
+            }, 
+            {
                 "action": "remove", 
                 "args": [
                     "scene.basement.items", 
@@ -1450,21 +1462,21 @@
         "options": [
             {
                 "visual": {
-                    "name": "Examine"
-                }, 
-                "aural": {
-                    "name": "sound://speech/examine"
-                }, 
-                "id": "dim/controllers/explore/examine"
-            }, 
-            {
-                "visual": {
                     "name": "Move"
                 }, 
                 "aural": {
                     "name": "sound://speech/move"
                 }, 
                 "id": "dim/controllers/explore/move"
+            }, 
+            {
+                "visual": {
+                    "name": "Examine"
+                }, 
+                "aural": {
+                    "name": "sound://speech/examine"
+                }, 
+                "id": "dim/controllers/explore/examine"
             }, 
             {
                 "visual": {
@@ -1677,6 +1689,22 @@
                 "args": [
                     "scene.operatingRoom.aural.description", 
                     "sound://speech/operatingRoomDesc"
+                ]
+            }
+        ]
+    }, 
+    {
+        "on": [
+            "examine", 
+            "eleanor"
+        ], 
+        "type": "event", 
+        "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "event.knifeToEleanor.disabled", 
+                    false
                 ]
             }
         ]
@@ -2391,7 +2419,7 @@
     {
         "visual": {
             "name": "Study Recording", 
-            "description": "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter like a fish. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject."
+            "description": "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject."
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2461,7 +2489,7 @@
     }, 
     {
         "visual": {
-            "name": "Bedroom Recording", 
+            "name": "Recording", 
             "description": "April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes.\n\nMy serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them."
         }, 
         "aural": {
@@ -2763,8 +2791,8 @@
     }, 
     {
         "visual": {
-            "name": "Master Bedroom Recording", 
-            "description": "September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.\nI still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.\n\nEleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good."
+            "name": "Recording", 
+            "description": "September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.\n\nI still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.\n\nEleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good."
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2791,7 +2819,7 @@
     }, 
     {
         "visual": {
-            "name": "Master Bathroom Mirror", 
+            "name": "Mirror", 
             "description": "There's something suspicious about this mirror. You feel a draft when you step close to it."
         }, 
         "aural": {
@@ -3029,19 +3057,19 @@
         ]
     }, 
     {
-        "comment": "masterBedroomDeskKeyToMasterBedroomDesk", 
-        "on": [
-            "use", 
-            "masterBedroomDeskKey", 
-            "masterBedroomDesk"
-        ], 
         "report": [
             {
                 "description": "You open the desk and find another recording.", 
                 "narration": "sound://speech/masterBedroomDeskKeyToMasterBedroomDesk"
             }
         ], 
+        "on": [
+            "use", 
+            "masterBedroomDeskKey", 
+            "masterBedroomDesk"
+        ], 
         "type": "event", 
+        "id": "masterBedroomDeskKeyToMasterBedroomDesk", 
         "exec": [
             {
                 "action": "remove", 
@@ -3067,19 +3095,19 @@
         ]
     }, 
     {
-        "comment": "starToStarHole", 
-        "on": [
-            "use", 
-            "star", 
-            "starHole"
-        ], 
         "report": [
             {
                 "description": "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway.", 
                 "narration": "sound://speech/starToStarHole"
             }
         ], 
+        "on": [
+            "use", 
+            "star", 
+            "starHole"
+        ], 
         "type": "event", 
+        "id": "starToStarHole", 
         "exec": [
             {
                 "action": "append", 
@@ -3091,19 +3119,19 @@
         ]
     }, 
     {
-        "comment": "starToMasterBathroomStarHole", 
-        "on": [
-            "use", 
-            "star", 
-            "masterBathroomStarHole"
-        ], 
         "report": [
             {
                 "description": "The mirror moves, revealing an elevator.", 
                 "narration": "sound://speech/starToMasterBathroomStarHole"
             }
         ], 
+        "on": [
+            "use", 
+            "star", 
+            "masterBathroomStarHole"
+        ], 
         "type": "event", 
+        "id": "starToMasterBathroomStarHole", 
         "exec": [
             {
                 "action": "remove", 
@@ -3129,19 +3157,19 @@
         ]
     }, 
     {
-        "comment": "operatingRoomKeyToOperatingRoomDoor", 
-        "on": [
-            "use", 
-            "operatingRoomKey", 
-            "operatingRoomDoor"
-        ], 
         "report": [
             {
                 "description": "You unlock the door. You can now move to the hallway.", 
                 "narration": "sound://speech/unlockOperatingRoom"
             }
         ], 
+        "on": [
+            "use", 
+            "operatingRoomKey", 
+            "operatingRoomDoor"
+        ], 
         "type": "event", 
+        "id": "operatingRoomKeyToOperatingRoomDoor", 
         "exec": [
             {
                 "action": "remove", 
@@ -3167,19 +3195,19 @@
         ]
     }, 
     {
-        "comment": "deskKeyToDesk", 
-        "on": [
-            "use", 
-            "deskKey", 
-            "desk"
-        ], 
         "report": [
             {
                 "description": "The desk opens, revealing a recording.", 
                 "narration": "sound://speech/deskKeyToDesk"
             }
         ], 
+        "on": [
+            "use", 
+            "deskKey", 
+            "desk"
+        ], 
         "type": "event", 
+        "id": "deskKeyToDesk", 
         "exec": [
             {
                 "action": "append", 
@@ -3198,6 +3226,13 @@
             {
                 "action": "remove", 
                 "args": [
+                    "scene.bedroom.items", 
+                    "desk"
+                ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
                     "player.items", 
                     "deskKey"
                 ]
@@ -3205,19 +3240,19 @@
         ]
     }, 
     {
-        "comment": "broomToShelf", 
-        "on": [
-            "use", 
-            "broom", 
-            "shelf"
-        ], 
         "report": [
             {
                 "description": "You knock the box on the floor.", 
                 "narration": "sound://speech/broomToShelf"
             }
         ], 
+        "on": [
+            "use", 
+            "broom", 
+            "shelf"
+        ], 
         "type": "event", 
+        "id": "broomToShelf", 
         "exec": [
             {
                 "action": "append", 
@@ -3236,12 +3271,6 @@
         ]
     }, 
     {
-        "comment": "ingredientsToEleanor", 
-        "on": [
-            "use", 
-            "ingredients", 
-            "eleanor"
-        ], 
         "report": [
             {
                 "description": "\"Excellent. Did you get a chance to meet my husband's minions? I trust my gun came in handy then. Keep it for now. You may need it again.\"\n\n\"While I was waiting for you, I discovered my husband's notes. And it's just as I had feared! He's planning to use his monsters to attack the chemical facility. He fails to realize, however, that they won't stop there. As soon as they're out, he'll lose control over them! They'll wreak havoc upon the entire town!\"\n\n\"And the ones in the basement are just the tip of the iceberg. There are more. Many more. We have a small barn just down the road. I'm sure he keeps them there. We must find a way to destroy it.\"\n\n\"But, I'm getting ahead of myself. Let me create an antidote for you. It'll take a few minutes. In the meantime, go out to the garage, outside the kitchen, and get the tank of gasoline that is on the storage closet. Yes, that will do the trick nicely. Here is the key to the closet. Hurry back!\"", 
@@ -3251,13 +3280,26 @@
                 "narration": "sound://speech/ingredientsToEleanor2"
             }
         ], 
+        "on": [
+            "use", 
+            "ingredients", 
+            "eleanor"
+        ], 
         "type": "event", 
+        "id": "ingredientsToEleanor", 
         "exec": [
             {
                 "action": "append", 
                 "args": [
                     "player.items", 
                     "garageKey"
+                ]
+            }, 
+            {
+                "action": "append", 
+                "args": [
+                    "item.garageKey.properties", 
+                    "useable"
                 ]
             }, 
             {
@@ -3284,13 +3326,12 @@
         ]
     }, 
     {
-        "comment": "gasolineToEleanor2", 
+        "disabled": true, 
         "on": [
             "use", 
             "gasoline", 
             "eleanor2"
         ], 
-        "disabled": true, 
         "exec": [
             {
                 "action": "activate", 
@@ -3314,19 +3355,19 @@
         "id": "gasolineToEleanor2"
     }, 
     {
-        "comment": "passCardToMainEntrance", 
-        "on": [
-            "use", 
-            "passCard", 
-            "mainEntrance"
-        ], 
         "report": [
             {
                 "description": "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty.", 
                 "narration": "sound://speech/passCardToMainEntrance"
             }
         ], 
+        "on": [
+            "use", 
+            "passCard", 
+            "mainEntrance"
+        ], 
         "type": "event", 
+        "id": "passCardToMainEntrance", 
         "exec": [
             {
                 "action": "activate", 
@@ -3338,13 +3379,13 @@
         ]
     }, 
     {
-        "comment": "passCardToSittingRoomDoor", 
         "on": [
             "use", 
             "passCard", 
             "sittingRoomDoor"
         ], 
         "type": "event", 
+        "id": "passCardToSittingRoomDoor", 
         "exec": [
             {
                 "action": "activate", 
@@ -3356,12 +3397,6 @@
         ]
     }, 
     {
-        "comment": "passCardToMazeDoor", 
-        "on": [
-            "use", 
-            "passCard", 
-            "mazeDoor"
-        ], 
         "report": [
             {
                 "description": "\"Well, well, well, 52B. You are proving to be a menace. Where do you think you're going?\"\n\n\"I saw on the cameras that you have visited my dear wife. Well, what do you think? Sad, isn't it? I am doing this for her ...\"\n\n\"You will be my test subject! Actually, come to think of it, I can always get more subjects. Heheheheha.\"\n\n\"Yes, 52B, I warned you not the enter the basement. I think the power is about to go off. Hahahahaha!\"", 
@@ -3373,7 +3408,13 @@
                 "title": "Basement Maze"
             }
         ], 
+        "on": [
+            "use", 
+            "passCard", 
+            "mazeDoor"
+        ], 
         "type": "event", 
+        "id": "passCardToMazeDoor", 
         "exec": [
             {
                 "action": "activate", 
@@ -3385,19 +3426,19 @@
         ]
     }, 
     {
-        "comment": "passCardToBarnDoor", 
-        "on": [
-            "use", 
-            "passCard", 
-            "barnDoor"
-        ], 
         "report": [
             {
                 "description": "You have unlocked the barn door. You can now move into the barn.", 
                 "narration": "sound://speech/passCardToBarnDoor"
             }
         ], 
+        "on": [
+            "use", 
+            "passCard", 
+            "barnDoor"
+        ], 
         "type": "event", 
+        "id": "passCardToBarnDoor", 
         "exec": [
             {
                 "action": "append", 
@@ -3409,19 +3450,19 @@
         ]
     }, 
     {
-        "comment": "gunToGarageDoor", 
-        "on": [
-            "use", 
-            "gun", 
-            "garageDoor"
-        ], 
         "report": [
             {
                 "description": "You shoot the lock on the door and it shatters. You can now move to the garage.", 
                 "narration": "sound://speech/gunToGarageDoor"
             }
         ], 
+        "on": [
+            "use", 
+            "gun", 
+            "garageDoor"
+        ], 
         "type": "event", 
+        "id": "gunToGarageDoor", 
         "exec": [
             {
                 "action": "remove", 
@@ -3433,7 +3474,7 @@
             {
                 "action": "remove", 
                 "args": [
-                    "scene.kitchen", 
+                    "scene.kitchen.items", 
                     "garageDoor"
                 ]
             }, 
@@ -3447,12 +3488,12 @@
         ]
     }, 
     {
-        "comment": "save", 
         "on": [
             "use", 
             "journal"
         ], 
         "type": "event", 
+        "id": "save", 
         "exec": [
             {
                 "action": "activate", 
@@ -3463,11 +3504,6 @@
         ]
     }, 
     {
-        "comment": "playerToPainting", 
-        "on": [
-            "use", 
-            "painting"
-        ], 
         "report": [
             {
                 "description": "You move the painting and a tune plays.\n\nDo-Mi-So", 
@@ -3483,15 +3519,20 @@
                 "narration": "sound://sound/pianoG"
             }
         ], 
-        "type": "event"
+        "on": [
+            "use", 
+            "painting"
+        ], 
+        "type": "event", 
+        "id": "playerToPainting"
     }, 
     {
-        "comment": "playerToPiano", 
         "on": [
             "use", 
             "piano"
         ], 
         "type": "event", 
+        "id": "playerToPiano", 
         "exec": [
             {
                 "action": "activate", 
@@ -3503,18 +3544,18 @@
         ]
     }, 
     {
-        "comment": "playerToBox", 
-        "on": [
-            "use", 
-            "box"
-        ], 
         "report": [
             {
                 "description": "You move the box to the bathtub. You can now reach the star shaped hole.", 
                 "narration": "sound://speech/playerToBox"
             }
         ], 
+        "on": [
+            "use", 
+            "box"
+        ], 
         "type": "event", 
+        "id": "playerToBox", 
         "exec": [
             {
                 "action": "remove", 
@@ -3533,11 +3574,6 @@
         ]
     }, 
     {
-        "comment": "playerToBathroomHallwayDoor", 
-        "on": [
-            "use", 
-            "bathroomHallwayDoor"
-        ], 
         "report": [
             {
                 "description": "You knock on the hallway door. The person inside jumps in surprise.\n\n\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
@@ -3547,15 +3583,20 @@
                 "narration": "sound://speech/friend010_cell"
             }
         ], 
-        "type": "event"
+        "on": [
+            "use", 
+            "bathroomHallwayDoor"
+        ], 
+        "type": "event", 
+        "id": "playerToBathroomHallwayDoor"
     }, 
     {
-        "comment": "playerToComputer", 
         "on": [
             "use", 
             "computer"
         ], 
         "type": "event", 
+        "id": "playerToComputer", 
         "exec": [
             {
                 "action": "activate", 
@@ -3567,12 +3608,12 @@
         ]
     }, 
     {
-        "comment": "playerToSafe", 
         "on": [
             "use", 
             "safe"
         ], 
         "type": "event", 
+        "id": "playerToSafe", 
         "exec": [
             {
                 "action": "activate", 
@@ -3584,46 +3625,39 @@
         ]
     }, 
     {
-        "comment": "playerToBarnSwitch", 
-        "on": [
-            "use", 
-            "barnSwitch"
-        ], 
         "report": [
             {
                 "description": "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive.", 
                 "narration": "sound://speech/playerToBarnSwitch"
             }
         ], 
-        "type": "event"
+        "on": [
+            "use", 
+            "barnSwitch"
+        ], 
+        "type": "event", 
+        "id": "playerToBarnSwitch"
     }, 
     {
-        "comment": "knifeToEleanor", 
+        "disabled": true, 
         "on": [
             "use", 
             "knife", 
             "eleanor"
         ], 
-        "report": [
-            {
-                "description": "\"Thank you. Now I can't be seen by Johan, so I must go straight to the lab. You need to pick up the chemical ingredients for the antidote. Unforunately, they're located in the basement somewhere. You should be safe from Johan's mutations because the cages are electronically locked. But just to be safe, take this gun.\"", 
-                "narration": "sound://speech/knifeToEleanor"
-            }
-        ], 
-        "type": "event", 
         "exec": [
             {
-                "action": "remove", 
+                "action": "append", 
                 "args": [
-                    "scene.eleanorsRoom.items", 
-                    "eleanor"
+                    "player.items", 
+                    "gun"
                 ]
             }, 
             {
                 "action": "append", 
                 "args": [
-                    "scene.eleanorsRoom.items", 
-                    "gun"
+                    "item.gun.properties", 
+                    "useable"
                 ]
             }, 
             {
@@ -3636,26 +3670,28 @@
             {
                 "action": "set", 
                 "args": [
-                    "items.eleanor.visual.description", 
+                    "item.eleanor.visual.description", 
                     "\"Oh thank god you made it! Did you get the ingredients I need?\""
                 ]
             }, 
             {
                 "action": "set", 
                 "args": [
-                    "items.eleanor.aural.description", 
+                    "item.eleanor.aural.description", 
                     "sound://speech/eleanorDesc2"
                 ]
             }
-        ]
+        ], 
+        "report": [
+            {
+                "description": "\"Thank you. Now I can't be seen by Johan, so I must go straight to the lab. You need to pick up the chemical ingredients for the antidote. Unforunately, they're located in the basement somewhere. You should be safe from Johan's mutations because the cages are electronically locked. But just to be safe, take this gun.\"", 
+                "narration": "sound://speech/knifeToEleanor"
+            }
+        ], 
+        "type": "event", 
+        "id": "knifeToEleanor"
     }, 
     {
-        "comment": "knifeToEleanor2", 
-        "on": [
-            "use", 
-            "knife", 
-            "eleanor2"
-        ], 
         "report": [
             {
                 "description": "You cut the bindings on Eleanor's chair and set her free.\n\n\"Oh thank god you made it! I was so worried. This place is terrible! We must destroy it. I don't know where Johan went so we must hurry. Did you bring the gasoline?\"", 
@@ -3665,7 +3701,13 @@
                 "narration": "sound://speech/eleanor050_barn"
             }
         ], 
+        "on": [
+            "use", 
+            "knife", 
+            "eleanor2"
+        ], 
         "type": "event", 
+        "id": "knifeToEleanor2", 
         "exec": [
             {
                 "action": "set", 
@@ -3684,12 +3726,6 @@
         ]
     }, 
     {
-        "comment": "trappedHallwayDoorKeyToTrappedHallwayDoor", 
-        "on": [
-            "use", 
-            "trappedHallwayDoorKey", 
-            "trappedHallwayDoor"
-        ], 
         "report": [
             {
                 "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Ha ha ha ha ha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"\n\nYou notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"\n\n\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"\n\n\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
@@ -3704,7 +3740,13 @@
                 "narration": "sound://speech/trappedHallwayDoorKeyToDoor2"
             }
         ], 
+        "on": [
+            "use", 
+            "trappedHallwayDoorKey", 
+            "trappedHallwayDoor"
+        ], 
         "type": "event", 
+        "id": "trappedHallwayDoorKeyToTrappedHallwayDoor", 
         "exec": [
             {
                 "action": "remove", 
@@ -3723,19 +3765,19 @@
         ]
     }, 
     {
-        "comment": "hammerToMirror", 
-        "on": [
-            "use", 
-            "hammer", 
-            "mirror"
-        ], 
         "report": [
             {
                 "description": "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hears you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...", 
                 "narration": "sound://speech/hammerToMirror"
             }
         ], 
+        "on": [
+            "use", 
+            "hammer", 
+            "mirror"
+        ], 
         "type": "event", 
+        "id": "hammerToMirror", 
         "exec": [
             {
                 "action": "activate", 
@@ -3747,13 +3789,12 @@
         ]
     }, 
     {
-        "comment": "hammerToUpperHallwayDoor", 
+        "disabled": true, 
         "on": [
             "use", 
             "hammer", 
             "upperHallwayDoor"
         ], 
-        "disabled": true, 
         "exec": [
             {
                 "action": "remove", 
@@ -3790,27 +3831,21 @@
         "id": "hammerToUpperHallwayDoor"
     }, 
     {
-        "comment": "garageKeyToGarageDoor", 
-        "on": [
-            "use", 
-            "garageKey", 
-            "garageDoor"
-        ], 
         "report": [
             {
                 "description": "You try using the key on the door, but the lock seems rusted shut. Maybe you can just shoot the lock out.", 
                 "narration": "sound://speech/garageKeyToGarageDoor"
             }
         ], 
-        "type": "event"
-    }, 
-    {
-        "comment": "cellKeyToBathroomHallwayDoor", 
         "on": [
             "use", 
-            "cellKey", 
-            "bathroomHallwayDoor"
+            "garageKey", 
+            "garageDoor"
         ], 
+        "type": "event", 
+        "id": "garageKeyToGarageDoor"
+    }, 
+    {
         "report": [
             {
                 "narration": "sound://speech/cellKeyToBathroomHallwayDoor", 
@@ -3821,7 +3856,13 @@
                 "narration": "sound://speech/cellKeyToBathroomHallwayDoor2"
             }
         ], 
+        "on": [
+            "use", 
+            "cellKey", 
+            "bathroomHallwayDoor"
+        ], 
         "type": "event", 
+        "id": "cellKeyToBathroomHallwayDoor", 
         "exec": [
             {
                 "action": "set", 
@@ -3854,19 +3895,19 @@
         ]
     }, 
     {
-        "comment": "scalpelToOperatingTable", 
-        "on": [
-            "use", 
-            "scalpel", 
-            "operatingTable"
-        ], 
         "report": [
             {
                 "description": "You cut the straps on the operating table. You are now free.", 
                 "narration": "sound://speech/cutStraps"
             }
         ], 
+        "on": [
+            "use", 
+            "scalpel", 
+            "operatingTable"
+        ], 
         "type": "event", 
+        "id": "scalpelToOperatingTable", 
         "exec": [
             {
                 "action": "append", 

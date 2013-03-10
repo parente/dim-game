@@ -8,10 +8,13 @@ import json
 Visual names that don't match IDs.
 '''
 visual_names = {
+    'masterBathroomMirror': 'Mirror',
     'deskKey': 'Small Key',
+    'bedroomRecording': 'Recording',
     'starHole': 'Star Shaped Hole',
     'eleanor2': 'Eleanor',
     'lobby': 'Main Lobby',
+    'masterBedroomRecording': 'Recording',
     'masterBedroomDeskKey': 'Desk Key',
     'masterBedroomDesk': 'Desk',
     'masterBedroomBed': 'Bed',
@@ -51,7 +54,7 @@ visual_descriptions = {
     'elevator': "A small cramped elevator only has two buttons.",
     'study': "You're in a study room. The desk is cluttered with a computer and other objects. There's a safe on the floor.",
     'deskKey': "It's a small key. Wonder what it unlocks?",
-    'studyRecording': "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter like a fish. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject.",
+    'studyRecording': "January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\n\nI came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner.\n\nI have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\n\nFebruary 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\n\nFebruary 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\n\nFebruary 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\n\nI have some idea of what went wrong. Serum #2 should work, but now I need another test subject.",
     'computer': "It's a computer. Maybe you should try using it.",
     'phone': "You try to pick up the phone to call 911, but there's no dialtone.",
     'safe': "It's a sturdy looking safe. Maybe you should try the combination.",
@@ -91,6 +94,7 @@ Hold on a little longer Eleanor. I'm going to save you!''',
     'masterBathroom': "The master bathroom is rather spacious. There's a mirror and a star shaped hole on one of the walls.",
     'masterBedroomDesk': "The desk is locked.",
     'masterBedroomRecording': '''September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Ha ha ha ha ... ah.
+
 I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.
 
 Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good.''',
@@ -289,8 +293,8 @@ use_events = {
         ],
         'report': [
             {
-                    'description': "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway.",
-                    'narration': 'sound://speech/starToStarHole'
+                'description': "You put the star into the star shaped hole. Suddenly, the mirror starts to move, revealing a long dark hallway.",
+                'narration': 'sound://speech/starToStarHole'
             }
         ]
     },
@@ -304,6 +308,10 @@ use_events = {
             {
                 'action': 'append',
                 'args': ['scene.bedroom.items', 'star']
+            },
+            {
+                'action': 'remove',
+                'args': ['scene.bedroom.items', 'desk']
             },
             {
                 'action': 'remove',
@@ -504,14 +512,15 @@ use_events = {
     },
 
     'knifeToEleanor': {
+        'disabled': True,
         'exec': [
             {
-                'action': 'remove',
-                'args': ['scene.eleanorsRoom.items', 'eleanor']
+                'action': 'append',
+                'args': ['player.items', 'gun']
             },
             {
-                'action': 'append',
-                'args': ['scene.eleanorsRoom.items', 'gun']
+                "action": "append",
+                "args": ["item.gun.properties", "useable"]
             },
             {
                 'action': 'append',
@@ -519,11 +528,11 @@ use_events = {
             },
             {
                 'action': 'set',
-                'args': ['items.eleanor.visual.description', '''"Oh thank god you made it! Did you get the ingredients I need?"''']
+                'args': ['item.eleanor.visual.description', '''"Oh thank god you made it! Did you get the ingredients I need?"''']
             },
             {
                 'action': 'set',
-                'args': ['items.eleanor.aural.description', 'sound://speech/eleanorDesc2']
+                'args': ['item.eleanor.aural.description', 'sound://speech/eleanorDesc2']
             }
         ],
         "report": [
@@ -571,6 +580,10 @@ Note that you're always facing north.''',
                 'args': ['player.items', 'garageKey']
             },
             {
+                "action": "append",
+                "args": ["item.garageKey.properties", "useable"]
+            },
+            {
                 'action': 'remove',
                 'args': ['player.items', 'ingredients']
             },
@@ -616,7 +629,7 @@ Note that you're always facing north.''',
             },
             {
                 'action': 'remove',
-                'args': ['scene.kitchen', 'garageDoor']
+                'args': ['scene.kitchen.items', 'garageDoor']
             },
             {
                 'action': 'append',
@@ -1292,7 +1305,7 @@ world = [
         ],
         "report": [
             {
-                "description": '''The safe opens. Inside you find a recording, a key, and a passcard.
+                "description": '''The safe opens. Inside you find a recording, a key, and a pass card.
 
 Strange. The phone suddenly rings. You pick it up.
 
@@ -1302,7 +1315,7 @@ Strange. The phone suddenly rings. You pick it up.
 
 "I have developed a final serum. You will be my test subject or you will die. It's that simple."
 
-"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!""''',
+"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!"''',
                 "narration": "sound://sound/chime"
             },
             {"narration": "sound://speech/safeOpen1"},
@@ -1496,7 +1509,8 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Left button"
                 },
                 "aural": {
-                    "name": "sound://speech/leftButton"
+                    "name": "sound://speech/leftButton",
+                    "sound": 'sound://sound/toneLeft'
                 }
             },
             {
@@ -1505,7 +1519,8 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Right button"
                 },
                 "aural": {
-                    "name": "sound://speech/rightButton"
+                    "name": "sound://speech/rightButton",
+                    "sound": 'sound://sound/toneRight'
                 }
             }
         ]
@@ -1542,7 +1557,7 @@ Strange. The phone suddenly rings. You pick it up.
     {
         "type": "ctrl",
         "id": 'sittingRoomDoorLock2',
-        "correct": ['right', 'right', 'right', 'left', 'right', 'left'],
+        "correct": ['right', 'right', 'right', 'right', 'left', 'right', 'left'],
         "canAbort": True,
         "maxAttempts": 1,
         "prompt": [
@@ -1571,7 +1586,8 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Left button"
                 },
                 "aural": {
-                    "name": "sound://speech/leftButton"
+                    "name": "sound://speech/leftButton",
+                    "sound": 'sound://sound/toneLeft'
                 }
             },
             {
@@ -1580,7 +1596,8 @@ Strange. The phone suddenly rings. You pick it up.
                     "name": "Right button"
                 },
                 "aural": {
-                    "name": "sound://speech/rightButton"
+                    "name": "sound://speech/rightButton",
+                    "sound": 'sound://sound/toneRight'
                 }
             }
         ]
@@ -2045,6 +2062,10 @@ Or did they?
                 'args': ['player.items', 'ingredients']
             },
             {
+                "action": "append",
+                "args": ["item.ingredients.properties", "useable"]
+            },
+            {
                 'action': 'remove',
                 'args': ['scene.basement.items', 'mazeDoor']
             },
@@ -2075,21 +2096,21 @@ Or did they?
         ],
         "options": [
             {
-                "id": "dim/controllers/explore/examine",
-                "visual": {
-                    "name": "Examine"
-                },
-                "aural": {
-                    "name": "sound://speech/examine"
-                }
-            },
-            {
                 "id": "dim/controllers/explore/move",
                 "visual": {
                     "name": "Move"
                 },
                 "aural": {
                     "name": "sound://speech/move"
+                }
+            },
+            {
+                "id": "dim/controllers/explore/examine",
+                "visual": {
+                    "name": "Examine"
+                },
+                "aural": {
+                    "name": "sound://speech/examine"
                 }
             },
             {
@@ -2291,7 +2312,20 @@ Or did they?
             }
         ],
         "priority": -1
+    },
+
+    # only allow use of knife on eleanor after talking with her
+    {
+        'type': 'event',
+        'on': ['examine', 'eleanor'],
+        'exec': [
+            {
+                'action': 'set',
+                'args': ['event.knifeToEleanor.disabled', False]
+            }
+        ]
     }
+
 ]
 
 def id_to_name(text):
@@ -2367,7 +2401,7 @@ def interactions(triggers, vars):
         for target, method in targets:
             d = {
                 'type': 'event',
-                'comment': method
+                'id': method
             }
             if(item == 'player'):
                 d['on'] = ['use', target]
