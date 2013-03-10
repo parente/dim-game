@@ -7,9 +7,6 @@ Game World
 ----------
 
 * maze controller (passCardToMazeDoor)
-    * monster pattern impl (binary)
-        * does timed react need option NOT to reset timer on mismatch?
-        * do we want controller to override pump ability to eat keys?
     * spatial beacon sound or pre-panned?
     * test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * set eleanor4 desc and location upon trapped hallway door key to door?
@@ -24,6 +21,7 @@ Game World
 
     * don't make disabled events part of use options available
     * change sitting room door to dpad control scheme
+    * do we want controller to override pump ability to eat keys?
 
 Audio
 -----
