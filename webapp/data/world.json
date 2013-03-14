@@ -1261,7 +1261,10 @@
                     "solve", 
                     "basementBeaconMaze"
                 ], 
-                "beacon": "sound://sound/pianoC", 
+                "beacon": {
+                    "uri": "sound://sound/pianoC", 
+                    "channel": "ambience"
+                }, 
                 "id": 3
             }
         ], 
@@ -1436,6 +1439,7 @@
     {
         "report": [
             {
+                "ambience": "sound://music/music2", 
                 "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.", 
                 "narration": "sound://speech/passCardToMazeDoor7"
             }, 

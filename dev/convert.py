@@ -1984,8 +1984,11 @@ Or did they?
             },
             {
                 'id': 3,
-                'beacon': 'sound://sound/pianoC',
-                'fire': ['solve', 'basementBeaconMaze']
+                'fire': ['solve', 'basementBeaconMaze'],
+                'beacon': {
+                    'uri': 'sound://sound/pianoC',
+                    'channel': 'ambience'
+                }
             }
         ]
     },
@@ -2080,7 +2083,7 @@ Or did they?
         "report": [
             {
                 "description": "The monster lunges at you, but you side step and fire your gun, and he falls dead.",
-                "narration": "sound://speech/passCardToMazeDoor5"
+                "narration": "sound://speech/passCardToMazeDoor5",
             }
         ]
     },
@@ -2102,8 +2105,6 @@ Or did they?
             }
         ]
     },
-
-
 
     # move to the basementMaze exit
     {
@@ -2130,7 +2131,8 @@ Or did they?
         "report": [
             {
                 "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.",
-                "narration": "sound://speech/passCardToMazeDoor7"
+                "narration": "sound://speech/passCardToMazeDoor7",
+                "ambience": "sound://music/music2"
             },
             {
                 "title": "Basement"

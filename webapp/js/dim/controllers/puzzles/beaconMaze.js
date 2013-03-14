@@ -12,35 +12,35 @@ define([
         this.ctrl = $.extend(true, {}, this.origCtrl),
         // pull out prompt template and other often accessed props
         this.promptTemplate = this.ctrl.prompt[0];
-        // compute beacon
-        this.beacon = null;
+        // compute beacon cell
+        this.beaconCell = null;
 
         // find the beacon cell id
         for(var i=0,l=this.ctrl.cells.length; i < l; i++) {
             var cell = this.ctrl.cells[i];
             if(cell.beacon) {
-                this.beacon = cell;
+                this.beaconCell = cell;
                 break;
             }
         }
 
         // error if beacon is null
-        if(!this.beacon) {
+        if(!this.beaconCell) {
             throw new Error('no cell with "beacon" property: ' + ctrlId);
         }
 
         // find the beacon in the layout
         for(var row=0; row<this.ctrl.layout.length; row++) {
             for(var col=0; col<this.ctrl.layout[row].length; col++) {
-                if(this.ctrl.layout[row][col] === this.beacon.id) {
-                    this.beacon.location = [row, col];
+                if(this.ctrl.layout[row][col] === this.beaconCell.id) {
+                    this.beaconCell.beacon.location = [row, col];
                     break;
                 }
             }
         }
 
         // error if beacon.location is undefined
-        if(!this.beacon.location) {
+        if(!this.beaconCell.beacon.location) {
             throw new Error('no beacon cell in layout: ' + ctrlId);
         }
 
@@ -150,21 +150,49 @@ define([
     cls.prototype.build_prompt = function() {
         // TODO: use the report map instead of hardcoding?
         var prompt = $.extend(true, {}, this.promptTemplate),
-            reports = [prompt],
+            reports = [],
             visual = $.map(this.ctrl.options, function(opt) {
                 var name = opt.visual.name;
                 return name ? name : '';
             }),
             aural = $.map(this.ctrl.options, function(opt) {
                 return {narration: opt.aural.name};
-            });
+            }),
+            beacon = this.beaconCell.beacon,
+            props = {loop : true},
+            msg = {};
+
+        // compute the location of the beacon
+        props.location = this.compute_beacon_position();
+        msg[beacon.channel] = [beacon.uri, props];
+        // include it as the first report
+        reports.push(msg);
+
+        // then include prompt
+        reports.push(prompt);
+
         if(prompt.description) {
             prompt.description += ' ' + visual.join(', ');
         }
         if(prompt.narration) {
             reports = reports.concat(aural);
         }
+
+        console.warn(reports);
+
         return reports;
+    };
+
+    cls.prototype.compute_beacon_position = function() {
+        // find player and beacon positions
+        var p_row = this.ctrl.location[0],
+            p_col = this.ctrl.location[1],
+            b_row = this.beaconCell.beacon.location[0],
+            b_col = this.beaconCell.beacon.location[1];
+
+        // compute the beacon-player vector, x=cols, z=rows
+        return [b_col-p_col, 0, p_row-b_row];
+
     };
 
     exports.create = function(world, ctrlId) {
