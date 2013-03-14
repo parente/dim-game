@@ -11,13 +11,23 @@ define(['jquery'], function($) {
 
     cls.prototype.play = function(msg) {
         console.log('    channel.play', msg);
-        if(this.props.swapstop) {
+        var def, props;
+        if($.isArray(msg)) {
+            // mix the channel props and message props
+            msg = msg[0];
+            props = $.extend({}, this.props, msg[1]);
+        } else {
+            // take channel props
+            props = this.props;
+        }
+
+        if(props.swapstop) {
             if(this.pending && this.pending.msg === msg) {
                 // already playing this message, continue
                 return;
             }
             // stop before starting new message
-            var def = this.pending;
+            def = this.pending;
             this.pending = null;
             this.sound.stop(def);
             this.speech.stop(def);
@@ -25,10 +35,10 @@ define(['jquery'], function($) {
 
         // check if the sound system can play it as a waveform first
         if(this.sound.can_play(msg)) {
-            this.pending = this.sound.play(msg, this.props);
+            this.pending = this.sound.play(msg, props);
         } else if(this.speech.can_say(msg)) {
             // check if we have text-to-speech to speak the message
-            this.pending = this.speech.say(msg, this.props);
+            this.pending = this.speech.say(msg, props);
         } else {
             this.pending = null;
         }
@@ -46,19 +56,19 @@ define(['jquery'], function($) {
         this.speech.stop(def);
     };
 
-    cls.prototype.replace = function(msgs) {
-        var msg = msgs;
-        if($.isArray(msg)) {
-            msg = msg[msg.length-1];
-        }
-        // check if already playing the requested message
-        if(!this.pending || this.pending.msg !== msg) {
-            // start new sound / speech
-            this.sound.stop(this.pending);
-            this.speech.stop(this.pending);
-            this.play(msg);
-        }
-    };
+    // cls.prototype.replace = function(msgs) {
+    //     var msg = msgs;
+    //     if($.isArray(msg)) {
+    //         msg = msg[msg.length-1];
+    //     }
+    //     // check if already playing the requested message
+    //     if(!this.pending || this.pending.msg !== msg) {
+    //         // start new sound / speech
+    //         this.sound.stop(this.pending);
+    //         this.speech.stop(this.pending);
+    //         this.play(msg);
+    //     }
+    // };
 
     cls.prototype.set_properties = function(props) {
         $.extend(this.props, props);
