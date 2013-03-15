@@ -13,6 +13,10 @@ define(function() {
 
     };
 
+    exports.update = function() {
+
+    };
+
     exports.can_say = function() {
         return false;
     };

@@ -32,7 +32,6 @@ define(['dim/topic'], function(topic) {
                     }
                     // otherwise store the buffer
                     buffers[uri] = buffer;
-                    // console.log(decoded);
                     // decrement the number of decodes outstanding
                     if(++decoded == uris.length) {
                         loaded.resolve();
@@ -101,13 +100,13 @@ define(['dim/topic'], function(topic) {
         if(!def) return;
         // stop any timeout
         clearTimeout(def.timer);
-        // disconnect the audio source
-        var audioSource = def.audioSource;
-        audioSource.noteOff(0);
-        audioSource.disconnect();
-        if(def.gainNode) {
-            // and the optional gain node
-            def.gainNode.disconnect();
+        // stop the audio
+        if(def.nodes) {
+            def.nodes.sourceNode.noteOff(0);
+            for(var key in def.nodes) {
+                def.nodes[key].disconnect();
+            }
+            delete def.nodes;
         }
         // resolve the deferred
         def.resolve();
@@ -118,44 +117,69 @@ define(['dim/topic'], function(topic) {
             buffer = buffers[uri],
             audioSource = context.createBufferSource(),
             gainNode = null,
+            pannerNode = null,
+            prior,
             timer;
         // store the buffer uri for later reference
         def.msg = uri;
+        // store the nodes for disconnect() later, source first
+        def.nodes = {sourceNode: audioSource};
+
         if(props.loop) {
             audioSource.loop = true;
         }
         audioSource.buffer = buffer;
+        prior = audioSource;
+
+        // if we want to position the source, build a panner and connect
+        if(props.location) {
+            pannerNode = context.createPanner();
+            pannerNode.setPosition(props.location[0], props.location[1], props.location[2]);
+            prior.connect(pannerNode);
+            def.nodes.pannerNode = pannerNode;
+            prior = pannerNode;
+        }
+
         // if we want to adjust gain, build a gain node and connect
-        // source -> gain -> compressor
         if(props.gain) {
             gainNode = context.createGainNode();
             gainNode.gain.value = props.gain;
-            audioSource.connect(gainNode);
-            gainNode.connect(compressor);
-            def.gainNode = gainNode;
-        } else {
-            // otherwise connect source -> compressor
-            audioSource.connect(compressor);
+            prior.connect(gainNode);
+            def.nodes.gainNode = gainNode;
+            prior = gainNode;
         }
-        def.audioSource = audioSource;
+
+        // make final connection to the compressor which is hooked to the output
+        prior.connect(compressor);
+
         // start the audio playing
         audioSource.noteOn(0);
+
         // disconnect nodes after completion to avoid leaks if not looping
         if(!props.loop) {
             timer = setTimeout(function() {
-                audioSource.disconnect();
-                if(gainNode) {
-                    gainNode.disconnect();
+                for(var key in def.nodes) {
+                    def.nodes[key].disconnect();
                 }
+                delete def.nodes;
                 delete def.timer;
                 def.resolve(this);
             }, buffer.duration * 1000);
             def.timer = timer;
         } else {
-            // resolve immediately for looping sounds
-            def.resolve();
+            // resolve after returning the deferred for looping sounds
+            setTimeout(function() { def.resolve(); }, 0);
         }
         return def;
+    };
+
+    exports.update = function(def, props) {
+        if(def.nodes.pannerNode && props.location) {
+            def.nodes.pannerNode.setPosition(props.location[0], props.location[1], props.location[2]);
+        }
+        if(def.nodes.gainNode && props.gain) {
+            def.nodes.gainNode.gain.value = props.gain;
+        }
     };
 
     exports.can_play = function(msg) {

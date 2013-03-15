@@ -6,12 +6,9 @@ Support Web Audio API enabled browsers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* maze controller (passCardToMazeDoor)
-    * spatial beacon sound or pre-panned?
-    * test with: world.evaluate('use', 'passCard', 'mazeDoor').fire()
+* allow controllers to group outputs to avoid confusing skips
+    * test with maze and move prompts world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * make adjoining rooms examinable
-* do we want controller to override pump ability to eat keys?
-    * better for skipping snippets that are confusing otherwise
 * prevent reuse of bathroom hallway door after first time?
     * description makes no sense when using again
     * but no other way to recover the safe password if forgotten

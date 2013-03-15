@@ -178,8 +178,6 @@ define([
             reports = reports.concat(aural);
         }
 
-        console.warn(reports);
-
         return reports;
     };
 
@@ -191,8 +189,7 @@ define([
             b_col = this.beaconCell.beacon.location[1];
 
         // compute the beacon-player vector, x=cols, z=rows
-        return [b_col-p_col, 0, p_row-b_row];
-
+        return [b_col-p_col, 0, b_row-p_row];
     };
 
     exports.create = function(world, ctrlId) {

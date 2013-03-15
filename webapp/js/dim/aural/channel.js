@@ -14,8 +14,8 @@ define(['jquery'], function($) {
         var def, props;
         if($.isArray(msg)) {
             // mix the channel props and message props
-            msg = msg[0];
             props = $.extend({}, this.props, msg[1]);
+            msg = msg[0];
         } else {
             // take channel props
             props = this.props;
@@ -23,9 +23,14 @@ define(['jquery'], function($) {
 
         if(props.swapstop) {
             if(this.pending && this.pending.msg === msg) {
-                // already playing this message, continue
+                // already playing this message, respect props and continue
+                this.sound.update(this.pending, props);
+                this.speech.update(this.pending, props);
                 return;
             }
+        }
+
+        if(props.loop || props.swapstop) {
             // stop before starting new message
             def = this.pending;
             this.pending = null;
