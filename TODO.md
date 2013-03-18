@@ -18,22 +18,45 @@ Game World
 Audio
 -----
 
-* delay between sounds on channel option
-* cross fade on channel, enable for music on scene change
 * make music loop seamlessly
 * game winning music
-* new background music tracks
-    * http://www.newgrounds.com/audio/listen/292004
-    * http://www.newgrounds.com/audio/listen/260037
-    * http://www.newgrounds.com/audio/listen/316485
+* game over sound
 
 Visual
 ------
 
-* support backdrops
 * breadcrumb design for menu
     * or worst case clear out the menu text after a while
-* favicon
+
+Deployment
+----------
+
+* website
+* build script
+
+
+vXXX - Gameplay Improvements
+============================
+
+* new background music tracks
+    * http://www.newgrounds.com/audio/listen/292004
+    * http://www.newgrounds.com/audio/listen/260037
+    * http://www.newgrounds.com/audio/listen/316485
+* support visual backdrops
+* delay between sounds on channel option
+* cross fade on channel, enable for music on scene change
+* move eleanor's first description to event and split
+* press any key to go to main menu after game over
+* audio icon for number of things that appear in room after event (desk, safe)
+* sound on mirror moving
+* sound on unlocking operating room door
+* replace "choose a menu option" speech with a simple sound indicating explore menu active
+* rumble sound for piano puzzle solve
+* confirm save slot overwrite
+* randomize puzzles
+* contract out artwork creation
+* how to play menu option? or prompt on idle? (changes based on platform)
+* audio control options (e.g., volume)
 
 vXXX - iOS Support
 ==================
@@ -45,27 +68,10 @@ vXXX - iOS Support
 * home screen icon, splash images
 * decode speed?
 
-vXXX - Gameplay Improvements
-============================
-
-* move eleanor's first description to event and split
-* press any key to go to main menu after game over
-* game over sound
-* audio icon for number of things that appear in room after event (desk, safe)
-* sound on mirror moving
-* sound on unlocking operating room door
-* replace "choose a menu option" speech with a simple sound indicating explore menu active
-* rumble sound for piano puzzle solve
-* confirm save slot overwrite
-* randomize puzzles
-* contract out artwork creation
-* move input bindings to world.json
-* how to play menu option? or prompt on idle? (changes based on platform)
-* audio control options (e.g., volume)
-
 vXXX - DIM Boilerplate
 ============================
 
+* move input bindings to world.json
 * simple commands in console for walkthrough testing
 * upgrade path for saved games
     * related solve precache media after load (json may contain different uris)
