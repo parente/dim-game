@@ -70,6 +70,7 @@ define(['dim/topic'], function(topic) {
         // build a dynamic compressor
         compressor = context.createDynamicsCompressor();
         compressor.connect(context.destination);
+        compressor.threshold.value = -40;
 
         // start with new buffers
         buffers = {};

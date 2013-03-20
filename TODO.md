@@ -18,9 +18,9 @@ Game World
 Audio
 -----
 
-* make music loop seamlessly
-* game winning music
-* game over sound
+* enable game win music during final dialog
+    * need channel prop for music that ignores completion in order to continue
+    * that or need way to disable looping on ambience channel
 
 Visual
 ------
@@ -38,7 +38,8 @@ Deployment
 vXXX - Gameplay Improvements
 ============================
 
-* new background music tracks
+* prevent key press from skipping audio when about to lose to avoid missing what happened
+* more background ambiences / music
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037
     * http://www.newgrounds.com/audio/listen/316485

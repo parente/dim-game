@@ -237,7 +237,7 @@ use_events = {
     'playerToPainting': {
         "report": [
             {
-                "description": "You move the painting and a tune plays.\n\nDo-Mi-So",
+                "description": "You move the painting and a tune plays.\n\nC-E-G",
                 "narration": "sound://speech/movePainting"
             },
             {
@@ -851,7 +851,7 @@ world = [
         },
         "aural": {
             "name": "sound://speech/descentIntoMadness",
-            "backdrop": "sound://music/music1"
+            "backdrop": "sound://music/274466_Back_Ground_Menu_Lo"
         }
     },
     # defaults
@@ -870,14 +870,26 @@ world = [
                 # one in which case it coalsces and the current one continues
                 "swapstop": True,
                 # gain of the output
-                "gain": 0.10,
+                "gain": 0.15,
                 # cross fade when swapstopping
                 "crossfade": True
+            },
+            "beacon": {
+                "type": "aural",
+                "loop": True,
+                "swapstop": True,
+                "gain": 0.2
+            },
+            "music": {
+                "type": "aural",
+                # make sound slightly quieter than speech
+                "gain": 0.15,
+                "swapstop": True,
             },
             "sound": {
                 "type": "aural",
                 # make sound slightly quieter than speech
-                "gain": 0.7
+                "gain": 0.6
             },
             "narration": {
                 "type": "aural",
@@ -916,8 +928,7 @@ world = [
         "id": "boot",
         "prompt": [
             {
-                "narration": "sound://speech/menu",
-                "ambience": "sound://music/music1"
+                "narration": "sound://speech/menu"
             }
         ],
         "options": [
@@ -1032,7 +1043,9 @@ world = [
                 "title": "Game Over",
                 "narration": "sound://speech/gameOver",
                 # make the loop stop with a unknown sound
-                "ambience": "null"
+                "ambience": "null",
+                # play death music once
+                "music": "sound://music/476677_Auschwitz-Ghosts"
             }
         ]
     },
@@ -1075,7 +1088,7 @@ world = [
             {
                 "id": "c",
                 "visual": {
-                    "name": "Do"
+                    "name": "C"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseC",
@@ -1085,7 +1098,7 @@ world = [
             {
                 "id": "d",
                 "visual": {
-                    "name": "Re"
+                    "name": "D"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseD",
@@ -1095,7 +1108,7 @@ world = [
             {
                 "id": "e",
                 "visual": {
-                    "name": "Mi"
+                    "name": "E"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseE",
@@ -1105,7 +1118,7 @@ world = [
             {
                 "id": "f",
                 "visual": {
-                    "name": "Fa"
+                    "name": "F"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseF",
@@ -1115,7 +1128,7 @@ world = [
             {
                 "id": "g",
                 "visual": {
-                    "name": "So"
+                    "name": "G"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseG",
@@ -1125,7 +1138,7 @@ world = [
             {
                 "id": "a",
                 "visual": {
-                    "name": "La"
+                    "name": "A"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseA",
@@ -1135,7 +1148,7 @@ world = [
             {
                 "id": "b",
                 "visual": {
-                    "name": "Ti"
+                    "name": "B"
                 },
                 "aural": {
                     "name": "sound://speech/pianoChooseB",
@@ -1865,7 +1878,9 @@ world = [
         "report": [
             {
                 "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.",
-                "narration": "sound://speech/narrator_before_final_scene"
+                "narration": "sound://speech/narrator_before_final_scene",
+                # "music": "sound://music/338521_Horror_Score_alt",
+                # "ambience": "null"
             },
             {
                 "description": '''"Minions! Listen to me! Get them!"
@@ -1987,7 +2002,7 @@ Or did they?
                 'fire': ['solve', 'basementBeaconMaze'],
                 'beacon': {
                     'uri': 'sound://sound/pianoC',
-                    'channel': 'ambience'
+                    'channel': 'beacon'
                 }
             }
         ]
@@ -2083,7 +2098,7 @@ Or did they?
         "report": [
             {
                 "description": "The monster lunges at you, but you side step and fire your gun, and he falls dead.",
-                "narration": "sound://speech/passCardToMazeDoor5",
+                "narration": "sound://speech/passCardToMazeDoor5"
             }
         ]
     },
@@ -2101,7 +2116,8 @@ Or did they?
         "report": [
             {
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.",
-                "narration": "sound://speech/passCardToMazeDoor6"
+                "narration": "sound://speech/passCardToMazeDoor6",
+                "beacon": "null"
             }
         ]
     },
@@ -2132,7 +2148,8 @@ Or did they?
             {
                 "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.",
                 "narration": "sound://speech/passCardToMazeDoor7",
-                "ambience": "sound://music/music2"
+                "beacon": "null",
+                "ambience": "sound://music/423629_Nightmare_Ambience"
             },
             {
                 "title": "Basement"
@@ -2399,7 +2416,7 @@ class Room:
             'aural': {
                 'name': 'sound://speech/%s' % (name.split('.')[0]),
                 'description': 'sound://speech/%s' % (description.split('.')[0]),
-                "backdrop": "sound://music/music2"
+                "backdrop": "sound://music/423629_Nightmare_Ambience"
             }
         }
         self.__dict__.update(d)

@@ -14,7 +14,7 @@
         }, 
         "aural": {
             "name": "sound://speech/descentIntoMadness", 
-            "backdrop": "sound://music/music1"
+            "backdrop": "sound://music/274466_Back_Ground_Menu_Lo"
         }, 
         "type": "scene", 
         "id": "boot"
@@ -24,12 +24,20 @@
         "channels": {
             "sound": {
                 "type": "aural", 
-                "gain": 0.7
+                "gain": 0.6
+            }, 
+            "beacon": {
+                "swapstop": true, 
+                "type": "aural", 
+                "gain": 0.2, 
+                "loop": true
+            }, 
+            "music": {
+                "swapstop": true, 
+                "type": "aural", 
+                "gain": 0.15
             }, 
             "description": {
-                "type": "visual"
-            }, 
-            "title": {
                 "type": "visual"
             }, 
             "narration": {
@@ -40,8 +48,11 @@
                 "swapstop": true, 
                 "crossfade": true, 
                 "type": "aural", 
-                "gain": 0.1, 
+                "gain": 0.15, 
                 "loop": true
+            }, 
+            "title": {
+                "type": "visual"
             }, 
             "backdrop": {
                 "type": "visual"
@@ -68,7 +79,6 @@
     {
         "prompt": [
             {
-                "ambience": "sound://music/music1", 
                 "narration": "sound://speech/menu"
             }
         ], 
@@ -177,6 +187,7 @@
             {
                 "ambience": "null", 
                 "narration": "sound://speech/gameOver", 
+                "music": "sound://music/476677_Auschwitz-Ghosts", 
                 "title": "Game Over"
             }
         ], 
@@ -198,7 +209,7 @@
         "options": [
             {
                 "visual": {
-                    "name": "Do"
+                    "name": "C"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoC", 
@@ -208,7 +219,7 @@
             }, 
             {
                 "visual": {
-                    "name": "Re"
+                    "name": "D"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoD", 
@@ -218,7 +229,7 @@
             }, 
             {
                 "visual": {
-                    "name": "Mi"
+                    "name": "E"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoE", 
@@ -228,7 +239,7 @@
             }, 
             {
                 "visual": {
-                    "name": "Fa"
+                    "name": "F"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoF", 
@@ -238,7 +249,7 @@
             }, 
             {
                 "visual": {
-                    "name": "So"
+                    "name": "G"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoG", 
@@ -248,7 +259,7 @@
             }, 
             {
                 "visual": {
-                    "name": "La"
+                    "name": "A"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoA", 
@@ -258,7 +269,7 @@
             }, 
             {
                 "visual": {
-                    "name": "Ti"
+                    "name": "B"
                 }, 
                 "aural": {
                     "sound": "sound://sound/pianoB", 
@@ -1148,6 +1159,8 @@
     {
         "report": [
             {
+                "ambience": "null", 
+                "music": "sound://music/338521_Horror_Score_alt", 
                 "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.", 
                 "narration": "sound://speech/narrator_before_final_scene"
             }, 
@@ -1263,7 +1276,7 @@
                 ], 
                 "beacon": {
                     "uri": "sound://sound/pianoC", 
-                    "channel": "ambience"
+                    "channel": "beacon"
                 }, 
                 "id": 3
             }
@@ -1416,6 +1429,7 @@
     {
         "report": [
             {
+                "beacon": "null", 
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.", 
                 "narration": "sound://speech/passCardToMazeDoor6"
             }
@@ -1439,7 +1453,8 @@
     {
         "report": [
             {
-                "ambience": "sound://music/music2", 
+                "ambience": "sound://music/423629_Nightmare_Ambience", 
+                "beacon": "null", 
                 "description": "You've reached the end of the maze. After rummaging through stacks of chemicals, you find the ingredients that Eleanor told you about. You make your way back to the entrance of the maze, and are now back in the basement.", 
                 "narration": "sound://speech/passCardToMazeDoor7"
             }, 
@@ -1735,7 +1750,7 @@
         }, 
         "aural": {
             "name": "sound://speech/operatingRoom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/intro"
         }, 
         "type": "scene", 
@@ -1755,7 +1770,7 @@
         }, 
         "aural": {
             "name": "sound://speech/freezer", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/freezerDesc"
         }, 
         "type": "scene", 
@@ -1776,7 +1791,7 @@
         }, 
         "aural": {
             "name": "sound://speech/basementHallway", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/basementHallwayDesc"
         }, 
         "type": "scene", 
@@ -1796,7 +1811,7 @@
         }, 
         "aural": {
             "name": "sound://speech/pianoRoom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/pianoRoomDesc"
         }, 
         "type": "scene", 
@@ -1814,7 +1829,7 @@
         }, 
         "aural": {
             "name": "sound://speech/elevator", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/elevatorDesc"
         }, 
         "type": "scene", 
@@ -1837,7 +1852,7 @@
         }, 
         "aural": {
             "name": "sound://speech/study", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/studyDesc"
         }, 
         "type": "scene", 
@@ -1859,7 +1874,7 @@
         }, 
         "aural": {
             "name": "sound://speech/upperHallway", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/upperHallwayDesc"
         }, 
         "type": "scene", 
@@ -1880,7 +1895,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bedroom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/bedroomDesc"
         }, 
         "type": "scene", 
@@ -1902,7 +1917,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bathroom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/bathroomDesc"
         }, 
         "type": "scene", 
@@ -1922,7 +1937,7 @@
         }, 
         "aural": {
             "name": "sound://speech/closet", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/closetDesc"
         }, 
         "type": "scene", 
@@ -1941,7 +1956,7 @@
         }, 
         "aural": {
             "name": "sound://speech/bathroomHallway", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/bathroomHallwayDesc"
         }, 
         "type": "scene", 
@@ -1960,7 +1975,7 @@
         }, 
         "aural": {
             "name": "sound://speech/balcony", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/balconyDesc"
         }, 
         "type": "scene", 
@@ -1981,7 +1996,7 @@
         }, 
         "aural": {
             "name": "sound://speech/westHallway", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/westHallwayDesc"
         }, 
         "type": "scene", 
@@ -2003,7 +2018,7 @@
         }, 
         "aural": {
             "name": "sound://speech/lobby", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/lobbyDesc"
         }, 
         "type": "scene", 
@@ -2024,7 +2039,7 @@
         }, 
         "aural": {
             "name": "sound://speech/library", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/libraryDesc"
         }, 
         "type": "scene", 
@@ -2045,7 +2060,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterBedroom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/masterBedroomDesc"
         }, 
         "type": "scene", 
@@ -2065,7 +2080,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterBathroom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/masterBathroomDesc"
         }, 
         "type": "scene", 
@@ -2084,7 +2099,7 @@
         }, 
         "aural": {
             "name": "sound://speech/masterElevator", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/masterElevatorDesc"
         }, 
         "type": "scene", 
@@ -2103,7 +2118,7 @@
         }, 
         "aural": {
             "name": "sound://speech/eleanorsRoom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/eleanorsRoomDesc"
         }, 
         "type": "scene", 
@@ -2123,7 +2138,7 @@
         }, 
         "aural": {
             "name": "sound://speech/sittingRoom", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/sittingRoomDesc"
         }, 
         "type": "scene", 
@@ -2143,7 +2158,7 @@
         }, 
         "aural": {
             "name": "sound://speech/basement", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/basementDesc"
         }, 
         "type": "scene", 
@@ -2163,7 +2178,7 @@
         }, 
         "aural": {
             "name": "sound://speech/kitchen", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/kitchenDesc"
         }, 
         "type": "scene", 
@@ -2180,7 +2195,7 @@
         }, 
         "aural": {
             "name": "sound://speech/lab", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/labDesc"
         }, 
         "type": "scene", 
@@ -2201,7 +2216,7 @@
         }, 
         "aural": {
             "name": "sound://speech/garage", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/garageDesc"
         }, 
         "type": "scene", 
@@ -2219,7 +2234,7 @@
         }, 
         "aural": {
             "name": "sound://speech/trappedHallway", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/trappedHallwayDesc"
         }, 
         "type": "scene", 
@@ -2239,7 +2254,7 @@
         }, 
         "aural": {
             "name": "sound://speech/outside", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/outsideDesc"
         }, 
         "type": "scene", 
@@ -2259,7 +2274,7 @@
         }, 
         "aural": {
             "name": "sound://speech/barn", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/barnDesc"
         }, 
         "type": "scene", 
@@ -2278,7 +2293,7 @@
         }, 
         "aural": {
             "name": "sound://speech/barnLoft", 
-            "backdrop": "sound://music/music2", 
+            "backdrop": "sound://music/423629_Nightmare_Ambience", 
             "description": "sound://speech/barnLoftDesc"
         }, 
         "type": "scene", 
@@ -3484,7 +3499,7 @@
     {
         "report": [
             {
-                "description": "You move the painting and a tune plays.\n\nDo-Mi-So", 
+                "description": "You move the painting and a tune plays.\n\nC-E-G", 
                 "narration": "sound://speech/movePainting"
             }, 
             {
