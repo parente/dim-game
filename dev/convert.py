@@ -1057,8 +1057,7 @@ world = [
         "report": [
             {
                 "title": "Game Over",
-                "narration": "sound://speech/gameOver",
-                "ambience": "null"
+                "narration": "sound://speech/gameOver"
             }
         ]
     },
@@ -1879,8 +1878,7 @@ world = [
             {
                 "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.",
                 "narration": "sound://speech/narrator_before_final_scene",
-                # "music": "sound://music/338521_Horror_Score_alt",
-                # "ambience": "null"
+                "ambience": ["sound://music/338521_Horror_Score_alt", {"loop": False}]
             },
             {
                 "description": '''"Minions! Listen to me! Get them!"

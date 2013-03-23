@@ -197,7 +197,6 @@
     {
         "report": [
             {
-                "ambience": "null", 
                 "narration": "sound://speech/gameOver", 
                 "title": "Game Over"
             }
@@ -1159,8 +1158,12 @@
     {
         "report": [
             {
-                "ambience": "null", 
-                "music": "sound://music/338521_Horror_Score_alt", 
+                "ambience": [
+                    "sound://music/338521_Horror_Score_alt", 
+                    {
+                        "loop": false
+                    }
+                ], 
                 "description": "The doctor turns and runs back down. He stops at a switch on the wall and pulls it. An alarm goes off, and out of the cages comes a swarm of monsters.", 
                 "narration": "sound://speech/narrator_before_final_scene"
             }, 

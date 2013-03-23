@@ -123,6 +123,8 @@ define(['dim/topic'], function(topic) {
             timer;
         // store the buffer uri for later reference
         def.msg = uri;
+        // store the props for later reference
+        def.props = props;
         // store the nodes for disconnect() later, source first
         def.nodes = {sourceNode: audioSource};
 
@@ -156,8 +158,8 @@ define(['dim/topic'], function(topic) {
         // start the audio playing
         audioSource.noteOn(0);
 
-        // disconnect nodes after completion to avoid leaks if not looping
-        if(!props.loop) {
+        // disconnect nodes after completion to avoid leaks if not looping or swapstopping
+        if(!props.loop && !props.swapstop) {
             timer = setTimeout(function() {
                 for(var key in def.nodes) {
                     def.nodes[key].disconnect();
@@ -168,7 +170,7 @@ define(['dim/topic'], function(topic) {
             }, buffer.duration * 1000);
             def.timer = timer;
         } else {
-            // resolve after returning the deferred for looping sounds
+            // resolve after returning the deferred for looping sounds or swapstopping sounds
             setTimeout(function() { def.resolve(); }, 0);
         }
         return def;

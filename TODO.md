@@ -18,9 +18,6 @@ Game World
 Audio
 -----
 
-* enable game win music during final dialog
-    * need channel prop for music that ignores completion in order to continue
-    * that or need way to disable looping on ambience channel
 
 Visual
 ------

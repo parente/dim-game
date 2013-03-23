@@ -17,26 +17,29 @@ define(['jquery'], function($) {
             props = $.extend({}, this.props, msg[1]);
             msg = msg[0];
         } else {
-            // take channel props
-            props = this.props;
+            // take a copy of persistent channel props
+            // in case they change while we're playing
+            props = $.extend(true, {}, this.props);
         }
 
-        if(props.swapstop) {
-            if(this.pending && this.pending.msg === msg) {
-                // already playing this message, respect props and continue
+        if(this.pending && this.pending.props.swapstop) {
+            // if we're playing something that has the swapstop flag set,
+            // check if the incoming is the same as what is playing
+            if(this.pending.msg === msg) {
+                // already playing this message, update props and return
                 this.sound.update(this.pending, props);
                 this.speech.update(this.pending, props);
                 return;
             }
         }
 
-        if(props.loop || props.swapstop) {
-            // stop before starting new message
-            def = this.pending;
-            this.pending = null;
-            this.sound.stop(def);
-            this.speech.stop(def);
-        }
+        // if(this.pending && (this.pending.props.loop || this.pending.props.swapstop)) {
+        // stop anything leftover before starting a new message
+        def = this.pending;
+        this.pending = null;
+        this.sound.stop(def);
+        this.speech.stop(def);
+        // }
 
         // check if the sound system can play it as a waveform first
         if(this.sound.can_play(msg)) {
@@ -51,7 +54,7 @@ define(['jquery'], function($) {
     };
 
     cls.prototype.stop = function() {
-        if(this.props.swapstop) {
+        if(this.pending && this.pending.props.swapstop) {
             return;
         }
         // stop all output
@@ -60,20 +63,6 @@ define(['jquery'], function($) {
         this.sound.stop(def);
         this.speech.stop(def);
     };
-
-    // cls.prototype.replace = function(msgs) {
-    //     var msg = msgs;
-    //     if($.isArray(msg)) {
-    //         msg = msg[msg.length-1];
-    //     }
-    //     // check if already playing the requested message
-    //     if(!this.pending || this.pending.msg !== msg) {
-    //         // start new sound / speech
-    //         this.sound.stop(this.pending);
-    //         this.speech.stop(this.pending);
-    //         this.play(msg);
-    //     }
-    // };
 
     cls.prototype.set_properties = function(props) {
         $.extend(this.props, props);
