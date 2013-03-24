@@ -9,11 +9,6 @@ Game World
 * allow controllers to group outputs to avoid confusing skips
     * test with maze and move prompts world.evaluate('use', 'passCard', 'mazeDoor').fire()
 * make adjoining rooms examinable
-* prevent reuse of bathroom hallway door after first time?
-    * description makes no sense when using again
-    * but no other way to recover the safe password if forgotten
-* make grunts more gender neutral
-    * rest of the game is careful about player assumptions
 
 Audio
 -----

@@ -1773,6 +1773,21 @@
         ]
     }, 
     {
+        "disabled": true, 
+        "on": [
+            "use", 
+            "bathroomHallwayDoor"
+        ], 
+        "report": [
+            {
+                "description": "\"You have to help me. Find the key. Please!\"\n\n\"2-1-6. They might help you.\"", 
+                "narration": "sound://speech/friend010_cell_short"
+            }
+        ], 
+        "type": "event", 
+        "id": "playerToBathroomHallwayDoorRepeat"
+    }, 
+    {
         "items": [
             "operatingTable", 
             "scalpel"
@@ -3616,7 +3631,23 @@
             "bathroomHallwayDoor"
         ], 
         "type": "event", 
-        "id": "playerToBathroomHallwayDoor"
+        "id": "playerToBathroomHallwayDoor", 
+        "exec": [
+            {
+                "action": "set", 
+                "args": [
+                    "event.playerToBathroomHallwayDoorRepeat.disabled", 
+                    false
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "event.playerToBathroomHallwayDoor.disabled", 
+                    true
+                ]
+            }
+        ]
     }, 
     {
         "on": [

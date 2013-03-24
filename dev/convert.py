@@ -366,6 +366,16 @@ use_events = {
     },
 
     'playerToBathroomHallwayDoor': {
+        'exec': [
+            {
+                'action': 'set',
+                'args': ['event.playerToBathroomHallwayDoorRepeat.disabled', False]
+            },
+            {
+                'action': 'set',
+                'args': ['event.playerToBathroomHallwayDoor.disabled', True]
+            }
+        ],
         'report': [
             {
                 'description': '''You knock on the hallway door. The person inside jumps in surprise.''',
@@ -2414,9 +2424,25 @@ Or did they?'''
                 'args': ['event.knifeToEleanor.disabled', False]
             }
         ]
-    }
+    },
 
+    # repeat of player to bathroom door
+    {
+        'type': 'event',
+        'id': 'playerToBathroomHallwayDoorRepeat',
+        'disabled': True,
+        'on': ['use', 'bathroomHallwayDoor'],
+        'report': [
+            {
+                'narration': 'sound://speech/friend010_cell_short',
+                'description': '''"You have to help me. Find the key. Please!"
+
+"2-1-6. They might help you."'''
+            }
+        ]
+    }
 ]
+
 
 def id_to_name(text):
     arr = []
