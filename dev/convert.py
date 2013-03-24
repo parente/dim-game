@@ -743,7 +743,6 @@ Note that you're always facing north.''',
         ]
     },
 
-
     'trappedHallwayDoorKeyToTrappedHallwayDoor': {
         'exec': [
             {
@@ -757,23 +756,30 @@ Note that you're always facing north.''',
         ],
         'report': [
             {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0a',
                 'description': '''"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Hahahahaha!"
 
-"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it."
+"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it."'''
+            },
+            {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0b',
+                'description': '''You notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.
 
-You notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.
-
-"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B."
-
-"Ah! What the -"
+"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B."''',
+            },
+            {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0c',
+                'description': '''"Ah! What the -"
 
 "Stay right where you are, Doctor."
 
 Your friend has returned! He walks into the lobby holding another gun.
 
-"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done."
-
-"Don't shoot!"
+"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done."'''
+            },
+            {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0d',
+                'description': '''"Don't shoot!"
 
 Your friend spins around as Eleanor appears at the top of the stairs.
 
@@ -781,19 +787,21 @@ Your friend spins around as Eleanor appears at the top of the stairs.
 
 "I am his wife. Don't shoot. He's crazy but I think I can cure him."
 ''',
-                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor0'
             },
-
             {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1a',
                 'description': '''"Heheheha. Eleanor, my dear, what are you doing out of your room?"
 
 "Johan, I need to get you to the hospital."
 
 "Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?"
 
-"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!"
+"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!"'''
 
-"Mooooaannnnnahahaha ahh."
+            },
+            {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1b',
+                'description': '''"Mooooaannnnnahahaha ahh."
 
 A huge, deformed monster appears at the top of the stairs.
 
@@ -803,24 +811,26 @@ The Doctor grabs Eleanor and throws her over his shoulder.
 
 "Ahhh! Put me down!"
 
-"I now bid you two, goodday. Have fun with, Igor. Hahahahahahahaha!"
+"I now bid you two, good day. Have fun with, Igor. Hahahahahahahaha!"
 
 The Doctor and Eleanor dash out the side door.
 
-"Help me! I have your antidote. You know where to find me."
-
-"Roar!"
+"Help me! I have your antidote. You know where to find me."'''
+            },
+            {
+                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1c',
+                'description': '''"Roar!"
 
 The monster blocks the path that the Doctor took.
 
 "Come on, let's get out of here. Hurry, I know the way out."
 
-You follow your new friend as he runs to the other side door, the monster following closely behind.
-''',
-                'narration': 'sound://speech/trappedHallwayDoorKeyToDoor1'
+You follow your new friend as he runs to the other side door, the monster following closely behind.''',
             },
             {
-                'description': '''"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second."''',
+                'description': '''"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you."
+
+"If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second."''',
                 'narration': 'sound://speech/trappedHallwayDoorKeyToDoor2'
             }
         ]
@@ -1057,7 +1067,8 @@ world = [
         "report": [
             {
                 "title": "Game Over",
-                "narration": "sound://speech/gameOver"
+                "narration": "sound://speech/gameOver",
+                "description": ""
             }
         ]
     },
@@ -1191,10 +1202,13 @@ world = [
         "report": [
             {
                 "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death.",
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer"
             },
             {
                 "narration": "sound://speech/pianoFail"
+            },
+            {
+                "sound": "sound://sound/duck"
             }
         ]
     },
@@ -1204,7 +1218,7 @@ world = [
         "report": [
             {
                 "description": "Try again.",
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer"
             },
             {
                 "narration": "sound://speech/tryAgain"
@@ -1592,10 +1606,13 @@ world = [
         "report": [
             {
                 "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.",
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer"
             },
             {
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
+            },
+            {
+                "sound": "sound://sound/duck"
             }
         ]
     },
@@ -1687,6 +1704,9 @@ world = [
             },
             {
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
+            },
+            {
+                "sound": "sound://sound/duck"
             }
         ]
     },
@@ -1704,22 +1724,19 @@ world = [
         "prompt": [
             {
                 'description': 'Jump!',
-                'narration': 'sound://speech/jump',
-                'audio': 'sound://sound/jump'
+                'narration': 'sound://speech/jump'
             },
             {
                 'description': 'Duck!',
-                'narration': 'sound://speech/duck',
-                'audio': 'sound://sound/duck'
+                'narration': 'sound://speech/duck'
             },
             {
                 'description': 'Left!',
-                'narration': 'sound://speech/left',
-                'audio': 'sound://sound/left'
+                'narration': 'sound://speech/left'
             },
             {
                 'description': 'Right!',
-                'narration': 'sound://speech/right',
+                'narration': 'sound://speech/right'
             },
             {
                 'description': 'Jump!',
@@ -1799,6 +1816,9 @@ world = [
             {
                 "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.",
                 "narration": "sound://speech/dieInTrappedHallway2"
+            },
+            {
+                "sound": "sound://sound/jump"
             }
         ]
     },
@@ -1816,6 +1836,9 @@ world = [
             {
                 "description": "You failed to act fast enough, and a large blade cuts you in half.",
                 "narration": "sound://speech/dieInTrappedHallway"
+            },
+            {
+                "sound": "sound://sound/jump"
             }
         ]
     },
@@ -1881,35 +1904,40 @@ world = [
                 "ambience": ["sound://music/338521_Horror_Score_alt", {"loop": False}]
             },
             {
+                "narration": "sound://speech/final_scene1",
                 "description": '''"Minions! Listen to me! Get them!"
 
 But the monsters, drawn to the blood, move towards the doctor.
 
 "What?! No! Not me! Get them! Get them! No! No! Ahh! Ahh!"
 
-"Come on! Now's our chance!"
-
-The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.
+"Come on! Now's our chance!"'''
+            },
+            {
+                "narration": "sound://speech/final_scene2",
+                "description": '''The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.
 
 "OK! Now, run!"
 
 As the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.
 
-"We did it! We did it! Let's go before this whole place goes up."
-
-You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.
+"We did it! We did it! Let's go before this whole place goes up."'''
+            },
+            {
+                "narration": "sound://speech/final_scene3",
+                "description": '''You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.
 
 "I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote."
 
-As you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.
-
-The rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.
+As you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.'''
+            },
+            {
+                "narration": "sound://speech/final_scene4",
+                "description": '''The rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.
 
 Doctor Johan fittingly met his death at the hands, and teeth, of his minions. As for his monstrous creations, they all died in the fire.
 
-Or did they?
-''',
-                "narration": "sound://speech/final_scene"
+Or did they?'''
             }
         ]
     },
@@ -1926,6 +1954,9 @@ Or did they?
             {
                 "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.",
                 "narration": "sound://speech/dieInBarn"
+            },
+            {
+                "sound": "sound://sound/gunShot"
             }
         ]
     },
@@ -2116,6 +2147,9 @@ Or did they?
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.",
                 "narration": "sound://speech/passCardToMazeDoor6",
                 "beacon": "null"
+            },
+            {
+                "sound": "sound://sound/duck"
             }
         ]
     },

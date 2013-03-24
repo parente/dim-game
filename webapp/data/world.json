@@ -198,6 +198,7 @@
         "report": [
             {
                 "narration": "sound://speech/gameOver", 
+                "description": "", 
                 "title": "Game Over"
             }
         ], 
@@ -336,11 +337,14 @@
     {
         "report": [
             {
-                "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death.", 
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer", 
+                "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death."
             }, 
             {
                 "narration": "sound://speech/pianoFail"
+            }, 
+            {
+                "sound": "sound://sound/duck"
             }
         ], 
         "on": [
@@ -361,8 +365,8 @@
     {
         "report": [
             {
-                "description": "Try again.", 
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer", 
+                "description": "Try again."
             }, 
             {
                 "narration": "sound://speech/tryAgain"
@@ -804,11 +808,14 @@
     {
         "report": [
             {
-                "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.", 
-                "narration": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer", 
+                "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
             }, 
             {
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
+            }, 
+            {
+                "sound": "sound://sound/duck"
             }
         ], 
         "on": [
@@ -936,6 +943,9 @@
             }, 
             {
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
+            }, 
+            {
+                "sound": "sound://sound/duck"
             }
         ], 
         "on": [
@@ -995,17 +1005,14 @@
         ], 
         "prompt": [
             {
-                "audio": "sound://sound/jump", 
                 "description": "Jump!", 
                 "narration": "sound://speech/jump"
             }, 
             {
-                "audio": "sound://sound/duck", 
                 "description": "Duck!", 
                 "narration": "sound://speech/duck"
             }, 
             {
-                "audio": "sound://sound/left", 
                 "description": "Left!", 
                 "narration": "sound://speech/left"
             }, 
@@ -1061,6 +1068,9 @@
             {
                 "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.", 
                 "narration": "sound://speech/dieInTrappedHallway2"
+            }, 
+            {
+                "sound": "sound://sound/jump"
             }
         ], 
         "on": [
@@ -1084,6 +1094,9 @@
             {
                 "description": "You failed to act fast enough, and a large blade cuts you in half.", 
                 "narration": "sound://speech/dieInTrappedHallway"
+            }, 
+            {
+                "sound": "sound://sound/jump"
             }
         ], 
         "on": [
@@ -1168,8 +1181,20 @@
                 "narration": "sound://speech/narrator_before_final_scene"
             }, 
             {
-                "description": "\"Minions! Listen to me! Get them!\"\n\nBut the monsters, drawn to the blood, move towards the doctor.\n\n\"What?! No! Not me! Get them! Get them! No! No! Ahh! Ahh!\"\n\n\"Come on! Now's our chance!\"\n\nThe three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.\n\n\"OK! Now, run!\"\n\nAs the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.\n\n\"We did it! We did it! Let's go before this whole place goes up.\"\n\nYou run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.\n\n\"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote.\"\n\nAs you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.\n\nThe rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.\n\nDoctor Johan fittingly met his death at the hands, and teeth, of his minions. As for his monstrous creations, they all died in the fire.\n\nOr did they?\n", 
-                "narration": "sound://speech/final_scene"
+                "description": "\"Minions! Listen to me! Get them!\"\n\nBut the monsters, drawn to the blood, move towards the doctor.\n\n\"What?! No! Not me! Get them! Get them! No! No! Ahh! Ahh!\"\n\n\"Come on! Now's our chance!\"", 
+                "narration": "sound://speech/final_scene1"
+            }, 
+            {
+                "description": "The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.\n\n\"OK! Now, run!\"\n\nAs the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.\n\n\"We did it! We did it! Let's go before this whole place goes up.\"", 
+                "narration": "sound://speech/final_scene2"
+            }, 
+            {
+                "description": "You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.\n\n\"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote.\"\n\nAs you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.", 
+                "narration": "sound://speech/final_scene3"
+            }, 
+            {
+                "description": "The rest of the night is a blur. You remember news cameras, talking to the police, and hugging your parents. You're thankful that it's all over and you will sleep well tonight.\n\nDoctor Johan fittingly met his death at the hands, and teeth, of his minions. As for his monstrous creations, they all died in the fire.\n\nOr did they?", 
+                "narration": "sound://speech/final_scene4"
             }
         ], 
         "on": [
@@ -1192,6 +1217,9 @@
             {
                 "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.", 
                 "narration": "sound://speech/dieInBarn"
+            }, 
+            {
+                "sound": "sound://sound/gunShot"
             }
         ], 
         "on": [
@@ -1435,6 +1463,9 @@
                 "beacon": "null", 
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.", 
                 "narration": "sound://speech/passCardToMazeDoor6"
+            }, 
+            {
+                "sound": "sound://sound/duck"
             }
         ], 
         "on": [
@@ -3734,15 +3765,35 @@
     {
         "report": [
             {
-                "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Hahahahaha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"\n\nYou notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"\n\n\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"\n\n\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
-                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0"
+                "description": "\"Muhahaha. Hello, 52B. We finally meet at last. Or, maybe I should say, you finally meet me at last. Hahahahaha!\"\n\n\"Now now, stay where you are. I will not miss with my next shot. Go ahead and toss that weapon of yours. You will not be needing it.\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0a"
             }, 
             {
-                "description": "\"Heheheha. Eleanor, my dear, what are you doing out of your room?\"\n\n\"Johan, I need to get you to the hospital.\"\n\n\"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?\"\n\n\"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!\"\n\n\"Mooooaannnnnahahaha ahh.\"\n\nA huge, deformed monster appears at the top of the stairs.\n\n\"Hehahahahaha. Ah yes, my pets, right on time.\"\n\nThe Doctor grabs Eleanor and throws her over his shoulder.\n\n\"Ahhh! Put me down!\"\n\n\"I now bid you two, goodday. Have fun with, Igor. Hahahahahahahaha!\"\n\nThe Doctor and Eleanor dash out the side door.\n\n\"Help me! I have your antidote. You know where to find me.\"\n\n\"Roar!\"\n\nThe monster blocks the path that the Doctor took.\n\n\"Come on, let's get out of here. Hurry, I know the way out.\"\n\nYou follow your new friend as he runs to the other side door, the monster following closely behind.\n", 
-                "narration": "sound://speech/trappedHallwayDoorKeyToDoor1"
+                "description": "You notice the small revolver pointed at you, and wisely toss your gun on the ground at the Doctor's feet.\n\n\"Since you are still alive, I assume you made it past my friends downstairs. How fortunate. Well, you will not make it past me. Goodbye, 52B.\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0b"
             }, 
             {
-                "description": "\"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you. If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second.\"", 
+                "description": "\"Ah! What the -\"\n\n\"Stay right where you are, Doctor.\"\n\nYour friend has returned! He walks into the lobby holding another gun.\n\n\"I told you I'd get out and you'd be in trouble. Now you'll pay for what you've done.\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0c"
+            }, 
+            {
+                "description": "\"Don't shoot!\"\n\nYour friend spins around as Eleanor appears at the top of the stairs.\n\n\"Who are you?\"\n\n\"I am his wife. Don't shoot. He's crazy but I think I can cure him.\"\n", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor0d"
+            }, 
+            {
+                "description": "\"Heheheha. Eleanor, my dear, what are you doing out of your room?\"\n\n\"Johan, I need to get you to the hospital.\"\n\n\"Wait. You're Eleanor? The crazy wife? The one who's responsible for these experiments?\"\n\n\"I'm not the crazy one. Johan here is the one having hallucinations. He locked me up. But thanks to my friend here, I have a chance to cure him. All I need is ... Ahhhhhhh!\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor1a"
+            }, 
+            {
+                "description": "\"Mooooaannnnnahahaha ahh.\"\n\nA huge, deformed monster appears at the top of the stairs.\n\n\"Hehahahahaha. Ah yes, my pets, right on time.\"\n\nThe Doctor grabs Eleanor and throws her over his shoulder.\n\n\"Ahhh! Put me down!\"\n\n\"I now bid you two, good day. Have fun with, Igor. Hahahahahahahaha!\"\n\nThe Doctor and Eleanor dash out the side door.\n\n\"Help me! I have your antidote. You know where to find me.\"", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor1b"
+            }, 
+            {
+                "description": "\"Roar!\"\n\nThe monster blocks the path that the Doctor took.\n\n\"Come on, let's get out of here. Hurry, I know the way out.\"\n\nYou follow your new friend as he runs to the other side door, the monster following closely behind.", 
+                "narration": "sound://speech/trappedHallwayDoorKeyToDoor1c"
+            }, 
+            {
+                "description": "\"OK. Through that door is the way out. But be careful: it's booby trapped. I discovered it on my search. You go first, and I'll yell out instructions to you.\"\n\n\"If I yell duck, press the down arrow. If I yell jump, press the up arrow. If I yell left or right, push the left or right arrows. We have to go fast. That monster will be here any second.\"", 
                 "narration": "sound://speech/trappedHallwayDoorKeyToDoor2"
             }
         ], 
