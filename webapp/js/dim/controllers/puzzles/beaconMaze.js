@@ -156,7 +156,7 @@ define([
                 return name ? name : '';
             }),
             aural = $.map(this.ctrl.options, function(opt) {
-                return {narration: opt.aural.name};
+                return {narration: opt.aural.name, skipWithPrior: true};
             }),
             beacon = this.beaconCell.beacon,
             props = {loop : true},

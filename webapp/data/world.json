@@ -758,15 +758,19 @@
                     "narration": "sound://speech/passCardToSittingRoomDoor1"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
@@ -863,21 +867,27 @@
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
+                    "skipWithPrior": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {

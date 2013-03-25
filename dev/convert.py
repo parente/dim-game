@@ -1560,10 +1560,10 @@ world = [
                     "description": "There are two speakers in front of you: one on the left and one on the right. Below each speaker is a button. When you insert the passkey, sounds start playing from the speakers.",
                     "narration": "sound://speech/passCardToSittingRoomDoor1"
                 },
-                {"narration": "sound://sound/toneLeft"},
-                {"narration": "sound://sound/toneRight"},
-                {"narration": "sound://sound/toneLeft"},
-                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
+                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
+                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
+                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
                 {"narration": "sound://speech/passCardToSittingRoomDoor2"}
             ],
             {
@@ -1638,12 +1638,12 @@ world = [
                     "description": "The sounds continue.",
                     "narration": "sound://sound/toneRight"
                 },
-                {"narration": "sound://sound/toneRight"},
-                {"narration": "sound://sound/toneRight"},
-                {"narration": "sound://sound/toneRight"},
-                {"narration": "sound://sound/toneLeft"},
-                {"narration": "sound://sound/toneRight"},
-                {"narration": "sound://sound/toneLeft"},
+                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
+                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
+                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
+                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
+                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
+                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
                 {"narration": "sound://speech/passCardToSittingRoomDoor2"}
             ],
             {

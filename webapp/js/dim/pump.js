@@ -107,12 +107,21 @@ define([
 
     var on_input = function(input, event) {
         if(pending) {
+            // clear any skippable queued reports
+            while(queue.length) {
+                if(queue[0][1].skipWithPrior) {
+                    queue.shift();
+                } else {
+                    break;
+                }
+            }
             var size = queue.length;
             // tell all views to abort
             $.each(views, function(i, view) {
                 view.abort();
             });
             if(size > 0) {
+                // stop event propagation if report remain queued
                 console.log('pump.on_input, skip');
                 return false;
             }

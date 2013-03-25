@@ -6,8 +6,6 @@ Support Web Audio API enabled browsers on the desktop (Safari, Chrome).
 Game World
 ----------
 
-* allow controllers to group outputs to avoid confusing skips
-    * test with maze and move prompts world.evaluate('use', 'passCard', 'mazeDoor').fire()
 
 Audio
 -----
@@ -29,6 +27,7 @@ Deployment
 vXXX - Gameplay Improvements
 ============================
 
+* replace "the sounds continue" on sitting room door puzzle second pass with cobbled speech
 * prevent key press from skipping audio when about to lose to avoid missing what happened
 * more background ambiences / music
     * http://www.newgrounds.com/audio/listen/292004
