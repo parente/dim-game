@@ -1586,6 +1586,15 @@
                 "narration": "sound://speech/whatToExamine"
             }
         ], 
+        "nearby": {
+            "visual": {
+                "name": "Nearby"
+            }, 
+            "aural": {
+                "name": "sound://speech/nearby"
+            }, 
+            "id": "examineNearby"
+        }, 
         "type": "ctrl", 
         "id": "examine", 
         "impossible": [

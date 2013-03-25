@@ -2263,7 +2263,16 @@ Or did they?'''
                 "description": "There's nothing here.",
                 "narration": "sound://speech/nothingHere"
             }
-        ]
+        ],
+        "nearby": {
+            "id": "examineNearby",
+            "visual": {
+                "name": "Nearby"
+            },
+            "aural": {
+                "name": "sound://speech/nearby"
+            }
+        }
     },
 
     # player movement controller
