@@ -5,8 +5,7 @@ define([
     'dim/visual',
     'dim/aural',
     'dim/topic',
-    'dim/pump',
-    'dim/devel'
+    'dim/pump'
 ], function($, world, input, visual, aural, topic, pump) {
     var controller;
 

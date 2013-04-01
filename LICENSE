@@ -54,11 +54,11 @@ Components
 
 All MIT / BSD licensed or dual licensed.
 
-modernizr.js (2.6.1)
-https://github.com/Modernizr/Modernizr/tree/v2.6.1
+modernizr.js (2.6.2)
+https://github.com/Modernizr/Modernizr/tree/v2.6.2
 
-require.js (2.0.6)
-https://github.com/jrburke/requirejs/tree/2.0.6
+require.js (2.1.5)
+https://github.com/jrburke/requirejs/tree/2.1.5
 
 text.js
 https://github.com/requirejs/text
