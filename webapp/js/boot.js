@@ -1,6 +1,9 @@
+// build overrides with a blank string
+if (typeof CACHE_BUST_VERSION === 'undefined') CACHE_BUST_VERSION = "bust=" + (new Date()).getTime();
+
 requirejs.config({
     baseUrl: 'js/vendor',
-    urlArgs: "bust=" +  (new Date()).getTime(),
+    urlArgs: CACHE_BUST_VERSION,
     paths : {
         dim : '../dim'
     },
