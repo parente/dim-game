@@ -2,43 +2,47 @@ define([
     'dim/topic',
     'dim/world'
 ], function(topic, world) {
-    // setup global functions
-    move = function(id) {
-        var scene = world.get_scene(id);
-        world.evaluate('move', scene).fire();
-        topic('controller.request').publish();
-    };
+    // will be removed during build
+    if (typeof DEVEL === 'undefined') DEVEL = true;
+    if(DEVEL) {
+        // setup global functions
+        move = function(id) {
+            var scene = world.get_scene(id);
+            world.evaluate('move', scene).fire();
+            topic('controller.request').publish();
+        };
 
-    take = function(id) {
-        var player = world.get_player();
-        player.items.push(id);
-        var item = world.get_item(id);
-        item.properties.push('useable');
-    };
+        take = function(id) {
+            var player = world.get_player();
+            player.items.push(id);
+            var item = world.get_item(id);
+            item.properties.push('useable');
+        };
 
-    me = function() {
-        console.log(world.get_player());
-    };
+        me = function() {
+            console.log(world.get_player());
+        };
 
-    // skip to upper hallway after freeing friend
-    skipToFriend = function() {
-        take('hammer');
-        take('star');
-        take('passCard');
-        move('upperHallway');
-        world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
-        me();
-    };
+        // skip to upper hallway after freeing friend
+        skipToFriend = function() {
+            take('hammer');
+            take('star');
+            take('passCard');
+            move('upperHallway');
+            world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
+            me();
+        };
 
-    skipToLobbyConfrontation = function() {
-        take('trappedHallwayDoorKey');
-        move('lobby');
-    };
+        skipToLobbyConfrontation = function() {
+            take('trappedHallwayDoorKey');
+            move('lobby');
+        };
 
-    window.world = world;
+        window.world = world;
+    }
 
     // Avoid `console` errors in browsers that lack a console.
-    // PJP: moved from h5bp plugins.js
+    // moved from h5bp plugins.js
     if (!(window.console && console.log)) {
         (function() {
             var noop = function() {};
