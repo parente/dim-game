@@ -3,14 +3,6 @@ v1 - Just Make it Work
 
 Support Web Audio API enabled browsers on the desktop (Safari, Chrome).
 
-Game World
-----------
-
-
-Audio
------
-
-
 Visual
 ------
 
@@ -21,8 +13,7 @@ Deployment
 ----------
 
 * website
-* build script
-
+* app version deployment scheme
 
 vXXX - Gameplay Improvements
 ============================
@@ -62,10 +53,11 @@ vXXX - iOS Support
 vXXX - DIM Boilerplate
 ============================
 
-* move input bindings to world.json
-* simple commands in console for walkthrough testing
 * upgrade path for saved games
     * related solve precache media after load (json may contain different uris)
+    * related to build version and compatibility
+* move input bindings to world.json
+* simple commands in console for walkthrough testing
 * implement tts using emscripten espeak
     * maybe this fork? https://github.com/osi/speak.js/
 * implement tts for voiceover live region
@@ -75,12 +67,6 @@ vXXX - DIM Boilerplate
 vXXX - Engine One-Day-Maybe
 ===========================
 
-* spatial positioning support for audio
-
-Maybe?
-======
-
-* force stop on world event? (all world event have event object, can't stop based on that. do we ever have a case where world event should not queue?)
 * rebuild master elevator speech properly?
 * dim.appcache?
 
@@ -95,8 +81,11 @@ NETWORK:
 *
 </pre>
 
+Old Dev Notes
+=============
+
 Global Pump Redesign
-====================
+--------------------
 
 pump.js subscribes to all report and object selection events.
 
@@ -114,7 +103,7 @@ flushes the queue.
     item in the queue.
 
 Report
-------
+~~~~~~
 
 Defined as the API.
 
@@ -126,7 +115,7 @@ sound -> aural secondary channel
 ambience -> aural looping channel
 
 Property to Report
-------------------
+~~~~~~~~~~~~~~~~~~
 
 Done via default.objectReport.
 
@@ -174,12 +163,12 @@ user.activate(ctrl, obj)
     Received by pump.js to map the object properties to a report and to queue it
 
 Reverse Engineering
-===================
+-------------------
 
 Notes about the original Python version.
 
 Main game loop
---------------
+~~~~~~~~~~~~~~
 
 <pre>
 say "you are in the <room name>""
@@ -225,7 +214,7 @@ select "use":
 </pre>
 
 Actions
--------
+~~~~~~~
 
 * use item
 * examine (take as subaction)
@@ -237,7 +226,7 @@ Actions
 * quit
 
 Interactions
-------------
+~~~~~~~~~~~~
 
 * scalpel - operating table
 * player - painting
@@ -269,7 +258,7 @@ Interactions
 * gasoline - Eleanor
 
 Minigames
----------
+~~~~~~~~~
 
 * trapped hallway reaction
 * piano note sequence puzzle
@@ -279,7 +268,7 @@ Minigames
 * computer number sequence puzzle
 
 Death
------
+~~~~~
 
 * doc hears hammer on mirror
 * dogs eat outside main door
