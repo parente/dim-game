@@ -13,7 +13,7 @@ define([
 
 
     exports.initialize = function(stateJson) {
-        var json;
+        var json, hasVersion;
         // TODO: need an upgrade path
         if(stateJson) {
             world = JSON.parse(stateJson);
@@ -60,8 +60,20 @@ define([
                     }
                     indices.event[id] = obj;
                     break;
+                case 'version':
+                    hasVersion = true;
             }
         });
+
+        if(!hasVersion) {
+            // build overrides with specific version #
+            if (typeof DIM_VERSION === 'undefined') DIM_VERSION = (new Date()).getTime();
+            // get the version into the world data for persistence
+            world.push({
+                type: 'version',
+                value: DIM_VERSION
+            });
+        }
 
         // provide the events with a private interface to the world indices
         events.initialize(this, indices);

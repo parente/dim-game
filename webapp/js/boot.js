@@ -1,4 +1,4 @@
-// build overrides with a blank string
+// build overrides with specific version #
 if (typeof DIM_VERSION === 'undefined') DIM_VERSION = (new Date()).getTime();
 
 requirejs.config({
