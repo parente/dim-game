@@ -120,7 +120,7 @@ What's going on?''',
     'masterBedroomDesk': "The desk is locked.",
     'masterBedroomRecording': '''"September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Hahahaha ... ah."
 
-"I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there."
+"I still have not isolated the cause of these mutations. I might need to use younger, more healthy subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there."
 
 "Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good."''',
     'masterBedroomBed': "There are stains on the bed that look like dried blood.",
@@ -143,7 +143,7 @@ What's going on?''',
 
 "I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding."
 
-"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you have to cut me loose. Do you have a knife with you?"''',
+"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?"''',
 
     'mazeDoor': "The door has a large sign that says \"STAY OUT\". There's a card reader next to it.",
     'knife': "It's a sharp knife.",
@@ -360,7 +360,8 @@ use_events = {
         'report': [
             {
                 'description': "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hears you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...",
-                'narration': 'sound://speech/hammerToMirror'
+                'narration': 'sound://speech/hammerToMirror',
+                "unskippable": True
             }
         ]
     },
@@ -528,7 +529,8 @@ use_events = {
         'report': [
             {
                 'description': "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty.",
-                'narration': 'sound://speech/passCardToMainEntrance'
+                'narration': 'sound://speech/passCardToMainEntrance',
+                "unskippable": True
             }
         ]
     },
@@ -559,6 +561,10 @@ use_events = {
             },
             {
                 'action': 'set',
+                'args': ['event.passCardToMazeDoor.disabled', False]
+            },
+            {
+                'action': 'set',
                 'args': ['item.eleanor.visual.description', '''"Oh thank god you made it! Did you get the ingredients I need?"''']
             },
             {
@@ -575,6 +581,7 @@ use_events = {
     },
 
     'passCardToMazeDoor': {
+        'disabled': True,
         'exec': [
             {
                 'action': 'activate',
@@ -700,7 +707,8 @@ Note that you're always facing north.''',
         'report': [
             {
                 'description': "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive.",
-                'narration': 'sound://speech/playerToBarnSwitch'
+                'narration': 'sound://speech/playerToBarnSwitch',
+                "unskippable": True
             }
         ]
     },
@@ -1212,13 +1220,16 @@ world = [
         "report": [
             {
                 "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death.",
-                "sound": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer",
+                "unskippable": True
             },
             {
-                "narration": "sound://speech/pianoFail"
+                "narration": "sound://speech/pianoFail",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck",
+                "unskippable": True
             }
         ]
     },
@@ -1560,10 +1571,10 @@ world = [
                     "description": "There are two speakers in front of you: one on the left and one on the right. Below each speaker is a button. When you insert the passkey, sounds start playing from the speakers.",
                     "narration": "sound://speech/passCardToSittingRoomDoor1"
                 },
-                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
-                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
-                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
-                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
+                {"narration": "sound://sound/toneLeft", "unskippable": True},
+                {"narration": "sound://sound/toneRight", "unskippable": True},
+                {"narration": "sound://sound/toneLeft", "unskippable": True},
+                {"narration": "sound://sound/toneLeft", "unskippable": True},
                 {"narration": "sound://speech/passCardToSittingRoomDoor2"}
             ],
             {
@@ -1616,13 +1627,16 @@ world = [
         "report": [
             {
                 "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.",
-                "sound": "sound://sound/buzzer"
+                "sound": "sound://sound/buzzer",
+                "unskippable": True
             },
             {
-                "narration": "sound://speech/passCardToSittingRoomDoor3"
+                "narration": "sound://speech/passCardToSittingRoomDoor3",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck",
+                "unskippable": True
             }
         ]
     },
@@ -1636,14 +1650,15 @@ world = [
             [
                 {
                     "description": "The sounds continue.",
-                    "narration": "sound://sound/toneRight"
+                    "narration": "sound://sound/toneRight",
+                    "unskippable": True
                 },
-                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
-                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
-                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
-                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
-                {"narration": "sound://sound/toneRight", "skipWithPrior": True},
-                {"narration": "sound://sound/toneLeft", "skipWithPrior": True},
+                {"narration": "sound://sound/toneRight", "unskippable": True},
+                {"narration": "sound://sound/toneRight", "unskippable": True},
+                {"narration": "sound://sound/toneRight", "unskippable": True},
+                {"narration": "sound://sound/toneLeft", "unskippable": True},
+                {"narration": "sound://sound/toneRight", "unskippable": True},
+                {"narration": "sound://sound/toneLeft", "unskippable": True},
                 {"narration": "sound://speech/passCardToSittingRoomDoor2"}
             ],
             {
@@ -1710,13 +1725,16 @@ world = [
         "report": [
             {
                 "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.",
-                "narration": "sound://sound/buzzer"
+                "narration": "sound://sound/buzzer",
+                "unskippable": True
             },
             {
-                "narration": "sound://speech/passCardToSittingRoomDoor3"
+                "narration": "sound://speech/passCardToSittingRoomDoor3",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck",
+                "unskippable": True
             }
         ]
     },
@@ -1825,10 +1843,12 @@ world = [
         "report": [
             {
                 "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.",
-                "narration": "sound://speech/dieInTrappedHallway2"
+                "narration": "sound://speech/dieInTrappedHallway2",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/jump"
+                "sound": "sound://sound/jump",
+                "unskippable": True
             }
         ]
     },
@@ -1845,10 +1865,12 @@ world = [
         "report": [
             {
                 "description": "You failed to act fast enough, and a large blade cuts you in half.",
-                "narration": "sound://speech/dieInTrappedHallway"
+                "narration": "sound://speech/dieInTrappedHallway",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/jump"
+                "sound": "sound://sound/jump",
+                "unskippable": True
             }
         ]
     },
@@ -1963,7 +1985,8 @@ Or did they?'''
         "report": [
             {
                 "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.",
-                "narration": "sound://speech/dieInBarn"
+                "narration": "sound://speech/dieInBarn",
+                "unskippable": True
             },
             {
                 "sound": "sound://sound/gunShot"
@@ -2156,10 +2179,12 @@ Or did they?'''
             {
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.",
                 "narration": "sound://speech/passCardToMazeDoor6",
-                "beacon": "null"
+                "beacon": "null",
+                "unskippable": True
             },
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck",
+                "unskippable": True
             }
         ]
     },
@@ -2400,7 +2425,10 @@ Or did they?'''
                 "description": "You have taken the {{args.1.visual.name}}.",
                 "narration": "sound://speech/youHaveTakenThe",
             },
-            {"narration": "{{{args.1.aural.name}}}"}
+            {
+                "narration": "{{{args.1.aural.name}}}",
+                "skipWithPrior": True
+            }
         ]
     },
 

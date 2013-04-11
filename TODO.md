@@ -1,10 +1,17 @@
+v1 - Just Make it Work
+======================
+
+* final testing
+
 vXXX - Gameplay Improvements
 ============================
 
+* split eleanor sitting room speech
+* split safe recording visual / audio into 3 parts
+* combine use / take object names with prefix speech for skipping
 * breadcrumb design for menu
     * or worst case clear out the menu text after a while
 * replace "the sounds continue" on sitting room door puzzle second pass with cobbled speech
-* prevent key press from skipping audio when about to lose to avoid missing what happened
 * more background ambiences / music
     * http://www.newgrounds.com/audio/listen/292004
     * http://www.newgrounds.com/audio/listen/260037

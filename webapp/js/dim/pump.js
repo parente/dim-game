@@ -57,6 +57,8 @@ define([
             pending = $.map(views, function(view) {
                 return view.render.apply(view, args);
             });
+            // save args
+            pending.args = args;
             $.when.apply($, pending).then(on_complete);
         } else {
             // deferred sentinel, resolve and continue
@@ -107,6 +109,12 @@ define([
 
     var on_input = function(input, event) {
         if(pending) {
+            if(pending.args && pending.args[1].unskippable) {
+                // ignore input
+                console.log('pump.on_input, unskippable');
+                return false;
+            }
+
             // clear any skippable queued reports
             while(queue.length) {
                 if(queue[0][1].skipWithPrior) {

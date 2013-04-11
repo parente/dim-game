@@ -338,13 +338,16 @@
         "report": [
             {
                 "sound": "sound://sound/buzzer", 
+                "unskippable": true, 
                 "description": "You have failed too many times. A trapdoor opens underneath you, revealing a pit of spikes. You fall to your death."
             }, 
             {
+                "unskippable": true, 
                 "narration": "sound://speech/pianoFail"
             }, 
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -758,19 +761,19 @@
                     "narration": "sound://speech/passCardToSittingRoomDoor1"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
@@ -813,13 +816,16 @@
         "report": [
             {
                 "sound": "sound://sound/buzzer", 
+                "unskippable": true, 
                 "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death."
             }, 
             {
+                "unskippable": true, 
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
             }, 
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -867,27 +873,27 @@
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneRight"
                 }, 
                 {
-                    "skipWithPrior": true, 
+                    "unskippable": true, 
                     "narration": "sound://sound/toneLeft"
                 }, 
                 {
@@ -948,14 +954,17 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "Apparently you've inputted the wrong sequence of button presses. A trapdoor opens underneath you revealing a pit of spikes. You fall to your death.", 
                 "narration": "sound://sound/buzzer"
             }, 
             {
+                "unskippable": true, 
                 "narration": "sound://speech/passCardToSittingRoomDoor3"
             }, 
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -1076,11 +1085,13 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "You act as fast as you can, but you did the wrong thing and a blade cuts you in half.", 
                 "narration": "sound://speech/dieInTrappedHallway2"
             }, 
             {
-                "sound": "sound://sound/jump"
+                "sound": "sound://sound/jump", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -1102,11 +1113,13 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "You failed to act fast enough, and a large blade cuts you in half.", 
                 "narration": "sound://speech/dieInTrappedHallway"
             }, 
             {
-                "sound": "sound://sound/jump"
+                "sound": "sound://sound/jump", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -1225,6 +1238,7 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "You try to shoot the doctor but you aren't fast enough. The doctor bounds up the stairs with surprising speed, steals the gun right out of your hands, and shoots you with it.", 
                 "narration": "sound://speech/dieInBarn"
             }, 
@@ -1471,11 +1485,13 @@
         "report": [
             {
                 "beacon": "null", 
+                "unskippable": true, 
                 "description": "The monster is not phased by your actions, and lunges straight for your neck, ripping out your throat.", 
                 "narration": "sound://speech/passCardToMazeDoor6"
             }, 
             {
-                "sound": "sound://sound/duck"
+                "sound": "sound://sound/duck", 
+                "unskippable": true
             }
         ], 
         "on": [
@@ -1726,6 +1742,7 @@
                 "narration": "sound://speech/youHaveTakenThe"
             }, 
             {
+                "skipWithPrior": true, 
                 "narration": "{{{args.1.aural.name}}}"
             }
         ], 
@@ -2870,7 +2887,7 @@
     {
         "visual": {
             "name": "Recording", 
-            "description": "\"September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Hahahaha ... ah.\"\n\n\"I still have not isolated the cause of these mutations. I might need to use younger, more healty subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.\"\n\n\"Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good.\""
+            "description": "\"September 24th, 7:30 PM. Well, serum #11 was another failure. More of the same. At least subject 51A can join the others in the basement. Hahahaha ... ah.\"\n\n\"I still have not isolated the cause of these mutations. I might need to use younger, more healthy subjects. Yes! That would help. Hm. There's a local college near here. I can try looking there.\"\n\n\"Eleanor is getting violent now. Not only does she not recognize me, she tried to stab me with her nail file last night. I've strapped her to the bed. It's for her own good.\""
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2952,7 +2969,7 @@
     {
         "visual": {
             "name": "Eleanor", 
-            "description": "\"Who are you? Speak! Who are you? Did Johan send you?\"\n\n\"The doctor of the house, my husband, Johan. Did he send you?\"\n\n\"No? Then you must be one of the ... subjects. How did you get free?\"\n\n\"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?\"\n\n\"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.\"\n\n\"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.\"\n\n\"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you have to cut me loose. Do you have a knife with you?\""
+            "description": "\"Who are you? Speak! Who are you? Did Johan send you?\"\n\n\"The doctor of the house, my husband, Johan. Did he send you?\"\n\n\"No? Then you must be one of the ... subjects. How did you get free?\"\n\n\"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?\"\n\n\"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.\"\n\n\"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.\"\n\n\"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?\""
         }, 
         "aural": {
             "name": "sound://speech/eleanor", 
@@ -3417,6 +3434,7 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "You use the pass card and the main entrance opens. Unfortunately, as soon as you open it, you find a pack of growling dogs waiting outside. They look pretty hungry, and apparently they find you pretty tasty.", 
                 "narration": "sound://speech/passCardToMainEntrance"
             }
@@ -3457,6 +3475,21 @@
         ]
     }, 
     {
+        "disabled": true, 
+        "on": [
+            "use", 
+            "passCard", 
+            "mazeDoor"
+        ], 
+        "exec": [
+            {
+                "action": "activate", 
+                "args": [
+                    "dim/controllers/puzzles/beaconMaze", 
+                    "basementBeaconMaze"
+                ]
+            }
+        ], 
         "report": [
             {
                 "description": "\"Well, well, well, 52B. You are proving to be a menace. Where do you think you're going?\"\n\n\"I saw on the cameras that you have visited my dear wife. Well, what do you think? Sad, isn't it? I am doing this for her ...\"\n\n\"You will be my test subject! Actually, come to think of it, I can always get more subjects. Heheheheha.\"\n\n\"Yes, 52B, I warned you not the enter the basement. I think the power is about to go off. Hahahahaha!\"", 
@@ -3468,22 +3501,8 @@
                 "title": "Basement Maze"
             }
         ], 
-        "on": [
-            "use", 
-            "passCard", 
-            "mazeDoor"
-        ], 
         "type": "event", 
-        "id": "passCardToMazeDoor", 
-        "exec": [
-            {
-                "action": "activate", 
-                "args": [
-                    "dim/controllers/puzzles/beaconMaze", 
-                    "basementBeaconMaze"
-                ]
-            }
-        ]
+        "id": "passCardToMazeDoor"
     }, 
     {
         "report": [
@@ -3705,6 +3724,7 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "You hit the switch and all of the cages open. You've freed all of the monsters and they show their thanks by eating you alive.", 
                 "narration": "sound://speech/playerToBarnSwitch"
             }
@@ -3752,6 +3772,13 @@
                 "args": [
                     "scene.lab.items", 
                     "eleanor"
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "event.passCardToMazeDoor.disabled", 
+                    false
                 ]
             }, 
             {
@@ -3874,6 +3901,7 @@
     {
         "report": [
             {
+                "unskippable": true, 
                 "description": "The mirror breaks with a large crash, revealing a hallway behind it.\n\n\"Hey! What was that noise?!\"\n\nOh no. The doctor hears you. He comes into the room.\n\n\"I've got you now, 52B!\"\n\nYou try to defend yourself with the hammer but you miss. He injects you with a tranquilizer and you go to sleep again ...", 
                 "narration": "sound://speech/hammerToMirror"
             }
