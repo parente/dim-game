@@ -117,7 +117,7 @@ define([
 
             // clear any skippable queued reports
             while(queue.length) {
-                if(queue[0][1].skipWithPrior) {
+                if(queue[0][1] && queue[0][1].skipWithPrior) {
                     queue.shift();
                 } else {
                     break;
