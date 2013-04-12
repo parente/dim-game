@@ -32,7 +32,7 @@ define([
         var startTimer = function(ctrl, menu) {
             topic('controller.sentinel').expect().then(function() {
                 timer = setTimeout(function() {
-                    fail(ctrl.id, 'timeout', menu);
+                    fail(world, ctrl.id, 'timeout', menu);
                 }, ctrl.actionTimeout * 1000);
             });
         };
