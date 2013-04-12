@@ -6,6 +6,7 @@ define([
     var exports = {};
 
     var cls = function(world, ctrlId) {
+        this.world = world;
         // stash unmodified controller data
         this.origCtrl = world.get_ctrl(ctrlId);
         // deep copy the controller data because prompt will be modified
@@ -84,7 +85,7 @@ define([
 
         if(cell.fire) {
             // fire cell events and clean up
-            var events = world.evaluate.apply(world, cell.fire);
+            var events = this.world.evaluate.apply(this.world, cell.fire);
             events.fire();
             topic('controller.complete').publish(this);
         } else {

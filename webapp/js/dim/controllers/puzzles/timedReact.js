@@ -15,7 +15,7 @@ define([
         return true;
     };
 
-    var fail = function(ctrlId, reason, menu) {
+    var fail = function(world, ctrlId, reason, menu) {
         var events = world.evaluate('fail', ctrlId, reason);
         events.fire();
         topic('controller.complete').publish(menu);
@@ -51,7 +51,7 @@ define([
                 if(ctrl.failOnMismatch) {
                     // mismatch, failed
                     clearTimeout(timer);
-                    fail(ctrlId, 'mismatch', menu);
+                    fail(world, ctrlId, 'mismatch', menu);
                 } else {
                     // mismatch, retry and reset
                     events = world.evaluate('retry', ctrlId);

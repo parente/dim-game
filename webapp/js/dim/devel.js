@@ -5,55 +5,56 @@ define([
     // will be removed during build
     if (typeof DEVEL === 'undefined') DEVEL = true;
     if(DEVEL) {
-        // setup global functions
-        move = function(id) {
-            var scene = world.get_scene(id);
-            world.evaluate('move', scene).fire();
+        window.dim = {};
+
+        dim.world = world;
+
+        dim.move = function(id) {
+            var scene = dim.world.get_scene(id);
+            dim.world.evaluate('move', scene).fire();
             topic('controller.request').publish();
         };
 
-        take = function(id) {
+        dim.take = function(id) {
             var player = world.get_player();
             player.items.push(id);
             var item = world.get_item(id);
             item.properties.push('useable');
         };
 
-        me = function() {
+        dim.me = function() {
             console.log(world.get_player());
         };
 
         // skip to upper hallway after freeing friend
-        skipToFriend = function() {
-            take('hammer');
-            take('star');
-            take('passCard');
-            move('upperHallway');
-            world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
-            me();
+        dim.skipToFriend = function() {
+            dim.take('hammer');
+            dim.take('star');
+            dim.take('passCard');
+            dim.move('upperHallway');
+            dim.world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
+            dim.me();
         };
 
-        skipToSittingRoom = function() {
-            take('star');
-            take('knife');
-            take('passCard');
-            move('sittingRoom');
+        dim.skipToSittingRoom = function() {
+            dim.take('star');
+            dim.take('knife');
+            dim.take('passCard');
+            dim.move('sittingRoom');
         };
 
-        skipToLobbyConfrontation = function() {
-            take('gun');
-            take('gasoline');
-            take('trappedHallwayDoorKey');
-            move('lobby');
+        dim.skipToLobbyConfrontation = function() {
+            dim.take('gun');
+            dim.take('gasoline');
+            dim.take('trappedHallwayDoorKey');
+            dim.move('lobby');
         };
 
-        skipToBasementMaze = function() {
-            take('gun');
-            take('passCard');
-            move('basement');
+        dim.skipToBasementMaze = function() {
+            dim.take('gun');
+            dim.take('passCard');
+            dim.move('basement');
         };
-
-        window.world = world;
     }
 
     // Avoid `console` errors in browsers that lack a console.
