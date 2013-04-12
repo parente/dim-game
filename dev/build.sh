@@ -12,8 +12,8 @@ else
     DEVEL="true"
 fi
 
-echo "==> VERSION: $VERSION"
-echo "==> DEVEL: $DEVEL"
+echo "==> Build var VERSION: $VERSION"
+echo "==> Build var DEVEL: $DEVEL"
 
 # clean up old version if it exists
 rm -r "../webapp.build"
