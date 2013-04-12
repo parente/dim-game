@@ -33,9 +33,24 @@ define([
             me();
         };
 
+        skipToSittingRoom = function() {
+            take('star');
+            take('knife');
+            take('passCard');
+            move('sittingRoom');
+        };
+
         skipToLobbyConfrontation = function() {
+            take('gun');
+            take('gasoline');
             take('trappedHallwayDoorKey');
             move('lobby');
+        };
+
+        skipToBasementMaze = function() {
+            take('gun');
+            take('passCard');
+            move('basement');
         };
 
         window.world = world;

@@ -1,9 +1,19 @@
 #!/bin/bash
 VERSION=$1
+DEVEL=$2
 if [ -z $VERSION ]; then
-    echo "usage: build.sh <version number>"
+    echo "usage: build.sh <version number> [enable devel?]"
     exit 1
 fi
+
+if [ -z $DEVEL ]; then
+    DEVEL="false"
+else
+    DEVEL="true"
+fi
+
+echo "==> VERSION: $VERSION"
+echo "==> DEVEL: $DEVEL"
 
 # clean up old version if it exists
 rm -r "../webapp.build"
@@ -23,10 +33,25 @@ cat << END > webapp.build.js
         boot: '../boot',
         dim : '../dim'
     },
+    // remove individual files
+    removeCombined: true,
     // point to the bootloader as the root of the scripts to build
     modules: [
         {
-            name: "boot"
+            name: "boot",
+            include: [
+                "dim/controllers/explore/explore",
+                "dim/controllers/explore/examine",
+                "dim/controllers/explore/move",
+                "dim/controllers/explore/take",
+                "dim/controllers/explore/use",
+                "dim/controllers/meta/boot",
+                "dim/controllers/meta/done",
+                "dim/controllers/meta/save",
+                "dim/controllers/puzzles/beaconMaze",
+                "dim/controllers/puzzles/memoryPattern",
+                "dim/controllers/puzzles/timedReact"
+            ]
         }
     ],
     shim : {
@@ -43,7 +68,7 @@ cat << END > webapp.build.js
     uglify: {
         defines: {
             // disable developer debugging tools
-            DEVEL: ['name', 'false'],
+            DEVEL: ['name', '$DEVEL'],
             // do no cache busting in built copy
             // assume new versions are in entirely new folders (disk is cheap)
             DIM_VERSION: ['string', '$VERSION']

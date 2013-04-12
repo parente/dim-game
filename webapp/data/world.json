@@ -48,7 +48,7 @@
                 "swapstop": true, 
                 "crossfade": true, 
                 "type": "aural", 
-                "gain": 0.15, 
+                "gain": 0.12, 
                 "loop": true
             }, 
             "title": {
@@ -869,6 +869,7 @@
         "prompt": [
             [
                 {
+                    "unskippable": true, 
                     "description": "The sounds continue.", 
                     "narration": "sound://sound/toneRight"
                 }, 
@@ -1208,11 +1209,11 @@
                 "narration": "sound://speech/final_scene1"
             }, 
             {
-                "description": "The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.\n\n\"OK! Now, run!\"\n\nAs the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.\n\n\"We did it! We did it! Let's go before this whole place goes up.\"", 
+                "description": "The three of you run downstairs. Eleanor starts spreading the gas everywhere. She takes out a lighter and lights it, and as she throws it into the gas, it erupts into a great fireball.\n\n\"OK! Now, run!\"\n\nAs the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind her.\n\n\"We did it! We did it! Let's go before this whole place goes up.\"", 
                 "narration": "sound://speech/final_scene2"
             }, 
             {
-                "description": "You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.\n\n\"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote.\"\n\nAs you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.", 
+                "description": "You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.\n\n\"Well my dears, I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote.\"\n\nAs you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.", 
                 "narration": "sound://speech/final_scene3"
             }, 
             {

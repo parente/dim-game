@@ -6,6 +6,10 @@ v1 - Just Make it Work
 vXXX - Gameplay Improvements
 ============================
 
+* clear menu at the end of the game
+* upstairs hallway door doesn't exist before friend freed
+* split study phone call
+* split bathroom hallway speech
 * split eleanor sitting room speech
 * split safe recording visual / audio into 3 parts
 * breadcrumb design for menu

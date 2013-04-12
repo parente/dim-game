@@ -898,7 +898,7 @@ world = [
                 # one in which case it coalsces and the current one continues
                 "swapstop": True,
                 # gain of the output
-                "gain": 0.15,
+                "gain": 0.12,
                 # cross fade when swapstopping
                 "crossfade": True
             },
@@ -1951,7 +1951,7 @@ But the monsters, drawn to the blood, move towards the doctor.
 
 "OK! Now, run!"
 
-As the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind you.
+As the fires burn, you run, past the monsters, out of the barn. As soon as you're out, Eleanor locks the door behind her.
 
 "We did it! We did it! Let's go before this whole place goes up."'''
             },
@@ -1959,7 +1959,7 @@ As the fires burn, you run, past the monsters, out of the barn. As soon as you'r
                 "narration": "sound://speech/final_scene3",
                 "description": '''You run down the road and then pause, out of breath, staring at the burning building behind you. In the distance, sirens can be heard.
 
-"I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote."
+"Well my dears, I must apologize for my husband's actions. I did not know the extent of his madness. But we're alive and that's what matters. By the way, here's the antidote."
 
 As you drink the potion Eleanor hands you, the sirens get closer. Soon ambulances, fire trucks, and police cars surround you and the building.'''
             },
