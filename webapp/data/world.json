@@ -3230,6 +3230,13 @@
                     "scene.masterBathroom.adjoins", 
                     "masterElevator"
                 ]
+            }, 
+            {
+                "action": "remove", 
+                "args": [
+                    "player.items", 
+                    "star"
+                ]
             }
         ]
     }, 

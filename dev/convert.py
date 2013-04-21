@@ -509,6 +509,10 @@ use_events = {
             {
                 'action': 'append',
                 'args': ['scene.masterBathroom.adjoins', 'masterElevator']
+            },
+            {
+                'action': 'remove',
+                'args': ['player.items', 'star']
             }
         ],
         'report': [
