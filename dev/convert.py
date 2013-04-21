@@ -772,6 +772,10 @@ Note that you're always facing north.''',
                 'args': ['player.items', 'trappedHallwayDoorKey']
             },
             {
+                'action': 'remove',
+                'args': ['scene.lab.items', 'eleanor']
+            },
+            {
                 'action': 'activate',
                 'args': ['dim/controllers/puzzles/timedReact', 'trappedHallwayReact']
             }
