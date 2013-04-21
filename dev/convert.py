@@ -552,6 +552,10 @@ use_events = {
         'disabled': True,
         'exec': [
             {
+                'action': 'set',
+                'args': ['event.knifeToEleanor.disabled', True]
+            },
+            {
                 'action': 'append',
                 'args': ['player.items', 'gun']
             },

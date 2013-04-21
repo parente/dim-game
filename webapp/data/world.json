@@ -3762,6 +3762,13 @@
         ], 
         "exec": [
             {
+                "action": "set", 
+                "args": [
+                    "event.knifeToEleanor.disabled", 
+                    true
+                ]
+            }, 
+            {
                 "action": "append", 
                 "args": [
                     "player.items", 
