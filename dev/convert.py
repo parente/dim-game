@@ -2463,14 +2463,19 @@ Or did they?'''
         "priority": -1
     },
 
-    # only allow use of knife on eleanor after talking with her
+    # only allow use of knife on eleanor after talking with her first time
     {
+        'id': 'examineEleanorInHoldingRoom',
         'type': 'event',
         'on': ['examine', 'eleanor'],
         'exec': [
             {
                 'action': 'set',
                 'args': ['event.knifeToEleanor.disabled', False]
+            },
+            {
+                'action': 'set',
+                'args': ['event.examineEleanorInHoldingRoom.disabled', True]
             }
         ]
     },

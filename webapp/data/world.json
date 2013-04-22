@@ -1799,12 +1799,20 @@
             "eleanor"
         ], 
         "type": "event", 
+        "id": "examineEleanorInHoldingRoom", 
         "exec": [
             {
                 "action": "set", 
                 "args": [
                     "event.knifeToEleanor.disabled", 
                     false
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "event.examineEleanorInHoldingRoom.disabled", 
+                    true
                 ]
             }
         ]
