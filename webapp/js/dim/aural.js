@@ -52,6 +52,10 @@ define([
         return def;
     };
 
+    exports.reset = function(world) {
+        this.abort(true);
+    };
+
     exports.render = function(topic, report) {
         switch(topic) {
             case 'controller.report':
@@ -64,10 +68,10 @@ define([
         }
     };
 
-    exports.abort = function() {
+    exports.abort = function(force) {
         // stop all channels, letting channel properties dictate what stop means
         $.each(channels, function(name, channel) {
-            channel.stop();
+            channel.stop(force);
         });
     };
 

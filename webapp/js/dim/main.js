@@ -42,9 +42,22 @@ define([
         }
     };
 
+    var on_initialized = function() {
+        console.log('main.initialized');
+        topic('controller.initialized').publish();
+        // prime the game pump
+        pump.start(world, [aural, visual]);
+        // move the player to the initial scene
+        var scene = world.get_player_scene();
+        var events = world.evaluate('move', scene);
+        events.fire();
+        topic('controller.request').publish(scene.controller);
+    };
+
     var start = function() {
         topic('controller.request').subscribe(on_controller_request);
         topic('controller.complete').subscribe(on_controller_complete);
+        topic('reset').subscribe(reset);
 
         console.log('main.initializing');
         // initialize all components, pump first so it has the ability to block
@@ -57,17 +70,20 @@ define([
 
         console.log('main.pending_initialized');
         // when all controllers ready
-        $.when(pd, wd, id, vd, ad).then(function() {
-            console.log('main.initialized');
-            topic('controller.initialized').publish();
-            // prime the game pump
-            pump.start(world, [aural, visual]);
-            // move the player to the initial scene
-            var scene = world.get_player_scene();
-            var events = world.evaluate('move', scene);
-            events.fire();
-            topic('controller.request').publish(scene.controller);
-        });
+        $.when(pd, wd, id, vd, ad).then(on_initialized);
+    };
+
+    var reset = function() {
+        console.log('main.resetting');
+        var pd = pump.reset(),
+            wd = world.reset(),
+            id = input.reset(wd),
+            vd = visual.reset(wd),
+            ad = aural.reset(wd);
+
+        console.log('main.pending_reset');
+        // when all controllers ready
+        $.when(pd, wd, id, vd, ad).then(on_initialized);
     };
 
     $(start);

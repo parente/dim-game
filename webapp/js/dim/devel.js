@@ -9,6 +9,10 @@ define([
 
         dim.world = world;
 
+        dim.publish = function(t, args) {
+            topic(t).publish(args);
+        };
+
         dim.move = function(id) {
             var scene = dim.world.get_scene(id);
             dim.world.evaluate('move', scene).fire();
@@ -31,7 +35,6 @@ define([
             dim.take('hammer');
             dim.take('star');
             dim.take('passCard');
-            dim.move('upperHallway');
             dim.world.evaluate('use', 'cellKey', 'bathroomHallwayDoor').fire();
             dim.me();
         };

@@ -151,6 +151,11 @@ define([
         topic('input.tap').subscribe(on_input);
     };
 
+    exports.reset = function(world, v) {
+        queue = [];
+        pending = null;
+    };
+
     exports.start = function(world, v) {
         objectReport = world.get_default('objectReport');
         views = v;

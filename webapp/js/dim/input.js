@@ -95,5 +95,10 @@ define([
         $('#dpad').focus();
     };
 
+    exports.reset = function() {
+        // give the dpad focus always
+        $('#dpad').focus();
+    };
+
     return exports;
 });

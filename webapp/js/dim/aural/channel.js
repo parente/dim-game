@@ -53,8 +53,8 @@ define(['jquery'], function($) {
         return this.pending;
     };
 
-    cls.prototype.stop = function() {
-        if(this.pending && this.pending.props.swapstop) {
+    cls.prototype.stop = function(force) {
+        if(this.pending && this.pending.props.swapstop && !force) {
             return;
         }
         // stop all output

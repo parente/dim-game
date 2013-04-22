@@ -11,6 +11,9 @@ define([
         indices,
         uris;
 
+    exports.reset = function() {
+        this.initialize();
+    };
 
     exports.initialize = function(stateJson) {
         var json, hasVersion;

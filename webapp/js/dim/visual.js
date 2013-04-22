@@ -85,6 +85,12 @@ define([
         topic('controller.initialized').subscribe(on_hide_progressbar);
     };
 
+    exports.reset = function() {
+        $message.text('');
+        $title.text('');
+        $description.text('');
+    };
+
     exports.render = function(topic, report) {
         switch(topic) {
             case 'controller.report':
