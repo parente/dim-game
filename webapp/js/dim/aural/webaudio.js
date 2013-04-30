@@ -3,13 +3,14 @@ define(['dim/topic'], function(topic) {
         soundProtocol = 'sound://',
         context,
         compressor,
-        buffers,
+        encoded_buffers,
+        decoded_buffers,
         ext;
 
     var load_audio = function(world) {
         var loaded = new $.Deferred(),
             uris = world.get_media_uris(soundProtocol),
-            decoded = 0;
+            downloaded = 0;
 
         // for every uri in the world media set
         $.each(uris, function(i, uri) {
@@ -23,29 +24,19 @@ define(['dim/topic'], function(topic) {
             request.open('GET', url, true);
             request.responseType = 'arraybuffer';
             request.onload = function() {
-                // handle the audio data
-                var on_decode = function(buffer) {
-                    // fail if buffer is null
-                    if(!buffer) {
-                        loaded.reject();
-                        return;
-                    }
-                    // otherwise store the buffer
-                    buffers[uri] = buffer;
-                    // decrement the number of decodes outstanding
-                    if(++decoded == uris.length) {
-                        loaded.resolve();
-                    }
-                    // note load progress
-                    topic('controller.initializing').publish(decoded / uris.length);
-                };
-                var on_error = function() {
-                    // fail outright on error
+                if(!request.response) {
                     loaded.reject();
-                };
-                // TODO: maybe do this closer to time of use if this is a bottleneck?
-                // try to decode what we've loaded
-                context.decodeAudioData(request.response, on_decode, on_error);
+                    return;
+                }
+                // store the encoded audio
+                encoded_buffers[uri] = request.response;
+                // check if all files have been received
+                if(++downloaded === uris.length) {
+                    loaded.resolve();
+                    return;
+                }
+                // notify about load progress
+                topic('controller.initializing').publish(downloaded / uris.length);
             };
             request.onerror = function() {
                 // fail outright on request error
@@ -59,65 +50,19 @@ define(['dim/topic'], function(topic) {
         return loaded;
     };
 
-    exports.initialize = function(world) {
-        // make sure we support the web audio api
-        try {
-            context = new webkitAudioContext();
-        } catch(e) {
-            throw new Error('webkitAudioContext not supported');
-        }
-
-        // build a dynamic compressor
-        compressor = context.createDynamicsCompressor();
-        compressor.connect(context.destination);
-        compressor.threshold.value = -40;
-        compressor.ratio.value = 15;
-
-        // start with new buffers
-        buffers = {};
-
-        // figure out audio type supported
-        var node = new Audio();
-        if(node.canPlayType('audio/ogg') && node.canPlayType('audio/ogg') !== 'no') {
-            ext = '.ogg';
-        } else if(node.canPlayType('audio/mpeg') && node.canPlayType('audio/mpeg') !== 'no') {
-            ext = '.mp3';
-        } else {
-            throw new Error('no known audio format supported');
-        }
-
-        // TODO: need to do something like this on an event for iOS to bless audio
-        //      disabled after addition of compressor until I can retest what's needed
-        // var audioSource = context.createBufferSource();
-        // audioSource.connect(context.destination);
-        // audioSource.noteOn(0);
-        // audioSource.disconnect(0);
-
-        // load all audio and notify ready
-        return $.when(world).then(load_audio);
+    var decode_audio = function(uri) {
+        var def = new $.Deferred();
+        console.debug('decoding', uri);
+        context.decodeAudioData(encoded_buffers[uri], function(buffer) {
+            def.resolve(buffer);
+        }, function() {
+            def.reject();
+        });
+        return def;
     };
 
-    exports.stop = function(def) {
-        // if no deferred, we're not playing
-        if(!def) return;
-        // stop any timeout
-        clearTimeout(def.timer);
-        // stop the audio
-        if(def.nodes) {
-            def.nodes.sourceNode.noteOff(0);
-            for(var key in def.nodes) {
-                def.nodes[key].disconnect();
-            }
-            delete def.nodes;
-        }
-        // resolve the deferred
-        def.resolve();
-    };
-
-    exports.play = function(uri, props) {
-        var def = new $.Deferred(),
-            buffer = buffers[uri],
-            audioSource = context.createBufferSource(),
+    var play_audio = function(uri, buffer, props, def) {
+        var audioSource = context.createBufferSource(),
             gainNode = null,
             pannerNode = null,
             prior,
@@ -174,6 +119,72 @@ define(['dim/topic'], function(topic) {
             // resolve after returning the deferred for looping sounds or swapstopping sounds
             setTimeout(function() { def.resolve(); }, 0);
         }
+    };
+
+    exports.initialize = function(world) {
+        // make sure we support the web audio api
+        try {
+            context = new webkitAudioContext();
+        } catch(e) {
+            throw new Error('webkitAudioContext not supported');
+        }
+
+        // build a dynamic compressor
+        compressor = context.createDynamicsCompressor();
+        compressor.connect(context.destination);
+        compressor.threshold.value = -40;
+        compressor.ratio.value = 15;
+
+        // start with new buffers
+        encoded_buffers = {};
+        decoded_buffers = {};
+
+        // figure out audio type supported
+        var node = new Audio();
+        if(node.canPlayType('audio/ogg') && node.canPlayType('audio/ogg') !== 'no') {
+            ext = '.ogg';
+        } else if(node.canPlayType('audio/mpeg') && node.canPlayType('audio/mpeg') !== 'no') {
+            ext = '.mp3';
+        } else {
+            throw new Error('no known audio format supported');
+        }
+
+        // TODO: need to do something like this on an event for iOS to bless audio
+        //      disabled after addition of compressor until I can retest what's needed
+        // var audioSource = context.createBufferSource();
+        // audioSource.connect(context.destination);
+        // audioSource.noteOn(0);
+        // audioSource.disconnect(0);
+
+        // load all audio and notify ready
+        return $.when(world).then(load_audio);
+    };
+
+    exports.stop = function(def) {
+        // if no deferred, we're not playing
+        if(!def) return;
+        // stop any timeout
+        clearTimeout(def.timer);
+        // stop the audio
+        if(def.nodes) {
+            def.nodes.sourceNode.noteOff(0);
+            for(var key in def.nodes) {
+                def.nodes[key].disconnect();
+            }
+            delete def.nodes;
+        }
+        // resolve the deferred
+        def.resolve();
+    };
+
+    exports.play = function(uri, props) {
+        var def = new $.Deferred();
+        decode_audio(uri).then(function(buffer) {
+            play_audio(uri, buffer, props, def);
+        }, function() {
+            console.warn('webaudio: skipping audio after failure to decode: ', uri);
+            def.resolve();
+        });
         return def;
     };
 
