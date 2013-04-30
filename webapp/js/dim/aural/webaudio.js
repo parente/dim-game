@@ -5,7 +5,8 @@ define(['dim/topic'], function(topic) {
         compressor,
         encoded_buffers,
         decoded_buffers,
-        ext;
+        ext,
+        max_cache = 25;
 
     var load_audio = function(world) {
         var loaded = new $.Deferred(),
@@ -51,9 +52,38 @@ define(['dim/topic'], function(topic) {
     };
 
     var decode_audio = function(uri) {
-        var def = new $.Deferred();
-        console.debug('decoding', uri);
+        var def = new $.Deferred(),
+            cache = decoded_buffers._cache,
+            old_uri,
+            old_index;
+
+        // check if cached
+        if(decoded_buffers[uri]) {
+            // get current index of uri
+            old_index = cache.indexOf(uri);
+            console.debug('old_index', old_index);
+            // slice the uri out of the cache stack
+            decoded_buffers._cache = cache = cache.slice(0, old_index).concat(cache.slice(old_index+1));
+            // put it at the top
+            cache.unshift(uri);
+            console.debug(cache);
+
+            console.debug('returning cached decode:', uri);
+            def.resolve(decoded_buffers[uri]);
+            return def;
+        }
+
+        // decode new and cache
         context.decodeAudioData(encoded_buffers[uri], function(buffer) {
+            cache.unshift(uri);
+            if(cache.length > max_cache) {
+                old_uri = cache.pop();
+                if(old_uri !== uri) {
+                    delete decoded_buffers[old_uri];
+                }
+            }
+            // console.debug(cache);
+            decoded_buffers[uri] = buffer;
             def.resolve(buffer);
         }, function() {
             def.reject();
@@ -67,10 +97,6 @@ define(['dim/topic'], function(topic) {
             pannerNode = null,
             prior,
             timer;
-        // store the buffer uri for later reference
-        def.msg = uri;
-        // store the props for later reference
-        def.props = props;
         // store the nodes for disconnect() later, source first
         def.nodes = {sourceNode: audioSource};
 
@@ -102,6 +128,7 @@ define(['dim/topic'], function(topic) {
         prior.connect(compressor);
 
         // start the audio playing
+        console.debug('**** starting audio output:', uri);
         audioSource.noteOn(0);
 
         // disconnect nodes after completion to avoid leaks if not looping or swapstopping
@@ -137,7 +164,7 @@ define(['dim/topic'], function(topic) {
 
         // start with new buffers
         encoded_buffers = {};
-        decoded_buffers = {};
+        debug = decoded_buffers = {_cache: []};
 
         // figure out audio type supported
         var node = new Audio();
@@ -175,12 +202,21 @@ define(['dim/topic'], function(topic) {
         }
         // resolve the deferred
         def.resolve();
+        console.debug('**** resolving deferred on stop:', def.msg, def.state());
     };
 
     exports.play = function(uri, props) {
         var def = new $.Deferred();
+        // store the buffer uri for later reference
+        def.msg = uri;
+        // store the props for later reference
+        def.props = props;
         decode_audio(uri).then(function(buffer) {
-            play_audio(uri, buffer, props, def);
+            // only continue with playback if the deferred is still unresolved
+            // otherwise, do nothing
+            if(def.state() === 'pending') {
+                play_audio(uri, buffer, props, def);
+            }
         }, function() {
             console.warn('webaudio: skipping audio after failure to decode: ', uri);
             def.resolve();
