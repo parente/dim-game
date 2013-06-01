@@ -153,11 +153,14 @@ html, body {
 }
 
 .dim .progressbar {
+  position: absolute;
   background-color: rgba(55,10,10,0.9);
-  width: 300px;
-  margin: auto;
   border-radius: 13px;
   padding: 3px;
+  width: 300px;
+  top: 120px;
+  left: 50%;
+  margin-left: -150px;
 }
 
 .dim .progressbar div {

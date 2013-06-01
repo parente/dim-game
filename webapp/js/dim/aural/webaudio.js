@@ -15,6 +15,15 @@ define(['dim/topic'], function(topic) {
 
         // for every uri in the world media set
         $.each(uris, function(i, uri) {
+            // do not reload if already loaded
+            if(encoded_buffers[uri]) {
+                // check if all files have been received
+                if(++downloaded === uris.length) {
+                    loaded.resolve();
+                }
+                return;
+            }
+
             // convert the uri to a full url
             var url = world.media_uri_to_url(uri+ext),
                 request;
@@ -61,14 +70,14 @@ define(['dim/topic'], function(topic) {
         if(decoded_buffers[uri]) {
             // get current index of uri
             old_index = cache.indexOf(uri);
-            console.debug('old_index', old_index);
+            // console.debug('old_index', old_index);
             // slice the uri out of the cache stack
             decoded_buffers._cache = cache = cache.slice(0, old_index).concat(cache.slice(old_index+1));
             // put it at the top
             cache.unshift(uri);
-            console.debug(cache);
+            // console.debug(cache);
 
-            console.debug('returning cached decode:', uri);
+            // console.debug('returning cached decode:', uri);
             def.resolve(decoded_buffers[uri]);
             return def;
         }
@@ -128,7 +137,7 @@ define(['dim/topic'], function(topic) {
         prior.connect(compressor);
 
         // start the audio playing
-        console.debug('**** starting audio output:', uri);
+        // console.debug('**** starting audio output:', uri);
         audioSource.noteOn(0);
 
         // disconnect nodes after completion to avoid leaks if not looping or swapstopping
@@ -148,7 +157,7 @@ define(['dim/topic'], function(topic) {
         }
     };
 
-    exports.initialize = function(world) {
+    var first_initialize = function() {
         // make sure we support the web audio api
         try {
             context = new webkitAudioContext();
@@ -164,7 +173,7 @@ define(['dim/topic'], function(topic) {
 
         // start with new buffers
         encoded_buffers = {};
-        debug = decoded_buffers = {_cache: []};
+        decoded_buffers = {_cache: []};
 
         // figure out audio type supported
         var node = new Audio();
@@ -182,7 +191,12 @@ define(['dim/topic'], function(topic) {
         // audioSource.connect(context.destination);
         // audioSource.noteOn(0);
         // audioSource.disconnect(0);
+    };
 
+    exports.initialize = function(world) {
+        if(!context) {
+            first_initialize();
+        }
         // load all audio and notify ready
         return $.when(world).then(load_audio);
     };
@@ -202,7 +216,7 @@ define(['dim/topic'], function(topic) {
         }
         // resolve the deferred
         def.resolve();
-        console.debug('**** resolving deferred on stop:', def.msg, def.state());
+        // console.debug('**** resolving deferred on stop:', def.msg, def.state());
     };
 
     exports.play = function(uri, props) {

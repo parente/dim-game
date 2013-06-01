@@ -46,15 +46,7 @@ define([
             } else {
                 // get the data from the slot
                 var worldJson = localStorage[opt.id];
-                world.initialize(worldJson);
-
-                // move the player to the scene
-                var scene = world.get_player_scene();
-                events = world.evaluate('move', scene);
-                events.fire();
-
-                // switch to default controller for the new scene
-                topic('controller.complete').publish(menu);
+                topic('reset').publish(worldJson);
             }
         };
         return menu;

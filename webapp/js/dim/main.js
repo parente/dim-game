@@ -73,10 +73,10 @@ define([
         $.when(pd, wd, id, vd, ad).then(on_initialized);
     };
 
-    var reset = function() {
+    var reset = function(stateJson) {
         console.log('main.resetting');
         var pd = pump.reset(),
-            wd = world.reset(),
+            wd = world.reset(stateJson),
             id = input.reset(wd),
             vd = visual.reset(wd),
             ad = aural.reset(wd);

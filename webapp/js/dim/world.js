@@ -11,17 +11,17 @@ define([
         indices,
         uris;
 
-    exports.reset = function() {
-        this.initialize();
+    exports.reset = function(stateJson) {
+        return this.initialize(stateJson);
     };
 
     exports.initialize = function(stateJson) {
-        var json, hasVersion;
-        // TODO: need an upgrade path
-        if(stateJson) {
-            world = JSON.parse(stateJson);
-            json = stateJson;
-        } else {
+	var json, hasVersion;
+	// TODO: need an upgrade path
+	if(stateJson) {
+	    world = JSON.parse(stateJson);
+	    json = stateJson;
+	} else {
             world = JSON.parse(worldJson);
             json = worldJson;
         }

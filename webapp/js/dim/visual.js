@@ -89,6 +89,7 @@ define([
         $message.text('');
         $title.text('');
         $description.text('');
+        return $('.progressbar').fadeIn();
     };
 
     exports.render = function(topic, report) {

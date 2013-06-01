@@ -54,6 +54,7 @@ define([
 
     exports.reset = function(world) {
         this.abort(true);
+        return this.initialize(world);
     };
 
     exports.render = function(topic, report) {
