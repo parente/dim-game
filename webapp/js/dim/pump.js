@@ -41,7 +41,7 @@ define([
             $.each(report, function(i, r) {
                 queue.push([topic, r]);
             });
-        } else {
+        } else if(report) {
             queue.push([topic, report]);
         }
         if(!pending) {
@@ -52,7 +52,9 @@ define([
     var on_pump = function() {
         var args = queue.shift();
         console.log('pump.on_pump', args);
-        if(args.length > 1) {
+        if(!args) {
+            return;
+        } else if(args.length > 1) {
             // (topic, report), send to views
             pending = $.map(views, function(view) {
                 return view.render.apply(view, args);

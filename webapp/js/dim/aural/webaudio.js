@@ -34,7 +34,7 @@ define(['dim/topic'], function(topic) {
             request.open('GET', url, true);
             request.responseType = 'arraybuffer';
             request.onload = function() {
-                if(!request.response) {
+                if(!request.response || request.status === 404) {
                     loaded.reject();
                     return;
                 }

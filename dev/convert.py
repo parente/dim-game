@@ -64,19 +64,6 @@ What's going on?''',
     'elevator': "A small cramped elevator only has two buttons.",
     'study': "You're in a study room. The desk is cluttered with a computer and other objects. There's a safe on the floor.",
     'deskKey': "It's a small key. Wonder what it unlocks?",
-    'studyRecording': '''"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent."
-
-"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner."
-
-"I have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake."
-
-"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject."
-
-"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results."
-
-"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.""
-
-"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject."''',
     'computer': "It's a computer. Maybe you should try using it.",
     'phone': "You try to pick up the phone to call 911, but there's no dialtone.",
     'safe': "It's a sturdy looking safe. Maybe you should try the combination.",
@@ -97,7 +84,9 @@ What's going on?''',
     'hammer': "It's a sturdy hammer, perfect for hitting things.",
     'bedroomRecording': '''"April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes."
 
-"My serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them."''',
+"My serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse."
+
+"I have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them."''',
     'bathroomHallway': "You're in a narrow hallway. You see a door at the end.",
     'bathroomHallwayDoor': "There's a small window on the door. You peer through and see a person on the other side.",
     'cellKey': "It's a key marked \"cell.\"",
@@ -131,20 +120,6 @@ What's going on?''',
     'basement': "You're in the basement. The smell from the elevator is now even stronger.",
     'sittingRoomDoor': "The door is locked, but there's a card reader next to it.",
     'eleanorsRoom': "You're in a room that almost looks like a jail cell. There's a woman tied to one of the chairs.",
-    'eleanor': '''"Who are you? Speak! Who are you? Did Johan send you?"
-
-"The doctor of the house, my husband, Johan. Did he send you?"
-
-"No? Then you must be one of the ... subjects. How did you get free?"
-
-"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?"
-
-"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him."
-
-"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding."
-
-"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?"''',
-
     'mazeDoor': "The door has a large sign that says \"STAY OUT\". There's a card reader next to it.",
     'knife': "It's a sharp knife.",
     'garageDoor': "The door is locked.",
@@ -160,11 +135,6 @@ What's going on?''',
     'barn': "You're in the barn. There are cages everywhere, many which contain grotesque looking things. There's a switch on the wall and stairs leading up to the loft.",
     'barnSwitch': "It's a switch that you can pull.",
     'barnLoft': "You're in the barn loft. You see Eleanor tied to a chair.",
-    'safeRecording': '''"June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!"
-
-"June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first."
-
-"July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way."''',
     'eleanor2': "You see Eleanor tied to a chair with tape over her mouth so she can't speak."
 }
 
@@ -383,18 +353,28 @@ use_events = {
                 'narration': 'sound://speech/playerToBathroomHallwayDoor'
             },
             {
-                'description': '''"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble."
-
-"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!"
-
-"You don't have a key? How did you get out? You were on an operating table?"
-
-"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?"
-
-"You have to help me. Find the key. Please!"
-
-"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
-                'narration': 'sound://speech/friend010_cell'
+                'description': '''"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble."''',
+                'narration': 'sound://speech/friend010_cell_a'
+            },
+            {
+                'description': '''"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!"''',
+                'narration': 'sound://speech/friend010_cell_b'
+            },
+            {
+                'description': '''"You don't have a key? How did you get out? You were on an operating table?"''',
+                'narration': 'sound://speech/friend010_cell_c'
+            },
+            {
+                'description': '''"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?"''',
+                'narration': 'sound://speech/friend010_cell_d'
+            },
+            {
+                'description': '''"You have to help me. Find the key. Please!"''',
+                'narration': 'sound://speech/friend010_cell_e'
+            },
+            {
+                'description': '''"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you."''',
+                'narration': 'sound://speech/friend010_cell_f'
             }
         ]
     },
@@ -578,6 +558,10 @@ use_events = {
             {
                 'action': 'set',
                 'args': ['item.eleanor.aural.description', 'sound://speech/eleanorDesc2']
+            },
+            {
+                'action': 'set',
+                'args': ['event.examineEleanorInHoldingRoom.disabled', True]
             }
         ],
         "report": [
@@ -1405,14 +1389,20 @@ world = [
                 "narration": "sound://speech/safeOpen2"
             },
             {
-                'description': '''"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."
-
-"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours."
-
-"I have developed a final serum. You will be my test subject or you will die. It's that simple."
-
-"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!"''',
-                "narration": "sound://speech/safeOpen3"
+                'description': '''"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate."''',
+                'narration': 'sound://speech/safeOpen3a'
+            },
+            {
+                'description': '''"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours."''',
+                'narration': 'sound://speech/safeOpen3b'
+            },
+            {
+                'description': '''"I have developed a final serum. You will be my test subject or you will die. It's that simple."''',
+                'narration': 'sound://speech/safeOpen3c'
+            },
+            {
+                'description': '''"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!"''',
+                "narration": "sound://speech/safeOpen3d"
             }
         ]
     },
@@ -2472,10 +2462,86 @@ Or did they?'''
             {
                 'action': 'set',
                 'args': ['event.knifeToEleanor.disabled', False]
+            }
+        ],
+        'report': [
+            {
+                'description': '''"Who are you? Speak! Who are you? Did Johan send you? The doctor of the house, my husband, Johan. Did he send you?"
+
+"No? Then you must be one of the ... subjects. How did you get free?"
+
+"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?"
+''',
+                'narration': 'sound://speech/eleanorDesc_a'
             },
             {
-                'action': 'set',
-                'args': ['event.examineEleanorInHoldingRoom.disabled', True]
+                'description': '''"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations."''',
+                'narration': 'sound://speech/eleanorDesc_b'
+            },
+            {
+                'description': '''"I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him."''',
+                'narration': 'sound://speech/eleanorDesc_c'
+            },
+            {
+                'description': '''"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding."''',
+                'narration': 'sound://speech/eleanorDesc_d'
+            },
+            {
+                'description': '''"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?"''',
+                'narration': 'sound://speech/eleanorDesc_e'
+            }
+        ]
+    },
+
+    # examine recordings with long descriptions
+    {
+        'id': 'examineStudyRecording',
+        'type': 'event',
+        'on': ['examine', 'studyRecording'],
+        'report': [
+            {
+                'description': '''"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent."
+
+"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the fridge. Eleanor thought poor Tootsie was our dinner."
+
+"I have isolated the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake."
+''',
+                'narration': 'sound://speech/studyRecordingDesc_a'
+            },
+            {
+                'description': '''"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject."''',
+                'narration': 'sound://speech/studyRecordingDesc_b'
+            },
+            {
+                'description': '''"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results."''',
+                'narration': 'sound://speech/studyRecordingDesc_c'
+            },
+            {
+                'description': '''"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer."
+
+"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject."
+''',
+                'narration': 'sound://speech/studyRecordingDesc_d'
+            }
+        ]
+    },
+
+    {
+        'id': 'examineSafeRecording',
+        'type': 'event',
+        'on': ['examine', 'safeRecording'],
+        'report': [
+            {
+                'description': '''"June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!"''',
+                'narration': 'sound://speech/safeRecordingDesc_a'
+            },
+            {
+                'description': '''"June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first."''',
+                'narration': 'sound://speech/safeRecordingDesc_b'
+            },
+            {
+                'description': '''"July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way."''',
+                'narration': 'sound://speech/safeRecordingDesc_c'
             }
         ]
     },
@@ -2497,6 +2563,12 @@ Or did they?'''
     }
 ]
 
+# objects that have special examine events
+special_description = set([
+    'eleanor',
+    'studyRecording',
+    'safeRecording'
+])
 
 def id_to_name(text):
     arr = []
@@ -2542,6 +2614,12 @@ class Item:
     def construct(self, id, name, description, takeable):
         global world
         props = []
+
+        if id in special_description:
+            description = None
+        else:
+            description = 'sound://speech/%s' % (description.split('.')[0])
+
         if takeable:
             props.append('takeable')
             # all items are useable in original dim
@@ -2552,7 +2630,7 @@ class Item:
             'properties': props,
             'aural': {
                 'name': 'sound://speech/%s' % (name.split('.')[0]),
-                'description': 'sound://speech/%s' % (description.split('.')[0])
+                'description': description
             },
             'visual': {
                 'name': id_to_name(id),

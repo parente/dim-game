@@ -514,8 +514,20 @@
                 "narration": "sound://speech/safeOpen2"
             }, 
             {
-                "description": "\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"\n\n\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"\n\n\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"\n\n\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"", 
-                "narration": "sound://speech/safeOpen3"
+                "description": "\"Hello, 52B. I see you managed to escape the operating table. How fortunate for you. Or might I say, unfortunate.\"", 
+                "narration": "sound://speech/safeOpen3a"
+            }, 
+            {
+                "description": "\"You see, 52B, you've been injected with B-1 disease, an aggressively deabilitating disease causing schizophrenia and eventually death. You, my friend, will begin showing symptoms in, oh, about twelve hours.\"", 
+                "narration": "sound://speech/safeOpen3b"
+            }, 
+            {
+                "description": "\"I have developed a final serum. You will be my test subject or you will die. It's that simple.\"", 
+                "narration": "sound://speech/safeOpen3c"
+            }, 
+            {
+                "description": "\"I will be along to collect you shortly. In the meantime, I wouldn't recommend going down to the basement. You never know when the power that controls the locks on the cages might go out. Muhahaha ha ha ha!\"", 
+                "narration": "sound://speech/safeOpen3d"
             }
         ], 
         "on": [
@@ -1794,6 +1806,28 @@
         ]
     }, 
     {
+        "report": [
+            {
+                "description": "\"Who are you? Speak! Who are you? Did Johan send you? The doctor of the house, my husband, Johan. Did he send you?\"\n\n\"No? Then you must be one of the ... subjects. How did you get free?\"\n\n\"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?\"\n", 
+                "narration": "sound://speech/eleanorDesc_a"
+            }, 
+            {
+                "description": "\"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations.\"", 
+                "narration": "sound://speech/eleanorDesc_b"
+            }, 
+            {
+                "description": "\"I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.\"", 
+                "narration": "sound://speech/eleanorDesc_c"
+            }, 
+            {
+                "description": "\"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.\"", 
+                "narration": "sound://speech/eleanorDesc_d"
+            }, 
+            {
+                "description": "\"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?\"", 
+                "narration": "sound://speech/eleanorDesc_e"
+            }
+        ], 
         "on": [
             "examine", 
             "eleanor"
@@ -1807,15 +1841,56 @@
                     "event.knifeToEleanor.disabled", 
                     false
                 ]
-            }, 
-            {
-                "action": "set", 
-                "args": [
-                    "event.examineEleanorInHoldingRoom.disabled", 
-                    true
-                ]
             }
         ]
+    }, 
+    {
+        "report": [
+            {
+                "description": "\"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\"\n\n\"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the fridge. Eleanor thought poor Tootsie was our dinner.\"\n\n\"I have isolated the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\"\n", 
+                "narration": "sound://speech/studyRecordingDesc_a"
+            }, 
+            {
+                "description": "\"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\"", 
+                "narration": "sound://speech/studyRecordingDesc_b"
+            }, 
+            {
+                "description": "\"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\"", 
+                "narration": "sound://speech/studyRecordingDesc_c"
+            }, 
+            {
+                "description": "\"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\"\n\n\"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject.\"\n", 
+                "narration": "sound://speech/studyRecordingDesc_d"
+            }
+        ], 
+        "on": [
+            "examine", 
+            "studyRecording"
+        ], 
+        "type": "event", 
+        "id": "examineStudyRecording"
+    }, 
+    {
+        "report": [
+            {
+                "description": "\"June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!\"", 
+                "narration": "sound://speech/safeRecordingDesc_a"
+            }, 
+            {
+                "description": "\"June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first.\"", 
+                "narration": "sound://speech/safeRecordingDesc_b"
+            }, 
+            {
+                "description": "\"July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way.\"", 
+                "narration": "sound://speech/safeRecordingDesc_c"
+            }
+        ], 
+        "on": [
+            "examine", 
+            "safeRecording"
+        ], 
+        "type": "event", 
+        "id": "examineSafeRecording"
     }, 
     {
         "disabled": true, 
@@ -2538,11 +2613,11 @@
     {
         "visual": {
             "name": "Recording", 
-            "description": "\"January 14th, 8 PM. My dear Eleanor's condition is steadily worsening. Even with my extensive medical training, I've never seen anything like this. She has strange hallucinations. They're becoming much more frequent.\"\n\n\"I came home yesterday to find our cat skinned and gutted like fish, marinating in garlic butter in the refrigerator. Eleanor thought poor Tootsie was our dinner.\"\n\n\"I have isolate the strain that is causing her disease, and I am confident I will find a cure. I must do so, for Eleanor's sake.\"\n\n\"February 3rd, 3 PM. I have created a possible cure for Eleanor's strange disease. I am unsure of the possible side-effects, but I will not endanger Eleanor's life any more than I have to. I need to find a test subject.\"\n\n\"February 13th, 9 PM. I have found a test subject for my experiments. A man was walking outside our house last week, and I figured he would not be missed. I injected him with the disease 5 days ago. He began showing symptoms 48 hours later. I have now given him my serum. I estimate it will take 2 days to fully work. I will check back on the subject in 48 hours to check my results.\"\n\n\"February 15th, 8:30 PM. The serum was a failure. The subject showed advanced progressions of the disease until heart failure. I have removed vital organs for testing and stored subject in the freezer.\"\"\n\n\"I have some idea of what went wrong. Serum #2 should work, but now I need another test subject.\""
+            "description": null
         }, 
         "aural": {
             "name": "sound://speech/recording", 
-            "description": "sound://speech/studyRecordingDesc"
+            "description": null
         }, 
         "type": "item", 
         "id": "studyRecording", 
@@ -2607,7 +2682,7 @@
     {
         "visual": {
             "name": "Recording", 
-            "description": "\"April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes.\"\n\n\"My serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\n\nI have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them.\""
+            "description": "\"April 12th, 11 PM. Eleanor's condition is steadily worsening. She is now confined to her bedroom as I fear she will endanger herself if she could wander around the house which has become foreign territory to her. Her hallucinations are almost continuous now, and she does not recognize me sometimes.\"\n\n\"My serums have been disasterous. My test subjects are piling up in the freezer, and analysis of their organs revealed the serum made the disease worse.\"\n\n\"I have almost finished serum #6. New test subjects are getting harder to find. I fear the disappearances are starting to be noticed by the local police. I think I will build holding cells to hold the live subjects until I can test on them.\""
         }, 
         "aural": {
             "name": "sound://speech/recording", 
@@ -2760,11 +2835,11 @@
     {
         "visual": {
             "name": "Safe Recording", 
-            "description": "\"June 23rd, 5:30 PM. Eleanor is now in a totally different world. She wanders in circles around the bedroom, mumbling to herself in a language I've never heard before. It pains me to see her like this. Argh! Why can't I find the right serum?!\"\n\n\"June 30th, 11 AM. I've gotten some strange results from my serum #8. Instead of outright killing my subjects as the previous serums did, this one causes ... mutations. Grotesque mutations. I don't think I will destroy these monsters just yet. I need to run a few tests first.\"\n\n\"July 8th, 10 PM. What have I created? My test subjects are out of control! The mutations have created some sort of aggressive uncontrollable monster. They could be useful if the cops show up though. I've locked them in the basement. God help whoever gets in their way.\""
+            "description": null
         }, 
         "aural": {
             "name": "sound://speech/safeRecording", 
-            "description": "sound://speech/safeRecordingDesc"
+            "description": null
         }, 
         "type": "item", 
         "id": "safeRecording", 
@@ -2978,11 +3053,11 @@
     {
         "visual": {
             "name": "Eleanor", 
-            "description": "\"Who are you? Speak! Who are you? Did Johan send you?\"\n\n\"The doctor of the house, my husband, Johan. Did he send you?\"\n\n\"No? Then you must be one of the ... subjects. How did you get free?\"\n\n\"Nevermind. We have to get out of here. Wait! I just remembered. Do you know if you've been injected yet?\"\n\n\"Oh no. You see, my husband, he's crazy. He used to work at the chemical plant in town. He was a top scientist, but then, something happened. There was an accident. And he never told me anything but I could tell something was wrong with him. I later found out that he was fired from the plant. He became very depressed and angry, and he started showing signs of paranoia and hallucinations. I'll never forget what happened to our poor cat Tootsie. It was about then that I found out about his tests. He was kidnapping people and injecting them with some disease. I saw his journal and it looked like he was trying to create an army of supermutated monsters. I think he wants to get back at the chemical plant for firing him.\"\n\n\"I was about to call the police when he locked me in this room. You see, his hallucinations have led him to believe that I'm the one who's crazy. It's been terrible. He leaves me here in the dark, feeding me twice a day. I used to be able to move around, but a couple weeks ago he started tying me to the bed after he leaves. I can get my hands free, but I can't try the straps. At night, I can hear strange noises from the basement bellow. I shudder every time I hear them. They're grotesque sounding.\"\n\n\"But enough talk. We have to get you the antidote! Don't worry, I know what I'm doing. I'm the head scientist at EKMC laboratories in town. But first you need to cut me loose. Do you have a knife with you?\""
+            "description": null
         }, 
         "aural": {
             "name": "sound://speech/eleanor", 
-            "description": "sound://speech/eleanorDesc"
+            "description": null
         }, 
         "type": "item", 
         "id": "eleanor", 
@@ -3676,8 +3751,28 @@
                 "narration": "sound://speech/playerToBathroomHallwayDoor"
             }, 
             {
-                "description": "\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"\n\n\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"\n\n\"You don't have a key? How did you get out? You were on an operating table?\"\n\n\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"\n\n\"You have to help me. Find the key. Please!\"\n\n\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
-                "narration": "sound://speech/friend010_cell"
+                "description": "\"Hey! Let me go, I swear, the cops are going to find me and then you're in big trouble.\"", 
+                "narration": "sound://speech/friend010_cell_a"
+            }, 
+            {
+                "description": "\"Oh! You're not him. I'm sorry. I thought ... Hey, where did you come from? Help me get out of here!\"", 
+                "narration": "sound://speech/friend010_cell_b"
+            }, 
+            {
+                "description": "\"You don't have a key? How did you get out? You were on an operating table?\"", 
+                "narration": "sound://speech/friend010_cell_c"
+            }, 
+            {
+                "description": "\"Oh no ... I just thought the man was crazy but he's really doing it. He told me he was going to do experiments on me like I was some rodent. Do you know what's going on?\"", 
+                "narration": "sound://speech/friend010_cell_d"
+            }, 
+            {
+                "description": "\"You have to help me. Find the key. Please!\"", 
+                "narration": "sound://speech/friend010_cell_e"
+            }, 
+            {
+                "description": "\"Hey, by the way, I overheard him, as he was mumbling something crazy to himself, saying three numbers: 2-1-6. He said them over and over again, like he was trying to remember them or something. They might help you.\"", 
+                "narration": "sound://speech/friend010_cell_f"
             }
         ], 
         "on": [
@@ -3816,6 +3911,13 @@
                 "args": [
                     "item.eleanor.aural.description", 
                     "sound://speech/eleanorDesc2"
+                ]
+            }, 
+            {
+                "action": "set", 
+                "args": [
+                    "event.examineEleanorInHoldingRoom.disabled", 
+                    true
                 ]
             }
         ], 
