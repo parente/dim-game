@@ -126,7 +126,7 @@ define(['dim/topic'], function(topic) {
 
         // if we want to adjust gain, build a gain node and connect
         if(props.gain) {
-            gainNode = context.createGainNode();
+            gainNode = (context.createGainNode) ? context.createGainNode() : context.createGain();
             gainNode.gain.value = props.gain;
             prior.connect(gainNode);
             def.nodes.gainNode = gainNode;
@@ -138,7 +138,7 @@ define(['dim/topic'], function(topic) {
 
         // start the audio playing
         // console.debug('**** starting audio output:', uri);
-        audioSource.noteOn(0);
+        (audioSource.noteOn) ? audioSource.noteOn(0) : audioSource.start(0);
 
         // disconnect nodes after completion to avoid leaks if not looping or swapstopping
         if(!props.loop && !props.swapstop) {
@@ -208,7 +208,7 @@ define(['dim/topic'], function(topic) {
         clearTimeout(def.timer);
         // stop the audio
         if(def.nodes) {
-            def.nodes.sourceNode.noteOff(0);
+            (def.nodes.sourceNode.noteOff) ? def.nodes.sourceNode.noteOff(0) : def.nodes.sourceNode.stop(0);
             for(var key in def.nodes) {
                 def.nodes[key].disconnect();
             }
