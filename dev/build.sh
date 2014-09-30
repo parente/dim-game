@@ -82,5 +82,8 @@ cat << END > webapp.build.js
 })
 END
 
-# do the build
-node r.js -o webapp.build.js
+# do the build in a node docker container
+docker run -v `pwd`/..:/dim \
+    --workdir /dim/dev \
+    node:0.10.32 \
+    node r.js -o webapp.build.js
