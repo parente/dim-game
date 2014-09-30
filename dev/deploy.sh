@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 
-DEV_DIR=/home/parente/webapps/dim_dev
-STAGE_DIR=/home/parente/webapps/dim_stage
-PROD_DIR=/home/parente/webapps/dim
+DEV_DIR=/srv/html/dim_dev
+STAGE_DIR=/srv/html/dim_stage
+PROD_DIR=/srv/html/dim
 
 DIM_SITE_REPO=https://github.com/parente/dim-site.git
 DIM_GAME_REPO=https://github.com/parente/dim-game.git
@@ -44,7 +44,7 @@ function deploy() {
 
     # clone game into dirty directory
     cd $dirty_dir
-    git clone --depth=1 $DIM_GAME_REPO dim-game
+    git clone $DIM_GAME_REPO dim-game
     echo "==> Cloned $DIM_GAME_REPO"
 
     # build game in dirty directory
