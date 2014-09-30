@@ -1,6 +1,8 @@
 #!/bin/bash
 set -e
 
+WWW_GROUP=www-data
+
 DEV_DIR=/srv/html/dim_dev
 STAGE_DIR=/srv/html/dim_stage
 PROD_DIR=/srv/html/dim
@@ -60,6 +62,11 @@ function deploy() {
     # save version info to hidden file
     echo "site=$site_branch game=$game_branch" > "$deploy_dir/.version"
 
+    # set permissions
+    chgrp -R $WWW_GROUP "$deploy_dir"
+    chmod -R go-w "$deploy_dir"
+    echo "==> Set read-only permissions for $WWW_GROUP"
+
     # clean up the working directory
     rm -rf $dirty_dir
     echo "==> Removed $dirty_dir"
@@ -76,7 +83,7 @@ function stage() {
     echo "==> Deploying to staging area"
     if [ -z "$1" -o -z "$2" ]; then
     	echo "==> ERROR: must specify site and game tag/branch"
-        echo usage
+        usage
     	exit 1
     fi
     deploy $1 $2 $STAGE_DIR
