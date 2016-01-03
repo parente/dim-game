@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Descent Into Madness</title>
+        <meta name="viewport" content="width=device-width">
+        <link href='http://fonts.googleapis.com/css?family=Marcellus+SC' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="css/normalize.css">
+        <link rel="stylesheet" href="css/main.css">
+        <script data-main="js/boot.js" src="js/vendor/require.js"></script>
+    </head>
+    <body class="dim">
+        <div id="visual" class="visual" aria-hidden="true">
+            <header class="title"></header>
+            <div class="scrollable">
+                <div class="description"></div>
+            </div>
+            <footer class="message"><span class="active"></span></footer>
+            <div class="progressbar">
+                <div></div>
+            </div>
+        </div>
+
+        <script type="text/javascript">
+if(window.location.host !== 'localhost') {
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-39356424-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+
+        // create GA event onerror
+        window.onerror = function(message, url, line) {
+            console.error(message, url, line);
+            if (typeof(_gaq) === "object" && url.indexOf('dim') != -1) {
+                _gaq.push(["_trackEvent","onerror",message,(url+" ("+line+")"),0,true]);
+            }
+            return true;
+        };
+    })();
+}
+        </script>
+    </body>
+</html>
