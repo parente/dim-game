@@ -7,11 +7,11 @@ build:
 		--workdir /dim/dev \
 		node:0.10.32 \
 		node r.js -o webapp.build.js
-	@echo $(GIT_VERSION) > webapp.build/.version
+	@echo $(GIT_VERSION) > webapp.build/version
 
 release:
 	@git checkout gh-pages
 	@rm -rf webapp
 	@mv webapp.build webapp
 	@git add webapp
-	@git commit -m "Release $$(cat webapp/.version)"
+	@git commit -m "Release $$(cat webapp/version)"
