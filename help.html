@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Descent Into Madness - An Audio Horror Adventure Game</title>
+        <link href="lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="lib/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="http://fonts.googleapis.com/css?family=Marcellus+SC" rel="stylesheet" type="text/css">
+        <link href="http://fonts.googleapis.com/css?family=Marcellus" rel="stylesheet" type="text/css">
+        <link href="css/main.css" rel="stylesheet" type="text/css">
+    </head>
+    <body class="help">
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-inner">
+                <div class="container">
+                    <p class="pull-right navbar-text">Descent Into Madness</p>
+                    <ul class="nav">
+                        <li><a href="index.html">Home</a></li>
+                        <li id="play-nav" style="display: none;"><a href="webapp/">Play</a></li>
+                        <li class="active"><a href="#">Help</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+        <article class="help">
+            <div class="container">
+                <div class="row">
+                    <div class="span3">
+                        <nav class="well sidebar-nav">
+                            <ul class="nav nav-list">
+                                <li class="nav-header">Introduction</li>
+                                <li><a href="#the-story">The Story</a></li>
+                                <li><a href="#audience">Audience</a></li>
+                                <li><a href="#requirements">Requirements</a></li>
+                                <li class="nav-header">Gameplay</li>
+                                <li><a href="#keyboard-controls">Keyboard Controls</a></li>
+                                <li><a href="#main-menu">Main Menu</a></li>
+                                <li><a href="#exploration">Exploration</a></li>
+                                <li><a href="#puzzles">Puzzles</a></li>
+                                <li class="nav-header">Hints and Tips</li>
+                                <li><a href="#journals">Journals</a></li>
+                                <li><a href="#recordings">Recordings</a></li>
+                                <li><a href="#sitting-room-door">Sitting Room Door</a></li>
+                                <li><a href="#basement-maze">Basement Maze</a></li>
+                                <li><a href="#the-gun">The Gun</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+
+                    <div class="span9">
+                        <section>
+                            <div class="page-header">
+                                <h2>Introduction</h2>
+                            </div>
+                            <section id="the-story">
+                                <h3>The Story</h3>
+                                <p>One dark and stormy night you find yourself walking home alone on a narrow path through the woods. Suddenly, you hear the sound of something rushing through the air and – WHAM – you are hit on the back of the head, hard. You awaken to find yourself strapped to an operating table. You can’t move! Where are you? Why are you there? How do you get out? These are the questions you must answer as you navigate your way through your <em>Descent into Madness</em>.</p>
+                            </section>
+
+                            <section id="audience">
+                                <h3>Audience</h3>
+                                <p>Descent into Madness is a horror adventure story. Due to the somewhat scary sound effects and suggestions of violence, the game is most appropriate for kids and adults ages 12 and up.</p>
+                            </section>
+
+                            <section id="requirements">
+                                <h3>Requirements</h3>
+                                <p>Descent Into Madness requires a we browser supporting the <a href="http://caniuse.com/#feat=audio-api">Web Audio API</a>, currently Safari 6.0+ and Google Chrome. All game events are voice narrated and displayed on the screen in plain text, in English. They player interacts with the game world using a standard keyboard.</p>
+
+                                <div class="alert">
+                                    <h4>Note</h4>
+                                    <ul>
+                                        <li>You can <a href="https://www.google.com/intl/en/chrome/browser/">download Google Chrome</a> for free.</li>
+                                        <li>Touchscreen devices are not yet supported.</li>
+                                </div>
+                            </section>
+                        </section>
+
+                        <section>
+                            <div class="page-header">
+                                <h2>Gameplay</h2>
+                            </div>
+
+                            <section id="keyboard-controls">
+                                <h3>Keyboard Controls</h3>
+                                <p>Use the <em>Left</em> and <em>Right</em> arrow keys to navigate menu options. Press <em>Spacebar</em> or <em>Enter</em> to activate the current menu option. Press the <em>Up</em> arrow key to go back to the previous menu.</p>
+
+                                <p>Certain game puzzles use of all four arrow keys for directional navigation. In-game instructions will explain these puzzles.</p>
+
+                                <p>Pressing any of these keys while someone is speaking will skip that speech. If there is no further speech, they key press will have its intended effect. If the skipped speech is part of a long narration, the speech will advance. This setup allows fast navigation for experienced players while avoiding most accidental skips over critical information.</p>
+                            </section>
+
+                            <section id="main-menu">
+                                <h3>Main Menu</h3>
+                                <p>The main menu greets you when you launch the game. Use the <em>Left</em> and <em>Right</em> arrow keys to hear the avaiable options: <em>New Game</em> and <em>Load Game</em> (if you have a saved game). Press <em>Spacebar</em> or <em>Enter</em> to choose the selected option.</p>
+
+                                <p>If you select <em>New Game</em>, the narrator will describe your current surroundings and then allow you to begin exploration.</p>
+
+                                <p>If you select <em>Load Game</em>, the narrator will prompt you to choose which game to load. Navigate to the slot in which you saved your game using one of the in-game Journals and select it.</p>
+
+                                <div class="alert">
+                                    <h4>Note</h4>
+                                    User accounts are not yet supported. Slots are shared among all users of the browser. Saved games are only available on the machine on which they were saved.
+                                </div>
+                            </section>
+
+                            <section id="exploration">
+                                <h3>Exploration</h3>
+                                <p>The majority of Descent Into Madness gameplay centers around exploration of and interaction with your surroundings. The primary game menu has four options to support you in your journey: <em>Move</em>, <em>Examine</em>, <em>Use</em>, and <em>Take</em>.</p>
+
+                                <h4>Move</h4>
+                                <p>The <em>Move</em> command lets you navigate between scenes in the game. To move, select the <em>Move</em> option in the exploration menu. Then select the adjoining scene in the <em>Move</em> submenu.</p>
+
+                                <p>If you cannot move for some reason, the narrator will say so. In these cases, you may need to use an item or solve a puzzle before new paths open to you.</p>
+
+                                <h4>Examine</h4>
+
+                                <p>The <em>Examine</em> command lets you study the current scene, the items in the current scene, and the adjoining scenes. To examine something, select the <em>Examine</em> option in the exploration menu. Then select the object to examine in the <em>Examine</em> submenu.</p>
+
+                                <p>Examining the current scene typically repeats description narrated when you first entered the scene. If the scene has changed since you first entered it, examining it again reveals its new state.</p>
+
+                                <p>Examining an item yields a lengthy description about it. In some cases, this description hints at how ayou might use the item. In others, the description fills gaps in your knowledge about your less-than-desirable situation.</p>
+
+                                <p>Examining the <em>Nearby</em> scenes produces a list of scenes accessible from your current location. You can move to these scenes using the <em>Move</em> command.</p>
+
+                                <div class="alert">
+                                    <h4>Note</h4>
+                                    Examine is the most important action in the game. You should examine nearly everything to gain valuable clues about how to proceed. Always listen to the description of a scene upon entering it. Always examine each item.
+                                </div>
+
+                                <h4>Use</h4>
+                                <p>The <em>Use</em> command lets you use an item in the scene or use an item in your inventory on an item in the scene. To use an item, select the <em>Use</em> option in the exploration menu. Then select the item to use in the <em>Use</em> submenu. If the item is useable on its own, the narrator explains its effect.</p>
+
+                                <p>If the item is not useable in isolation, the narrator prompts you for a second item on which to use the first item. Select the second item from the <em>Use</em> submenu. If the two items interact, the narrator explains their impact.</p>
+
+                                <p>When you have no items to use or your selected item(s) have no impact, the narrator says so. You may need to use the item in an alternative location or in conjunction with a different item.</p>
+
+                                <h4>Take</h4>
+                                <p>The <em>Take</em> command lets you pick-up an item in the current scene and add it to your inventory. To take an item, select the <em>Take</em> option in the exploration menu. Then select the item to take in the <em>Take</em> submenu.</p>
+
+                                <p>The narrator reports if you were able to take the item or not.</p>
+                            </section>
+
+                            <section id="puzzles">
+                                <h3>Puzzles</h3>
+                                <p>You will face a variety of puzzles as you progress through the game. Some will require you to memorize and enter patterns. Some will force you to act quickly to avoid danger. Another will even challenge you to find your way through a maze with only a beacon of sound to guide you.</p>
+
+                                <p>When first encountering a puzzle, listen to the narrator. He will give you clues about how to solve the puzzle. For some puzzles, you will use the keys to browse and select options from menus, just like when you are exploring. At other times, your key presses will lead to immediate action like walking, jumping, or shooting.</p>
+                            </section>
+                        </section>
+
+                        <section>
+                            <div class="page-header">
+                                <h2>Hints and Tips</h2>
+                            </div>
+
+                            <h3 id="journals">Journals</h3>
+                            <p>You will find journals scattered throughout the game. Use these journals to save your current progress through the game. After discovering a journal by examining items in the scene, select the <em>Use</em> option from the exploration menu. In the <em>Use</em> submenu, select the <em>Journal</em> item. Finally, select a slot in which to save your game.</p>
+
+                            <p>You can load your game at a later time from the main menu.</p>
+
+                            <h3 id="recordings">Recordings</h3>
+                            <p>One of the first items you find after escaping the operating table is a recording. Examining this recording, and others like it, will reveal more and more of the storyline.</p>
+
+                            <h3 id="sitting-room-door">Sitting Room Door</h3>
+                            <p>There is a coded lock on the sitting room door. Sounds will play from the left and right speakers when you attempt to unlock it. Match the sequence you hear by pressing the <em>Left</em> and <em>Right</em> arrow keys to open the door. Press carefully: the door might be booby trapped.</p>
+
+                            <h3 id="basement-maze">Basement Maze</h3>
+                            <p>An audio beacon will guide you to the exit of the basement maze. To navigate, press the <em>Up</em>, <em>Down</em>, <em>Right</em>, and <em>Left</em> arrow keys to walk North, South, East, and West respectively. As soon as you press one of these keys, you will move in the chosen direction.</p>
+
+                            <h3 id="the-gun">The Gun</h3>
+                            <p>At certain times during the game, you will find yourself in possession of a gun. To use it at key moments, press <em>Spacebar</em> or <em>Return</em>.</p>
+                        </section>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <footer>
+            <p>Code and media under <a href="https://github.com/parente/dim-game/blob/master/LICENSE">various licenses</a>. This site under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+            <ul class="inline">
+                <li><a href="https://github.com/parente/dim-game">GitHub Project</a></li>
+                <li>&#183;</li>
+                <li><a href="https://dim-boilerplate.readthedocs.org/en/latest/">Developer Resources</a></li>
+                <li>&#183;</li>
+                <li><a href="mailto:parente@cs.unc.edu">Email</a></li>
+            </ul>
+        </footer>
+
+        <script src="http://code.jquery.com/jquery.js"></script>
+        <script src="lib/bootstrap/js/bootstrap.min.js"></script>
+        <script src="lib/main.js"></script>
+        <script type="text/javascript">
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-39356424-1']);
+  _gaq.push(['_trackPageview']);
+
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+</script>
+    </body>
+</html>
