@@ -2,3 +2,4 @@
 *.sublime-project
 webapp.build.*
 webapp.build
+webapp.build.js
