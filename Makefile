@@ -5,7 +5,7 @@ build:
 	@sed s/{{VERSION}}/$(GIT_VERSION)/g dev/webapp.build.js.in > dev/webapp.build.js
 	@docker run -v `pwd`:/dim \
 		--workdir /dim/dev \
-		node:0.10.32 \
+		node:9.1.0-alpine \
 		node r.js -o webapp.build.js
 	@echo $(GIT_VERSION) > webapp.build/version
 
