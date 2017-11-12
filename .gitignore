@@ -1,5 +1,6 @@
 *.sublime-workspace
 *.sublime-project
-webapp.build.*
-webapp.build
+webapp.build/
 webapp.build.js
+
+.DS_Store
