@@ -159,10 +159,12 @@ define(['dim/topic'], function(topic) {
 
     var first_initialize = function() {
         // make sure we support the web audio api
-        try {
-            context = new webkitAudioContext();
-        } catch(e) {
-            throw new Error('webkitAudioContext not supported');
+        if(window.AudioContext) {
+            context = new window.AudioContext();
+        } else if(window.webkitAudioContext) {
+            context = new window.webkitAudioContext();
+        } else {
+            throw new Error('AudioContext not supported');
         }
 
         // build a dynamic compressor
