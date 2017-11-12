@@ -2,9 +2,9 @@ define([
     'dim/topic',
     'dim/world'
 ], function(topic, world) {
-    // will be removed during build
-    if (typeof DEVEL === 'undefined') DEVEL = true;
-    if(DEVEL) {
+    // disable developer tools when the version is defined
+    // i.e., this is a release
+    if(typeof DIM_VERSION === 'undefined') {
         window.dim = {};
 
         dim.world = world;
